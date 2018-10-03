@@ -25,4 +25,4 @@
 (package! function-args)
 (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy" :files ("*")))
 
-(disable-packages! company-prescient exec-path-from-shell)
+(disable-packages! company-prescient exec-path-from-shell solaire-mode)

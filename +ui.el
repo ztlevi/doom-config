@@ -11,8 +11,3 @@
 (setq initial-frame-alist
       '((width . 110)
         (height . 65)))
-
-(defun update-custom-faces ()
-  (custom-set-faces
-   '(hl-line ((t (:background "#dcdcdc"))))))
-(add-hook 'ranger-mode-load-hook 'update-custom-faces)
