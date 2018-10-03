@@ -65,13 +65,13 @@
        editorconfig      ; let someone else argue about tabs vs spaces
       ;ein               ; tame Jupyter notebooks with emacs
       ;gist              ; interacting with github gists
-      macos             ; MacOS-specific commands
+       macos             ; MacOS-specific commands
        make              ; run make tasks from Emacs
        magit             ;
-       password-store    ; password manager for nerds
+      ;password-store    ; password manager for nerds
        pdf               ; pdf enhancements
       ;prodigy           ; FIXME managing external services & code builders
-      rgb               ; creating color strings
+       rgb               ; creating color strings
        tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
       ;wakatime
@@ -89,7 +89,7 @@
        emacs-lisp        ; drown in parentheses
       ;ess               ; emacs speaks statistics
        go                ; the hipster dialect
-       haskell           ; a language that's lazier than I am
+      ;haskell           ; a language that's lazier than I am
       ;hy                ; readability of scheme w/ speed of python
       ;(java +meghanada) ; the poster child for carpal tunnel syndrome
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
