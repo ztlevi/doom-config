@@ -13,9 +13,12 @@
      (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
 
 (map!
+ ;; localleader
+ ;; :m ","    nil
+
  (:leader
-   (:nmv "SPC" #'counsel-M-x
-    :nmv "gs" #'magit-status))
+   :nmv "SPC" #'counsel-M-x
+   :nmv "gs" #'magit-status)
 
  :nmv "C-e" #'end-of-line
  :nmv "C-a" #'beginning-of-line
@@ -23,11 +26,6 @@
  "M-s" #'evil-write-all
  "M-p" #'counsel-git
  "M-/" #'evilnc-comment-or-uncomment-lines
- )
-
-(map!
- ;; localleader
- ;; :m ","    nil
 
  (:map prog-mode-map
    ;; Override default :n < > ( )
@@ -150,37 +148,6 @@
      )
    )
 
- :n "x" nil
- (:desc "xref" :prefix "x"
-   :n ";" (λ! (+my/avy-document-symbol t) (+my/find-references))
-
-   ;; $ccls/inheritance
-   :n "b" (λ! (ccls/base 1))
-   :n "B" (λ! (ccls/base 3))
-   :n "d" (λ! (ccls/derived 1))
-   :n "D" (λ! (ccls/derived 3))
-   :n "i" #'ccls-inheritance-hierarchy        ; base hierarchy
-   :n "I" (λ! (ccls-inheritance-hierarchy t)) ; derived hierarchy
-
-   ;; $ccls/call
-   :n "c" #'ccls/caller
-   :n "C" #'ccls/callee
-   ;; caller hierarchy
-   :n "e" #'ccls-call-hierarchy
-   ;; callee hierarchy
-   :n "E" (λ! (ccls-call-hierarchy t))
-
-   ;; $ccls/member
-   :n "m" #'ccls/member
-   :n "M" #'ccls-member-hierarchy
-
-   :n "L" #'ccls-code-lens-mode
-   :n "t" #'lsp-goto-type-definition
-   ;; https://github.com/maskray/ccls/blob/master/src/messages/ccls_vars.cc#L15
-   :n "v" (λ! (ccls/vars 3))            ; field or local variable
-   :n "V" (λ! (ccls/vars 1))            ; field
-   :n "x" #'evil-delete-char)
-
  (:prefix "C-x"
    :n "e"  #'pp-eval-last-sexp
    :n "u" #'link-hint-open-link
@@ -234,5 +201,11 @@
      :n "M-7" (λ! (+my/realgud-eval-nth-name-backward 7))
      :n "M-8" (λ! (+my/realgud-eval-nth-name-backward 8))
      :n "M-9" (λ! (+my/realgud-eval-nth-name-backward 9))
-     )
-   ))
+     ))
+
+ (:after git-rebase
+   (:map git-rebase-mode-map
+     "M-j" #'git-rebase-move-line-down
+     "M-k" #'git-rebase-move-line-up
+     "SPC" nil))
+ )
