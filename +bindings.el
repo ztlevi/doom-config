@@ -12,21 +12,37 @@
      (setq prefix-arg current-prefix-arg)
      (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
 
-(map!
- ;; localleader
- ;; :m ","    nil
+(define-key! evil-ex-completion-map
+  "C-k" #'kill-line
+  "C-d" #'delete-forward-char)
 
+(map!
  (:leader
    :nmv "SPC" #'counsel-M-x
-   :nmv "gs" #'magit-status)
+   :n "or"  #'revert-buffer-no-confirm
 
+   :n "bf" #'zt/open-finder-in-current-dir
+   :n "bt" #'zt/open-terminal-in-project-root
+   :n "bT" #'zt/open-terminal-in-current-dir
+   :n "bc" #'zt/open-vscode-in-project-root
+   :n "bC" #'zt/open-current-file-in-vscode
+   :n "bM" #'zt/open-markdown-in-typora
+   :n "bm" #'view-echo-area-messages
+   )
+
+ "C-M-\\" #'indent-region-or-buffer
  :nmv "C-e" #'end-of-line
- :nmv "C-a" #'beginning-of-line
-
- "C-s" #'swiper
- "M-s" #'evil-write-all
- "M-p" #'counsel-git
- "M-/" #'evilnc-comment-or-uncomment-lines
+ :nmv "C-a" #'evil-first-non-blank
+ :nmv "M-s" #'evil-write-all
+ :nmv "M-e" #'+ivy/switch-workspace-buffer
+ :nmv "C-s" #'swiper
+ :nmv "M-p" #'counsel-git
+ :nmv "M-/" #'evilnc-comment-or-uncomment-lines
+ :i   "C-k" #'kill-line
+ :i   "C-d" #'delete-forward-char
+ :v "<backspace>" (kbd "\"_d")
+ :v "<del>" (kbd "\"_d")
+ :v "C-r" #'zt/evil-quick-replace
 
  (:map prog-mode-map
    ;; Override default :n < > ( )
@@ -49,7 +65,7 @@
  :m "M-h"  #'smart-up
  :m "M-l"  #'smart-down
  :n "M-."  #'+lookup/definition
- :n "M-j"  #'+my/find-definitions
+ ;; :n "M-j"  #'+my/find-definitions
 
  :n "C-1" #'+popup/raise
  :n "C-c a" #'org-agenda
@@ -95,7 +111,6 @@
      )
    (:prefix "g"
      :n "*" (+my/prefix-M-x "magit-")
-     :n "q" #'git-link
      )
    (:prefix "h"
      :n "C" #'helpful-command
@@ -170,13 +185,6 @@
    "C-k" #'ivy-kill-line
    )
 
- (:after company
-   (:map company-active-map
-     ;; Don't interfere with `evil-delete-backward-word' in insert mode
-     "C-v"        #'company-next-page
-     "M-v"        #'company-previous-page
-     "C-i"        #'company-complete-selection))
-
  (:after realgud
    (:map realgud-track-mode-map
      :in ";" #'realgud-window-src-undisturb-cmd)
@@ -203,10 +211,4 @@
      :n "M-8" (λ! (+my/realgud-eval-nth-name-backward 8))
      :n "M-9" (λ! (+my/realgud-eval-nth-name-backward 9))
      ))
-
- (:after git-rebase
-   (:map git-rebase-mode-map
-     "M-j" #'git-rebase-move-line-down
-     "M-k" #'git-rebase-move-line-up
-     "SPC" nil))
- )
+)

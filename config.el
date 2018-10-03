@@ -1,8 +1,11 @@
 ;;; private/my/config.el -*- lexical-binding: t; -*-
 
+(load! "+funcs")
 (load! "+bindings")
 (load! "+org")
 (load! "+ui")
+(load! "+misc")
+(load! "+prog")
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
@@ -12,21 +15,6 @@
   (setq avy-timeout-seconds 0.2)
   (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p))
   )
-
-(after! company
-  (setq company-minimum-prefix-length 2
-        company-quickhelp-delay nil
-        company-show-numbers t
-        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
-        ))
-
-(def-package! company-lsp
-  :after company
-  :init
-  (setq company-transformers nil company-lsp-cache-candidates nil)
-  )
-
-(set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
 (after! eshell
   (defun eshell/l (&rest args) (eshell/ls "-l" args))
@@ -55,122 +43,8 @@
   (setq evil-snipe-scope 'buffer)
   )
 
-(after! flycheck
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-  )
-
-(after! git-link
-  (defun git-link-llvm (hostname dirname filename branch commit start end)
-      (format "https://github.com/llvm-mirror/%s/tree/%s/%s"
-              (file-name-base dirname)
-                (or branch commit)
-              (concat filename
-                      (when start
-                        (concat "#"
-                                (if end
-                                    (format "L%s-%s" start end)
-                                  (format "L%s" start)))))))
-  (defun git-link-sourceware (hostname dirname filename branch commit start end)
-    (format "https://sourceware.org/git/?p=%s.git;a=blob;hb=%s;f=%s"
-            (file-name-base dirname)
-            commit
-            (concat filename
-                    (when start
-                      (concat "#" (format "l%s" start))))))
-    (add-to-list 'git-link-remote-alist '("git.llvm.org" git-link-llvm))
-    (add-to-list 'git-link-remote-alist '("sourceware.org" git-link-sourceware))
-  )
-
 (def-package! link-hint
   :commands link-hint-open-link link-hint-open-all-links)
-
-(def-package! lispy
-  :hook (emacs-lisp-mode . lispy-mode)
-  :config
-  (setq lispy-outline "^;; \\(?:;[^#]\\|\\*+\\)"
-        lispy-outline-header ";; "
-        lispy-ignore-whitespace t)
-  (map! :map lispy-mode-map
-        :i "C-c (" #'lispy-wrap-round
-        :i "_" #'special-lispy-different
-        "d" nil
-        :i [remap delete-backward-char] #'lispy-delete-backward))
-
-;; Also use lispyville in prog-mode for [ ] < >
-(def-package! lispyville
-  :demand t
-  :after (evil)
-  :hook (lispy-mode . lispyville-mode)
-  :config
-  (lispyville-set-key-theme
-   '(operators
-     c-w
-     (escape insert)
-     (slurp/barf-lispy)
-     additional-movement))
-  (map! :map emacs-lisp-mode-map
-        :n "gh" #'helpful-at-point
-        :n "C-<left>" #'lispy-forward-barf-sexp
-        :n "C-<right>" #'lispy-forward-slurp-sexp
-        :n "C-M-<left>" #'lispy-backward-slurp-sexp
-        :n "C-M-<right>" #'lispy-backward-barf-sexp
-        :n "<tab>" #'lispyville-prettify
-        :localleader
-        :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil)))
-        )
-  )
-
-(def-package! lsp-mode
-  :defer t
-  :init
-  (setq lsp-project-blacklist '("/CC/"))
-  )
-
-(def-package! lsp-ui
-  :demand t
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (setq
-   lsp-ui-sideline-enable nil
-   lsp-ui-sideline-ignore-duplicate t
-   lsp-ui-doc-header nil
-   lsp-ui-doc-include-signature nil
-   lsp-ui-doc-background (doom-color 'base4)
-   lsp-ui-doc-border (doom-color 'fg)
-
-   lsp-ui-peek-force-fontify nil
-   lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
-
-  (advice-add #'lsp-ui-doc--eldoc :override #'+my/lsp-ui-doc--eldoc)
-
-  (custom-set-faces
-   '(ccls-sem-global-variable-face ((t (:underline t :weight extra-bold))))
-   '(lsp-face-highlight-read ((t (:background "sea green"))))
-   '(lsp-face-highlight-write ((t (:background "brown4"))))
-   '(lsp-ui-sideline-current-symbol ((t (:foreground "grey38" :box nil))))
-   '(lsp-ui-sideline-symbol ((t (:foreground "grey30" :box nil)))))
-
-   (map! :after lsp-ui-peek
-         :map lsp-ui-peek-mode-map
-         "h" #'lsp-ui-peek--select-prev-file
-         "j" #'lsp-ui-peek--select-next
-         "k" #'lsp-ui-peek--select-prev
-         "l" #'lsp-ui-peek--select-next-file
-         )
-   )
-
-(setq magit-repository-directories '(("~/Dev" . 2)))
-
-(after! ivy
-  (setq ivy-initial-inputs-alist nil)
-  (setq ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
-                                (counsel-grep . ivy--regex-plus)
-                                (swiper . ivy--regex-plus)
-                                (t . ivy--regex-ignore-order)))
-
-  (push '(+ivy/switch-workspace-buffer) ivy-display-functions-alist)
-  )
 
 (after! quickrun
   (quickrun-add-command "c++/c1z"
@@ -254,46 +128,6 @@
   :config
   )
 
-(after! projectile
-  (setq projectile-require-project-root t)
-  (setq compilation-read-command nil)  ; no prompt in projectile-compile-project
-  ;; . -> Build
-  (projectile-register-project-type 'cmake '("CMakeLists.txt")
-                                    :configure "cmake %s"
-                                    :compile "cmake --build Debug"
-                                    :test "ctest")
-  )
-
-(after! counsel-projectile
-  (ivy-add-actions
-   'counsel-projectile-switch-project
-   `(("b" counsel-projectile-switch-project-action-switch-to-buffer
-      "jump to a project buffer")
-     ("s" counsel-projectile-switch-project-action-save-all-buffers
-      "save all project buffers")
-     ("k" counsel-projectile-switch-project-action-kill-buffers
-      "kill all project buffers")
-     ("c" counsel-projectile-switch-project-action-compile
-      "run project compilation command")
-     ("e" counsel-projectile-switch-project-action-edit-dir-locals
-      "edit project dir-locals")
-     ("v" counsel-projectile-switch-project-action-vc
-      "open project in vc-dir / magit / monky")
-     ("xe" counsel-projectile-switch-project-action-run-eshell
-      "invoke eshell from project root")
-     ("xt" counsel-projectile-switch-project-action-run-term
-      "invoke term from project root")
-     ("_" counsel-projectile-switch-project-action-org-capture
-      "org-capture into project"))))
-
-(def-package! smartparens
-  :config
-  (setq sp-autoinsert-pair nil
-        sp-autodelete-pair nil
-        sp-escape-quotes-after-insert nil)
-  (setq-default sp-autoskip-closing-pair nil)
-  )
-
 (def-package! tldr
   :commands (tldr)
   :config
@@ -311,11 +145,10 @@
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
-(set-popup-rules! '(
-  ("^\\*helpful" :size 0.4)
-  ("^\\*info.*" :size 80 :side right)
-  ("^\\*Man.*" :size 80 :side right)
-  ))
+(set-popup-rules! '(("^\\*helpful" :size 0.4)
+                    ("^\\*info.*" :size 80 :side right)
+                    ("^\\*Man.*" :size 80 :side right)
+                    ))
 
 (let ((profile "~/.config/doom/profile.el"))
   (when (file-exists-p profile)

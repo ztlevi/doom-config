@@ -1,14 +1,11 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; private/my/packages.el
-(disable-packages! cmake-mode company-irony company-irony-c-headers flycheck-irony irony irony-eldoc ivy-rtags rtags)
+(disable-packages! cmake-mode company-irony company-irony-c-headers flycheck-irony
+                   irony irony-eldoc ivy-rtags rtags anaconda-mode conda)
 
 (package! avy)
 (package! atomic-chrome)
 (package! all-the-icons-dired)
-(package! lispyville)
-(package! lsp-mode)
-(package! lsp-ui)
-(package! company-lsp)
 
 (package! eshell-autojump)
 (package! evil-nerd-commenter)
@@ -19,9 +16,17 @@
 (package! tldr)
 (package! try)
 
+;; programming
+(package! py-autopep8)
+(package! importmagic)
+(package! import-js)
 (package! rust-mode)
 (package! lsp-rust)
-
+(package! lispyville)
+(package! lsp-mode)
+(package! lsp-ui)
+(package! lsp-python)
+(package! company-lsp)
 (package! function-args)
 (package! lpy :recipe (:fetcher github :repo "abo-abo/lpy" :files ("*")))
 
