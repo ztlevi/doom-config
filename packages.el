@@ -15,6 +15,7 @@
 (package! symbol-overlay)
 (package! tldr)
 (package! try)
+(package! prettier-js)
 
 ;; programming
 (package! py-autopep8)

@@ -59,6 +59,22 @@
       "invoke term from project root")
      ("_" counsel-projectile-switch-project-action-org-capture
       "org-capture into project"))))
+;; //////////////////////// PRETTIER /////////////////////
+
+(def-package! prettier-js
+  :commands prettier-js-mode
+  :init
+  (add-hook! '(js2-mode-hook
+               typescript-mode-hook
+               ;; typescript-tsx-mode-hook
+               rjsx-mode-hook
+               json-mode-hook
+               css-mode-hook
+               web-mode-hook
+               markdown-mode-hook
+               gfm-mode-hook)
+    #'prettier-js-mode)
+  )
 
 ;; ///////////////////////// Git /////////////////////////
 (after! git-link
