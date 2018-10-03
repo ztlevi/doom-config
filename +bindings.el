@@ -23,6 +23,7 @@
  :nmv "C-e" #'end-of-line
  :nmv "C-a" #'beginning-of-line
 
+ "C-s" #'swiper
  "M-s" #'evil-write-all
  "M-p" #'counsel-git
  "M-/" #'evilnc-comment-or-uncomment-lines
