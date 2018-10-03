@@ -1,17 +1,9 @@
 ;;; ~/.doom.d/+misc.el -*- lexical-binding: t; -*-
 
+;; ////////////////////////// EVIL //////////////////////////
 (setq evil-cross-lines t)
 
-(after! projectile
-  (setq projectile-require-project-root t)
-  (setq compilation-read-command nil)  ; no prompt in projectile-compile-project
-  ;; . -> Build
-  (projectile-register-project-type 'cmake '("CMakeLists.txt")
-                                    :configure "cmake %s"
-                                    :compile "cmake --build Debug"
-                                    :test "ctest")
-  )
-
+;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
@@ -35,6 +27,17 @@
         counsel-rg-base-command
         "rg -zS -M 120 --no-heading --line-number --color never %s ."))
 
+;; ///////////////////////// PROJECTILE ///////////////////
+(after! projectile
+  (setq projectile-require-project-root t)
+  (setq compilation-read-command nil)  ; no prompt in projectile-compile-project
+  ;; . -> Build
+  (projectile-register-project-type 'cmake '("CMakeLists.txt")
+                                    :configure "cmake %s"
+                                    :compile "cmake --build Debug"
+                                    :test "ctest")
+  )
+
 (after! counsel-projectile
   (ivy-add-actions
    'counsel-projectile-switch-project
@@ -57,14 +60,7 @@
      ("_" counsel-projectile-switch-project-action-org-capture
       "org-capture into project"))))
 
-;; (def-package! smartparens
-;;   :config
-;;   (setq sp-autoinsert-pair nil
-;;         sp-autodelete-pair nil
-;;         sp-escape-quotes-after-insert nil)
-;;   (setq-default sp-autoskip-closing-pair nil)
-;;   )
-
+;; ///////////////////////// Git /////////////////////////
 (after! git-link
   (add-to-list 'git-link-remote-alist
                '("isl-122-ubuntu" git-link-gitlab))
@@ -92,3 +88,11 @@
      "M-k" #'git-rebase-move-line-up
      "SPC" nil))
  )
+
+;; (def-package! smartparens
+;;   :config
+;;   (setq sp-autoinsert-pair nil
+;;         sp-autodelete-pair nil
+;;         sp-escape-quotes-after-insert nil)
+;;   (setq-default sp-autoskip-closing-pair nil)
+;;   )
