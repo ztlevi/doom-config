@@ -190,6 +190,7 @@
 (after! ivy
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
+                                (counsel-grep . ivy--regex-plus)
                                 (swiper . ivy--regex-plus)
                                 (t . ivy--regex-ignore-order)))
 

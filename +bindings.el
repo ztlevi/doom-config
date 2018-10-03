@@ -19,13 +19,14 @@
 
  :nmv "C-e" #'end-of-line
  :nmv "C-a" #'beginning-of-line
+
+ "M-s" #'evil-write-all
  "M-p" #'counsel-git
  )
 
 (map!
  ;; localleader
  ;; :m ","    nil
- "M-s" #'evil-write-all
 
  (:map prog-mode-map
    ;; Override default :n < > ( )
@@ -194,9 +195,10 @@
  (:after ivy
    :map ivy-minibuffer-map
    "C-j" #'ivy-call-and-recenter
-   "C-;"   #'ivy-avy
-   "C-b"   #'backward-char
-   "C-f"   #'forward-char
+   "C-;" #'ivy-avy
+   "C-b" #'backward-char
+   "C-f" #'forward-char
+   "C-k" #'ivy-kill-line
    )
 
  (:after company

@@ -3,7 +3,6 @@
 (defvar vinegar-reuse-dired-buffer nil
   "If non-nil, reuses one dired buffer for navigation.")
 
-
 (defun vinegar/dotfiles-toggle ()
   "Show/hide dot-files"
   (interactive)
@@ -141,35 +140,3 @@
          ))
     )))
 ;; )
-
-(after! dired
-  (map!
-   (:map
-     dired-mode-map
-     "j" 'vinegar/move-down
-     "k" 'vinegar/move-up
-     "-" 'vinegar/up-directory
-     "0" 'dired-back-to-start-of-files
-     "=" 'vinegar/dired-diff
-     "C-j" 'dired-next-subdir
-     "C-k" 'dired-prev-subdir
-     "I" 'vinegar/dotfiles-toggle
-     "~" '(lambda ()(interactive) (find-alternate-file "~/"))
-     "RET" (if vinegar-reuse-dired-buffer
-                     'dired-find-alternate-file
-                   'dired-find-file)
-     "f" (if (featurep 'ivy)
-             'counsel-find-file
-           'helm-find-files)
-     "J" 'dired-goto-file
-     "C-f" 'find-name-dired
-     "H" 'diredp-dired-recent-dirs
-     "T" 'dired-tree-down
-     "K" 'dired-do-kill-lines
-     "r" 'revert-buffer
-     "C-r" 'dired-do-redisplay
-     ;; "gg" 'vinegar/back-to-top
-     "C-g" 'vinegar/back-to-top
-     "C-G" 'vinegar/jump-to-bottom)))
-
-(add-hook 'dired-mode-hook 'vinegar/dired-setup)
