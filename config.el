@@ -189,6 +189,10 @@
 
 (after! ivy
   (setq ivy-initial-inputs-alist nil)
+  (setq ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
+                                (swiper . ivy--regex-plus)
+                                (t . ivy--regex-ignore-order)))
+
   (push '(+ivy/switch-workspace-buffer) ivy-display-functions-alist)
   )
 
@@ -333,7 +337,7 @@
 
 (set-popup-rules! '(
   ("^\\*helpful" :size 0.4)
-  ("^\\*info.*" :size 80 :size right)
+  ("^\\*info.*" :size 80 :side right)
   ("^\\*Man.*" :size 80 :side right)
   ))
 
