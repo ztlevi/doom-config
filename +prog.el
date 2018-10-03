@@ -93,7 +93,15 @@
    (:after rjsx-mode
      (:map rjsx-mode-map
        :n "mi" 'import-js-import
-       :n "mf" 'import-js-fix))))
+       :n "mf" 'import-js-fix)))
+ (:after tide
+   :map tide-references-mode-map
+   "C-k" 'tide-find-previous-reference
+   "p" 'tide-find-previous-reference
+   "C-j" 'tide-find-next-reference
+   "n" 'tide-find-next-reference
+   "C-l" 'tide-goto-reference
+   ))
 
 ;; ///////////////////////// LISP /////////////////////////
 (def-package! lispy
