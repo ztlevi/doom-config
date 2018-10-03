@@ -105,6 +105,41 @@
      "SPC" nil))
  )
 
+;; //////////////////// ATOMIC CHROME /////////////////////
+(def-package! atomic-chrome
+    :defer 3
+    :preface
+    (defun ztlevi-atomic-chrome-server-running-p ()
+      (cond ((executable-find "lsof")
+             (zerop (call-process "lsof" nil nil nil "-i" ":64292")))
+            ((executable-find "netstat") ; Windows
+             (zerop (call-process-shell-command "netstat -aon | grep 64292")))))
+    :hook
+    (atomic-chrome-edit-mode . ztlevi-atomic-chrome-mode-setup)
+    (atomic-chrome-edit-done . (lambda () (shell-command "open -a \"/Applications/Google Chrome.app\"")))
+    :config
+    (progn
+      (setq atomic-chrome-buffer-open-style 'full) ;; or frame, split
+      (setq atomic-chrome-url-major-mode-alist
+            '(("github\\.com"        . gfm-mode)
+              ("emacs-china\\.org"   . gfm-mode)
+              ("stackexchange\\.com" . gfm-mode)
+              ("stackoverflow\\.com" . gfm-mode)
+              ;; jupyter notebook
+              ("localhost\\:8888"    . python-mode)
+              ("lintcode\\.com"      . python-mode)
+              ("leetcode\\.com"      . python-mode)))
+
+      (defun ztlevi-atomic-chrome-mode-setup ()
+        (setq header-line-format
+              (substitute-command-keys
+               "Edit Chrome text area.  Finish \
+`\\[atomic-chrome-close-current-buffer]'.")))
+
+      (if (ztlevi-atomic-chrome-server-running-p)
+          (message "Can't start atomic-chrome server, because port 64292 is already used")
+        (atomic-chrome-start-server))))
+
 ;; (def-package! smartparens
 ;;   :config
 ;;   (setq sp-autoinsert-pair nil
