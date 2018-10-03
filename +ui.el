@@ -11,3 +11,6 @@
 (setq initial-frame-alist
       '((width . 110)
         (height . 65)))
+
+;; disable line-numbers by default
+(setq display-line-numbers-type nil)
