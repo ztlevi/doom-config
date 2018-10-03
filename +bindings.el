@@ -117,17 +117,6 @@
    (:prefix "h"
      :n "C" #'helpful-command
      )
-   (:desc "lsp" :prefix "l"
-     :n "a" #'lsp-execute-code-action
-     :n "l" #'lsp-ui-sideline-mode
-     :n "d" #'lsp-ui-doc-mode
-     :n "e" #'lsp-ui-flycheck-list
-     :n "F" #'lsp-format-buffer
-     :n "i" #'lsp-ui-imenu
-     :n "r" #'lsp-rename
-     :n "R" #'lsp-restart-workspace
-     :n "w" #'lsp-ui-peek-find-workspace-symbol
-     )
    :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
    (:prefix "o"
      :n "c" #'counsel-imenu-comments
