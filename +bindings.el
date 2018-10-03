@@ -22,6 +22,7 @@
 
  "M-s" #'evil-write-all
  "M-p" #'counsel-git
+ "M-/" #'evilnc-comment-or-uncomment-lines
  )
 
 (map!
