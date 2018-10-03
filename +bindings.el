@@ -21,12 +21,14 @@
    :nmv "SPC" #'counsel-M-x
    :n "or"  #'revert-buffer-no-confirm
 
-   :n "bf" #'zt/open-finder-in-current-dir
-   :n "bt" #'zt/open-terminal-in-project-root
-   :n "bT" #'zt/open-terminal-in-current-dir
-   :n "bc" #'zt/open-vscode-in-project-root
-   :n "bC" #'zt/open-current-file-in-vscode
-   :n "bM" #'zt/open-markdown-in-typora
+   :nm "fo" #'+macos/open-in-default-program
+   :n "bf" #'+macos/reveal-in-finder
+   :n "bF" #'+macos/reveal-project-in-finder
+   :n "bT" #'+macos/reveal-project-in-iterm
+   :n "bT" #'+macos/reveal-in-iterm
+   :n "bc" #'+macos/reveal-project-in-vscode
+   :n "bC" #'+macos/reveal-in-vscode
+   :n "bM" #'+macos/reveal-in-typora
    :n "bm" #'view-echo-area-messages
    )
 
