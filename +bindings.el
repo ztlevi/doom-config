@@ -33,6 +33,10 @@
    )
 
  "C-M-\\" #'indent-region-or-buffer
+ "C-h h" nil
+ "C-h C-k" #'find-function-on-key
+ "C-h C-f" #'find-function-at-point
+ "C-h C-v" #'find-variable-at-point
  :nmv "C-e" #'end-of-line
  :nmv "C-a" #'evil-first-non-blank
  :nmv "M-s" #'evil-write-all
