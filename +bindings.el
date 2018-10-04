@@ -150,6 +150,9 @@
    :n "u" #'link-hint-open-link
    )
 
+ (:after elisp-mode
+   (:map emacs-lisp-mode-map
+     :n "M-j" #'lispy-splice))
  (:after evil-collection-info
    :map Info-mode-map
    "/" #'Info-search
