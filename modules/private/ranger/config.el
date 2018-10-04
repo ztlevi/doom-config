@@ -19,6 +19,7 @@
    (:after ranger
      (:map ranger-normal-mode-map
        "g" nil
+       "q" #'ranger-close-and-kill-inactive-buffers
        "f" #'counsel-find-file
        "C-<tab>" #'ranger-next-tab
        "C-S-<tab>" #'ranger-prev-tab
@@ -27,6 +28,11 @@
        "(" #'dired-hide-details-mode
        "+" #'dired-create-directory)))
   :config
+  (defun ranger-close-and-kill-inactive-buffers ()
+    "ranger close current buffer and kill inactive ranger buffers"
+    (interactive)
+    (ranger-close)
+    (ranger-kill-buffers-without-window))
   ;; do not kill buffer if exists in windows
   (defun ranger-disable ()
     "Interactively disable ranger-mode."
