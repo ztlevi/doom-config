@@ -31,6 +31,8 @@
  :nmv "C-s" #'swiper
  :nmv "M-p" #'counsel-git
  :nmv "M-/" #'evilnc-comment-or-uncomment-lines
+ :i   "C-n" #'next-line
+ :i   "C-p" #'previous-line
  :i   "C-k" #'kill-line
  :i   "C-d" #'delete-forward-char
  :v "<backspace>" (kbd "\"_d")
