@@ -24,7 +24,26 @@
                                 (t . ivy--regex-ignore-order)))
 
   (push '(+ivy/switch-workspace-buffer) ivy-display-functions-alist)
+  (push '(ivy-switch-buffer) ivy-display-functions-alist)
   )
+
+(map!
+ (:leader
+   (:prefix "b"
+     :desc "Last buffer" :n "l" #'evil-switch-to-windows-last-buffer
+     :n "b" #'ivy-switch-buffer)
+   (:prefix "r"
+     :n "i" #'ivy-resume))
+ (:after ivy
+   :map ivy-minibuffer-map
+   "C-j" #'ivy-call-and-recenter
+   "C-;" #'ivy-avy
+   "C-b" #'backward-char
+   "C-f" #'forward-char
+   "C-k" #'ivy-kill-line
+   "C-v" #'ivy-scroll-up-command
+   "M-v" #'ivy-scroll-down-command)
+ )
 
 (after! counsel
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"

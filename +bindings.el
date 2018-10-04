@@ -19,9 +19,9 @@
 (map!
  (:leader
    :nmv "SPC" #'counsel-M-x
-   :n "or"  #'revert-buffer-no-confirm
 
    :nm "fo" #'zt/open-file-or-directory-in-external-app
+   :nm "br" #'revert-buffer-no-confirm
    :nm "bf" #'+macos/reveal-in-finder
    :nm "bF" #'+macos/reveal-project-in-finder
    :nm "bT" #'+macos/reveal-project-in-iterm
@@ -30,6 +30,9 @@
    :nm "bC" #'+macos/reveal-in-vscode
    :nm "bM" #'+macos/reveal-in-typora
    :nm "bm" #'view-echo-area-messages
+   :nmv "bk" #'kill-this-buffer
+
+   :nmv "oI" #'ibuffer
    )
 
  "C-M-\\" #'indent-region-or-buffer
@@ -37,8 +40,9 @@
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
- :nmv "C-e" #'end-of-line
- :nmv "C-a" #'evil-first-non-blank
+ :nmvi "C-`" #'+popup/toggle
+ :nmv "C-e" #'doom/forward-to-last-non-comment-or-eol
+ :nmv "C-a" #'doom/backward-to-bol-or-indent
  :nmv "M-s" #'evil-write-all
  :nmv "M-e" #'+ivy/switch-workspace-buffer
  :nmv "C-s" #'swiper
@@ -73,7 +77,6 @@
  :n "M-."  #'+lookup/definition
  ;; :n "M-j"  #'+my/find-definitions
 
- :n "C-1" #'+popup/raise
  :n "C-c a" #'org-agenda
  :n "C-,"  #'+my/find-references
  ;; all symbols
@@ -101,14 +104,6 @@
      :desc "genhdr windows" :n "G"
      (λ! (shell-command-on-region (point-min) (point-max) "genhdr windows" t t))
      )
-   (:prefix "b"
-     :desc "Last buffer" :n "b" #'evil-switch-to-windows-last-buffer
-     :n "l" #'ivy-switch-buffer
-     )
-   (:desc "error" :prefix "e"
-     :n "n" #'flycheck-next-error
-     :n "p" #'flycheck-previous-error
-     )
    (:prefix "f"
      :n "p" #'treemacs-projectile
      :n "C-p" #'+default/find-in-config
@@ -133,9 +128,6 @@
      :n "f" #'counsel-projectile-find-file
      :n "*" (+my/prefix-M-x "projectile-")
      )
-   (:prefix "r"
-     :n "l" #'ivy-resume
-     )
 
    (:desc "search" :prefix "s"
      :n "b" #'swiper-all
@@ -149,6 +141,7 @@
    (:desc "toggle" :prefix "t"
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
+     :n "v" #'visual-line-mode
      )
    )
 
@@ -161,16 +154,6 @@
    :map Info-mode-map
    "/" #'Info-search
    "?" #'Info-search-backward
-   )
-
- ;; ivy
- (:after ivy
-   :map ivy-minibuffer-map
-   "C-j" #'ivy-call-and-recenter
-   "C-;" #'ivy-avy
-   "C-b" #'backward-char
-   "C-f" #'forward-char
-   "C-k" #'ivy-kill-line
    )
 
  (:after realgud
@@ -199,4 +182,4 @@
      :n "M-8" (λ! (+my/realgud-eval-nth-name-backward 8))
      :n "M-9" (λ! (+my/realgud-eval-nth-name-backward 9))
      ))
-)
+ )

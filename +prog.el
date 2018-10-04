@@ -40,6 +40,9 @@
 
 (map!
  (:leader
+   (:desc "error" :prefix "e"
+     :n "n" #'flycheck-next-error
+     :n "p" #'flycheck-previous-error)
    :n "el" #'flycheck-list-errors
    :n "ev" #'flycheck-verify-setup))
 
