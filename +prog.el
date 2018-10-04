@@ -36,6 +36,8 @@
   ;; customize flycheck temp file prefix
   (setq-default flycheck-temp-prefix ".flycheck"))
 
+(add-hook! '(emacs-lisp-mode-hook text-mode-hook) (λ! disable-flycheck-mode))
+
 (map!
  (:leader
    :n "el" #'flycheck-list-errors
