@@ -87,10 +87,12 @@
 ;; ///////////////////////// JS /////////////////////////
 (def-package! import-js
   :init
-  (run-import-js))
+  (add-hook! 'js2-mode-hook 'run-import-js))
+(advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
 
 (map!
  (:leader
+   :n "rr" #'rjsx-mode
    (:after js2-mode
      (:map js2-mode-map
        :n "mi" 'import-js-import
