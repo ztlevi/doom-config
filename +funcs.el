@@ -3,6 +3,7 @@
 (defconst IS-EMACS-PLUS (file-exists-p "/usr/local/opt/emacs-plus"))
 (defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
 
+;; ////////////////////////// BUFFER ///////////////////////////
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive)
@@ -43,6 +44,7 @@
 
 (+macos!open-with reveal-in-typora "Typora" buffer-file-name)
 
+;; ////////////////////// UTILIES ////////////////////////////
 (defun zt/hidden-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
@@ -137,3 +139,7 @@ With PREFIX, cd to project root."
   end tell
   " cmd))))
 
+(defun occur-non-ascii ()
+  "Find any non-ascii characters in the current buffer."
+  (interactive)
+  (occur "[^[:ascii:]]"))

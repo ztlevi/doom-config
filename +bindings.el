@@ -21,15 +21,15 @@
    :nmv "SPC" #'counsel-M-x
    :n "or"  #'revert-buffer-no-confirm
 
-   :nm "fo" #'+macos/open-in-default-program
-   :n "bf" #'+macos/reveal-in-finder
-   :n "bF" #'+macos/reveal-project-in-finder
-   :n "bT" #'+macos/reveal-project-in-iterm
-   :n "bT" #'+macos/reveal-in-iterm
-   :n "bc" #'+macos/reveal-project-in-vscode
-   :n "bC" #'+macos/reveal-in-vscode
-   :n "bM" #'+macos/reveal-in-typora
-   :n "bm" #'view-echo-area-messages
+   :nm "fo" #'zt/open-file-or-directory-in-external-app
+   :nm "bf" #'+macos/reveal-in-finder
+   :nm "bF" #'+macos/reveal-project-in-finder
+   :nm "bT" #'+macos/reveal-project-in-iterm
+   :nm "bT" #'+macos/reveal-in-iterm
+   :nm "bc" #'+macos/reveal-project-in-vscode
+   :nm "bC" #'+macos/reveal-in-vscode
+   :nm "bM" #'+macos/reveal-in-typora
+   :nm "bm" #'view-echo-area-messages
    )
 
  "C-M-\\" #'indent-region-or-buffer
