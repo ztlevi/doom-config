@@ -3,6 +3,13 @@
 ;; ////////////////////////// EVIL //////////////////////////
 (setq evil-cross-lines t)
 
+;; ////////////////////// YASNIPPETS ///////////////////////
+(map!
+ (:leader
+   (:desc "Yasnippt" :prefix "y"
+     :n "r" #'yas/reload-all
+     :n "d" #'yas/describe-tables)))
+
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil)
@@ -59,6 +66,7 @@
       "invoke term from project root")
      ("_" counsel-projectile-switch-project-action-org-capture
       "org-capture into project"))))
+
 ;; //////////////////////// PRETTIER /////////////////////
 
 (def-package! prettier-js
