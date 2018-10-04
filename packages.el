@@ -17,6 +17,7 @@
 (package! try)
 
 ;; programming
+(package! wucuo)
 (package! py-autopep8)
 (package! importmagic)
 (package! prettier-js)

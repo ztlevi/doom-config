@@ -62,7 +62,6 @@
       "org-capture into project"))))
 
 ;; //////////////////////// PRETTIER /////////////////////
-
 (def-package! prettier-js
   :commands prettier-js-mode
   :init

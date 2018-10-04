@@ -30,6 +30,12 @@
 
 (add-hook! '(emacs-lisp-mode-hook text-mode-hook) (λ! disable-flycheck-mode))
 
+(def-package! wucuo
+    :init (remove-hook 'prog-mode-hook 'flyspell-prog-mode)
+    :hook
+    (prog-mode . wucuo-start)
+    (js2-mode . wucuo-start))
+
 ;; ///////////////////////// PYTHON /////////////////////////
 (after! python
   (setq python-indent-offset 4
