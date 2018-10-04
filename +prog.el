@@ -2,7 +2,7 @@
 
 ;; ///////////////////////// COMPANY /////////////////////////
 (after! company
-  (setq company-minimum-prefix-length 2
+  (setq company-minimum-prefix-length 1
         company-quickhelp-delay nil
         company-show-numbers t
         company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)

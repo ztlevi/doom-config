@@ -137,13 +137,6 @@
      :n "l" #'ivy-resume
      )
 
-   ;; Rebind to "S"
-   (:desc "snippets" :prefix "S"
-     :desc "New snippet"            :n  "n" #'yas-new-snippet
-     :desc "Insert snippet"         :nv "i" #'yas-insert-snippet
-     :desc "Find snippet for mode"  :n  "s" #'yas-visit-snippet-file
-     :desc "Find snippet"           :n  "S" #'+default/find-in-snippets)
-
    (:desc "search" :prefix "s"
      :n "b" #'swiper-all
      :desc "Directory"              :nv "d" #'+ivy/project-search-from-cwd
