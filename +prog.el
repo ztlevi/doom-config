@@ -16,14 +16,6 @@
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
-(map!
- (:after company
-   (:map company-active-map
-     ;; Don't interfere with `evil-delete-backward-word' in insert mode
-     "C-v"        #'company-next-page
-     "M-v"        #'company-previous-page
-     "C-i"        #'company-complete-selection)))
-
 ;; ///////////////////////// FLYCHECK /////////////////////////
 (after! flycheck
   (setq-default flycheck-disabled-checkers
@@ -37,14 +29,6 @@
   (setq-default flycheck-temp-prefix ".flycheck"))
 
 (add-hook! '(emacs-lisp-mode-hook text-mode-hook) (λ! disable-flycheck-mode))
-
-(map!
- (:leader
-   (:desc "error" :prefix "e"
-     :n "n" #'flycheck-next-error
-     :n "p" #'flycheck-previous-error)
-   :n "el" #'flycheck-list-errors
-   :n "ev" #'flycheck-verify-setup))
 
 ;; ///////////////////////// PYTHON /////////////////////////
 (after! python
@@ -76,39 +60,11 @@
   :commands lsp-python-enable
   :hook (python-mode . lsp-python-enable))
 
-(map!
- (:after python-mode
-   (:map python-mode-map
-     (:leader
-       :n "m=" 'py-autopep8-buffer
-       :n "mi" 'importmagic-fix-symbol-at-point
-       ))))
-
 ;; ///////////////////////// JS /////////////////////////
 (def-package! import-js
   :init
   (add-hook! 'js2-mode-hook 'run-import-js))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
-
-(map!
- (:leader
-   :n "rr" #'rjsx-mode
-   (:after js2-mode
-     (:map js2-mode-map
-       :n "mi" 'import-js-import
-       :n "mf" 'import-js-fix))
-   (:after rjsx-mode
-     (:map rjsx-mode-map
-       :n "mi" 'import-js-import
-       :n "mf" 'import-js-fix)))
- (:after tide
-   :map tide-references-mode-map
-   "C-k" 'tide-find-previous-reference
-   "p" 'tide-find-previous-reference
-   "C-j" 'tide-find-next-reference
-   "n" 'tide-find-next-reference
-   "C-l" 'tide-goto-reference
-   ))
 
 ;; ///////////////////////// LISP /////////////////////////
 (def-package! lispy
@@ -116,12 +72,7 @@
   :config
   (setq lispy-outline "^;; \\(?:;[^#]\\|\\*+\\)"
         lispy-outline-header ";; "
-        lispy-ignore-whitespace t)
-  (map! :map lispy-mode-map
-        :i "C-c (" #'lispy-wrap-round
-        :i "_" #'special-lispy-different
-        "d" nil
-        :i [remap delete-backward-char] #'lispy-delete-backward))
+        lispy-ignore-whitespace t))
 
 ;; Also use lispyville in prog-mode for [ ] < >
 (def-package! lispyville
@@ -134,16 +85,7 @@
      (escape insert)
      (slurp/barf-lispy)
      additional-movement))
-  (map! :map emacs-lisp-mode-map
-        :n "gh" #'helpful-at-point
-        :n "C-<left>" #'lispy-forward-barf-sexp
-        :n "C-<right>" #'lispy-forward-slurp-sexp
-        :n "C-M-<left>" #'lispy-backward-slurp-sexp
-        :n "C-M-<right>" #'lispy-backward-barf-sexp
-        :n "<tab>" #'lispyville-prettify
-        :localleader
-        :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil)))
-        )
+
   )
 
 ;; ///////////////////////// LSP /////////////////////////
@@ -203,15 +145,4 @@
      ;; '(lsp-ui-sideline-symbol ((t (:foreground "grey30" :box nil))))
      ))
   )
-
-(map!
- (:after lsp-ui
-   :map lsp-ui-mode-map
-   :n "M-j" #'toggle-lsp-ui-doc)
- (:after lsp-ui-peek
-   :map lsp-ui-peek-mode-map
-   "h" #'lsp-ui-peek--select-prev-file
-   "j" #'lsp-ui-peek--select-next
-   "k" #'lsp-ui-peek--select-prev
-   "l" #'lsp-ui-peek--select-next-file)
- )
+(map!)

@@ -3,18 +3,6 @@
 ;; ////////////////////////// EVIL //////////////////////////
 (setq evil-cross-lines t)
 
-;; ////////////////////// YASNIPPETS ///////////////////////
-(map!
- (:leader
-   (:desc "Yasnippt" :prefix "y"
-     :desc "Reload snippets"        :n "r" #'yas/reload-all
-     :desc "Describe tables"        :n "d" #'yas/describe-tables
-     :desc "New snippet"            :n  "n" #'yas-new-snippet
-     :desc "Insert snippet"         :nv "i" #'yas-insert-snippet
-     :desc "Find snippet for mode"  :n  "s" #'yas-visit-snippet-file
-     :desc "Find snippet"           :n  "S" #'+default/find-in-snippets
-     :)))
-
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil)
@@ -26,24 +14,6 @@
   (push '(+ivy/switch-workspace-buffer) ivy-display-functions-alist)
   (push '(ivy-switch-buffer) ivy-display-functions-alist)
   )
-
-(map!
- (:leader
-   (:prefix "b"
-     :desc "Last buffer" :n "l" #'evil-switch-to-windows-last-buffer
-     :n "b" #'ivy-switch-buffer)
-   (:prefix "r"
-     :n "i" #'ivy-resume))
- (:after ivy
-   :map ivy-minibuffer-map
-   "C-j" #'ivy-call-and-recenter
-   "C-;" #'ivy-avy
-   "C-b" #'backward-char
-   "C-f" #'forward-char
-   "C-k" #'ivy-kill-line
-   "C-v" #'ivy-scroll-up-command
-   "M-v" #'ivy-scroll-down-command)
- )
 
 (after! counsel
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
@@ -125,17 +95,6 @@
              (symbol-function 'magit-blame-copy-hash)))
     (let ((git-link-open-in-browser t))
       (git-link-commit (git-link--read-remote)))))
-
-(map!
- (:after magit-blame
-   (:map magit-blame-mode-map
-     :n "o" #'magit-blame--git-link-commit))
- (:after git-rebase
-   (:map git-rebase-mode-map
-     "M-j" #'git-rebase-move-line-down
-     "M-k" #'git-rebase-move-line-up
-     "SPC" nil))
- )
 
 ;; //////////////////// ATOMIC CHROME /////////////////////
 (def-package! atomic-chrome
@@ -230,10 +189,6 @@
   ;; add watch for prodigy-view-mode buffer change event
   (add-hook 'prodigy-view-mode-hook
             #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab))))
-
-(map!
- (:leader
-   :n "as" #'prodigy))
 
 ;; (def-package! smartparens
 ;;   :config

@@ -64,13 +64,7 @@
   )
 
 (def-package! rust-mode
-  :mode "\\.rs$"
-  :config
-  (map! :map rust-mode-map
-        :leader
-        :n "=" #'rust-format-buffer
-        )
-  )
+  :mode "\\.rs$")
 
 (def-package! smart-forward)
 

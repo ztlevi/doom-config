@@ -17,24 +17,6 @@
   "C-d" #'delete-forward-char)
 
 (map!
- (:leader
-   :nmv "SPC" #'counsel-M-x
-
-   :nm "fo" #'zt/open-file-or-directory-in-external-app
-   :nm "br" #'revert-buffer-no-confirm
-   :nm "bf" #'+macos/reveal-in-finder
-   :nm "bF" #'+macos/reveal-project-in-finder
-   :nm "bT" #'+macos/reveal-project-in-iterm
-   :nm "bT" #'+macos/reveal-in-iterm
-   :nm "bc" #'+macos/reveal-project-in-vscode
-   :nm "bC" #'+macos/reveal-in-vscode
-   :nm "bM" #'+macos/reveal-in-typora
-   :nm "bm" #'view-echo-area-messages
-   :nmv "bk" #'kill-this-buffer
-
-   :nmv "oI" #'ibuffer
-   )
-
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil
  "C-h C-k" #'find-function-on-key
@@ -55,6 +37,104 @@
  :v "<del>" (kbd "\"_d")
  :v "C-r" #'zt/evil-quick-replace
 
+ :n "M-u" (+my/simulate-key "[")
+ :n "M-i" (+my/simulate-key "]")
+ :m "M-h"  #'smart-up
+ :m "M-l"  #'smart-down
+ :n "M-."  #'+lookup/definition
+ ;; :n "M-j"  #'+my/find-definitions
+
+ :n "C-c a" #'org-agenda
+ :n "C-,"  #'+my/find-references
+
+ ;; outline
+ :n "z;"   (λ! (+my/avy-document-symbol nil) (+my/find-definitions))
+
+ :n "ga"   #'lsp-ui-find-workspace-symbol
+ :n "gf"   #'+my/ffap
+ :n "go"   (λ! (message "%S" (text-properties-at (point))))
+
+ :n "[ M-u" #'symbol-overlay-switch-backward
+ :n "] M-i" #'symbol-overlay-switch-forward
+
+ (:prefix "C-x"
+   :n "e"  #'pp-eval-last-sexp
+   :n "u" #'link-hint-open-link)
+
+ (:leader
+   :nmv "SPC" #'counsel-M-x
+
+   :n "M-u" (+my/simulate-key "SPC [")
+   :n "M-i" (+my/simulate-key "SPC ]")
+   :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
+   (:desc "app" :prefix "a"
+     :n "s" #'prodigy
+     :desc "genhdr" :n "g"
+     (λ! (shell-command-on-region (point-min) (point-max) "genhdr" t t))
+     :desc "genhdr windows" :n "G"
+     (λ! (shell-command-on-region (point-min) (point-max) "genhdr windows" t t)))
+   (:prefix "b"
+     :desc "Last buffer" :nmv "l" #'evil-switch-to-windows-last-buffer
+     :nmv "b" #'ivy-switch-buffer
+     :nm "r" #'revert-buffer-no-confirm
+     :nm "f" #'+macos/reveal-in-finder
+     :nm "F" #'+macos/reveal-project-in-finder
+     :nm "T" #'+macos/reveal-project-in-iterm
+     :nm "T" #'+macos/reveal-in-iterm
+     :nm "c" #'+macos/reveal-project-in-vscode
+     :nm "C" #'+macos/reveal-in-vscode
+     :nm "M" #'+macos/reveal-in-typora
+     :nm "m" #'view-echo-area-messages
+     :nmv "k" #'kill-this-buffer)
+   (:prefix "f"
+     :nm "o" #'+macos/open-in-default-program
+     :n "p" #'treemacs-projectile
+     :n "C-p" #'+default/find-in-config
+     :n "C-S-p" #'+default/browse-config
+     :n "t" #'treemacs)
+   (:prefix "g"
+     :n "*" (+my/prefix-M-x "magit-"))
+   (:desc "Yasnippt" :prefix "y"
+     :desc "Reload snippets"        :n  "r" #'yas/reload-all
+     :desc "Describe tables"        :n  "d" #'yas/describe-tables
+     :desc "New snippet"            :n  "n" #'yas-new-snippet
+     :desc "Insert snippet"         :nv "i" #'yas-insert-snippet
+     :desc "Find snippet for mode"  :n  "s" #'yas-visit-snippet-file
+     :desc "Find snippet"           :n  "S" #'+default/find-in-snippets)
+   (:prefix "r"
+     :n "r" #'rjsx-mode
+     :n "i" #'ivy-resume)
+   (:prefix "h"
+     :n "C" #'helpful-command)
+   (:desc "error" :prefix "e"
+     :n "n" #'flycheck-next-error
+     :n "p" #'flycheck-previous-error
+     :n "l" #'flycheck-list-errors
+     :n "v" #'flycheck-verify-setup)
+   (:prefix "o"
+     :nmv "I" #'ibuffer
+     :nv "c" #'counsel-imenu-comments
+     :n "d" #'+debugger:start
+     :n "o" #'symbol-overlay-put
+     :n "q" #'symbol-overlay-remove-all)
+   (:prefix "p"
+     :n "e" #'projectile-run-eshell
+     :n "f" #'counsel-projectile-find-file
+     :n "*" (+my/prefix-M-x "projectile-"))
+
+   (:desc "search" :prefix "s"
+     :n "b" #'swiper-all
+     :desc "Directory"              :nv "d" #'+ivy/project-search-from-cwd
+     :desc "Project"                :nv "s" #'+ivy/project-search
+     :desc "Symbols"                :nv "i" #'imenu
+     :desc "Symbols across buffers" :nv "I" #'imenu-anywhere
+     :desc "Online providers"       :nv "o" #'+lookup/online-select)
+
+   (:desc "toggle" :prefix "t"
+     :n "d" #'toggle-debug-on-error
+     :n "D" #'+my/realtime-elisp-doc
+     :n "v" #'visual-line-mode))
+
  (:map prog-mode-map
    ;; Override default :n < > ( )
    ;; :nm "<" #'lispyville-previous-opening
@@ -70,95 +150,84 @@
    :m "C-S-h"  #'+my/xref-jump-backward-file
    :m "C-S-l"  #'+my/xref-jump-forward-file
    )
- :n "M-u" (+my/simulate-key "[")
- :n "M-i" (+my/simulate-key "]")
- :m "M-h"  #'smart-up
- :m "M-l"  #'smart-down
- :n "M-."  #'+lookup/definition
- ;; :n "M-j"  #'+my/find-definitions
-
- :n "C-c a" #'org-agenda
- :n "C-,"  #'+my/find-references
- ;; all symbols
- :n ";"    (λ! (if lsp-mode
-                   (progn (+my/avy-document-symbol t)
-                          (+my/find-definitions))
-                 (avy-goto-word-0 nil)))
- ;; outline
- :n "z;"   (λ! (+my/avy-document-symbol nil) (+my/find-definitions))
-
- :n "ga"   #'lsp-ui-find-workspace-symbol
- :n "gc"   #'evilnc-comment-or-uncomment-lines
- :n "gf"   #'+my/ffap
- :n "go"   (λ! (message "%S" (text-properties-at (point))))
-
- :n "[ M-u" #'symbol-overlay-switch-backward
- :n "] M-i" #'symbol-overlay-switch-forward
-
- (:leader
-   :n "M-u" (+my/simulate-key "SPC [")
-   :n "M-i" (+my/simulate-key "SPC ]")
-   (:desc "app" :prefix "a"
-     :desc "genhdr" :n "g"
-     (λ! (shell-command-on-region (point-min) (point-max) "genhdr" t t))
-     :desc "genhdr windows" :n "G"
-     (λ! (shell-command-on-region (point-min) (point-max) "genhdr windows" t t))
-     )
-   (:prefix "f"
-     :n "p" #'treemacs-projectile
-     :n "C-p" #'+default/find-in-config
-     :n "C-S-p" #'+default/browse-config
-     :n "t" #'treemacs
-     )
-   (:prefix "g"
-     :n "*" (+my/prefix-M-x "magit-")
-     )
-   (:prefix "h"
-     :n "C" #'helpful-command
-     )
-   :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
-   (:prefix "o"
-     :n "c" #'counsel-imenu-comments
-     :n "d" #'+debugger:start
-     :n "o" #'symbol-overlay-put
-     :n "q" #'symbol-overlay-remove-all
-     )
-   (:prefix "p"
-     :n "e" #'projectile-run-eshell
-     :n "f" #'counsel-projectile-find-file
-     :n "*" (+my/prefix-M-x "projectile-")
-     )
-
-   (:desc "search" :prefix "s"
-     :n "b" #'swiper-all
-     :desc "Directory"              :nv "d" #'+ivy/project-search-from-cwd
-     :desc "Project"                :nv "s" #'+ivy/project-search
-     :desc "Symbols"                :nv "i" #'imenu
-     :desc "Symbols across buffers" :nv "I" #'imenu-anywhere
-     :desc "Online providers"       :nv "o" #'+lookup/online-select
-     )
-
-   (:desc "toggle" :prefix "t"
-     :n "d" #'toggle-debug-on-error
-     :n "D" #'+my/realtime-elisp-doc
-     :n "v" #'visual-line-mode
-     )
-   )
-
- (:prefix "C-x"
-   :n "e"  #'pp-eval-last-sexp
-   :n "u" #'link-hint-open-link
-   )
-
- (:after elisp-mode
-   (:map emacs-lisp-mode-map
+ (:after lispy
+   (:map lispy-mode-map
+     :i "C-c (" #'lispy-wrap-round
+     :i "_" #'special-lispy-different
+     :i [remap delete-backward-char] #'lispy-delete-backward
      :n "M-j" #'lispy-splice))
+ (:after elisp-mode
+   :map emacs-lisp-mode-map
+   :n "gh" #'helpful-at-point
+   :n "C-<left>" #'lispy-forward-barf-sexp
+   :n "C-<right>" #'lispy-forward-slurp-sexp
+   :n "C-M-<left>" #'lispy-backward-slurp-sexp
+   :n "C-M-<right>" #'lispy-backward-barf-sexp
+   :n "<tab>" #'lispyville-prettify
+   :localleader
+   :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
+ (:after lsp-ui
+   :map lsp-ui-mode-map
+   :n "M-j" #'toggle-lsp-ui-doc)
+ (:after lsp-ui-peek
+   :map lsp-ui-peek-mode-map
+   "h" #'lsp-ui-peek--select-prev-file
+   "j" #'lsp-ui-peek--select-next
+   "k" #'lsp-ui-peek--select-prev
+   "l" #'lsp-ui-peek--select-next-file)
+ (:after python
+   (:map python-mode-map
+     :localleader
+     :n "=" 'py-autopep8-buffer
+     :n "i" 'importmagic-fix-symbol-at-point))
+ (:after js2-mode
+   (:map js2-mode-map
+     :localleader
+     :n "i" 'import-js-import
+     :n "f" 'import-js-fix))
+ (:after rjsx-mode
+   (:map rjsx-mode-map
+     :localleader
+     :n "i" 'import-js-import
+     :n "f" 'import-js-fix))
+ (:after tide
+   :map tide-references-mode-map
+   "C-k" 'tide-find-previous-reference
+   "p" 'tide-find-previous-reference
+   "C-j" 'tide-find-next-reference
+   "n" 'tide-find-next-reference
+   "C-l" 'tide-goto-reference)
+ (:after rust-mode
+   (:map rust-mode-map
+     :localleader
+     :n "=" #'rust-format-buffer))
+ (:after ivy
+   :map ivy-minibuffer-map
+   "C-j" #'ivy-call-and-recenter
+   "C-;" #'ivy-avy
+   "C-b" #'backward-char
+   "C-f" #'forward-char
+   "C-k" #'ivy-kill-line
+   "C-v" #'ivy-scroll-up-command
+   "M-v" #'ivy-scroll-down-command)
+ (:after magit-blame
+   (:map magit-blame-mode-map
+     :n "o" #'magit-blame--git-link-commit))
+ (:after git-rebase
+   (:map git-rebase-mode-map
+     "M-j" #'git-rebase-move-line-down
+     "M-k" #'git-rebase-move-line-up
+     "SPC" nil))
  (:after evil-collection-info
    :map Info-mode-map
    "/" #'Info-search
-   "?" #'Info-search-backward
-   )
-
+   "?" #'Info-search-backward)
+ (:after company
+   (:map company-active-map
+     ;; Don't interfere with `evil-delete-backward-word' in insert mode
+     "C-v"        #'company-next-page
+     "M-v"        #'company-previous-page
+     "C-i"        #'company-complete-selection))
  (:after realgud
    (:map realgud-track-mode-map
      :in ";" #'realgud-window-src-undisturb-cmd)
