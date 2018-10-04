@@ -172,6 +172,69 @@
         (message "Can't start atomic-chrome server, because port 64292 is already used")
       (atomic-chrome-start-server))))
 
+;; //////////////////////// PRODIGY ////////////////////
+(after! prodigy
+  (set-evil-initial-state!
+    '(prodigy-mode)
+    'normal)
+  (push 'prodigy-mode evil-snipe-disabled-modes)
+
+  (prodigy-define-tag
+    :name 'jekyll
+    :env '(("LANG" "en_US.UTF-8")
+           ("LC_ALL" "en_US.UTF-8")))
+  ;; define service
+  (prodigy-define-service
+    :name "Leetcode Solution Website"
+    :command "python"
+    :args '("-m" "SimpleHTTPServer" "6005")
+    :cwd "~/Developer/Github/leetcode"
+    :tags '(leetcode)
+    ;; if don't want to browse instantly, delete the following line
+    :init (lambda () (browse-url "http://localhost:6005"))
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+
+  (prodigy-define-service
+    :name "Hexo Blog Server"
+    :command "hexo"
+    :args '("server" "-p" "4000")
+    :cwd blog-admin-dir
+    :tags '(hexo server)
+    :init (lambda () (browse-url "http://localhost:4000"))
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+
+  (prodigy-define-service
+    :name "Hexo Blog Deploy"
+    :command "hexo"
+    :args '("deploy" "--generate")
+    :cwd blog-admin-dir
+    :tags '(hexo deploy)
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+
+  (prodigy-define-service
+    :name "Hackathon backend"
+    :env '(("REDISCLOUD_URL" "redis://rediscloud:MeQVSBSNp82uhej2QW42vQxV2TEcd5xq@redis-14678.c44.us-east-1-2.ec2.cloud.redislabs.com:14678"))
+    :command "npm"
+    :args '("run" "start")
+    :cwd "~/Developer/Github/cryptocurrency_exchange_app/backend"
+    :tags '(express)
+    :init (lambda () (switch-to-buffer "*prodigy-hackathon-backend*"))
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+
+  (defun refresh-chrome-current-tab (beg end length-before)
+    (call-interactively 'ztlevi/browser-refresh--chrome-applescript))
+  ;; add watch for prodigy-view-mode buffer change event
+  (add-hook 'prodigy-view-mode-hook
+            #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab))))
+
+(map!
+ (:leader
+   :n "as" #'prodigy))
+
 ;; (def-package! smartparens
 ;;   :config
 ;;   (setq sp-autoinsert-pair nil

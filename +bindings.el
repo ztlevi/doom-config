@@ -41,6 +41,7 @@
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
  :nmvi "C-`" #'+popup/toggle
+ :nmvi "M-w" #'+workspace/close-window-or-workspace
  :nmv "C-e" #'doom/forward-to-last-non-comment-or-eol
  :nmv "C-a" #'doom/backward-to-bol-or-indent
  :nmv "M-s" #'evil-write-all
@@ -69,7 +70,6 @@
    :m "C-S-h"  #'+my/xref-jump-backward-file
    :m "C-S-l"  #'+my/xref-jump-forward-file
    )
-
  :n "M-u" (+my/simulate-key "[")
  :n "M-i" (+my/simulate-key "]")
  :m "M-h"  #'smart-up

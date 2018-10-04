@@ -1,7 +1,7 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
 (setq doom-font (font-spec :family "Operator Mono Lig" :size 16))
-(setq doom-big-font (font-spec :family "Operator Mono Lig" :size 18))
+(setq doom-big-font (font-spec :family "Operator Mono Lig" :size 22))
 (remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 
 (setq +doom-modeline-height 28)

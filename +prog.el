@@ -202,11 +202,11 @@
      ;; '(lsp-ui-sideline-current-symbol ((t (:foreground "grey38" :box nil))))
      ;; '(lsp-ui-sideline-symbol ((t (:foreground "grey30" :box nil))))
      ))
-
   )
 
 (map!
- (:after lsp-mode
+ (:after lsp-ui
+   :map lsp-ui-mode-map
    :n "M-j" #'toggle-lsp-ui-doc)
  (:after lsp-ui-peek
    :map lsp-ui-peek-mode-map
