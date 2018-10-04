@@ -19,3 +19,5 @@
          (file+headline +org-default-todo-file "Inbox")
          "* [ ] %?\n%i" :prepend t :kill-buffer t)
         ))
+
+(add-hook! 'text-mode-hook #'visual-line-mode)
