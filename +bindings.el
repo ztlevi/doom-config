@@ -111,6 +111,7 @@
      :n "v" #'flycheck-verify-setup)
    (:prefix "o"
      :nmv "I" #'ibuffer
+     :nv "x" #'link-hint-open-all-links
      :nv "c" #'counsel-imenu-comments
      :n "d" #'+debugger:start
      :n "o" #'symbol-overlay-put
