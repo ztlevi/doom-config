@@ -34,6 +34,7 @@
  :v "<backspace>" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
  :v "C-r" #'zt/evil-quick-replace
+ :mv "C-;" #'flyspell-correct-previous-word-generic
 
  :n "M-u" (+my/simulate-key "[")
  :n "M-i" (+my/simulate-key "]")

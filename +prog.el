@@ -30,11 +30,10 @@
 
 (add-hook! '(emacs-lisp-mode-hook text-mode-hook) (λ! disable-flycheck-mode))
 
+;; camcel case spellcheck
 (def-package! wucuo
-    :init (remove-hook 'prog-mode-hook 'flyspell-prog-mode)
-    :hook
-    (prog-mode . wucuo-start)
-    (js2-mode . wucuo-start))
+  :hook
+  (js2-mode . wucuo-start))
 
 ;; ///////////////////////// PYTHON /////////////////////////
 (after! python
