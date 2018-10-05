@@ -12,10 +12,6 @@
      (setq prefix-arg current-prefix-arg)
      (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
 
-(define-key! evil-ex-completion-map
-  "C-k" #'kill-line
-  "C-d" #'delete-forward-char)
-
 (map!
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil
@@ -220,6 +216,10 @@
      "M-j" #'git-rebase-move-line-down
      "M-k" #'git-rebase-move-line-up
      "SPC" nil))
+ (:after evil-vars
+   :map evil-ex-completion-map
+   "C-k" #'kill-line
+   "C-d" #'delete-forward-char)
  (:after evil-collection-info
    :map Info-mode-map
    "/" #'Info-search
