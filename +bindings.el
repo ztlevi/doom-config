@@ -200,6 +200,12 @@
    (:map rust-mode-map
      :localleader
      :n "=" #'rust-format-buffer))
+ (:after markdown-mode
+   (:map markdown-mode-map
+     :localleader
+     :desc "table" :prefix "t"
+     :n "r" #'markdown-table-insert-row
+     :n "c" #'markdown-table-insert-row))
  (:after ivy
    :map ivy-minibuffer-map
    "C-j" #'ivy-call-and-recenter
