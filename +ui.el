@@ -24,6 +24,7 @@
  `(powerline-inactive1 ((t (:inherit mode-line-inactive :background ,(doom-color 'base2)))))
  `(powerline-inactive2 ((t (:inherit mode-line-inactive :background ,(doom-color 'base2)))))
  ;; others
+ `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
  '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
  )
 
