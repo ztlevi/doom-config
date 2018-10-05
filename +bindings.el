@@ -83,7 +83,7 @@
      :nm "C" #'+macos/reveal-in-vscode
      :nm "M" #'+macos/reveal-in-typora
      :nm "m" #'view-echo-area-messages
-     :nmv "k" #'kill-this-buffer)
+     :nmv "k" #'kill-current-buffer)
    (:prefix "f"
      :nm "o" #'+macos/open-in-default-program
      :n "p" #'treemacs-projectile
