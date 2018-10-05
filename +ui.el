@@ -5,6 +5,7 @@
 (remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 
 (setq +doom-modeline-height 28)
+(setq +doom-modeline-buffer-file-name-style 'relative-to-project)
 (setq doom-theme 'doom-one-light)
 
 ;; set initl screen size
