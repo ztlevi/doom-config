@@ -3,6 +3,19 @@
 (defconst IS-EMACS-PLUS (file-exists-p "/usr/local/opt/emacs-plus"))
 (defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
 
+;; ////////////////////////// SIMULATION //////////////////////
+(define-inline +my/prefix-M-x (prefix)
+  (inline-quote
+   (lambda () (interactive)
+     (setq unread-command-events (string-to-list ,prefix))
+     (call-interactively #'execute-extended-command))))
+
+(define-inline +my/simulate-key (key)
+  (inline-quote
+   (lambda () (interactive)
+     (setq prefix-arg current-prefix-arg)
+     (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
+
 ;; ////////////////////////// BUFFER ///////////////////////////
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."

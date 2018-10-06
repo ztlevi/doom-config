@@ -1,17 +1,5 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
-(define-inline +my/prefix-M-x (prefix)
-  (inline-quote
-   (lambda () (interactive)
-     (setq unread-command-events (string-to-list ,prefix))
-     (call-interactively #'execute-extended-command))))
-
-(define-inline +my/simulate-key (key)
-  (inline-quote
-   (lambda () (interactive)
-     (setq prefix-arg current-prefix-arg)
-     (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
-
 (map!
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil
@@ -204,15 +192,17 @@
  (:after markdown-mode
    (:map markdown-mode-map
      :localleader
-     :desc "table" :prefix "t"
+     :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
+     (:desc "Insert" :prefix "i")
+     :desc "Table" :prefix "t"
      :n "r" #'markdown-table-insert-row
      :n "c" #'markdown-table-insert-row))
  (:after ivy
    :map ivy-minibuffer-map
    "C-j" #'ivy-call-and-recenter
    "C-;" #'ivy-avy
-   "C-b" #'backward-char
-   "C-f" #'forward-char
+   "C-b" #'backward-word
+   "C-f" #'forward-word
    "C-k" #'ivy-kill-line
    "C-v" #'ivy-scroll-up-command
    "M-v" #'ivy-scroll-down-command)
