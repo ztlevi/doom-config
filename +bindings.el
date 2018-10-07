@@ -14,6 +14,7 @@
  :v "p" #'evil-visual-paste
  :nmvi "C-`" #'+popup/toggle
  :nmvi "M-w" #'+workspace/close-window-or-workspace
+ :nmvi "M-m" #'kmacro-call-macro
  :nmv "C-e" #'doom/forward-to-last-non-comment-or-eol
  :nmv "C-a" #'doom/backward-to-bol-or-indent
  :nmv "M-s" #'evil-write-all
