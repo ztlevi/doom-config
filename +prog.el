@@ -30,7 +30,7 @@
 
 (defun disable-flycheck-mode ()
   (flycheck-mode -1))
-(add-hook! '(emacs-lisp-mode-hook) 'disable-flycheck-mode)
+;; (add-hook! '(emacs-lisp-mode-hook) 'disable-flycheck-mode)
 
 ;; camcel case spellcheck
 (def-package! wucuo
