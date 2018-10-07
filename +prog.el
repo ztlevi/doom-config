@@ -28,7 +28,9 @@
   ;; customize flycheck temp file prefix
   (setq-default flycheck-temp-prefix ".flycheck"))
 
-(add-hook! '(emacs-lisp-mode-hook text-mode-hook) (λ! disable-flycheck-mode))
+(defun disable-flycheck-mode ()
+  (flycheck-mode -1))
+(add-hook! '(emacs-lisp-mode-hook) 'disable-flycheck-mode)
 
 ;; camcel case spellcheck
 (def-package! wucuo
