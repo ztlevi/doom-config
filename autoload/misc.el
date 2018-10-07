@@ -40,6 +40,21 @@
   end tell
 " )))
 
+(defun +my/insert-semicolon-at-the-end-of-this-line ()
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (insert ";")))
+
+(defun +my/delete-semicolon-at-the-end-of-this-line ()
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (if (looking-back ";")
+        (progn
+          (backward-char)
+          (delete-char 1)))))
+
 ;;;###autoload
 (defun +my/ffap ()
   (interactive)
