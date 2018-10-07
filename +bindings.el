@@ -1,5 +1,8 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
+(define-key! 'global
+ [remap projectile-find-file] #'counsel-git)
+
 (map!
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil
@@ -199,6 +202,8 @@
      :n "c" #'markdown-table-insert-row))
  (:after ivy
    :map ivy-minibuffer-map
+   "<tab>" #'ivy-partial-or-done
+   "C-<return>" #'ivy-immediate-done
    "C-j" #'ivy-call-and-recenter
    "C-;" #'ivy-avy
    "C-b" #'backward-word
