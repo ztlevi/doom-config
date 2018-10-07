@@ -5,14 +5,16 @@
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
         company-show-numbers t
-        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
-        ))
+        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)))
 
 (def-package! company-lsp
   :after company
   :init
-  (setq company-transformers nil company-lsp-cache-candidates nil)
-  )
+  ;; Language servers have better idea filtering and sorting,
+  ;; don't filter results on the client side.
+  (setq company-transformers nil
+        company-lsp-async t
+        company-lsp-cache-candidates nil))
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
@@ -65,7 +67,11 @@
 
 (def-package! lsp-python
   :commands lsp-python-enable
-  :hook (python-mode . lsp-python-enable))
+  :hook (python-mode . lsp-python-enable)
+  :config
+  (set-lookup-handlers! 'python-mode
+    :definition #'lsp-ui-peek-find-definitions
+    :references #'lsp-ui-peek-find-references))
 
 ;; ///////////////////////// JS /////////////////////////
 (def-package! import-js
@@ -91,9 +97,7 @@
      c-w
      (escape insert)
      (slurp/barf-lispy)
-     additional-movement))
-
-  )
+     additional-movement)))
 
 ;; ///////////////////////// LSP /////////////////////////
 (defun toggle-lsp-ui-doc ()
