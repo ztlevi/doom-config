@@ -17,6 +17,30 @@
     (end-of-line)))
 
 ;;;###autoload
+(defun magit-blame--git-link-commit (arg)
+  "Git link commit go to current line's magit blame's hash"
+  (interactive "P")
+  (require 'git-link)
+  (cl-letf (((symbol-function 'word-at-point)
+             (symbol-function 'magit-blame-copy-hash)))
+    (let ((git-link-open-in-browser (not arg)))
+      (git-link-commit (git-link--read-remote)))))
+
+;; https://github.com/syohex/emacs-browser-refresh/blob/master/browser-refresh.el
+;;;###autoload
+(defun +my/browser-refresh--chrome-applescript ()
+  (interactive)
+  (do-applescript
+   (format
+    "
+  tell application \"Google Chrome\"
+    set winref to a reference to (first window whose title does not start with \"Developer Tools - \")
+    set winref's index to 1
+    reload active tab of winref
+  end tell
+" )))
+
+;;;###autoload
 (defun +my/ffap ()
   (interactive)
   (-if-let (filename (ffap-guess-file-name-at-point))

@@ -58,18 +58,18 @@
 (+macos!open-with reveal-in-typora "Typora" buffer-file-name)
 
 ;; ////////////////////// UTILIES ////////////////////////////
-(defun zt/untabify-buffer ()
+(defun +my/untabify-buffer ()
   (interactive)
   (save-excursion
     (untabify (point-min) (point-max)) nil))
 
-(defun zt/hidden-dos-eol ()
+(defun +my/hidden-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
-(defun zt/remove-dos-eol ()
+(defun +my/remove-dos-eol ()
   "Replace DOS eolns CR LF with Unix eolns CR"
   (interactive)
   (goto-char (point-min))
@@ -84,7 +84,7 @@
 (defvar wc-regexp-english-word
   "[a-zA-Z0-9-]+")
 
-(defun zt/word-count-for-chinese ()
+(defun +my/word-count-for-chinese ()
   "「較精確地」統計中/日/英文字數。
 - 文章中的註解不算在字數內。
 - 平假名與片假名亦包含在「中日文字數」內，每個平/片假名都算單獨一個字（但片假
@@ -132,7 +132,7 @@
              chinese-char chinese-char-and-punc english-word
              (+ chinese-char english-word)))))
 
-(defun zt/evil-quick-replace (beg end )
+(defun +my/evil-quick-replace (beg end )
   (interactive "r")
   (when (evil-visual-state-p)
     (evil-exit-visual-state)
@@ -143,13 +143,13 @@
         (evil-ex command-string)))))
 
 ;; "http://xuchunyang.me/Opening-iTerm-From-an-Emacs-Buffer/"
-(defun zt/iterm-shell-command (command &optional prefix)
+(defun +my/iterm-shell-command (command &optional prefix)
   "cd to `default-directory' then run COMMAND in iTerm.
 With PREFIX, cd to project root."
   (interactive (list (read-shell-command
                       "iTerm Shell Command: ")
                      current-prefix-arg))
-  (let* ((dir (if prefix (zt/git-project-root)
+  (let* ((dir (if prefix (doom-project-root)
                 default-directory))
          ;; if COMMAND is empty, just change directory
          (cmd (format "cd %s ;%s" dir command)))

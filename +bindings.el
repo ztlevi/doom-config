@@ -27,7 +27,7 @@
  :i   "C-d" #'delete-forward-char
  :v "<backspace>" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
- :v "C-r" #'zt/evil-quick-replace
+ :v "C-r" #'+my/evil-quick-replace
  :mv "C-;" #'flyspell-correct-previous-word-generic
 
  :n "M-u" (+my/simulate-key "[")
@@ -78,7 +78,7 @@
      :nm "C" #'+macos/reveal-in-vscode
      :nm "M" #'+macos/reveal-in-typora
      :nm "m" #'view-echo-area-messages
-     :nm "U" #'zt/untabify-buffer
+     :nm "U" #'+my/untabify-buffer
      :nmv "k" #'kill-current-buffer)
    (:prefix "f"
      :nm "o" #'+macos/open-in-default-program
