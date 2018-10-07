@@ -9,6 +9,7 @@
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
+ "<f8>" #'describe-mode
  :nmvi "C-`" #'+popup/toggle
  :nmvi "M-w" #'+workspace/close-window-or-workspace
  :nmv "C-e" #'doom/forward-to-last-non-comment-or-eol
@@ -75,6 +76,7 @@
      :nm "C" #'+macos/reveal-in-vscode
      :nm "M" #'+macos/reveal-in-typora
      :nm "m" #'view-echo-area-messages
+     :nm "U" #'zt/untabify-buffer
      :nmv "k" #'kill-current-buffer)
    (:prefix "f"
      :nm "o" #'+macos/open-in-default-program

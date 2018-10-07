@@ -58,6 +58,11 @@
 (+macos!open-with reveal-in-typora "Typora" buffer-file-name)
 
 ;; ////////////////////// UTILIES ////////////////////////////
+(defun zt/untabify-buffer ()
+  (interactive)
+  (save-excursion
+    (untabify (point-min) (point-max)) nil))
+
 (defun zt/hidden-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
