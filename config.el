@@ -94,6 +94,7 @@
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
 (set-popup-rules! '(("^\\*helpful" :size 0.4)
+                    ("^\\*Ibuffer\\*" :size 0.4)
                     ("^\\*info.*" :size 80 :side right)
                     ("^\\*Man.*" :size 80 :side right)
                     ))

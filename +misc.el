@@ -5,8 +5,9 @@
 
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
-  (setq ivy-initial-inputs-alist nil)
-  (setq ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
+  (setq ivy-initial-inputs-alist nil
+        ivy-format-function (quote ivy-format-function-arrow)
+        ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
                                 (counsel-grep . ivy--regex-plus)
                                 (swiper . ivy--regex-plus)
                                 (t . ivy--regex-ignore-order)))
@@ -60,6 +61,23 @@
       "invoke term from project root")
      ("_" counsel-projectile-switch-project-action-org-capture
       "org-capture into project"))))
+
+;; //////////////////////// IBUFFER //////////////////////
+(after! ibuffer
+  ;; set ibuffer name column width
+  (define-ibuffer-column size-h
+    (:name "Size" :inline t)
+    (cond
+     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
+     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
+     (t (format "%8d" (buffer-size)))))
+
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 50 50 :left :nil) " "
+                (size-h 9 -1 :right) " "
+                (mode 16 16 :left :elide) " "
+                filename-and-process))))
 
 ;; //////////////////////// PRETTIER /////////////////////
 (def-package! prettier-js
