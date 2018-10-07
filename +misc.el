@@ -87,12 +87,14 @@
 
 (setq magit-repository-directories '(("~/Develop/Github" . 2)))
 
-(defun magit-blame--git-link-commit ()
+;;;###autoload
+(defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
-  (interactive)
+  (interactive "P")
+  (require 'git-link)
   (cl-letf (((symbol-function 'word-at-point)
              (symbol-function 'magit-blame-copy-hash)))
-    (let ((git-link-open-in-browser t))
+    (let ((git-link-open-in-browser (not arg)))
       (git-link-commit (git-link--read-remote)))))
 
 ;; //////////////////// ATOMIC CHROME /////////////////////
