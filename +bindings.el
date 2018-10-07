@@ -1,7 +1,7 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
 (define-key! 'global
- [remap projectile-find-file] #'counsel-git)
+  [remap projectile-find-file] #'counsel-git)
 
 (map!
  "C-M-\\" #'indent-region-or-buffer
@@ -88,13 +88,6 @@
      :n "t" #'treemacs)
    (:prefix "g"
      :n "*" (+my/prefix-M-x "magit-"))
-   (:desc "Yasnippt" :prefix "y"
-     :desc "Reload snippets"        :n  "r" #'yas/reload-all
-     :desc "Describe tables"        :n  "d" #'yas/describe-tables
-     :desc "New snippet"            :n  "n" #'yas-new-snippet
-     :desc "Insert snippet"         :nv "i" #'yas-insert-snippet
-     :desc "Find snippet for mode"  :n  "s" #'yas-visit-snippet-file
-     :desc "Find snippet"           :n  "S" #'+default/find-in-snippets)
    (:prefix "r"
      :n "r" #'rjsx-mode
      :n "i" #'ivy-resume)
@@ -114,17 +107,7 @@
      :n "q" #'symbol-overlay-remove-all)
    (:prefix "p"
      :n "e" #'projectile-run-eshell
-     :n "f" #'counsel-projectile-find-file
      :n "*" (+my/prefix-M-x "projectile-"))
-
-   (:desc "search" :prefix "s"
-     :n "b" #'swiper-all
-     :desc "Directory"              :nv "d" #'+ivy/project-search-from-cwd
-     :desc "Project"                :nv "s" #'+ivy/project-search
-     :desc "Symbols"                :nv "i" #'imenu
-     :desc "Symbols across buffers" :nv "I" #'imenu-anywhere
-     :desc "Online providers"       :nv "o" #'+lookup/online-select)
-
    (:desc "toggle" :prefix "t"
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
