@@ -18,22 +18,12 @@
 
 ;; (global-visual-line-mode)
 
-(custom-set-faces
- ;; set spaceline faces
- `(powerline-active1 ((t (:inherit mode-line :background ,(doom-color 'base1)))))
- `(powerline-active2 ((t (:inherit mode-line :background ,(doom-color 'base3)))))
- `(powerline-inactive1 ((t (:inherit mode-line-inactive :background ,(doom-color 'base2)))))
- `(powerline-inactive2 ((t (:inherit mode-line-inactive :background ,(doom-color 'base2)))))
- ;; others
- `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
- '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
- )
-
-;; set markdown faces
-(custom-set-faces
- '(markdown-header-face-1 ((t (:inherit org-level-1))))
- '(markdown-header-face-2 ((t (:inherit org-level-2))))
- '(markdown-header-face-3 ((t (:inherit org-level-3)))))
+(defun +my/set-faces ()
+  (custom-set-faces
+   `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
+   '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
+   ))
+(add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
 ;; enable natural title bar for emacs-plus
 (if IS-EMACS-PLUS
