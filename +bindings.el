@@ -10,6 +10,8 @@
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
  "<f8>" #'describe-mode
+ :nmvi "M-v" #'+evil/paste-preserve-register
+ :nv "p" #'+evil/paste-preserve-register
  :nmvi "C-`" #'+popup/toggle
  :nmvi "M-w" #'+workspace/close-window-or-workspace
  :nmv "C-e" #'doom/forward-to-last-non-comment-or-eol
