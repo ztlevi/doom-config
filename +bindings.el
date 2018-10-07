@@ -236,6 +236,7 @@
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"        #'company-next-page
      "M-v"        #'company-previous-page
+     "<tab>"      nil
      "C-i"        #'company-complete-selection))
  (:after realgud
    (:map realgud-track-mode-map
