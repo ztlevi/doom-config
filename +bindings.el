@@ -189,7 +189,7 @@
      (:desc "Insert" :prefix "i")
      :desc "Table" :prefix "t"
      :n "r" #'markdown-table-insert-row
-     :n "c" #'markdown-table-insert-row))
+     :n "c" #'markdown-table-insert-column))
  (:after ivy
    :map ivy-minibuffer-map
    "<tab>" #'ivy-partial-or-done
