@@ -26,7 +26,10 @@
        "U" #'dired-unmark-all-files
        "u" #'dired-unmark
        "(" #'dired-hide-details-mode
-       "+" #'dired-create-directory)))
+       "+" #'dired-create-directory
+       (:leader
+         :m "oE" #'+eshell/open-popup)
+       )))
   :config
   (defun ranger-close-and-kill-inactive-buffers ()
     "ranger close current buffer and kill inactive ranger buffers"
