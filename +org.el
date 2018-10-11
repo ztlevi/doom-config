@@ -10,7 +10,7 @@
 (setq org-capture-templates
       '(
         ("d" "Diary" entry
-         (file+datetree "diary.org")
+         (file+olp+datetree "diary.org")
          "* %?" :kill-buffer t)
         ("n" "Notes" entry
          (file+headline +org-default-notes-file "Inbox")
