@@ -194,6 +194,7 @@
  (:after markdown-mode
    (:map markdown-mode-map
      :localleader
+     :nv "o" #'+macos/reveal-in-typora
      :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
      (:desc "Insert" :prefix "i")
      :desc "Table" :prefix "t"
