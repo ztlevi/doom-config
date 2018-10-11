@@ -11,25 +11,6 @@
     (setq image-dired-dir (concat doom-cache-dir "image-dir"))
     (unless (file-directory-p image-dired-dir)
       (make-directory image-dired-dir)))
-  (map!
-   (:leader
-     :n "fj" #'deer
-     :n "ar" #'ranger
-     :n "ad" #'deer)
-   (:after ranger
-     (:map ranger-normal-mode-map
-       "g" nil
-       "q" #'ranger-close-and-kill-inactive-buffers
-       "f" #'counsel-find-file
-       "C-<tab>" #'ranger-next-tab
-       "C-S-<tab>" #'ranger-prev-tab
-       "U" #'dired-unmark-all-files
-       "u" #'dired-unmark
-       "(" #'dired-hide-details-mode
-       "+" #'dired-create-directory
-       (:leader
-         :m "oE" #'+eshell/open-popup)
-       )))
   :config
   (defun ranger-close-and-kill-inactive-buffers ()
     "ranger close current buffer and kill inactive ranger buffers"
@@ -45,7 +26,29 @@
   (setq ranger-omit-regexp "^\.DS_Store$"
         ranger-excluded-extensions '("mkv" "iso" "mp4")
         ranger-deer-show-details nil
-        ranger-max-preview-size 10))
+        ranger-max-preview-size 10)
+
+  (map!
+   (:after ranger
+     (:map ranger-normal-mode-map
+       "g" nil
+       "q" #'ranger-close-and-kill-inactive-buffers
+       "f" #'counsel-find-file
+       "C-<tab>" #'ranger-next-tab
+       "C-S-<tab>" #'ranger-prev-tab
+       "U" #'dired-unmark-all-files
+       "u" #'dired-unmark
+       "(" #'dired-hide-details-mode
+       "+" #'dired-create-directory
+       (:leader
+         :m "oE" #'+eshell/open-popup)
+       ))))
+
+(map!
+ (:leader
+   :n "fj" #'deer
+   :n "ar" #'ranger
+   :n "ad" #'deer))
 
 (def-package! all-the-icons-dired
   :defer t
