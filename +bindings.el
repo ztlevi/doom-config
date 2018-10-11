@@ -37,7 +37,7 @@
  :n "M-i" (+my/simulate-key "]")
  :m "M-h"  #'smart-up
  :m "M-l"  #'smart-down
- :n "M-."  #'+lookup/definition
+ :nv "M-."  #'+lookup/definition
  ;; :n "M-j"  #'+my/find-definitions
 
  :n "C-c a" #'org-agenda
@@ -59,6 +59,7 @@
 
  (:leader
    :nmv "SPC" #'counsel-M-x
+   :desc "window" :nmv "w"  evil-window-map
 
    :n "M-u" (+my/simulate-key "SPC [")
    :n "M-i" (+my/simulate-key "SPC ]")
