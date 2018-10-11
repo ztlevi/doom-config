@@ -10,28 +10,36 @@
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
  "<f8>" #'describe-mode
- :v "M-v" #'evil-visual-paste
- :v "p" #'evil-visual-paste
+
  :nmvi "C-`" #'+popup/toggle
  :nmvi "M-w" #'+workspace/close-window-or-workspace
+ :nmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
+ :nmvi "C-a" #'doom/backward-to-bol-or-indent
+ :nmvi "M-a" #'mark-whole-buffer
+ :nmvi "M-c" #'evil-yank
+ :nmvi "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
+ :nmvi "M-s" #'evil-write-all
+ :nmvi "M-f" #'swiper
+ :nmvi "C-s" #'swiper
+ :nmvi "M-e" #'+ivy/switch-workspace-buffer
+ :nmvi "M-p" #'counsel-git
+ :nmvi "C-;" #'flyspell-correct-previous-word-generic
  :nmvi "M-m" #'kmacro-call-macro
  :nmvi "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
  :nmvi "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
- :nmv "C-e" #'doom/forward-to-last-non-comment-or-eol
- :nmv "C-a" #'doom/backward-to-bol-or-indent
- :nmv "M-s" #'evil-write-all
- :nmv "M-e" #'+ivy/switch-workspace-buffer
- :nmv "C-s" #'swiper
- :nmv "M-p" #'counsel-git
- :nmv "M-/" #'evilnc-comment-or-uncomment-lines
+ :nmv  "M-/" #'evilnc-comment-or-uncomment-lines
+
  :i   "C-n" #'next-line
  :i   "C-p" #'previous-line
  :i   "C-k" #'kill-line
  :i   "C-d" #'delete-forward-char
+
+ :v "M-v" #'evil-visual-paste
+ :v "p" #'evil-visual-paste
  :v "<backspace>" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
  :v "C-r" #'+my/evil-quick-replace
- :mv "C-;" #'flyspell-correct-previous-word-generic
+
 
  :n "M-u" (+my/simulate-key "[")
  :n "M-i" (+my/simulate-key "]")
