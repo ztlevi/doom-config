@@ -8,6 +8,8 @@
 (setq +doom-modeline-buffer-file-name-style 'relative-to-project)
 (setq doom-theme 'doom-one-light)
 
+(setq +workspaces-on-switch-project-behavior t)
+
 ;; set initl screen size
 (setq initial-frame-alist
       '((width . 110)
