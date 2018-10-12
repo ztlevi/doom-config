@@ -201,6 +201,8 @@
      :n "r" #'markdown-table-insert-row
      :n "c" #'markdown-table-insert-column))
  (:after ivy
+   :map ivy-occur-grep-mode-map
+   "SPC" nil
    :map ivy-minibuffer-map
    "<tab>" #'ivy-partial-or-done
    "C-<return>" #'ivy-immediate-done
