@@ -125,6 +125,8 @@
      :n "j" #'avy-goto-char-timer
      :n "l" #'avy-goto-line
      :n "b" #'avy-pop-mark)
+   (:prefix "/"
+     :nmv "/" #'+ivy/project-search)
    )
 
  (:map prog-mode-map
