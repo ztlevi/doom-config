@@ -79,22 +79,6 @@
                 (mode 16 16 :left :elide) " "
                 filename-and-process))))
 
-;; //////////////////////// PRETTIER /////////////////////
-(def-package! prettier-js
-  :commands prettier-js-mode
-  :init
-  (add-hook! '(js2-mode-hook
-               typescript-mode-hook
-               ;; typescript-tsx-mode-hook
-               rjsx-mode-hook
-               json-mode-hook
-               css-mode-hook
-               web-mode-hook
-               markdown-mode-hook
-               gfm-mode-hook)
-    #'prettier-js-mode)
-  )
-
 ;; ///////////////////////// Git /////////////////////////
 (after! git-link
   (add-to-list 'git-link-remote-alist

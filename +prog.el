@@ -59,9 +59,6 @@
   (add-hook 'before-save-hook 'spacemacs//python-sort-imports)
   )
 
-(def-package! py-autopep8
-  :hook (python-mode . py-autopep8-enable-on-save))
-
 (def-package! importmagic
   :commands importmagic-fix-symbol-at-point)
 
