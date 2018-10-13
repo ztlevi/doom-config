@@ -214,7 +214,7 @@
    "C-;" #'ivy-avy
    "C-k" #'ivy-kill-line
    "C-v" #'ivy-scroll-up-command
-   "M-v" #'ivy-scroll-down-command)
+   "A-v" #'ivy-scroll-down-command)
  (:after magit-blame
    (:map magit-blame-mode-map
      :n "o" #'magit-blame--git-link-commit))
@@ -235,7 +235,7 @@
    (:map company-active-map
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"        #'company-next-page
-     "M-v"        #'company-previous-page
+     "A-v"        #'company-previous-page
      "<tab>"      nil
      "C-i"        #'company-complete-selection))
  (:after realgud
