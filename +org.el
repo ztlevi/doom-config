@@ -19,6 +19,7 @@
          "* [ ] %?\n%i" :prepend t :kill-buffer t)
         ))
 
-(setq org-ellipsis "  ")
+(setq org-ellipsis "  "
+      org-startup-folded nil)
 
 (add-hook! 'text-mode-hook #'visual-line-mode)
