@@ -3,9 +3,8 @@
 (defvar blog-admin-dir ""
   "blog-admin files location")
 
-(setq
- org-agenda-files '("~/Dropbox/Org-Notes")
- blog-admin-dir "~/Developer/Github/hexo_blog")
+(setq org-agenda-files '("~/Dropbox/Org-Notes")
+      blog-admin-dir "~/Developer/Github/hexo_blog")
 
 (setq org-capture-templates
       '(
@@ -19,5 +18,7 @@
          (file+headline +org-default-todo-file "Inbox")
          "* [ ] %?\n%i" :prepend t :kill-buffer t)
         ))
+
+(setq org-ellipsis "  ")
 
 (add-hook! 'text-mode-hook #'visual-line-mode)
