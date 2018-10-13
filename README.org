@@ -22,8 +22,14 @@ This module provides no flags.
 
 * Prerequisites
 #+BEGIN_SRC shell
-brew install tidy-html5
-pip3 install black
+brew cask install xquartz
+brew install wordnet languagetool tidy-html5
+
+# ccls
+brew tap twlz0ne/homebrew-ccls
+brew install ccls
+
+pip3 install gnureadline black
 #+END_SRC
 
 * Features
