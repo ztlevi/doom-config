@@ -1,0 +1,40 @@
+#+TITLE: My private doom emacs config
+
+A short summary about what this module does.
+
+${3:If necessary, include a longer description below it that goes into more detail. This may be as long as you like.
+
++ If possible, include a brief list of feature highlights here
++ Like code completion, syntax checking or available snippets
++ Include links to packages & external things where possible
+
+* Table of Contents :TOC:
+- [[Module Flags][Module Flags]]
+- [[Prerequisites][Prerequisites]]
+- [[Features][Features]]
+- [[Configuration][Configuration]]
+- [[Appendix][Appendix]]
+  - [[Commands][Commands]]
+  - [[Hacks][Hacks]]
+
+* Module Flags
+This module provides no flags.
+
+* Prerequisites
+#+BEGIN_SRC shell
+brew install tidy-html5
+pip3 install black
+#+END_SRC
+
+* Features
+An in-depth list of features, how to use them, and their dependencies.
+
+* Configuration
+How to configure this module, including common problems and how to address them.
+
+* Appendix
+** Commands
++ A list or table of public commands (and their keybinds) and functions that this module exposes.
++ A brief description of how to use them
+** Hacks
++ Include a list of ways this module changes default behavior
