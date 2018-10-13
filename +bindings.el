@@ -120,7 +120,12 @@
    (:desc "toggle" :prefix "t"
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
-     :n "v" #'visual-line-mode))
+     :n "v" #'visual-line-mode)
+   (:desc "jump" :prefix "j"
+     :n "j" #'avy-goto-char-timer
+     :n "l" #'avy-goto-line
+     :n "b" #'avy-pop-mark)
+   )
 
  (:map prog-mode-map
    ;; Override default :n < > ( )
