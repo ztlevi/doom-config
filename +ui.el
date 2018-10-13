@@ -24,6 +24,7 @@
   (custom-set-faces
    `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
    '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
+   '(lsp-intellij-face-code-lens-run ((t (:background "honeydew"))))
    ))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 

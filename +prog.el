@@ -66,6 +66,7 @@
   :commands lsp-python-enable
   :hook (python-mode . lsp-python-enable)
   :config
+  (set-company-backend! 'python-mode 'company-lsp)
   (set-lookup-handlers! 'python-mode
     :definition #'lsp-ui-peek-find-definitions
     :references #'lsp-ui-peek-find-references))

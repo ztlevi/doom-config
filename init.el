@@ -93,7 +93,7 @@
        go                ; the hipster dialect
       ;haskell           ; a language that's lazier than I am
       ;hy                ; readability of scheme w/ speed of python
-      ;(java +meghanada) ; the poster child for carpal tunnel syndrome
+       java              ; the poster child for carpal tunnel syndrome ;(java +meghanada)
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
       ;julia             ; a better, faster MATLAB
       ;latex             ; writing papers in Emacs has never been so fun
@@ -156,4 +156,5 @@
        :private
        ranger
        my-cc
+       ;; lsp-intellij
        )
