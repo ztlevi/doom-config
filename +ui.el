@@ -2,13 +2,18 @@
 
 (setq doom-font (font-spec :family "Operator Mono Lig" :size 16))
 (setq doom-big-font (font-spec :family "Operator Mono Lig" :size 22))
-(remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 
 (setq +doom-modeline-height 28)
 (setq +doom-modeline-buffer-file-name-style 'relative-to-project)
-(setq doom-theme 'doom-one-light)
+
+;; set different theme for tty
+(if (display-graphic-p)
+    (setq doom-theme 'doom-one-light)
+  (setq doom-theme 'doom-one))
 
 (setq +workspaces-on-switch-project-behavior t)
+
+(remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 
 ;; set initl screen size
 (setq initial-frame-alist
