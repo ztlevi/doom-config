@@ -33,12 +33,6 @@
       (eshell/pushd p)))
   )
 
-(def-package! eshell-autojump)
-
-(def-package! evil-nerd-commenter
-  :commands (evilnc-comment-or-uncomment-lines)
-  )
-
 (after! evil-snipe
   (setq evil-snipe-scope 'buffer)
   )
