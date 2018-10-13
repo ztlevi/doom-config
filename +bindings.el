@@ -43,8 +43,6 @@
 
  :n "M-u" (+my/simulate-key "[")
  :n "M-i" (+my/simulate-key "]")
- :m "M-h"  #'smart-up
- :m "M-l"  #'smart-down
  :nv "M-."  #'+lookup/definition
  ;; :n "M-j"  #'+my/find-definitions
 
@@ -62,8 +60,7 @@
  :n "] M-i" #'symbol-overlay-switch-forward
 
  (:prefix "C-x"
-   :n "e"  #'pp-eval-last-sexp
-   :n "u" #'link-hint-open-link)
+   :n "e"  #'pp-eval-last-sexp)
 
  (:leader
    :nmv "SPC" #'counsel-M-x

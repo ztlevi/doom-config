@@ -9,7 +9,6 @@
 (package! atomic-chrome)
 (package! all-the-icons-dired)
 (package! link-hint)
-(package! smart-forward)
 (package! symbol-overlay)
 (package! tldr)
 (package! try)

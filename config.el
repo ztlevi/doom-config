@@ -60,8 +60,6 @@
 (def-package! rust-mode
   :mode "\\.rs$")
 
-(def-package! smart-forward)
-
 (def-package! symbol-overlay
   :commands (symbol-overlay-put))
 
