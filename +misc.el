@@ -3,6 +3,9 @@
 ;; ////////////////////////// EVIL //////////////////////////
 (setq evil-cross-lines t)
 
+(def-package! evil-nerd-commenter
+  :commands (evilnc-comment-or-uncomment-lines))
+
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil

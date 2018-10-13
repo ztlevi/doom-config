@@ -56,6 +56,14 @@
           (delete-char 1)))))
 
 ;;;###autoload
+(defun counsel-imenu-comments ()
+  "Imenu display comments."
+  (interactive)
+  (require 'evil-nerd-commenter)
+  (let* ((imenu-create-index-function 'evilnc-imenu-create-index-function))
+    (counsel-imenu)))
+
+;;;###autoload
 (defun +my/ffap ()
   (interactive)
   (-if-let (filename (ffap-guess-file-name-at-point))

@@ -6,6 +6,7 @@
 
 ;; misc
 (package! avy)
+(package! evil-nerd-commenter)
 (package! atomic-chrome)
 (package! all-the-icons-dired)
 (package! link-hint)
