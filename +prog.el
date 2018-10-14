@@ -42,7 +42,6 @@
 ;; ///////////////////////// PYTHON /////////////////////////
 (after! python
   (setq python-indent-offset 4
-        python-sort-imports-on-save t
         python-shell-interpreter "python3"
         pippel-python-command "python3"
         importmagic-python-interpreter "python3"
@@ -51,13 +50,16 @@
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
+  )
 
+(def-package! py-isort
+  :init
+  (setq python-sort-imports-on-save t)
   (defun spacemacs//python-sort-imports ()
     (when (and python-sort-imports-on-save
                (derived-mode-p 'python-mode))
       (py-isort-before-save)))
-  (add-hook 'before-save-hook 'spacemacs//python-sort-imports)
-  )
+  (add-hook 'before-save-hook 'spacemacs//python-sort-imports))
 
 (def-package! importmagic
   :commands importmagic-fix-symbol-at-point)

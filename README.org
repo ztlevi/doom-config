@@ -20,7 +20,7 @@ brew install wordnet languagetool tidy-html5
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
 
-pip3 install gnureadline black
+pip3 install 'python-language-server[all]' pyls-isort gnureadline black pylint importmagic epc
 #+END_SRC
 
 * Features
