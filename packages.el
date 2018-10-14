@@ -1,27 +1,22 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; private/my/packages.el
-(disable-packages! cmake-mode company-irony company-irony-c-headers flycheck-irony
-                   irony irony-eldoc ivy-rtags rtags anaconda-mode conda
-                   company-prescient exec-path-from-shell solaire-mode)
+(disable-packages! anaconda-mode exec-path-from-shell solaire-mode)
 
 ;; misc
-(package! avy)
-(package! evil-nerd-commenter)
-(package! atomic-chrome)
-(package! all-the-icons-dired)
-(package! link-hint)
-(package! symbol-overlay)
-(package! tldr)
-(package! try)
+(packages! avy
+           evil-nerd-commenter
+           atomic-chrome
+           all-the-icons-dired
+           link-hint
+           symbol-overlay
+           tldr
+           try
+           )
 
 ;; programming
-(package! lispyville)
-(package! lsp-mode)
-(package! lsp-ui)
-(package! company-lsp)
-(package! wucuo)
-(package! import-js)
-(package! lsp-python)
-(package! importmagic)
-(package! lsp-rust)
-(package! rust-mode)
+(packages! lispyville
+           lsp-mode lsp-ui company-lsp
+           wucuo import-js
+           lsp-python importmagic
+           lsp-rust rust-mode
+           )
