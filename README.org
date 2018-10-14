@@ -1,27 +1,131 @@
 #+TITLE: My private doom emacs config
 
 This is my private doom emacs configuration. Specifically configured for
-Javascript, Python, C++, Rust.
+Javascript, Python, C++, Rust, and Go.
 
 * Table of Contents :TOC:
-- [[Prerequisites][Prerequisites]]
+- [[Screenshot][Screenshot]]
+- [[Installation][Installation]]
+  - [[Step1: Install Emacs][Step1: Install Emacs]]
+  - [[Step2: Install Doom Emacs][Step2: Install Doom Emacs]]
+  - [[Step3: Install Dependencies][Step3: Install Dependencies]]
 - [[Features][Features]]
 - [[Configuration][Configuration]]
 - [[Appendix][Appendix]]
   - [[Commands][Commands]]
   - [[Hacks][Hacks]]
 
-* Prerequisites
+* Screenshot
+#+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
+
+* Installation
+** Step1: Install Emacs
+*** MacOS
+- *Method 1*: Use brew cask(Recommended)
+  #+BEGIN_SRC shell
+brew tap railwaycat/emacsmacport
+brew cask install emacs-mac-spacemacs-icon
+  #+END_SRC
+
+- *Method 2*: Just brew, need compiling. (more customization)
+  #+BEGIN_SRC shell
+brew tap railwaycat/emacsmacport
+rm -r /Applications/Emacs.app
+brew install emacs-mac --with-gnutls --with-natural-title-bar
+# create alias in /Applications
+ln -Fs `sudo find /usr/local -name "Emacs.app"` /Applications/Emacs.app
+  #+END_SRC
+
+  #+BEGIN_QUOTE
+  Notes: (just for method 2)
+  1. natural-title-bar usage [[https://github.com/railwaycat/homebrew-emacsmacport/wiki/Natural-Title-Bar][here]].
+  2. Solution to incoming network connection:
+     Codesign your Emacs.app. Instructions over [[http://apple.stackexchange.com/questions/3271/how-to-get-rid-of-firewall-accept-incoming-connections-dialog/170566][here]].
+     ~codesign --deep --force --verbose --sign ztlevi /usr/local/opt/emacs-mac/Emacs.app~
+  #+END_QUOTE
+*** Linux
 #+BEGIN_SRC shell
+# Ubuntu
+sudo apt-get insatll emacs
+# Arch
+sudo pacman -S emacs
+#+END_SRC
+
+** Step2: Install Doom Emacs
+#+BEGIN_SRC shell
+# Clone Doom Eemacs
+rm -r ~/.emacs.d
+git clone https://github.com/hlissner/doom-emacs -b develop ~/.emacs.d
+
+# Clone my config
+git clone https://github.com/ztlevi/doom-config ~/.doom.d
+
+cd ~/.emacs.d
+make quickstart
+#+END_SRC
+** Step3: Install Dependencies
+This Emacs configuration is written for Emacs 25.1+ on Mac OS X 10.11+ and Linux Arch. Windows users may need to tweak the config for themselves.
+
+1. Dependencies needed
+   - Install dependencies including search tools, utils, and linters.
+     #+BEGIN_SRC shell
+# search tool
+brew install ripgrep grep
+# utils
+brew install hub watchman gpg2 coreutils ctags gnu-tar
+# linter
+brew install shellcheck aspell hadolint wordnet languagetool tidy-html5
+# Cask
 brew cask install xquartz
-brew install wordnet languagetool tidy-html5
+     #+END_SRC
+
+     Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
+   - npm
+     #+BEGIN_SRC shell
+npm install -g prettier import-js
+     #+END_SRC
+   - pip
+     #+BEGIN_SRC shell
+pip3 install pylint gnureadline black importmagic epc
+     #+END_SRC
+   - go: This module requires a valid ~GOPATH~, and the following Go packages:
+     #+BEGIN_SRC shell
+# macos
+brew install go
+
+# arch
+sudo pacman --needed --noconfirm -S go
+
+# Dependencies
+go get -u github.com/motemen/gore
+go get -u github.com/nsf/gocode
+go get -u golang.org/x/tools/cmd/godoc
+go get -u golang.org/x/tools/cmd/goimports
+go get -u golang.org/x/tools/cmd/gorename
+go get -u golang.org/x/tools/cmd/guru
+     #+END_SRC
+2. Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
+   #+BEGIN_SRC shell
+# Javascript
+npm i -g typescript
+
+# Vue
+npm install vue-language-server -g
+
+# python
+# pyls-mypy is a type integration for Python
+pip3 install 'python-language-server[all]' pyls-isort
 
 # ccls
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
-
-pip3 install 'python-language-server[all]' pyls-isort gnureadline black pylint importmagic epc
-#+END_SRC
+   #+END_SRC
+3. For MacOS, according to the discussion [h[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
+   #+BEGIN_SRC bash
+defaults write org.gnu.Emacs Emacs.ToolBar -string no
+defaults write org.gnu.Emacs Emacs.ScrollBar -string no
+defaults write org.gnu.Emacs Emacs.MenuBar -string no
+   #+END_SRC
 
 * Features
 An in-depth list of features, how to use them, and their dependencies.
