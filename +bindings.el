@@ -62,6 +62,9 @@
      :nm   "m" #'view-echo-area-messages
      :nm   "U" #'+my/untabify-buffer
      :nmv  "k" #'kill-current-buffer)
+   (:desc "workspace" :prefix [tab]
+     :desc "Switch workspace" :n [tab] #'+workspace/switch-to
+     :desc "Display tab bar"  :n "."   #'+workspace/display)
    (:desc "file" :prefix "f"
      :n "f" #'counsel-find-file)
    (:desc "git" :prefix "g"
