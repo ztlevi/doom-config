@@ -41,6 +41,9 @@
        "(" #'dired-hide-details-mode
        "+" #'dired-create-directory
        (:leader
+         :m "fj" #'deer
+         :m "ar" #'ranger
+         :m "ad" #'deer
          :m "oE" #'+eshell/open-popup)
        ))))
 
