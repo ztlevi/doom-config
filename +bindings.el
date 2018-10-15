@@ -27,38 +27,25 @@
  :nmvi "M-m" #'kmacro-call-macro
  :nmvi "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
  :nmvi "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
- :nmv  "M-/" #'evilnc-comment-or-uncomment-lines
+ :nmvi "M-/" #'evilnc-comment-or-uncomment-lines
+ :nv   "M-." #'+lookup/definition
 
- :i   "C-n" #'next-line
- :i   "C-p" #'previous-line
- :i   "C-k" #'kill-line
- :i   "C-d" #'delete-forward-char
+ :i "C-n" #'next-line
+ :i "C-p" #'previous-line
+ :i "C-k" #'kill-line
+ :i "C-d" #'delete-forward-char
 
- :v "M-v" #'evil-visual-paste
- :v "p" #'evil-visual-paste
- :v "<backspace>" (kbd "\"_d")
+ :v "p"     #'evil-visual-paste
+ :v "M-v"   #'evil-visual-paste
+ :v "C-r"   #'+my/evil-quick-replace
  :v "<del>" (kbd "\"_d")
- :v "C-r" #'+my/evil-quick-replace
-
-
- :nv "M-."  #'+lookup/definition
- ;; :n "M-j"  #'+my/find-definitions
-
- :n "C-c a" #'org-agenda
- :n "C-,"  #'+my/find-references
-
- ;; outline
- :n "z;"   (λ! (+my/avy-document-symbol nil) (+my/find-definitions))
-
- :n "ga"   #'lsp-ui-find-workspace-symbol
- :n "gf"   #'+my/ffap
- :n "go"   (λ! (message "%S" (text-properties-at (point))))
-
- :n "[ M-u" #'symbol-overlay-switch-backward
- :n "] M-i" #'symbol-overlay-switch-forward
+ :v "<backspace>" (kbd "\"_d")
 
  (:prefix "C-x"
    :n "e"  #'pp-eval-last-sexp)
+ (:prefix "C-c"
+   :ni "/" #'company-files
+   :desc "Text properties at point" :nmv "f" (λ! (message "%S" (text-properties-at (point)))))
 
  (:leader
    :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
@@ -70,17 +57,13 @@
      :nmv "x" #'align-regexp)
    (:desc "buffer" :prefix "b"
      :desc "Last buffer" :nmv "l" #'evil-switch-to-windows-last-buffer
-     :nmv "b" #'ivy-switch-buffer
-     :nm "r" #'revert-buffer-no-confirm
-     :nm "m" #'view-echo-area-messages
-     :nm "U" #'+my/untabify-buffer
-     :nmv "k" #'kill-current-buffer)
+     :nmv  "b" #'ivy-switch-buffer
+     :nm   "r" #'revert-buffer-no-confirm
+     :nm   "m" #'view-echo-area-messages
+     :nm   "U" #'+my/untabify-buffer
+     :nmv  "k" #'kill-current-buffer)
    (:desc "file" :prefix "f"
-     :desc "Reveal in default program" :nm "o" #'+macos/open-in-default-program
-     :n "p" #'treemacs-projectile
-     :n "C-p" #'+default/find-in-config
-     :n "C-S-p" #'+default/browse-config
-     :n "t" #'treemacs)
+     :n "f" #'counsel-find-file)
    (:desc "git" :prefix "g"
      :desc "M-x magit-*" :n "*" (+my/prefix-M-x "magit-"))
    (:desc "help" :prefix "h"
@@ -97,13 +80,22 @@
      :desc "Ansi-Term in popup" :n   "S" #'+term/open-popup-in-project
      :desc "Imenu comments"     :n   "c" #'counsel-imenu-comments
      :desc "Debugger start"     :n   "d" #'+debugger:start
-     (:when (featurep! :tools macos)
+     (:when IS-MAC
+       :desc "Reveal in default program"  :nm "o" #'+macos/open-in-default-program
        :desc "Reveal in Finder"           :nm "o" #'+macos/reveal-in-finder
        :desc "Reveal project in Finder"   :nm "O" #'+macos/reveal-project-in-finder
-       :desc "Reveal in Terminal"         :nm "t" #'+macos/reveal-in-iterm
-       :desc "Reveal project in Terminal" :nm "T" #'+macos/reveal-project-in-iterm
-       :desc "Reveal in VSCode"           :nm "c" #'+macos/reveal-project-in-vscode
-       :desc "Reveal project in VSCode"   :nm "C" #'+macos/reveal-in-vscode))
+       :desc "Reveal in Terminal"         :nm "t" #'+macos/reveal-in-terminal
+       :desc "Reveal project in Terminal" :nm "T" #'+macos/reveal-project-in-terminal
+       :desc "Reveal in VSCode"           :nm "c" #'+macos/reveal-in-vscode
+       :desc "Reveal project in VSCode"   :nm "C" #'+macos/reveal-project-in-vscode)
+     (:when IS-LINUX
+       :desc "Reveal in default program"  :nm "o" #'+shell/open-in-default-program
+       :desc "Reveal in Finder"           :nm "o" #'+shell/reveal-in-finder
+       :desc "Reveal project in Finder"   :nm "O" #'+shell/reveal-project-in-finder
+       :desc "Reveal in Terminal"         :nm "t" #'+shell/reveal-in-terminal
+       :desc "Reveal project in Terminal" :nm "T" #'+shell/reveal-project-in-terminal
+       :desc "Reveal in VSCode"           :nm "c" #'+shell/reveal-in-vscode
+       :desc "Reveal project in VSCode"   :nm "C" #'+shell/reveal-project-in-vscode))
    (:desc "insert" :prefix "i"
      :n "o" #'symbol-overlay-put
      :n "q" #'symbol-overlay-remove-all)

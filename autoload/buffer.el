@@ -58,10 +58,9 @@
   (interactive)
   (save-excursion
     (end-of-line)
-    (if (looking-back ";")
-        (progn
-          (backward-char)
-          (delete-char 1)))))
+    (when (looking-back ";")
+      (backward-char)
+      (delete-char 1))))
 
 ;;;###autoload
 (defun occur-non-ascii ()
