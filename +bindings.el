@@ -132,10 +132,11 @@
    )
  (:after lispy
    (:map lispy-mode-map
+     :n "M-j" #'lispy-splice
      :i "C-c (" #'lispy-wrap-round
      :i "_" #'special-lispy-different
-     :i [remap delete-backward-char] #'lispy-delete-backward
-     :n "M-j" #'lispy-splice))
+     :i [remap kill-line] #'lispy-kill
+     :i [remap delete-backward-char] #'lispy-delete-backward))
  (:after elisp-mode
    :map emacs-lisp-mode-map
    :n "gh" #'helpful-at-point
