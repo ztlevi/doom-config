@@ -3,8 +3,12 @@
 ;; /////////////////////// NAVIGATION //////////////////////
 (setq evil-cross-lines t)
 
-(def-package! evil-nerd-commenter
-  :commands (evilnc-comment-or-uncomment-lines))
+(def-package! evil-nerd-commenter)
+
+(after! evil
+  (evil-define-text-object evil-inner-buffer (count &optional beg end type)
+    (list (point-min) (point-max)))
+  (define-key evil-inner-text-objects-map "g" 'evil-inner-buffer))
 
 (after! evil-snipe
   (setq evil-snipe-scope 'buffer
@@ -15,8 +19,7 @@
   :commands (avy-goto-char-timer)
   :init
   (setq avy-timeout-seconds 0.2)
-  (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p))
-  )
+  (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
 
 (after! nav-flash
   ;; (defun nav-flash-show (&optional pos end-pos face delay)
