@@ -1,13 +1,48 @@
 ;;; ~/.doom.d/+misc.el -*- lexical-binding: t; -*-
 
-;; ////////////////////////// EVIL //////////////////////////
+;; /////////////////////// NAVIGATION //////////////////////
 (setq evil-cross-lines t)
 
 (def-package! evil-nerd-commenter
   :commands (evilnc-comment-or-uncomment-lines))
 
 (after! evil-snipe
+  (setq evil-snipe-scope 'buffer
+        evil-snipe-repeat-scope 'buffer)
   (push 'prodigy-mode evil-snipe-disabled-modes))
+
+(def-package! avy
+  :commands (avy-goto-char-timer)
+  :init
+  (setq avy-timeout-seconds 0.2)
+  (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p))
+  )
+
+(after! nav-flash
+  ;; (defun nav-flash-show (&optional pos end-pos face delay)
+  ;; ...
+  ;; (let ((inhibit-point-motion-hooks t))
+  ;; (goto-char pos)
+  ;; (beginning-of-visual-line) ; work around args-out-of-range error when the target file is not opened
+  (defun +advice/nav-flash-show (orig-fn &rest args)
+    (ignore-errors (apply orig-fn args)))
+  (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
+
+(after! ibuffer
+  ;; set ibuffer name column width
+  (define-ibuffer-column size-h
+    (:name "Size" :inline t)
+    (cond
+     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
+     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
+     (t (format "%8d" (buffer-size)))))
+
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 50 50 :left :nil) " "
+                (size-h 9 -1 :right) " "
+                (mode 16 16 :left :elide) " "
+                filename-and-process))))
 
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
@@ -67,23 +102,6 @@
       "invoke term from project root")
      ("_" counsel-projectile-switch-project-action-org-capture
       "org-capture into project"))))
-
-;; //////////////////////// IBUFFER //////////////////////
-(after! ibuffer
-  ;; set ibuffer name column width
-  (define-ibuffer-column size-h
-    (:name "Size" :inline t)
-    (cond
-     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
-     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
-     (t (format "%8d" (buffer-size)))))
-
-  (setq ibuffer-formats
-        '((mark modified read-only " "
-                (name 50 50 :left :nil) " "
-                (size-h 9 -1 :right) " "
-                (mode 16 16 :left :elide) " "
-                filename-and-process))))
 
 ;; ///////////////////////// Git /////////////////////////
 (after! git-link
@@ -188,6 +206,38 @@
   (add-hook 'prodigy-view-mode-hook
             #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab))))
 
+;; //////////////////////////// TERM ////////////////////////////////
+(after! eshell
+  (defun eshell/l (&rest args) (eshell/ls "-l" args))
+  (defun eshell/e (file) (find-file file))
+  (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
+  (defun eshell/ft (&optional arg) (treemacs arg))
+
+  (defun eshell/up (&optional pattern)
+    (let ((p (locate-dominating-file
+              (f-parent default-directory)
+              (lambda (p)
+                (if pattern
+                    (string-match-p pattern (f-base p))
+                  t)))
+             ))
+      (eshell/pushd p)))
+  )
+
+;; /////////////////////////// DOC /////////////////////////////
+(def-package! tldr
+  :commands (tldr)
+  :config
+  (setq tldr-directory-path (concat doom-etc-dir "tldr/"))
+  (set-popup-rule! "^\\*tldr\\*" :side 'right :select t :quit t)
+  )
+
+(def-package! link-hint
+  :commands link-hint-open-link link-hint-open-all-links)
+
+(def-package! symbol-overlay
+  :commands (symbol-overlay-put))
+
 ;; (def-package! smartparens
 ;;   :config
 ;;   (setq sp-autoinsert-pair nil
@@ -195,3 +245,4 @@
 ;;         sp-escape-quotes-after-insert nil)
 ;;   (setq-default sp-autoskip-closing-pair nil)
 ;;   )
+

@@ -21,4 +21,4 @@
 
 (setq org-ellipsis "  ")
 
-(add-hook! 'text-mode-hook #'visual-line-mode)
+(add-hook! 'text-mode-hook (setq-local truncate-lines nil))

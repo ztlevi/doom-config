@@ -156,4 +156,28 @@
      ;; '(lsp-ui-sideline-symbol ((t (:foreground "grey30" :box nil))))
      ))
   )
-(map!)
+
+;; /////////////////////////// RUST /////////////////////////////
+(def-package! rust-mode
+  :mode "\\.rs$")
+
+(def-package! lsp-rust
+  :init (add-hook 'rust-mode-hook #'lsp-rust-enable))
+
+;; //////////////////////// Debug & Run ////////////////////////////
+(after! quickrun
+  (quickrun-add-command "c++/c1z"
+    '((:command . "clang++")
+      (:exec    . ("%c -std=c++1z %o -o %e %s"
+                   "%e %a"))
+      (:remove  . ("%e")))
+    :default "c++"))
+
+(after! realgud
+  (setq realgud-safe-mode nil)
+  (evil-collection-define-key 'normal 'realgud:shortkey-mode-map
+    "d" #'realgud:cmd-newer-frame
+    "D" #'realgud:cmd-delete
+    "u" #'realgud:cmd-older-frame
+    )
+  )
