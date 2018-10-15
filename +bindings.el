@@ -41,8 +41,6 @@
  :v "C-r" #'+my/evil-quick-replace
 
 
- :n "M-u" (+my/simulate-key "[")
- :n "M-i" (+my/simulate-key "]")
  :nv "M-."  #'+lookup/definition
  ;; :n "M-j"  #'+my/find-definitions
 
@@ -63,61 +61,57 @@
    :n "e"  #'pp-eval-last-sexp)
 
  (:leader
-   :nmv "SPC" #'counsel-M-x
-   :desc "window" :nmv "w"  evil-window-map
+   :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
+   :desc "window"      :nmv "w"  evil-window-map
 
-   :n "M-u" (+my/simulate-key "SPC [")
-   :n "M-i" (+my/simulate-key "SPC ]")
    :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
    (:desc "app" :prefix "a"
      :n "s" #'prodigy
-     :desc "genhdr" :n "g"
-     (λ! (shell-command-on-region (point-min) (point-max) "genhdr" t t))
-     :desc "genhdr windows" :n "G"
-     (λ! (shell-command-on-region (point-min) (point-max) "genhdr windows" t t)))
-   (:prefix "b"
+     :nmv "x" #'align-regexp)
+   (:desc "buffer" :prefix "b"
      :desc "Last buffer" :nmv "l" #'evil-switch-to-windows-last-buffer
      :nmv "b" #'ivy-switch-buffer
      :nm "r" #'revert-buffer-no-confirm
-     :nm "f" #'+macos/reveal-in-finder
-     :nm "F" #'+macos/reveal-project-in-finder
-     :nm "T" #'+macos/reveal-project-in-iterm
-     :nm "T" #'+macos/reveal-in-iterm
-     :nm "c" #'+macos/reveal-project-in-vscode
-     :nm "C" #'+macos/reveal-in-vscode
-     :nm "M" #'+macos/reveal-in-typora
      :nm "m" #'view-echo-area-messages
      :nm "U" #'+my/untabify-buffer
      :nmv "k" #'kill-current-buffer)
-   (:prefix "f"
-     :nm "o" #'+macos/open-in-default-program
+   (:desc "file" :prefix "f"
+     :desc "Reveal in default program" :nm "o" #'+macos/open-in-default-program
      :n "p" #'treemacs-projectile
      :n "C-p" #'+default/find-in-config
      :n "C-S-p" #'+default/browse-config
      :n "t" #'treemacs)
-   (:prefix "g"
-     :n "*" (+my/prefix-M-x "magit-"))
-   (:prefix "r"
-     :n "r" #'rjsx-mode
-     :n "i" #'ivy-resume)
-   (:prefix "h"
+   (:desc "git" :prefix "g"
+     :desc "M-x magit-*" :n "*" (+my/prefix-M-x "magit-"))
+   (:desc "help" :prefix "h"
      :n "C" #'helpful-command)
    (:desc "error" :prefix "e"
      :n "n" #'flycheck-next-error
      :n "p" #'flycheck-previous-error
      :n "l" #'flycheck-list-errors
      :n "v" #'flycheck-verify-setup)
-   (:prefix "o"
-     :nmv "I" #'ibuffer
-     :nv "x" #'link-hint-open-link
-     :nv "c" #'counsel-imenu-comments
-     :n "d" #'+debugger:start
+   (:desc "open" :prefix "o"
+     :desc "Ibuffer"            :nmv "I" #'ibuffer
+     :desc "Open link"          :n   "x" #'link-hint-open-link
+     :desc "Ansi-Term"          :n   "s" #'+term/open
+     :desc "Ansi-Term in popup" :n   "S" #'+term/open-popup-in-project
+     :desc "Imenu comments"     :n   "c" #'counsel-imenu-comments
+     :desc "Debugger start"     :n   "d" #'+debugger:start
+     (:when (featurep! :tools macos)
+       :desc "Reveal in Finder"           :nm "o" #'+macos/reveal-in-finder
+       :desc "Reveal project in Finder"   :nm "O" #'+macos/reveal-project-in-finder
+       :desc "Reveal in Terminal"         :nm "t" #'+macos/reveal-in-iterm
+       :desc "Reveal project in Terminal" :nm "T" #'+macos/reveal-project-in-iterm
+       :desc "Reveal in VSCode"           :nm "c" #'+macos/reveal-project-in-vscode
+       :desc "Reveal project in VSCode"   :nm "C" #'+macos/reveal-in-vscode))
+   (:desc "insert" :prefix "i"
      :n "o" #'symbol-overlay-put
      :n "q" #'symbol-overlay-remove-all)
-   (:prefix "p"
+   (:desc "project" :prefix "p"
      :n "e" #'projectile-run-eshell
      :n "*" (+my/prefix-M-x "projectile-"))
    (:desc "toggle" :prefix "t"
+     :n "r" #'rjsx-mode
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
      :n "v" #'visual-line-mode)
@@ -125,7 +119,7 @@
      :n "j" #'avy-goto-char-timer
      :n "l" #'avy-goto-line
      :n "b" #'avy-pop-mark)
-   (:prefix "/"
+   (:desc "search" :prefix "/"
      :nmv "/" #'+ivy/project-search)
    )
 
@@ -198,12 +192,11 @@
  (:after markdown-mode
    (:map markdown-mode-map
      :localleader
-     :nv "o" #'+macos/reveal-in-typora
+     :desc "Reveal in Typora" :n "o" #'+macos/reveal-in-typora
      :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
-     (:desc "Insert" :prefix "i")
-     :desc "Table" :prefix "t"
-     :n "r" #'markdown-table-insert-row
-     :n "c" #'markdown-table-insert-column))
+     (:desc "Table" :prefix "t"
+       :n "r" #'markdown-table-insert-row
+       :n "c" #'markdown-table-insert-column)))
  (:after ivy
    :map ivy-occur-grep-mode-map
    "SPC" nil
@@ -234,10 +227,10 @@
  (:after company
    (:map company-active-map
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
-     "C-v"        #'company-next-page
-     "A-v"        #'company-previous-page
-     "<tab>"      nil
-     "C-i"        #'company-complete-selection))
+     "C-v"   #'company-next-page
+     "A-v"   #'company-previous-page
+     "<tab>" nil
+     "C-i"   #'company-complete-selection))
  (:after realgud
    (:map realgud-track-mode-map
      :in ";" #'realgud-window-src-undisturb-cmd)
