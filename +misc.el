@@ -6,6 +6,9 @@
 (def-package! evil-nerd-commenter
   :commands (evilnc-comment-or-uncomment-lines))
 
+(after! evil-snipe
+  (push 'prodigy-mode evil-snipe-disabled-modes))
+
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil
@@ -132,7 +135,6 @@
   (set-evil-initial-state!
     '(prodigy-mode)
     'normal)
-  (push 'prodigy-mode evil-snipe-disabled-modes)
 
   (prodigy-define-tag
     :name 'jekyll

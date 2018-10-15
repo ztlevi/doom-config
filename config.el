@@ -34,7 +34,8 @@
   )
 
 (after! evil-snipe
-  (setq evil-snipe-scope 'buffer)
+  (setq evil-snipe-scope 'buffer
+        evil-snipe-repeat-scope 'buffer)
   )
 
 (def-package! link-hint
