@@ -1,11 +1,11 @@
 ;;; private/my/config.el -*- lexical-binding: t; -*-
 
-(load! "+funcs")
-(load! "+bindings")
-(load! "+org")
-(load! "+ui")
+(load! "+os")
 (load! "+misc")
+(load! "+org")
 (load! "+prog")
+(load! "+ui")
+(load! "+bindings")
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
