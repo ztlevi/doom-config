@@ -51,6 +51,7 @@
    :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
    (:desc "app" :prefix "a"
      :n "s" #'prodigy
+     :n "l" #'list-processes
      :nmv "x" #'align-regexp)
    (:desc "buffer" :prefix "b"
      :desc "Last buffer" :nmv "l" #'evil-switch-to-windows-last-buffer

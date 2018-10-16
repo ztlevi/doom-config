@@ -86,7 +86,7 @@ npm install -g prettier import-js
      #+END_SRC
    - pip
      #+BEGIN_SRC shell
-pip3 install pylint gnureadline black importmagic epc
+pip3 install pylint gnureadline black importmagic epc grip
      #+END_SRC
    - go: This module requires a valid ~GOPATH~, and the following Go packages:
      #+BEGIN_SRC shell

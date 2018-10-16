@@ -47,6 +47,13 @@
                 (mode 16 16 :left :elide) " "
                 filename-and-process))))
 
+(add-hook! 'process-menu-mode-hook
+  (setq-local tabulated-list-format [("Process" 30 t)
+			                         ("PID"      7 t)
+			                         ("Status"   7 t)
+			                         ("Buffer"  15 t)
+			                         ("TTY"     12 t)
+			                         ("Command"  0 t)]))
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil
