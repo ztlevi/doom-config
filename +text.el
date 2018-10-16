@@ -24,18 +24,19 @@
         ))
 
 ;; ///////////////////////////// MARKDOWN /////////////////////////////
-;; memo: install grip > ‘pip3 install grip‘
-(defvar +my/markdown-process nil)
-(defun +my/markdown-preview (&rest _)
-  "Preview markdown file by using grip."
-  (let ((gfm (if (eq major-mode 'gfm-mode) "--gfm" "")))
+(after! markdown-mode
+  ;; memo: install grip > ‘pip3 install grip‘
+  (defvar +my/markdown-process nil)
+  (defun +my/markdown-preview (&rest _)
+    "Preview markdown file by using grip."
     (when (process-live-p +my/markdown-process)
       (kill-process +my/markdown-process))
     (setq +my/markdown-process
-          (start-process-shell-command "emacs-markdown-preview"
+          (start-process-shell-command "grip markdown-preview"
                                        markdown-output-buffer-name
-                                       (format "grip --browser %s '%s'" gfm (buffer-file-name))))))
+                                       (format "grip --browser '%s'" (buffer-file-name)))))
 
-;; Use advice to use preview at both markdown-mode and gfm-mode.
-(when (executable-find "grip")
-  (advice-add 'markdown-preview :override '+my/markdown-preview))
+  ;; Use advice to use preview at both markdown-mode and gfm-mode.
+  (when (executable-find "grip")
+    (advice-add 'markdown-preview :override '+my/markdown-preview))
+  )
