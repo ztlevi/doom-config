@@ -2,7 +2,7 @@
 
 (load! "+os")
 (load! "+misc")
-(load! "+org")
+(load! "+text")
 (load! "+prog")
 (load! "+ui")
 (load! "+bindings")
