@@ -115,7 +115,8 @@
      :n "l" #'avy-goto-line
      :n "b" #'avy-pop-mark)
    (:desc "search" :prefix "/"
-     :nmv "/" #'+ivy/project-search)
+     :desc "Project"   :nmv "/" #'+ivy/project-search
+     :desc "Directory" :nmv "d" #'+ivy/project-search-from-cwd)
    )
 
  (:map prog-mode-map
