@@ -1,8 +1,5 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
-(define-key! 'global
-  [remap projectile-find-file] #'counsel-git)
-
 (map!
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil

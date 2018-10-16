@@ -75,7 +75,9 @@
 
 ;; ///////////////////////// PROJECTILE ///////////////////
 (after! projectile
-  (setq projectile-require-project-root t)
+  ;; in favor of counsel-git
+  (advice-add 'projectile-find-file :override 'counsel-git)
+
   (setq compilation-read-command nil)  ; no prompt in projectile-compile-project
   ;; . -> Build
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
