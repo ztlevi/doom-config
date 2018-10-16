@@ -23,8 +23,7 @@
 ;; disable line-numbers by default
 (setq display-line-numbers-type nil)
 
-;; (global-visual-line-mode)
-
+;; my custom faces
 (defun +my/set-faces ()
   (custom-set-faces
    `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
@@ -71,41 +70,26 @@
       (set-char-table-range composition-function-table (car char-regexp)
                             `([,(cdr char-regexp) 0 font-shape-gstring])))))
 
-;; set the wrap line symbol
-(define-fringe-bitmap 'right-curly-arrow
-  [#b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b11110000
-   #b00010000
-   #b00010000
-   #b00010000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000])
-(define-fringe-bitmap 'left-curly-arrow
-  [#b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00001000
-   #b00001000
-   #b00001000
-   #b00001111
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000])
-(setq visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
+(after! ibuffer
+  ;; set ibuffer name column width
+  (define-ibuffer-column size-h
+    (:name "Size" :inline t)
+    (cond
+     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
+     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
+     (t (format "%8d" (buffer-size)))))
+
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 50 50 :left :nil) " "
+                (size-h 9 -1 :right) " "
+                (mode 16 16 :left :elide) " "
+                filename-and-process))))
+
+(add-hook! 'process-menu-mode-hook
+  (setq-local tabulated-list-format [("Process" 30 t)
+			                         ("PID"      7 t)
+			                         ("Status"   7 t)
+			                         ("Buffer"  15 t)
+			                         ("TTY"     12 t)
+			                         ("Command"  0 t)]))

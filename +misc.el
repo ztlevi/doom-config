@@ -31,29 +31,6 @@
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
-(after! ibuffer
-  ;; set ibuffer name column width
-  (define-ibuffer-column size-h
-    (:name "Size" :inline t)
-    (cond
-     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
-     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
-     (t (format "%8d" (buffer-size)))))
-
-  (setq ibuffer-formats
-        '((mark modified read-only " "
-                (name 50 50 :left :nil) " "
-                (size-h 9 -1 :right) " "
-                (mode 16 16 :left :elide) " "
-                filename-and-process))))
-
-(add-hook! 'process-menu-mode-hook
-  (setq-local tabulated-list-format [("Process" 30 t)
-			                         ("PID"      7 t)
-			                         ("Status"   7 t)
-			                         ("Buffer"  15 t)
-			                         ("TTY"     12 t)
-			                         ("Command"  0 t)]))
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   (setq ivy-initial-inputs-alist nil
