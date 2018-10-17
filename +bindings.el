@@ -51,6 +51,7 @@
    :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
    (:desc "app" :prefix "a"
      :n "s" #'prodigy
+     :n "b" #'blog-admin-start
      :n "l" #'list-processes
      :nmv "x" #'align-regexp)
    (:desc "buffer" :prefix "b"
