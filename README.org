@@ -8,7 +8,7 @@ Javascript, Python, C++, Rust, and Go.
 - [[Installation][Installation]]
   - [[Step1: Install Emacs][Step1: Install Emacs]]
   - [[Step2: Install Doom Emacs][Step2: Install Doom Emacs]]
-  - [[Step3: Install Dependencies][Step3: Install Dependencies]]
+  - [[Step3: Dependencies and Configuration][Step3: Dependencies and Configuration]]
 - [[Features][Features]]
 - [[Configuration][Configuration]]
 - [[Appendix][Appendix]]
@@ -63,33 +63,42 @@ git clone https://github.com/ztlevi/doom-config ~/.doom.d
 cd ~/.emacs.d
 make quickstart
 #+END_SRC
-** Step3: Install Dependencies
+** Step3: Dependencies and Configuration
 This Emacs configuration is written for Emacs 25.1+ on Mac OS X 10.11+ and Linux Arch. Windows users may need to tweak the config for themselves.
 
-1. Dependencies needed
-   - Install dependencies including search tools, utils, and linters.
-     #+BEGIN_SRC shell
+*** Dependencies needed
+Install dependencies including search tools, utils, and linters.
+
+**** MacOS
+#+BEGIN_SRC sh :tangle (if (doom-system-os 'macos) "yes")
 # search tool
 brew install ripgrep grep
 # utils
-brew install hub watchman gpg2 coreutils ctags gnu-tar
-# linter
+brew install sqlite hub watchman gpg2 coreutils ctags gnu-tar mplayer
+# language
 brew install shellcheck aspell hadolint wordnet languagetool tidy-html5
 # Cask
 brew cask install xquartz
-     #+END_SRC
+#+END_SRC
 
-     Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
-   - npm
-     #+BEGIN_SRC shell
+**** Arch Linux
+#+BEGIN_SRC sh :dir /sudo:: :tangle (if (doom-system-os 'arch) "yes")
+sudo pacman --needed --noconfirm -S sqlite ripgrep
+#+END_SRC
+
+Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
+**** npm
+#+BEGIN_SRC shell
 npm install -g prettier import-js
-     #+END_SRC
-   - pip
-     #+BEGIN_SRC shell
+#+END_SRC
+
+**** pip
+#+BEGIN_SRC shell
 pip3 install pylint gnureadline black importmagic epc grip
-     #+END_SRC
-   - go: This module requires a valid ~GOPATH~, and the following Go packages:
-     #+BEGIN_SRC shell
+#+END_SRC
+
+**** go: This module requires a valid ~GOPATH~, and the following Go packages:
+#+BEGIN_SRC shell
 # macos
 brew install go
 
@@ -103,9 +112,10 @@ go get -u golang.org/x/tools/cmd/godoc
 go get -u golang.org/x/tools/cmd/goimports
 go get -u golang.org/x/tools/cmd/gorename
 go get -u golang.org/x/tools/cmd/guru
-     #+END_SRC
-2. Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
-   #+BEGIN_SRC shell
+#+END_SRC
+
+*** Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
+#+BEGIN_SRC shell
 # Javascript
 npm i -g typescript
 
@@ -119,13 +129,14 @@ pip3 install 'python-language-server[all]' pyls-isort
 # ccls
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
-   #+END_SRC
-3. For MacOS, according to the discussion [h[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
-   #+BEGIN_SRC bash
+#+END_SRC
+
+*** For MacOS, according to the discussion [h[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
+#+BEGIN_SRC bash
 defaults write org.gnu.Emacs Emacs.ToolBar -string no
 defaults write org.gnu.Emacs Emacs.ScrollBar -string no
 defaults write org.gnu.Emacs Emacs.MenuBar -string no
-   #+END_SRC
+#+END_SRC
 
 * Features
 An in-depth list of features, how to use them, and their dependencies.
