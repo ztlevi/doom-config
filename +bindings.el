@@ -117,6 +117,7 @@
      :n "b" #'avy-pop-mark)
    (:desc "search" :prefix "/"
      :desc "Project"   :nmv "/" #'+ivy/project-search
+     :desc "Comments"  :nmv "c" #'counsel-imenu-comments
      :desc "Directory" :nmv "d" #'+ivy/project-search-from-cwd)
    )
 

@@ -196,6 +196,9 @@
 
 ;; //////////////////////////// TERM ////////////////////////////////
 (after! eshell
+  ;; eshell-mode imenu index
+  (add-hook! 'eshell-mode-hook (setq-local imenu-generic-expression '(("Prompt" " λ \\(.*\\)" 1))))
+
   (defun eshell/l (&rest args) (eshell/ls "-l" args))
   (defun eshell/e (file) (find-file file))
   (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
@@ -211,6 +214,10 @@
              ))
       (eshell/pushd p)))
   )
+
+(after! term
+  ;; term-mode imenu index
+  (add-hook! 'term-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
 
 ;; (def-package! smartparens
 ;;   :config
