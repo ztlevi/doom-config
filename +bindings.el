@@ -109,6 +109,7 @@
      :n "r" #'rjsx-mode
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
+     :n "L" #'toggle-truncate-lines
      :n "v" #'visual-line-mode)
    (:desc "jump" :prefix "j"
      :n "j" #'avy-goto-char-timer
