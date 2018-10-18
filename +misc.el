@@ -218,12 +218,3 @@
 (after! term
   ;; term-mode imenu index
   (add-hook! 'term-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
-
-;; (def-package! smartparens
-;;   :config
-;;   (setq sp-autoinsert-pair nil
-;;         sp-autodelete-pair nil
-;;         sp-escape-quotes-after-insert nil)
-;;   (setq-default sp-autoskip-closing-pair nil)
-;;   )
-
