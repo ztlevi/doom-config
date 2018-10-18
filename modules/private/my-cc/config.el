@@ -57,9 +57,7 @@
                (evil-normal-state))))
   )
 
-(def-package! clang-format
-  :commands (clang-format-region)
-  )
+(def-package! clang-format)
 
 (def-package! ccls
   :init (add-hook! (c-mode c++-mode objc-mode) #'+ccls//enable)

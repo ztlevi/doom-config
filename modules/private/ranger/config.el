@@ -3,7 +3,6 @@
 (load! "+vinegar")
 
 (def-package! ranger
-  :commands (ranger deer deer-jump-other-window ranger-override-dired-mode)
   :init
   (setq ranger-override-dired t)
   (progn
@@ -59,10 +58,7 @@
 
 (def-package! font-lock+)
 
-(def-package! dired-x
-  :commands (dired-jump
-             dired-jump-other-window
-             dired-omit-mode))
+(def-package! dired-x)
 
 (def-package! dired
   :init
@@ -96,14 +92,12 @@
        "gg" 'vinegar/back-to-top
        "G" 'vinegar/jump-to-bottom))))
 
-(defun osx/post-init-exec-path-from-shell ()
-  ;; Use GNU ls as `gls' from `coreutils' if available.  Add `(setq
-  ;; dired-use-ls-dired nil)' to your config to suppress the Dired warning when
-  ;; not using GNU ls.  We must look for `gls' after `exec-path-from-shell' was
-  ;; initialized to make sure that `gls' is in `exec-path'
-  (when IS-MAC
-    (let ((gls (executable-find "gls")))
-      (when gls
-        (setq insert-directory-program gls
-              dired-listing-switches "-aBhl --group-directories-first")))))
-(osx/post-init-exec-path-from-shell)
+;; Use GNU ls as `gls' from `coreutils' if available.  Add `(setq
+;; dired-use-ls-dired nil)' to your config to suppress the Dired warning when
+;; not using GNU ls.  We must look for `gls' after `exec-path-from-shell' was
+;; initialized to make sure that `gls' is in `exec-path'
+(when IS-MAC
+  (let ((gls (executable-find "gls")))
+    (when gls
+      (setq insert-directory-program gls
+            dired-listing-switches "-aBhl --group-directories-first"))))

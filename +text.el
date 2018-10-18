@@ -27,36 +27,31 @@
 
 ;; ////////////////////////// OTHERS ///////////////////////////
 (def-package! blog-admin
-    :commands blog-admin-start
-    :hook (blog-admin-backend-after-new-post . find-file)
-    :init
-    ;; do your configuration here
-    (setq blog-admin-backend-type 'hexo
-          blog-admin-backend-path "~/Developer/Github/hexo_blog"
-          blog-admin-backend-new-post-in-drafts t
-          blog-admin-backend-new-post-with-same-name-dir nil
-          blog-admin-backend-hexo-config-file "_config.yml"))
+  :hook (blog-admin-backend-after-new-post . find-file)
+  :init
+  ;; do your configuration here
+  (setq blog-admin-backend-type 'hexo
+        blog-admin-backend-path "~/Developer/Github/hexo_blog"
+        blog-admin-backend-new-post-in-drafts t
+        blog-admin-backend-new-post-with-same-name-dir nil
+        blog-admin-backend-hexo-config-file "_config.yml"))
 
 (def-package! youdao-dictionary
-    :config
-    (progn
-      ;; Enable Cache
-      (setq url-automatic-caching t
-            ;; Set file path for saving search history
-            youdao-dictionary-search-history-file
-            (concat doom-cache-dir ".youdao")
-            ;; Enable Chinese word segmentation support
-            youdao-dictionary-use-chinese-word-segmentation t)))
+  :config
+  ;; Enable Cache
+  (setq url-automatic-caching t
+        ;; Set file path for saving search history
+        youdao-dictionary-search-history-file
+        (concat doom-cache-dir ".youdao")
+        ;; Enable Chinese word segmentation support
+        youdao-dictionary-use-chinese-word-segmentation t))
 
 (def-package! tldr
-  :commands (tldr)
   :config
   (setq tldr-directory-path (concat doom-etc-dir "tldr/"))
   (set-popup-rule! "^\\*tldr\\*" :side 'right :select t :quit t)
   )
 
-(def-package! link-hint
-  :commands link-hint-open-link link-hint-open-all-links)
+(def-package! link-hint)
 
-(def-package! symbol-overlay
-  :commands (symbol-overlay-put))
+(def-package! symbol-overlay)

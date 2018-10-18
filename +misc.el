@@ -16,7 +16,6 @@
   (push 'prodigy-mode evil-snipe-disabled-modes))
 
 (def-package! avy
-  :commands (avy-goto-char-timer)
   :init
   (setq avy-timeout-seconds 0.2)
   (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
