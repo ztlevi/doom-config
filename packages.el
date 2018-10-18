@@ -12,6 +12,7 @@
            tldr
            try
            (blog-admin :recipe (:fetcher github :repo "codefalling/blog-admin"))
+           youdao-dictionary
            )
 
 ;; programming

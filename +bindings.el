@@ -80,6 +80,7 @@
      :desc "Open link"          :n   "x" #'link-hint-open-link
      :desc "Ansi-Term"          :n   "s" #'+term/open
      :desc "Ansi-Term in popup" :n   "S" #'+term/open-popup-in-project
+     :desc "Youdao dictionary"  :n   "y" #'youdao-dictionary-search-at-point-tooltip
      :desc "Imenu comments"     :n   "c" #'counsel-imenu-comments
      :desc "Debugger start"     :n   "d" #'+debugger:start
      (:when IS-MAC

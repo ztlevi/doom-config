@@ -213,20 +213,6 @@
       (eshell/pushd p)))
   )
 
-;; /////////////////////////// DOC /////////////////////////////
-(def-package! tldr
-  :commands (tldr)
-  :config
-  (setq tldr-directory-path (concat doom-etc-dir "tldr/"))
-  (set-popup-rule! "^\\*tldr\\*" :side 'right :select t :quit t)
-  )
-
-(def-package! link-hint
-  :commands link-hint-open-link link-hint-open-all-links)
-
-(def-package! symbol-overlay
-  :commands (symbol-overlay-put))
-
 ;; (def-package! smartparens
 ;;   :config
 ;;   (setq sp-autoinsert-pair nil
