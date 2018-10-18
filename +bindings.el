@@ -84,7 +84,7 @@
      :desc "Imenu comments"     :n   "c" #'counsel-imenu-comments
      :desc "Debugger start"     :n   "d" #'+debugger:start
      (:when IS-MAC
-       :desc "Reveal in default program"  :nm "o" #'+macos/open-in-default-program
+       :desc "Reveal in default program"  :nm "f" #'+macos/open-in-default-program
        :desc "Reveal in Finder"           :nm "o" #'+macos/reveal-in-finder
        :desc "Reveal project in Finder"   :nm "O" #'+macos/reveal-project-in-finder
        :desc "Reveal in Terminal"         :nm "t" #'+macos/reveal-in-terminal
@@ -92,7 +92,7 @@
        :desc "Reveal in VSCode"           :nm "c" #'+macos/reveal-in-vscode
        :desc "Reveal project in VSCode"   :nm "C" #'+macos/reveal-project-in-vscode)
      (:when IS-LINUX
-       :desc "Reveal in default program"  :nm "o" #'+shell/open-in-default-program
+       :desc "Reveal in default program"  :nm "f" #'+shell/open-in-default-program
        :desc "Reveal in Finder"           :nm "o" #'+shell/reveal-in-finder
        :desc "Reveal project in Finder"   :nm "O" #'+shell/reveal-project-in-finder
        :desc "Reveal in Terminal"         :nm "t" #'+shell/reveal-in-terminal
