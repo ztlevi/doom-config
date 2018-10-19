@@ -131,7 +131,7 @@ brew tap twlz0ne/homebrew-ccls
 brew install ccls
 #+END_SRC
 
-*** For MacOS, according to the discussion [h[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
+*** For MacOS, according to the discussion [[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
 #+BEGIN_SRC bash
 defaults write org.gnu.Emacs Emacs.ToolBar -string no
 defaults write org.gnu.Emacs Emacs.ScrollBar -string no

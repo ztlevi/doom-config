@@ -196,7 +196,7 @@
      :localleader
      :desc "Reveal in Typora" :n "o" #'+macos/reveal-in-typora
      :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
-     (:desc "Table" :prefix "t"
+     (:desc "Insert" :prefix "i"
        :n "r" #'markdown-table-insert-row
        :n "c" #'markdown-table-insert-column)))
  (:after ivy
