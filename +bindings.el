@@ -168,7 +168,6 @@
  (:after python
    (:map python-mode-map
      :localleader
-     :n "=" 'py-autopep8-buffer
      :n "i" 'importmagic-fix-symbol-at-point))
  (:after js2-mode
    (:map js2-mode-map
