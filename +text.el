@@ -25,6 +25,8 @@
     (advice-add 'markdown-preview :override '+my/markdown-preview))
   )
 
+(def-package! edit-indirect)
+
 ;; ////////////////////////// OTHERS ///////////////////////////
 (def-package! blog-admin
   :hook (blog-admin-backend-after-new-post . find-file)

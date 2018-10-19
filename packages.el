@@ -5,6 +5,7 @@
 ;; misc
 (packages! avy
            evil-nerd-commenter
+           edit-indirect
            atomic-chrome
            all-the-icons-dired
            link-hint
