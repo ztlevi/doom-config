@@ -69,28 +69,6 @@
                                     :test "ctest")
   )
 
-(after! counsel-projectile
-  (ivy-add-actions
-   'counsel-projectile-switch-project
-   `(("b" counsel-projectile-switch-project-action-switch-to-buffer
-      "jump to a project buffer")
-     ("s" counsel-projectile-switch-project-action-save-all-buffers
-      "save all project buffers")
-     ("k" counsel-projectile-switch-project-action-kill-buffers
-      "kill all project buffers")
-     ("c" counsel-projectile-switch-project-action-compile
-      "run project compilation command")
-     ("e" counsel-projectile-switch-project-action-edit-dir-locals
-      "edit project dir-locals")
-     ("v" counsel-projectile-switch-project-action-vc
-      "open project in vc-dir / magit / monky")
-     ("xe" counsel-projectile-switch-project-action-run-eshell
-      "invoke eshell from project root")
-     ("xt" counsel-projectile-switch-project-action-run-term
-      "invoke term from project root")
-     ("_" counsel-projectile-switch-project-action-org-capture
-      "org-capture into project"))))
-
 ;; ///////////////////////// Git /////////////////////////
 (after! git-link
   (add-to-list 'git-link-remote-alist
