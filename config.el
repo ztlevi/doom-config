@@ -16,6 +16,7 @@
                     ("^\\*Ibuffer\\*" :size 0.4)
                     ("^\\*info.*" :size 80 :side right)
                     ("^\\*Man.*" :size 80 :side right)
+                    ("^\\*Customize" :actions display-buffer)
                     ))
 
 ;; Load system profile for different machines
