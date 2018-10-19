@@ -137,6 +137,8 @@
    :m "C-S-h"  #'+my/xref-jump-backward-file
    :m "C-S-l"  #'+my/xref-jump-forward-file
    )
+ (:map +popup-mode-map
+   :n "q" #'quit-window)
  (:after lispy
    (:map lispy-mode-map
      :n "M-j" #'lispy-splice
