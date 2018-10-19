@@ -97,6 +97,9 @@
                '("isl-122-ubuntu" git-link-gitlab))
   (add-to-list 'git-link-commit-remote-alist
                '("isl-122-ubuntu" git-link-commit-gitlab))
+
+  ;; prefer to select remote by default
+  (advice-add 'git-link--select-remote :override 'git-link--read-remote)
   )
 
 (setq magit-repository-directories '(("~/Develop/Github" . 2)))
