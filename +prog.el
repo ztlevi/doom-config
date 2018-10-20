@@ -79,6 +79,11 @@
   (add-hook! 'js2-mode-hook 'run-import-js))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
 
+;; /////////////////////////// WEB ////////////////////////
+(after! web-mode
+  (web-mode-toggle-current-element-highlight)
+  (web-mode-dom-errors-show))
+
 ;; ///////////////////////// LISP /////////////////////////
 (def-package! lispy
   :hook (emacs-lisp-mode . lispy-mode)
