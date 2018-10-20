@@ -176,6 +176,9 @@
             #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab))))
 
 ;; //////////////////////////// TERM ////////////////////////////////
+(add-to-list 'auto-mode-alist '("zsh\\(?:env\\|rc\\)\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("zprofile\\'" . sh-mode))
+
 (after! eshell
   ;; eshell-mode imenu index
   (add-hook! 'eshell-mode-hook (setq-local imenu-generic-expression '(("Prompt" " λ \\(.*\\)" 1))))
