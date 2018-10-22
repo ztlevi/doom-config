@@ -46,7 +46,9 @@ ln -Fs `sudo find /usr/local -name "Emacs.app"` /Applications/Emacs.app
 *** Linux
 #+BEGIN_SRC shell
 # Ubuntu
-sudo apt-get insatll emacs
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt-get update
+sudo apt install emacs26
 # Arch
 sudo pacman -S emacs
 #+END_SRC
