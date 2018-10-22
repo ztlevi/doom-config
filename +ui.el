@@ -1,13 +1,11 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
 (cond (IS-MAC
-       (progn
-         (setq doom-font (font-spec :family "Operator Mono Lig" :size 16))
-         (setq doom-big-font (font-spec :family "Operator Mono Lig" :size 22))))
+       (setq doom-font (font-spec :family "Operator Mono Lig" :size 16)
+             doom-big-font (font-spec :family "Operator Mono Lig" :size 22)))
       (IS-LINUX
-       (progn
-         (setq doom-font (font-spec :family "Ubuntu Mono" :size 36))
-         (setq doom-big-font (font-spec :family "Ubuntu Mono" :size 40)))))
+       (setq doom-font (font-spec :family "Ubuntu Mono" :size 36)
+             doom-big-font (font-spec :family "Ubuntu Mono" :size 40))))
 
 (setq +doom-modeline-height 28)
 (setq +doom-modeline-buffer-file-name-style 'relative-to-project)
