@@ -89,6 +89,12 @@ sudo pacman --needed --noconfirm -S sqlite ripgrep
 #+END_SRC
 
 Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
+
+**** Ubuntu
+#+BEGIN_SRC shell
+sudo apt install tidy mplayer
+#+END_SRC
+
 **** npm
 #+BEGIN_SRC shell
 npm install -g prettier import-js
@@ -128,7 +134,7 @@ npm install vue-language-server -g
 # pyls-mypy is a type integration for Python
 pip3 install 'python-language-server[all]' pyls-isort
 
-# ccls
+# ccls https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
 #+END_SRC

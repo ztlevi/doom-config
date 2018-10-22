@@ -62,6 +62,8 @@
 (def-package! ccls
   :init (add-hook! (c-mode c++-mode objc-mode) #'+ccls//enable)
   :config
+  (when (file-exists-p "~/Developer/Github/ccls/Release/ccls")
+    (setq ccls-executable "~/Developer/Github/ccls/Release/ccls"))
   ;; overlay is slow
   ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
   (setq ccls-sem-highlight-method 'font-lock)
