@@ -3,8 +3,7 @@
 (add-hook! 'text-mode-hook (setq-local truncate-lines nil))
 
 ;; /////////////////////////// ORG /////////////////////////////////
-(setq org-ellipsis "  "
-      org-directory "~/Dropbox/Org-Notes"
+(setq org-directory "~/Dropbox/Org-Notes"
       org-agenda-files (list org-directory))
 
 ;; ///////////////////////////// MARKDOWN /////////////////////////////
