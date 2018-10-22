@@ -3,7 +3,7 @@
 (cond (IS-MAC
        (setq doom-font (font-spec :family "Operator Mono Lig" :size 16)
              doom-big-font (font-spec :family "Operator Mono Lig" :size 22)
-             +modeline-height 28))
+             +modeline-height 32))
       (IS-LINUX
        (setq doom-font (font-spec :family "Ubuntu Mono" :size 36)
              doom-big-font (font-spec :family "Ubuntu Mono" :size 40)
