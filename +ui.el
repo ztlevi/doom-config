@@ -2,12 +2,13 @@
 
 (cond (IS-MAC
        (setq doom-font (font-spec :family "Operator Mono Lig" :size 16)
-             doom-big-font (font-spec :family "Operator Mono Lig" :size 22)))
+             doom-big-font (font-spec :family "Operator Mono Lig" :size 22)
+             +doom-modeline-height 28))
       (IS-LINUX
        (setq doom-font (font-spec :family "Ubuntu Mono" :size 36)
-             doom-big-font (font-spec :family "Ubuntu Mono" :size 40))))
+             doom-big-font (font-spec :family "Ubuntu Mono" :size 40)
+             +doom-modeline-height 70)))
 
-(setq +doom-modeline-height 28)
 (setq +doom-modeline-buffer-file-name-style 'relative-to-project)
 
 ;; set different theme for tty
