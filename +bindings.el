@@ -192,6 +192,8 @@
      :n "=" #'rust-format-buffer))
  (:after markdown-mode
    (:map markdown-mode-map
+     :ni [M-return]   (λ! (+org/insert-item 'below))
+     :ni [S-M-return] (λ! (+org/insert-item 'above))
      :localleader
      :desc "Reveal in Typora" :n "o" #'+macos/reveal-in-typora
      :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
