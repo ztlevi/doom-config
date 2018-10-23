@@ -190,9 +190,10 @@
    (:map rust-mode-map
      :localleader
      :n "=" #'rust-format-buffer))
- (:after org-mode-map
-   :localleader
-   :n "lt" #'org-toggle-link-display)
+ (:after org
+   (:map org-mode-map
+     :localleader
+     :n "L" #'org-toggle-link-display))
  (:after markdown-mode
    (:map markdown-mode-map
      :ni [M-return]   (λ! (+org/insert-item 'below))
