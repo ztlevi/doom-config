@@ -33,10 +33,6 @@
 
   (map!
    :map (c-mode-map c++-mode-map)
-   :n "C-h" (λ! (ccls-navigate "U"))
-   :n "C-j" (λ! (ccls-navigate "R"))
-   :n "C-k" (λ! (ccls-navigate "L"))
-   :n "C-l" (λ! (ccls-navigate "D"))
    (:leader
      :n "=" #'clang-format-region
      )

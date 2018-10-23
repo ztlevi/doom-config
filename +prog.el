@@ -23,7 +23,7 @@
                 '(javascript-tide
                   jsx-tide javascript-jshint
                   typescript-tide json-jsonlist
-                  c/c++-clang c/c++-cppcheck c/c++-gcc
+                  c/c++-clang c/c++-cppcheck
                   ))
 
   ;; customize flycheck temp file prefix
