@@ -78,7 +78,7 @@
    (:desc "open" :prefix "o"
      :desc "Ibuffer"            :nmv "I" #'ibuffer
      :desc "Open link"          :n   "x" #'link-hint-open-link
-     :desc "Ansi-Term"          :n   "s" #'+term/open
+     :desc "Ansi-Term"          :n   "s" #'+term/open-popup
      :desc "Ansi-Term in popup" :n   "S" #'+term/open-popup-in-project
      :desc "Youdao dictionary"  :n   "y" #'youdao-dictionary-search-at-point-tooltip
      :desc "Youdao play voice"  :n   "Y" #'youdao-dictionary-play-voice-at-point
