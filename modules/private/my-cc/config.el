@@ -33,12 +33,9 @@
 
   (map!
    :map (c-mode-map c++-mode-map)
-   (:leader
-     :n "=" #'clang-format-region
-     )
    (:localleader
      :n "a" #'ccls/references-address
-     :n "c" #'ccls/callers
+     :n "c" #'ccls-call-hierarchy
      :n "f" #'ccls/references-not-call
      :n "lp" #'ccls-preprocess-file
      :n "lf" #'ccls-reload
