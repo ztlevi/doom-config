@@ -22,6 +22,14 @@
 
 ;; ////////////////////////// LINUX /////////////////////////////
 (when IS-LINUX
+  ;; Load path from zsh login shell
+  (let* ((zshpath (shell-command-to-string
+                   "/usr/bin/env zsh -lc 'printenv PATH'"))
+         (pathlst (split-string zshpath ":")))
+    (setq exec-path pathlst)
+    (setq eshell-path-env zshpath)
+    (setenv "PATH" zshpath))
+
   (defvar linux-terminal (if (file-exists-p "/usr/bin/konsole")
                              "/usr/bin/konsole"
                            "/usr/bin/gnome-terminal"))
