@@ -150,7 +150,6 @@
    lsp-ui-peek-force-fontify nil
    lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
 
-  (advice-add #'lsp-ui-doc--eldoc :override #'+my/lsp-ui-doc--eldoc)
   (after! lsp-ui-mode
     (custom-set-faces
      ;; '(ccls-sem-global-variable-face ((t (:underline t :weight extra-bold))))

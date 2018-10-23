@@ -32,6 +32,11 @@
 
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
+  ;; OVERRIDE
+  (defun +ivy/projectile-find-file ()
+    (interactive)
+    (counsel-git))
+
   (setq ivy-initial-inputs-alist nil
         ivy-format-function (quote ivy-format-function-arrow)
         ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
@@ -58,9 +63,6 @@
 
 ;; ///////////////////////// PROJECTILE ///////////////////
 (after! projectile
-  ;; in favor of counsel-git
-  (advice-add 'projectile-find-file :override 'counsel-git)
-
   (setq compilation-read-command nil)  ; no prompt in projectile-compile-project
   ;; . -> Build
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
@@ -76,8 +78,9 @@
   (add-to-list 'git-link-commit-remote-alist
                '("isl-122-ubuntu" git-link-commit-gitlab))
 
-  ;; prefer to select remote by default
-  (advice-add 'git-link--select-remote :override 'git-link--read-remote)
+  ;; OVERRIDE
+  (defun git-link--select-remote ()
+    (git-link--read-remote))
   )
 
 (setq magit-repository-directories '(("~/Develop/Github" . 2)))

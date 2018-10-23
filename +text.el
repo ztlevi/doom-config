@@ -19,9 +19,11 @@
                                        markdown-output-buffer-name
                                        (format "grip --browser '%s'" (buffer-file-name)))))
 
-  ;; Use advice to use preview at both markdown-mode and gfm-mode.
+  ;; OVERRIDE
   (when (executable-find "grip")
-    (advice-add 'markdown-preview :override '+my/markdown-preview))
+    (defun markdown-preview ()
+      (interactive)
+      (+my/markdown-preview)))
   )
 
 (def-package! edit-indirect)
