@@ -13,7 +13,6 @@
   ;; Language servers have better idea filtering and sorting,
   ;; don't filter results on the client side.
   (setq company-transformers nil
-        company-lsp-async t
         company-lsp-cache-candidates nil))
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
