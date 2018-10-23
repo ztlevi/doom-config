@@ -1,6 +1,10 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; private/my/packages.el
-(disable-packages! anaconda-mode exec-path-from-shell solaire-mode)
+
+;; disabled packages
+(packages! (anaconda-mode :disable t)
+           (exec-path-from-shell :disable t)
+           (solaire-mode :disable t))
 
 ;; misc
 (packages! avy
