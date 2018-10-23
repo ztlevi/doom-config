@@ -93,13 +93,13 @@
        :desc "Reveal in VSCode"           :nm "c" #'+macos/reveal-in-vscode
        :desc "Reveal project in VSCode"   :nm "C" #'+macos/reveal-project-in-vscode)
      (:when IS-LINUX
-       :desc "Reveal in default program"  :nm "f" #'+shell/open-in-default-program
-       :desc "Reveal in Finder"           :nm "o" #'+shell/reveal-in-finder
-       :desc "Reveal project in Finder"   :nm "O" #'+shell/reveal-project-in-finder
-       :desc "Reveal in Terminal"         :nm "t" #'+shell/reveal-in-terminal
-       :desc "Reveal project in Terminal" :nm "T" #'+shell/reveal-project-in-terminal
-       :desc "Reveal in VSCode"           :nm "c" #'+shell/reveal-in-vscode
-       :desc "Reveal project in VSCode"   :nm "C" #'+shell/reveal-project-in-vscode))
+       :desc "Reveal in default program"  :nm "f" #'+linux/open-in-default-program
+       :desc "Reveal in Finder"           :nm "o" #'+linux/reveal-in-finder
+       :desc "Reveal project in Finder"   :nm "O" #'+linux/reveal-project-in-finder
+       :desc "Reveal in Terminal"         :nm "t" #'+linux/reveal-in-terminal
+       :desc "Reveal project in Terminal" :nm "T" #'+linux/reveal-project-in-terminal
+       :desc "Reveal in VSCode"           :nm "c" #'+linux/reveal-in-vscode
+       :desc "Reveal project in VSCode"   :nm "C" #'+linux/reveal-project-in-vscode))
    (:desc "insert" :prefix "i"
      :n "o" #'symbol-overlay-put
      :n "q" #'symbol-overlay-remove-all)
