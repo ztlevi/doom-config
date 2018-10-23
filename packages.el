@@ -23,3 +23,5 @@
            lsp-python importmagic py-isort
            lsp-rust rust-mode
            )
+
+(package! ghub+ :recipe (:fetcher github :repo "vermiculus/ghub-plus" :commit "f36334b"))
