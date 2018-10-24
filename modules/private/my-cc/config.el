@@ -59,8 +59,6 @@
     (setq ccls-executable "~/Developer/Github/ccls/Release/ccls"))
   ;; overlay is slow
   ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
-  (setq ccls-sem-highlight-method 'font-lock)
-  (ccls-use-default-rainbow-sem-highlight)
   ;; https://github.com/maskray/ccls/blob/master/src/config.h
   (setq ccls-extra-init-params
           `(:clang (:pathMappings ,+ccls-path-mappings)
