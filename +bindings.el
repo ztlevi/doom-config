@@ -76,14 +76,16 @@
      :n "l" #'flycheck-list-errors
      :n "v" #'flycheck-verify-setup)
    (:desc "open" :prefix "o"
-     :desc "Ibuffer"            :nmv "I" #'ibuffer
-     :desc "Open link"          :n   "x" #'link-hint-open-link
-     :desc "Ansi-Term"          :n   "s" #'+term/open-popup
-     :desc "Ansi-Term in popup" :n   "S" #'+term/open-popup-in-project
-     :desc "Youdao dictionary"  :n   "y" #'youdao-dictionary-search-at-point-tooltip
-     :desc "Youdao play voice"  :n   "Y" #'youdao-dictionary-play-voice-at-point
-     :desc "Imenu comments"     :n   "c" #'counsel-imenu-comments
-     :desc "Debugger start"     :n   "d" #'+debugger:start
+     :desc "Ibuffer"               :nmv "I" #'ibuffer
+     :desc "Open link"             :n   "x" #'link-hint-open-link
+     :desc "Ansi-Term"             :n   "s" #'+term/open-popup
+     :desc "Project run Ansi-Term" :n   "S" #'+term/open-popup-in-project
+     :desc "Eshell popup"          :n   "e" #'+eshell/open-popup
+     :desc "Project run Eshell"    :n   "E" #'projectile-run-eshell
+     :desc "Youdao dictionary"     :n   "y" #'youdao-dictionary-search-at-point-tooltip
+     :desc "Youdao play voice"     :n   "Y" #'youdao-dictionary-play-voice-at-point
+     :desc "Imenu comments"        :n   "c" #'counsel-imenu-comments
+     :desc "Debugger start"        :n   "d" #'+debugger:start
      (:when IS-MAC
        :desc "Reveal in default program"  :nm "f" #'+macos/open-in-default-program
        :desc "Reveal in Finder"           :nm "o" #'+macos/reveal-in-finder
@@ -104,7 +106,6 @@
      :n "o" #'symbol-overlay-put
      :n "q" #'symbol-overlay-remove-all)
    (:desc "project" :prefix "p"
-     :n "e" #'projectile-run-eshell
      :n "*" (+my/prefix-M-x "projectile-"))
    (:desc "toggle" :prefix "t"
      :n "r" #'rjsx-mode
