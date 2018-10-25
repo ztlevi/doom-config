@@ -10,6 +10,10 @@
     (+macos!open-with reveal-project-in-finder "forklift"
                       (or (doom-project-root) default-directory)))
 
+  ;; Add executable: Clion -> Tools -> Create Command Line Launcher
+  (+macos!open-with reveal-project-in-clion"clion"
+                    (or (doom-project-root) default-directory))
+
   (+macos!open-with reveal-in-vscode "Visual Studio Code" default-directory)
   (+macos!open-with reveal-project-in-vscode "Visual Studio Code"
                     (or (doom-project-root) default-directory))
@@ -42,6 +46,9 @@
 
   (+shell!open-with reveal-in-finder linux-finder default-directory)
   (+shell!open-with reveal-project-in-finder linux-finder
+                    (or (doom-project-root) default-directory))
+
+  (+shell!open-with reveal-project-in-clion "clion"
                     (or (doom-project-root) default-directory))
 
   (+shell!open-with reveal-in-vscode "code" default-directory)
