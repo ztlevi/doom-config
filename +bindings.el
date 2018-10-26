@@ -32,8 +32,6 @@
  :i "C-k" #'kill-line
  :i "C-d" #'delete-forward-char
 
- :v "p"     #'evil-visual-paste
- :v "M-v"   #'evil-visual-paste
  :v "C-r"   #'+my/evil-quick-replace
  :v "<del>" (kbd "\"_d")
  :v "<backspace>" (kbd "\"_d")

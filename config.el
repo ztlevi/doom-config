@@ -12,6 +12,9 @@
 (setq-default fill-column 100
               delete-trailing-lines t)
 
+;; Delete the selection when pasting
+(delete-selection-mode 1)
+
 (set-popup-rules! '(("^\\*helpful" :size 0.4)
                     ("^\\*Ibuffer\\*" :size 0.4)
                     ("^\\*info.*" :size 80 :side right)
