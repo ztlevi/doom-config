@@ -1,5 +1,8 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
+(advice-add #'forward-word :override #'forward-char)
+(advice-add #'backward-word :override #'backward-char)
+
 (map!
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil
