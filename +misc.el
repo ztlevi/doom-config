@@ -52,14 +52,8 @@
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
         counsel-describe-function-function 'helpful-callable
         counsel-describe-variable-function 'helpful-variable
-        counsel-fzf-cmd "fzf -f %s"
         counsel-git-cmd "rg --files"
-        ;; Add smart-casing and compressed archive searching (-zS) to default
-        ;; command arguments:
-        counsel-grep-base-command
-        "rg -zS -M 120 --no-heading --line-number --color never '%s' %s"
-        counsel-rg-base-command
-        "rg -zS -M 120 --no-heading --line-number --color never %s ."))
+        counsel-grep-base-command counsel-rg-base-command))
 
 ;; ///////////////////////// PROJECTILE ///////////////////
 (after! projectile
