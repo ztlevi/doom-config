@@ -5,17 +5,18 @@
 (defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
 
 (when IS-MAC
+  (defvar mac-apps '("Clion" "IntelliJ IDEA" "Visual Studio Code")
+    "MacOS applications collection used for `+macos!open-with' method")
+  (defun ivy--read-apps ()
+    (ivy-read "Select Applications:" mac-apps))
+
   (when (file-directory-p "/Applications/ForkLift.app")
     (+macos!open-with reveal-in-finder "forklift" default-directory)
     (+macos!open-with reveal-project-in-finder "forklift"
                       (or (doom-project-root) default-directory)))
 
-  ;; Add executable: Clion -> Tools -> Create Command Line Launcher
-  (+macos!open-with reveal-project-in-clion"clion"
-                    (or (doom-project-root) default-directory))
-
-  (+macos!open-with reveal-in-vscode "Visual Studio Code" default-directory)
-  (+macos!open-with reveal-project-in-vscode "Visual Studio Code"
+  (+macos!open-with reveal-in-apps (ivy--read-apps) default-directory)
+  (+macos!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
   (+macos!open-with reveal-in-terminal "iterm" default-directory)
@@ -34,6 +35,12 @@
     (setq eshell-path-env zshpath)
     (setenv "PATH" zshpath))
 
+  ;; Add executable: Clion -> Tools -> Create Command Line Launcher
+  (defvar linux-apps '("clion" "intellij idea" "code")
+    "Linux applications collection used for `+shell!open-with' method")
+  (defun ivy--read-apps ()
+    (ivy-read "Select Applications:" linux-apps))
+
   (defvar linux-terminal (if (file-exists-p "/usr/bin/konsole")
                              "/usr/bin/konsole"
                            "/usr/bin/gnome-terminal"))
@@ -48,11 +55,8 @@
   (+shell!open-with reveal-project-in-finder linux-finder
                     (or (doom-project-root) default-directory))
 
-  (+shell!open-with reveal-project-in-clion "clion"
-                    (or (doom-project-root) default-directory))
-
-  (+shell!open-with reveal-in-vscode "code" default-directory)
-  (+shell!open-with reveal-project-in-vscode "code"
+  (+shell!open-with reveal-in-apps (ivy--read-apps) default-directory)
+  (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
   (+shell!open-with reveal-in-terminal linux-terminal default-directory)
