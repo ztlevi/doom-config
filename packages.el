@@ -27,4 +27,3 @@
            lsp-python importmagic py-isort
            lsp-rust rust-mode
            )
-(package! magit :recipe (:fetcher github :repo "magit/magit" :files ("lisp/*") :commit "9b42fb4"))
