@@ -33,9 +33,7 @@
 ;; ///////////////////////// IVY ////////////////////////////
 (after! ivy
   ;; OVERRIDE
-  (defun +ivy/projectile-find-file ()
-    (interactive)
-    (counsel-git))
+  (advice-add #'+ivy/projectile-find-file :override #'counsel-git)
 
   (setq ivy-initial-inputs-alist nil
         ivy-format-function (quote ivy-format-function-arrow)
@@ -73,8 +71,7 @@
                '("isl-122-ubuntu" git-link-commit-gitlab))
 
   ;; OVERRIDE
-  (defun git-link--select-remote ()
-    (git-link--read-remote))
+  (advice-add #'git-link--select-remote :override #'git-link--read-remote)
   )
 
 (setq magit-repository-directories '(("~/Develop/Github" . 2)))

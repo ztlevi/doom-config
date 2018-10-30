@@ -21,9 +21,7 @@
 
   ;; OVERRIDE
   (when (executable-find "grip")
-    (defun markdown-preview ()
-      (interactive)
-      (+my/markdown-preview)))
+    (advice-add #'markdown-preview :override #'+my/markdown-preview))
   )
 
 (def-package! edit-indirect)
