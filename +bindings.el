@@ -229,6 +229,8 @@
    (:map realgud-track-mode-map
      :in ";" #'realgud-window-src-undisturb-cmd)
    (:map realgud:shortkey-mode-map
+     :n "<delete>" #'realgud:cmd-delete
+     :n "D" #'realgud:cmd-delete
      :n "e" (λ! (realgud:cmd-run-command (thing-at-point 'symbol) "eval"))
      :n "t" #'realgud:cmd-tbreak
      :n "U" #'realgud:cmd-until

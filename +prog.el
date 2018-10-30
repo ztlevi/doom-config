@@ -178,9 +178,7 @@
 
 (after! realgud
   (setq realgud-safe-mode nil)
-  (evil-collection-define-key 'normal 'realgud:shortkey-mode-map
-    "d" #'realgud:cmd-newer-frame
-    "D" #'realgud:cmd-delete
-    "u" #'realgud:cmd-older-frame
-    )
+  (setq realgud:pdb-command-name
+        (string-trim-right
+         (shell-command-to-string "python3 -c 'import pdb; print(pdb.__file__)'") "\n"))
   )
