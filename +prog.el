@@ -175,10 +175,3 @@
                    "%e %a"))
       (:remove  . ("%e")))
     :default "c++"))
-
-(after! realgud
-  (setq realgud-safe-mode nil)
-  (setq realgud:pdb-command-name
-        (string-trim-right
-         (shell-command-to-string "python3 -c 'import pdb; print(pdb.__file__)'") "\n"))
-  )
