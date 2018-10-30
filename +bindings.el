@@ -124,21 +124,6 @@
      :desc "Directory" :nmv "d" #'+ivy/project-search-from-cwd)
    )
 
- (:map prog-mode-map
-   ;; Override default :n < > ( )
-   ;; :nm "<" #'lispyville-previous-opening
-   ;; :nm ">" #'lispyville-next-closing
-
-   ;; :n "C-h" #'lispyville-backward-up-list
-   ;; :n "C-j" #'lispyville-forward-sexp
-   ;; :n "C-k" #'lispyville-backward-sexp
-   ;; :n "C-l" #'lispyville-up-list
-
-   ;; :n "H"  #'lsp-ui-peek-jump-backward
-   ;; :n "L"  #'lsp-ui-peek-jump-forward
-   :m "C-S-h"  #'+my/xref-jump-backward-file
-   :m "C-S-l"  #'+my/xref-jump-forward-file
-   )
  (:map +popup-mode-map
    :n "q" #'quit-window)
  (:after lispy

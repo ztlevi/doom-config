@@ -195,28 +195,6 @@ With PREFIX, cd to project root."
         (remove-function (local 'eldoc-documentation-function) #'+my//realtime-elisp-doc-function)
       (add-function :after-while (local 'eldoc-documentation-function) #'+my//realtime-elisp-doc-function))))
 
-(defmacro +my//xref-jump-file (command)
-  `(let* ((target (buffer-name))
-          (last target) (last-point (point))
-          (curr target) (curr-point (point)))
-     (cl-loop do
-              ,command
-              (setq curr (buffer-name) curr-point (point))
-              until (or (string= target curr)
-                        (and (string= last curr) (= last-point curr-point))
-                        (prog1 nil (setq last curr last-point curr-point))
-                        ))))
-
-;;;###autoload
-(defun +my/xref-jump-backward-file ()
-  (interactive)
-  (+my//xref-jump-file (lsp-ui-peek-jump-backward)))
-
-;;;###autoload
-(defun +my/xref-jump-forward-file ()
-  (interactive)
-  (+my//xref-jump-file (lsp-ui-peek-jump-forward)))
-
 ;;;###autoload
 (defun +my/realgud-eval-nth-name-forward (n)
   (interactive "p")
