@@ -33,6 +33,7 @@
        "g" nil
        "q" #'ranger-close-and-kill-inactive-buffers
        "f" #'counsel-find-file
+       "C-g" #'ranger-go
        "C-<tab>" #'ranger-next-tab
        "C-S-<tab>" #'ranger-prev-tab
        "U" #'dired-unmark-all-files
@@ -41,16 +42,15 @@
        "+" #'dired-create-directory
        (:leader
          :m "fj" #'deer
-         :m "ar" #'ranger
-         :m "ad" #'deer
-         :m "oE" #'+eshell/open-popup)
+         :m "oj" #'deer
+         :m "oJ" #'ranger)
        ))))
 
 (map!
  (:leader
    :n "fj" #'deer
-   :n "ar" #'ranger
-   :n "ad" #'deer))
+   :n "oj" #'deer
+   :n "oJ" #'ranger))
 
 (def-package! all-the-icons-dired
   :defer t
