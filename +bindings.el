@@ -129,20 +129,19 @@
  (:after lispy
    (:map lispy-mode-map
      :n "M-j" #'lispy-splice
-     :i "C-c (" #'lispy-wrap-round
      :i "_" #'special-lispy-different
      :i [remap kill-line] #'lispy-kill
      :i [remap delete-backward-char] #'lispy-delete-backward))
  (:after elisp-mode
    :map emacs-lisp-mode-map
    :n "gh" #'helpful-at-point
-   :n "C-<left>" #'lispy-forward-barf-sexp
-   :n "C-<right>" #'lispy-forward-slurp-sexp
+   :n "M-<left>" #'lispy-forward-barf-sexp
+   :n "M-<right>" #'lispy-forward-slurp-sexp
    :n "C-M-<left>" #'lispy-backward-slurp-sexp
    :n "C-M-<right>" #'lispy-backward-barf-sexp
    :n "<tab>" #'lispyville-prettify
    :localleader
-   :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
+   :desc "Eval last expression" :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
  (:after lsp-ui
    :map lsp-ui-mode-map
    :n "C-j" #'toggle-lsp-ui-doc)

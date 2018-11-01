@@ -84,17 +84,11 @@
   (web-mode-dom-errors-show))
 
 ;; ///////////////////////// LISP /////////////////////////
-(def-package! lispy
-  :hook (emacs-lisp-mode . lispy-mode)
-  :config
-  (setq lispy-outline "^;; \\(?:;[^#]\\|\\*+\\)"
-        lispy-outline-header ";; "
-        lispy-ignore-whitespace t))
-
-;; Also use lispyville in prog-mode for [ ] < >
 (def-package! lispyville
-  :after (evil)
-  :hook (lispy-mode . lispyville-mode)
+  :when (featurep! :feature evil)
+  :hook
+  (emacs-lisp-mode . lispy-mode)
+  (lispy-mode . lispyville-mode)
   :config
   (lispyville-set-key-theme
    '(operators
