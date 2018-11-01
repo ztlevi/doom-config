@@ -1,15 +1,25 @@
 ;;; private/ranger/config.el -*- lexical-binding: t; -*-
 
-(load! "+vinegar")
+(def-package! dired
+  :hook (dired-mode . +my/dired-setup)
+  :config
+  ;; Use GNU ls as `gls' from `coreutils' if available.  Add `(setq
+  ;; dired-use-ls-dired nil)' to your config to suppress the Dired warning when
+  ;; not using GNU ls.  We must look for `gls' after `exec-path-from-shell' was
+  ;; initialized to make sure that `gls' is in `exec-path'
+  (when IS-MAC
+    (let ((gls (executable-find "gls")))
+      (when gls
+        (setq insert-directory-program gls))))
+  (setq dired-listing-switches "-aBhl --group-directories-first"))
 
 (def-package! ranger
   :init
   (setq ranger-override-dired t)
-  (progn
-    ;; set up image-dired to allow picture resize
-    (setq image-dired-dir (concat doom-cache-dir "image-dir"))
-    (unless (file-directory-p image-dired-dir)
-      (make-directory image-dired-dir)))
+  ;; set up image-dired to allow picture resize
+  (setq image-dired-dir (concat doom-cache-dir "image-dir"))
+  (unless (file-directory-p image-dired-dir)
+    (make-directory image-dired-dir))
   :config
   (defun ranger-close-and-kill-inactive-buffers ()
     "ranger close current buffer and kill inactive ranger buffers"
@@ -28,23 +38,22 @@
         ranger-max-preview-size 10)
 
   (map!
-   (:after ranger
-     (:map ranger-normal-mode-map
-       "g" nil
-       "q" #'ranger-close-and-kill-inactive-buffers
-       "f" #'counsel-find-file
-       "C-g" #'ranger-go
-       "C-<tab>" #'ranger-next-tab
-       "C-S-<tab>" #'ranger-prev-tab
-       "U" #'dired-unmark-all-files
-       "u" #'dired-unmark
-       "(" #'dired-hide-details-mode
-       "+" #'dired-create-directory
-       (:leader
-         :m "fj" #'deer
-         :m "oj" #'deer
-         :m "oJ" #'ranger)
-       ))))
+   (:map ranger-normal-mode-map
+     "g" nil
+     "q" #'ranger-close-and-kill-inactive-buffers
+     "f" #'counsel-find-file
+     "C-g" #'ranger-go
+     "C-<tab>" #'ranger-next-tab
+     "C-S-<tab>" #'ranger-prev-tab
+     "U" #'dired-unmark-all-files
+     "u" #'dired-unmark
+     "(" #'dired-hide-details-mode
+     "+" #'dired-create-directory
+     (:leader
+       :m "fj" #'deer
+       :m "oj" #'deer
+       :m "oJ" #'ranger)
+     )))
 
 (map!
  (:leader
@@ -59,45 +68,3 @@
 (def-package! font-lock+)
 
 (def-package! dired-x)
-
-(def-package! dired
-  :init
-  (add-hook 'dired-mode-hook 'vinegar/dired-setup)
-  (map!
-   (:after dired
-     (:map dired-mode-map
-       "j" 'vinegar/move-down
-       "k" 'vinegar/move-up
-       "-" 'vinegar/up-directory
-       "0" 'dired-back-to-start-of-files
-       "=" 'vinegar/dired-diff
-       "C-j" 'dired-next-subdir
-       "C-k" 'dired-prev-subdir
-       "I" 'vinegar/dotfiles-toggle
-       "~" '(lambda ()(interactive) (find-alternate-file "~/"))
-       "RET" (if vinegar-reuse-dired-buffer
-                 'dired-find-alternate-file
-               'dired-find-file)
-       "f" (if (featurep 'ivy)
-               'counsel-find-file
-             'helm-find-files)
-       "J" 'dired-goto-file
-       "C-f" 'find-name-dired
-       "H" 'diredp-dired-recent-dirs
-       "T" 'dired-tree-down
-       "K" 'dired-do-kill-lines
-       "r" 'revert-buffer
-       "C-r" 'dired-do-redisplay
-       "g" nil
-       "gg" 'vinegar/back-to-top
-       "G" 'vinegar/jump-to-bottom))))
-
-;; Use GNU ls as `gls' from `coreutils' if available.  Add `(setq
-;; dired-use-ls-dired nil)' to your config to suppress the Dired warning when
-;; not using GNU ls.  We must look for `gls' after `exec-path-from-shell' was
-;; initialized to make sure that `gls' is in `exec-path'
-(when IS-MAC
-  (let ((gls (executable-find "gls")))
-    (when gls
-      (setq insert-directory-program gls))))
-(setq dired-listing-switches "-aBhl --group-directories-first")
