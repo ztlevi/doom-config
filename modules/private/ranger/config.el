@@ -99,5 +99,5 @@
 (when IS-MAC
   (let ((gls (executable-find "gls")))
     (when gls
-      (setq insert-directory-program gls
-            dired-listing-switches "-aBhl --group-directories-first"))))
+      (setq insert-directory-program gls))))
+(setq dired-listing-switches "-aBhl --group-directories-first")
