@@ -26,8 +26,6 @@
                   c/c++-clang c/c++-cppcheck
                   ))
 
-  (setq flycheck-c/c++-gcc-executable "gcc-7")
-
   ;; customize flycheck temp file prefix
   (setq-default flycheck-temp-prefix ".flycheck"))
 

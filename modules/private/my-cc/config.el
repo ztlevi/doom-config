@@ -76,3 +76,10 @@
     :definition #'lsp-ui-peek-find-definitions
     :references #'lsp-ui-peek-find-references)
   )
+
+(after! flycheck
+  (setq flycheck-c/c++-gcc-executable "gcc-7")
+  (add-hook! c++-mode-hook
+    (setq flycheck-gcc-language-standard "c++11"
+          flycheck-clang-language-standard "c++11"))
+  )
