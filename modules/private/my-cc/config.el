@@ -24,10 +24,10 @@
                  (topmost-intro . 0)
                  (arglist-cont-nonempty . +)))))
   (setq c-default-style "my-cc")
+
   (add-hook 'c-mode-common-hook
             (lambda ()
-              (modify-syntax-entry ?_ "w")
-              ))
+              (modify-syntax-entry ?_ "w")))
 
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
 
@@ -57,15 +57,15 @@
   ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
   ;; https://github.com/maskray/ccls/blob/master/src/config.h
   (setq ccls-extra-init-params
-          `(:clang (:pathMappings ,+ccls-path-mappings)
-                   :completion
-                   (
-                    :includeBlacklist
-                    ("^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
-                     "^/usr/(local/)?include/c\\+\\+/v1/"
-                     ))
-                   :diagnostics (:frequencyMs 5000)
-                   :index (:reparseForDependency 1)))
+        `(:clang (:pathMappings ,+ccls-path-mappings)
+                 :completion
+                 (
+                  :includeBlacklist
+                  ("^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
+                   "^/usr/(local/)?include/c\\+\\+/v1/"
+                   ))
+                 :diagnostics (:frequencyMs 5000)
+                 :index (:reparseForDependency 1)))
 
   (with-eval-after-load 'projectile
     (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
