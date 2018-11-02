@@ -118,6 +118,8 @@
      :n "j" #'avy-goto-char-timer
      :n "l" #'avy-goto-line
      :n "b" #'avy-pop-mark)
+   (:desc "snippets" :prefix "s"
+     :n "t" #'yas/describe-tables)
    (:desc "search" :prefix "/"
      :desc "Project"   :nmv "/" #'+ivy/project-search
      :desc "Comments"  :nmv "c" #'counsel-imenu-comments

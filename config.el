@@ -21,6 +21,7 @@
                     ("^\\*Man.*" :size 80 :side right)
                     ("^\\*Customize" :actions display-buffer)
                     ("^\\*edit-indirect" :size 0.6)
+                    ("^\\*YASnippet Tables\\*" :size 0.4)
                     ))
 
 ;; Load system profile for different machines
