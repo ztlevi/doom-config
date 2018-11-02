@@ -1,5 +1,7 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
+(setq doom-theme 'doom-one-light)
+
 (cond (IS-MAC
        (setq doom-font (font-spec :family "Operator Mono Lig" :size 16)
              doom-big-font (font-spec :family "Operator Mono Lig" :size 22)
@@ -9,22 +11,7 @@
              doom-big-font (font-spec :family "Ubuntu Mono" :size 40)
              +modeline-height 62)))
 
-;; override modeline icon func
-(defun +doom-ml-icon (icon &optional text face voffset)
-  "Displays an octicon ICON with FACE, followed by TEXT. Uses
-`all-the-icons-octicon' to fetch the icon."
-  (concat (when icon
-            (concat
-             (all-the-icons-material icon :face face :height 1 :v-adjust (or voffset -0.2))
-             (if text +modeline--vspc)))
-          (if text (propertize text 'face face))))
-
 (setq +doom-modeline-buffer-file-name-style 'relative-to-project)
-
-;; set different theme for tty
-(if (display-graphic-p)
-    (setq doom-theme 'doom-one-light)
-  (setq doom-theme 'doom-one))
 
 (setq +workspaces-on-switch-project-behavior t)
 
