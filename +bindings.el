@@ -130,18 +130,25 @@
    :n "q" #'quit-window)
  (:after lispy
    (:map lispy-mode-map
-     :n "M-j" #'lispy-splice
      :i "_" #'special-lispy-different
      :i [remap kill-line] #'lispy-kill
-     :i [remap delete-backward-char] #'lispy-delete-backward))
+     :i [remap delete-backward-char] #'lispy-delete-backward
+     :n "M-<left>" #'lispy-forward-barf-sexp
+     :n "M-<right>" #'lispy-forward-slurp-sexp
+     :n "C-M-<left>" #'lispy-backward-slurp-sexp
+     :n "C-M-<right>" #'lispy-backward-barf-sexp))
+ (:after lispyville
+   (:map lispyville-mode-map
+     :n "M-r"   nil
+     :n "M-s"   nil
+     :n "M-v"   nil
+     :n "C-M-r" #'lispy-raise-sexp
+     :n "C-M-s" #'lispy-splice
+     :n "M-V"   #'lispy-convolute-sexp
+     :n "<tab>" #'lispyville-prettify))
  (:after elisp-mode
    :map emacs-lisp-mode-map
    :n "gh" #'helpful-at-point
-   :n "M-<left>" #'lispy-forward-barf-sexp
-   :n "M-<right>" #'lispy-forward-slurp-sexp
-   :n "C-M-<left>" #'lispy-backward-slurp-sexp
-   :n "C-M-<right>" #'lispy-backward-barf-sexp
-   :n "<tab>" #'lispyville-prettify
    :localleader
    :desc "Eval last expression" :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
  (:after lsp-ui

@@ -84,11 +84,20 @@
   (web-mode-dom-errors-show))
 
 ;; ///////////////////////// LISP /////////////////////////
+(def-package! lispy
+  :hook ((common-lisp-mode . lispy-mode)
+         (emacs-lisp-mode . lispy-mode)
+         (scheme-mode . lispy-mode)
+         (racket-mode . lispy-mode)
+         (hy-mode . lispy-mode)
+         (lfe-mode . lispy-mode)
+         (clojure-mode . lispy-mode))
+  :config
+  (add-hook 'lispy-mode-hook #'turn-off-smartparens-mode))
+
 (def-package! lispyville
   :when (featurep! :feature evil)
-  :hook
-  (emacs-lisp-mode . lispy-mode)
-  (lispy-mode . lispyville-mode)
+  :hook (lispy-mode . lispyville-mode)
   :config
   (lispyville-set-key-theme
    '(operators

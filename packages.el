@@ -21,8 +21,7 @@
            )
 
 ;; programming
-(packages! lispyville
-           lsp-mode lsp-ui company-lsp
+(packages! lsp-mode lsp-ui company-lsp
            wucuo import-js
            lsp-python importmagic py-isort
            lsp-rust rust-mode
