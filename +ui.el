@@ -34,6 +34,11 @@
    '(markdown-header-face-1 ((t (:inherit org-level-1))))
    '(markdown-header-face-2 ((t (:inherit org-level-2))))
    '(markdown-header-face-3 ((t (:inherit org-level-3))))
+   `(web-mode-jsx-depth-1-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.9)))))
+   `(web-mode-jsx-depth-2-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.8)))))
+   `(web-mode-jsx-depth-3-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.7)))))
+   `(web-mode-jsx-depth-4-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.6)))))
+   `(web-mode-jsx-depth-5-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.5)))))
    ))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
