@@ -20,9 +20,10 @@
 ;; ///////////////////////// FLYCHECK /////////////////////////
 (after! flycheck
   (setq-default flycheck-disabled-checkers
-                '(javascript-tide
-                  jsx-tide javascript-jshint
-                  typescript-tide json-jsonlist
+                '(
+                  javascript-tide jsx-tide javascript-jshint
+                  typescript-tide handlebars
+                  json-jsonlist
                   c/c++-clang c/c++-cppcheck
                   ))
 
@@ -72,14 +73,15 @@
     :definition #'lsp-ui-peek-find-definitions
     :references #'lsp-ui-peek-find-references))
 
-;; ///////////////////////// JS /////////////////////////
+;; //////////////////// JS, TS, WEB //////////////////////
 (def-package! import-js
   :init
   (add-hook! 'js2-mode-hook 'run-import-js))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
 
-;; //////////////////////// WEB /////////////////////////
 (after! web-mode
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+
   (web-mode-toggle-current-element-highlight)
   (web-mode-dom-errors-show))
 
