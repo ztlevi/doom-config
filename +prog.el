@@ -31,7 +31,7 @@
 
 (defun disable-flycheck-mode ()
   (flycheck-mode -1))
-;; (add-hook! '(emacs-lisp-mode-hook) 'disable-flycheck-mode)
+;; (add-hook! (emacs-lisp-mode) 'disable-flycheck-mode)
 
 ;; camcel case spellcheck
 (def-package! wucuo
@@ -78,10 +78,13 @@
   (add-hook! 'js2-mode-hook 'run-import-js))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
 
-;; /////////////////////////// WEB ////////////////////////
+;; //////////////////////// WEB /////////////////////////
 (after! web-mode
   (web-mode-toggle-current-element-highlight)
   (web-mode-dom-errors-show))
+
+;; //////////////////////// GO ///////////////////////////
+(add-hook! 'go-mode-hook (setq indent-tabs-mode nil))
 
 ;; ///////////////////////// LISP /////////////////////////
 (def-package! lispy
