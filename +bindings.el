@@ -232,5 +232,6 @@
      "C-v"   #'company-next-page
      "A-v"   #'company-previous-page
      "<tab>" nil
+     "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
  )
