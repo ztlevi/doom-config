@@ -118,8 +118,7 @@
       (progn
         (lsp-ui-doc-mode -1)
         (lsp-ui-doc--hide-frame))
-    (lsp-ui-doc-mode 1))
-  (setq-local eldoc-documentation-function 'ignore))
+    (lsp-ui-doc-mode 1)))
 
 (defun my-lsp-mode-hook ()
   ;; disable lsp-highlight-symbol
@@ -131,9 +130,6 @@
 
 (def-package! lsp-mode
   :config
-  ;; disable lsp eldoc
-  (setq lsp-enable-eldoc nil)
-
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
   (setq lsp-message-project-root-warning t)
   )
@@ -141,22 +137,17 @@
 (def-package! lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :config
+  (setq lsp-ui-doc-border "black")
+
   ;; temporary fix for flycheck
   (setq lsp-ui-flycheck-enable nil)
 
   ;; set lsp-ui-doc position
   (setq lsp-ui-doc-position 'at-point)
 
-  (setq
-   lsp-ui-doc-include-signature t
-   lsp-ui-sideline-enable nil
-   lsp-ui-sideline-ignore-duplicate t
-   lsp-ui-doc-header nil
-   ;; lsp-ui-doc-background (doom-color 'base4)
-   lsp-ui-doc-border (doom-color 'fg)
-
-   lsp-ui-peek-force-fontify nil
-   lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
+  (setq lsp-ui-doc-include-signature t
+        lsp-ui-sideline-enable nil
+        lsp-ui-sideline-ignore-duplicate t)
 
   (after! lsp-ui-mode
     (custom-set-faces
