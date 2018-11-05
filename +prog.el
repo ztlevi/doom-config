@@ -34,11 +34,6 @@
   (flycheck-mode -1))
 ;; (add-hook! (emacs-lisp-mode) 'disable-flycheck-mode)
 
-;; camcel case spellcheck
-(def-package! wucuo
-  :hook
-  (js2-mode . wucuo-start))
-
 ;; ///////////////////////// PYTHON /////////////////////////
 (after! python
   (setq python-indent-offset 2
