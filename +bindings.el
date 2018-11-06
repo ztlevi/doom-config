@@ -3,6 +3,8 @@
 (advice-add #'forward-word :override #'forward-char)
 (advice-add #'backward-word :override #'backward-char)
 
+(define-key! 'global [remap swiper] #'swiper)
+
 (map!
  "C-M-\\" #'indent-region-or-buffer
  "C-h h" nil
@@ -85,7 +87,6 @@
      :desc "Open link"             :n    "x" #'link-hint-open-link
      :desc "Youdao dictionary"     :n    "y" #'youdao-dictionary-search-at-point-tooltip
      :desc "Youdao play voice"     :n    "Y" #'youdao-dictionary-play-voice-at-point
-     :desc "Imenu comments"        :n    "c" #'counsel-imenu-comments
      :desc "Debugger start"        :n    "d" #'+debugger:start
      (:when IS-MAC
        :desc "Reveal in default program"  :nm "f" #'+macos/open-in-default-program
