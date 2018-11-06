@@ -19,6 +19,23 @@
 
 ;; ///////////////////////// FLYCHECK /////////////////////////
 (after! flycheck
+  (remove-hook 'doom-escape-hook #'+syntax-checkers|flycheck-buffer t)
+  (remove-hook 'evil-insert-state-exit-hook #'+syntax-checkers|flycheck-buffer)
+
+  (setq flycheck-idle-change-delay 3)
+
+  (flycheck-define-checker cspell
+    "Cspell checker supports camel case spell checking."
+    :command ("cspell"
+              "--config" (eval (substitute-in-file-name "$HOME/.cspell.json"))
+              source-inplace)
+    :error-patterns
+    ((info line-start (file-name) ":" line ":" column " - "
+           (message)
+           line-end))
+    :modes (c-mode c++-mode js2-mode rjsx-mode java-mode go-mode))
+  (add-to-list 'flycheck-checkers 'cspell)
+
   (setq-default flycheck-disabled-checkers
                 '(
                   javascript-tide jsx-tide javascript-jshint
