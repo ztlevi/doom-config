@@ -158,5 +158,5 @@
        :private
        ranger
        my-cc
-       ;; lsp-intellij
+       lsp-intellij
        )
