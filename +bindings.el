@@ -235,4 +235,7 @@
      "<tab>" nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
+ (:after term
+   (:map term-raw-map
+     :i "M-v" #'term-paste))
  )
