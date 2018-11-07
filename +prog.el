@@ -40,7 +40,7 @@
                 '(
                   javascript-tide jsx-tide javascript-jshint
                   typescript-tide handlebars
-                  json-jsonlist
+                  json-jsonlist json-python-json
                   c/c++-clang c/c++-cppcheck
                   ))
 
