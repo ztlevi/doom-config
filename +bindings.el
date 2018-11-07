@@ -1,9 +1,9 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
-(advice-add #'forward-word :override #'forward-char)
-(advice-add #'backward-word :override #'backward-char)
-
-(define-key! 'global [remap swiper] #'swiper)
+(define-key! 'global
+  [remap swiper] #'swiper
+  [remap forward-word] #'forward-char
+  [remap backward-word] #'backword-char)
 
 (map!
  "C-M-\\" #'indent-region-or-buffer
