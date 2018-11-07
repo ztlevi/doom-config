@@ -3,7 +3,7 @@
 (define-key! 'global
   [remap swiper] #'swiper
   [remap forward-word] #'forward-char
-  [remap backward-word] #'backword-char)
+  [remap backward-word] #'backward-char)
 
 (map!
  "C-M-\\" #'indent-region-or-buffer
