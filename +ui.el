@@ -39,6 +39,8 @@
    `(web-mode-jsx-depth-3-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.7)))))
    `(web-mode-jsx-depth-4-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.6)))))
    `(web-mode-jsx-depth-5-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.5)))))
+   `(flyspell-incorrect ((t (:underline ,(doom-color 'red)))))
+   `(flyspell-duplicate ((t (:underline ,(doom-color 'orange)))))
    ))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
