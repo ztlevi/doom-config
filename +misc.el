@@ -50,7 +50,6 @@
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
         counsel-describe-function-function 'helpful-callable
         counsel-describe-variable-function 'helpful-variable
-        counsel-git-cmd "rg --files"
         counsel-grep-base-command counsel-rg-base-command))
 
 ;; ///////////////////////// PROJECTILE ///////////////////
