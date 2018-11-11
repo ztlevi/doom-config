@@ -23,6 +23,8 @@
   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
 
 (after! flycheck
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+
   (setq-default flycheck-disabled-checkers
                 '(
                   javascript-tide jsx-tide javascript-jshint
@@ -79,8 +81,6 @@
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
 
 (after! web-mode
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
-
   (web-mode-toggle-current-element-highlight)
   (web-mode-dom-errors-show))
 
