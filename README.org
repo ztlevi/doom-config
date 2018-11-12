@@ -78,7 +78,7 @@ brew install ripgrep grep
 # utils
 brew install sqlite hub watchman gpg2 coreutils ctags gnu-tar mplayer clang-format
 # language
-brew install shellcheck aspell hadolint wordnet languagetool tidy-html5
+brew install shellcheck aspell hadolint wordnet languagetool
 # Cask
 brew cask install xquartz
 #+END_SRC
@@ -92,7 +92,7 @@ Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. r
 
 **** Ubuntu
 #+BEGIN_SRC shell
-sudo apt install tidy mplayer clang-format
+sudo apt install mplayer clang-format
 #+END_SRC
 
 **** npm
