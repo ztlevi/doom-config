@@ -23,15 +23,19 @@
   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
 
 (after! flycheck
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
-
   (setq-default flycheck-disabled-checkers
                 '(
-                  javascript-tide jsx-tide javascript-jshint
-                  typescript-tide tsx-tide handlebars
+                  javascript-jshint handlebars
                   json-jsonlist json-python-json
                   c/c++-clang c/c++-cppcheck
                   ))
+
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  (after! tide
+    (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
+    (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+    (flycheck-add-next-checker 'typescript-tslint 'typescript-tide 'append)
+    (flycheck-add-next-checker 'javascript-eslint 'tsx-tide 'append))
 
   ;; customize flycheck temp file prefix
   (setq-default flycheck-temp-prefix ".flycheck"))
