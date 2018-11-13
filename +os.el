@@ -4,6 +4,14 @@
 (defconst IS-EMACS-PLUS (file-exists-p "/usr/local/opt/emacs-plus"))
 (defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
 
+;; Load path from zsh login shell
+(let* ((zshpath (shell-command-to-string
+                 "/usr/bin/env zsh -lc 'printenv PATH'"))
+       (pathlst (split-string zshpath ":")))
+  (setq exec-path pathlst)
+  (setq eshell-path-env zshpath)
+  (setenv "PATH" zshpath))
+
 (when IS-MAC
   (defvar mac-apps '("Clion" "IntelliJ IDEA" "Visual Studio Code")
     "MacOS applications collection used for `+macos!open-with' method")
@@ -27,14 +35,6 @@
 
 ;; ////////////////////////// LINUX /////////////////////////////
 (when IS-LINUX
-  ;; Load path from zsh login shell
-  (let* ((zshpath (shell-command-to-string
-                   "/usr/bin/env zsh -lc 'printenv PATH'"))
-         (pathlst (split-string zshpath ":")))
-    (setq exec-path pathlst)
-    (setq eshell-path-env zshpath)
-    (setenv "PATH" zshpath))
-
   ;; Add executable: Clion -> Tools -> Create Command Line Launcher
   (defvar linux-apps '("clion" "intellij idea" "code")
     "Linux applications collection used for `+shell!open-with' method")
