@@ -1,9 +1,6 @@
 ;;; ~/.doom.d/+os.el -*- lexical-binding: t; -*-
 
-;; ////////////////////////// MACOS ////////////////////////////
-(defconst IS-EMACS-PLUS (file-exists-p "/usr/local/opt/emacs-plus"))
-(defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
-
+;; /////////////////////////// PATH ///////////////////////////
 ;; Load path from zsh login shell
 (let* ((zshpath (shell-command-to-string
                  "/usr/bin/env zsh -lc 'printenv PATH'"))
@@ -11,6 +8,10 @@
   (setq exec-path pathlst)
   (setq eshell-path-env zshpath)
   (setenv "PATH" zshpath))
+
+;; ////////////////////////// MACOS ////////////////////////////
+(defconst IS-EMACS-PLUS (file-exists-p "/usr/local/opt/emacs-plus"))
+(defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
 
 (when IS-MAC
   (defvar mac-apps '("Clion" "IntelliJ IDEA" "Visual Studio Code")
