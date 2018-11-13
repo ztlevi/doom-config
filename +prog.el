@@ -46,7 +46,7 @@
 
 ;; ///////////////////////// PYTHON /////////////////////////
 (after! python
-  (setq python-indent-offset 2
+  (setq python-indent-offset 4
         python-shell-interpreter "python3"
         pippel-python-command "python3"
         importmagic-python-interpreter "python3"

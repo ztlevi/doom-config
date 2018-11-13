@@ -105,6 +105,7 @@
        :desc "Reveal file in Apps"        :nm "," #'+linux/reveal-in-apps
        :desc "Reveal project in Apps"     :nm "." #'+linux/reveal-project-in-apps))
    (:desc "insert" :prefix "i"
+     :n "v" #'add-dir-local-variable
      :n "o" #'symbol-overlay-put
      :n "q" #'symbol-overlay-remove-all)
    (:desc "project" :prefix "p"
