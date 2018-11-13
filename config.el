@@ -15,6 +15,9 @@
 ;; Delete the selection when pasting
 (delete-selection-mode 1)
 
+;; disable risky local variables warning
+(advice-add 'risky-local-variable-p :override #'ignore)
+
 (set-popup-rules! '(("^\\*helpful" :size 0.4)
                     ("^\\*Ibuffer\\*" :size 0.4)
                     ("^\\*info.*" :size 80 :side right)
