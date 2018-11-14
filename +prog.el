@@ -74,9 +74,13 @@
   :hook (python-mode . lsp-python-enable)
   :config
   (set-company-backend! 'python-mode 'company-lsp)
-  (set-lookup-handlers! 'python-mode
-    :definition #'lsp-ui-peek-find-definitions
-    :references #'lsp-ui-peek-find-references))
+  ;; (set-lookup-handlers! 'python-mode
+  ;;   :definition #'lsp-ui-peek-find-definitions
+  ;;   :references #'lsp-ui-peek-find-references)
+  (define-key! python-mode-map
+    [remap +lookup/definition] #'lsp-ui-peek-find-definitions
+    [remap +lookup/references] #'lsp-ui-peek-find-references)
+  )
 
 (def-package! pyvenv
   :init
