@@ -82,11 +82,7 @@
   :init
   (add-hook 'python-mode-hook #'pyvenv-mode)
   :config
-  (setenv "WORKON_HOME"
-          (concat
-           (replace-regexp-in-string
-            "\n$" "" (shell-command-to-string "conda info --base"))
-           "/envs")))
+  (setenv "WORKON_HOME" (expand-file-name "~/.conda/envs")))
 
 ;; //////////////////// JS, TS, WEB //////////////////////
 (def-package! import-js
