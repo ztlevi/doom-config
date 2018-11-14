@@ -78,6 +78,16 @@
     :definition #'lsp-ui-peek-find-definitions
     :references #'lsp-ui-peek-find-references))
 
+(def-package! pyvenv
+  :init
+  (add-hook 'python-mode-hook #'pyvenv-mode)
+  :config
+  (setenv "WORKON_HOME"
+          (concat
+           (replace-regexp-in-string
+            "\n$" "" (shell-command-to-string "conda info --base"))
+           "/envs")))
+
 ;; //////////////////// JS, TS, WEB //////////////////////
 (def-package! import-js
   :init

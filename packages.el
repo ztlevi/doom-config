@@ -24,6 +24,6 @@
 ;; programming
 (packages! lsp-mode lsp-ui company-lsp
            wucuo import-js
-           lsp-python importmagic py-isort
+           lsp-python importmagic py-isort pyvenv
            lsp-rust rust-mode
            )
