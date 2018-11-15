@@ -69,24 +69,12 @@
 (def-package! importmagic
   :commands importmagic-fix-symbol-at-point)
 
-(def-package! lsp-python
-  :commands lsp-python-enable
-  :hook (python-mode . lsp-python-enable)
-  :config
-  (set-company-backend! 'python-mode 'company-lsp)
-  ;; (set-lookup-handlers! 'python-mode
-  ;;   :definition #'lsp-ui-peek-find-definitions
-  ;;   :references #'lsp-ui-peek-find-references)
-  (define-key! python-mode-map
-    [remap +lookup/definition] #'lsp-ui-peek-find-definitions
-    [remap +lookup/references] #'lsp-ui-peek-find-references)
-  )
-
-(def-package! pyvenv
+(def-package! pipenv
   :init
-  (add-hook 'python-mode-hook #'pyvenv-mode)
-  :config
-  (setenv "WORKON_HOME" (expand-file-name "~/.conda/envs")))
+  (setq pipenv-with-projectile t))
+
+(after! conda
+  (conda-env-autoactivate-mode t))
 
 ;; //////////////////// JS, TS, WEB //////////////////////
 (def-package! import-js

@@ -2,8 +2,7 @@
 ;;; private/my/packages.el
 
 ;; disabled packages
-(packages! (anaconda-mode :disable t)
-           (exec-path-from-shell :disable t)
+(packages! (exec-path-from-shell :disable t)
            (solaire-mode :disable t))
 
 ;; misc
@@ -24,6 +23,6 @@
 ;; programming
 (packages! lsp-mode lsp-ui company-lsp
            wucuo import-js
-           lsp-python importmagic py-isort pyvenv
+           importmagic py-isort
            lsp-rust rust-mode
            )
