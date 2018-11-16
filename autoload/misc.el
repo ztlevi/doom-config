@@ -55,6 +55,15 @@
     (end-of-line)))
 
 ;;;###autoload
+(defun +vc/git-browse-commit (arg)
+  "Open the website for the current version controlled file. Fallback to
+repository root."
+  (interactive "P")
+  (require 'git-link)
+  (let ((git-link-open-in-browser (not arg)))
+    (git-link-commit (git-link--select-remote))))
+
+;;;###autoload
 (defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
   (interactive "P")
