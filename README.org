@@ -102,7 +102,7 @@ npm install -g cspell prettier import-js
 
 **** pip
 #+BEGIN_SRC shell
-pip3 install pylint gnureadline black importmagic epc grip
+pip3 install pylint gnureadline black importmagic epc grip cpplint
 #+END_SRC
 
 **** go: This module requires a valid ~GOPATH~, and the following Go packages:

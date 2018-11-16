@@ -77,7 +77,12 @@
     :references #'lsp-ui-peek-find-references)
   )
 
+(def-package! flycheck-google-cpplint)
+
 (after! flycheck
+  (setq flycheck-c/c++-googlelint-executable "cpplint")
+  (flycheck-add-next-checker 'c/c++-gcc '(warning . c/c++-googlelint))
+
   (setq flycheck-c/c++-gcc-executable "gcc-7")
   (add-hook! c++-mode-hook
     (setq flycheck-gcc-language-standard "c++11"
