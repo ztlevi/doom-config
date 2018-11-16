@@ -74,6 +74,7 @@
   (setq pipenv-with-projectile t))
 
 (after! conda
+  (setq conda-anaconda-home (expand-file-name "~/.conda"))
   (conda-env-autoactivate-mode t))
 
 ;; //////////////////// JS, TS, WEB //////////////////////
