@@ -46,11 +46,6 @@
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
 (when IS-MAC
-  ;; enable natural title bar for emacs-plus
-  (when IS-EMACS-PLUS
-    (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-    (add-to-list 'default-frame-alist '(ns-appearance . light)))
-
   ;; enable ligatures support
   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
   (mac-auto-operator-composition-mode))

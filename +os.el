@@ -10,9 +10,6 @@
   (setenv "PATH" zshpath))
 
 ;; ////////////////////////// MACOS ////////////////////////////
-(defconst IS-EMACS-PLUS (file-exists-p "/usr/local/opt/emacs-plus"))
-(defconst IS-EMACS-MAC (file-exists-p "/usr/local/opt/emacs-mac"))
-
 (when IS-MAC
   (defvar mac-apps '("Clion" "IntelliJ IDEA" "Visual Studio Code")
     "MacOS applications collection used for `+macos!open-with' method")
