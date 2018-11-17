@@ -75,6 +75,11 @@
 
 (after! conda
   (setq conda-anaconda-home (expand-file-name "~/.conda"))
+
+  ;; restart flycheck-mode after env activate and deactivate
+  (dolist (func '(conda-env-activate conda-env-deactivate))
+    (advice-add func :after (λ! (flycheck-mode -1) (flycheck-mode))))
+
   (conda-env-autoactivate-mode t))
 
 ;; //////////////////// JS, TS, WEB //////////////////////
