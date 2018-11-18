@@ -90,6 +90,7 @@
   (dolist (func '(conda-env-activate conda-env-deactivate))
     (advice-add func :after (λ! (flycheck-mode -1) (flycheck-mode))))
 
+  (setq conda-message-on-environment-switch nil)
   (conda-env-autoactivate-mode t))
 
 ;; //////////////////// JS, TS, WEB //////////////////////
