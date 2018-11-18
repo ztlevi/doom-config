@@ -70,6 +70,7 @@
    (:desc "file" :prefix "f"
      :n "f" #'counsel-find-file)
    (:desc "git" :prefix "g"
+     :desc "Magit status" :nm "g" #'magit-status
      :desc "Magit browse commit" :n "O" #'+vc/git-browse-commit
      :desc "M-x magit-*" :n "*" (+my/prefix-M-x "magit-"))
    (:desc "help" :prefix "h"
