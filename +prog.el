@@ -71,7 +71,17 @@
 
 (def-package! pipenv
   :init
-  (setq pipenv-with-projectile t))
+  (setq pipenv-with-projectile t)
+  :config
+  ;; Override pipenv--clean-response to trim color codes
+  (defun pipenv--clean-response (response)
+    "Clean up RESPONSE from shell command."
+    (replace-regexp-in-string "\n\\[0m$" "" (s-chomp response)))
+
+  ;; restart flycheck-mode after env activate and deactivate
+  (dolist (func '(pipenv-activate pipenv-deactivate))
+    (advice-add func :after (λ! (flycheck-mode -1) (flycheck-mode))))
+  )
 
 (after! conda
   (setq conda-anaconda-home (expand-file-name "~/.conda"))
