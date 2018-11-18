@@ -1,6 +1,6 @@
 ;;; ~/.doom.d/+os.el -*- lexical-binding: t; -*-
 
-;; /////////////////////////// PATH ///////////////////////////
+;; /////////////////////////// ENV ///////////////////////////
 ;; Load path from zsh login shell
 (let* ((zshpath (shell-command-to-string
                  "/usr/bin/env zsh -lc 'printenv PATH'"))
@@ -8,6 +8,9 @@
   (setq exec-path pathlst)
   (setq eshell-path-env zshpath)
   (setenv "PATH" zshpath))
+
+;; use zsh as default shell
+(setenv "SHELL" "zsh")
 
 ;; ////////////////////////// MACOS ////////////////////////////
 (when IS-MAC
