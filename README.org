@@ -97,7 +97,7 @@ sudo apt install mplayer clang-format
 
 **** npm
 #+BEGIN_SRC shell
-npm install -g cspell prettier import-js
+npm install -g cspell prettier import-js trash
 #+END_SRC
 
 **** pip

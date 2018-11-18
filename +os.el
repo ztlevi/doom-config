@@ -65,3 +65,11 @@
                     (or (doom-project-root) default-directory))
 
   (+shell!open-with reveal-in-typora "typora" buffer-file-name))
+
+;; //////////////////////////// TRASH ///////////////////////////
+;; delete to trash
+(setq delete-by-moving-to-trash t)
+
+;; using trash over rm
+(when (executable-find "trash")
+  (os--trash-setup))
