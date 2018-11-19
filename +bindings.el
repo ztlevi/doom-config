@@ -65,7 +65,8 @@
      :nm   "U" #'+my/untabify-buffer
      :nmv  "k" #'kill-current-buffer)
    (:desc "code" :prefix "c"
-     :desc "Cspell check buffer" :n "c" #'cspell-check-buffer)
+     :desc "Cspell check buffer" :n "c" #'cspell-check-buffer
+     :desc "Cspell check directory" :n "C" #'cspell-check-directory)
    (:desc "workspace" :prefix [tab]
      :desc "Switch workspace" :n [tab] #'+workspace/switch-to
      :desc "Display tab bar"  :n "."   #'+workspace/display)

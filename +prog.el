@@ -18,12 +18,19 @@
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
 ;; ///////////////////////// FLYCHECK /////////////////////////
+(defvar cspell-base-program "cspell")
+(defvar cspell-args (string-join "--config" (expand-file-name  "~/Dotfiles/cspell.json")))
 (defun cspell-check-buffer ()
   (interactive)
-  (compilation-start (concat "cspell --config '"
-                             (expand-file-name "~/Dotfiles/cspell.json")
-                             "' " (buffer-file-name))
-                     'grep-mode))
+  (let* ((file-name (concat "'" (buffer-file-name) "'"))
+         (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
+    (compilation-start command 'grep-mode))
+
+(defun cspell-check-directory ()
+  (interactive)
+  (let* ((files "'**/*.{js,jsx,ts,tsx,c,cc,cpp,h,hh,hpp,go,json}'")
+         (command (string-join `(,cspell-base-program ,cspell-args ,files) " ")))
+    (compilation-start command 'grep-mode)))
 
 ;; (def-package! wucuo
 ;;   :init
