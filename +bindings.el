@@ -64,6 +64,8 @@
      :nm   "m" #'view-echo-area-messages
      :nm   "U" #'+my/untabify-buffer
      :nmv  "k" #'kill-current-buffer)
+   (:desc "code" :prefix "c"
+     :desc "Cspell check buffer" :n "c" #'cspell-check-buffer)
    (:desc "workspace" :prefix [tab]
      :desc "Switch workspace" :n [tab] #'+workspace/switch-to
      :desc "Display tab bar"  :n "."   #'+workspace/display)
@@ -203,6 +205,9 @@
      (:desc "Insert" :prefix "i"
        :n "r" #'markdown-table-insert-row
        :n "c" #'markdown-table-insert-column)))
+ (:after grep
+   :map grep-mode-map
+   "SPC" nil)
  (:after ivy
    :map ivy-occur-grep-mode-map
    "SPC" nil

@@ -18,9 +18,16 @@
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
 ;; ///////////////////////// FLYCHECK /////////////////////////
-(def-package! wucuo
-  :init
-  (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
+(defun cspell-check-buffer ()
+  (interactive)
+  (compilation-start (concat "cspell --config '"
+                             (expand-file-name "~/Dotfiles/cspell.json")
+                             "' " (buffer-file-name))
+                     'grep-mode))
+
+;; (def-package! wucuo
+;;   :init
+;;   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
 
 (after! flycheck
   (setq-default flycheck-disabled-checkers

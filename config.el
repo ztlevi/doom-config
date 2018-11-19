@@ -18,13 +18,14 @@
 ;; disable risky local variables warning
 (advice-add 'risky-local-variable-p :override #'ignore)
 
-(set-popup-rules! '(("^\\*helpful" :size 0.4)
-                    ("^\\*Ibuffer\\*" :size 0.4)
+(set-popup-rules! '(("^\\*helpful" :size 0.35)
+                    ("^\\*Ibuffer\\*" :size 0.35)
                     ("^\\*info.*" :size 80 :side right)
                     ("^\\*Man.*" :size 80 :side right)
                     ("^\\*Customize" :actions display-buffer)
                     ("^\\*edit-indirect" :size 0.6)
-                    ("^\\*YASnippet Tables\\*" :size 0.4)
+                    ("^\\*YASnippet Tables\\*" :size 0.35)
+                    ("^\\*grep\\*" :size 0.35)
                     ))
 
 ;; Load system profile for different machines
