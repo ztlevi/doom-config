@@ -18,19 +18,25 @@
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
 ;; ///////////////////////// FLYCHECK /////////////////////////
-(defvar cspell-base-program "cspell")
-(defvar cspell-args (string-join "--config" (expand-file-name  "~/Dotfiles/cspell.json")))
+(defvar cspell-base-program (executable-find "cspell"))
+(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/Dotfiles/cspell.json") "'"))
+(defvar cspell-args (string-join `("--config" ,cspell-config-file-path) " "))
 (defun cspell-check-buffer ()
-  (interactive)
-  (let* ((file-name (concat "'" (buffer-file-name) "'"))
-         (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
-    (compilation-start command 'grep-mode))
+ (interactive)
+ (if cspell-base-program
+     (let* ((file-name (concat "'" (buffer-file-name) "'"))
+            (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
+       (compilation-start command 'grep-mode))
+   (message "Cannot find cspell, please install with `npm install -g csepll`")
+   ))
 
 (defun cspell-check-directory ()
-  (interactive)
-  (let* ((files "'**/*.{js,jsx,ts,tsx,c,cc,cpp,h,hh,hpp,go,json}'")
-         (command (string-join `(,cspell-base-program ,cspell-args ,files) " ")))
-    (compilation-start command 'grep-mode)))
+ (interactive)
+ (if cspell-base-program
+     (let* ((files "'**/*.{js,jsx,ts,tsx,c,cc,cpp,h,hh,hpp,go,json}'")
+            (command (string-join `(,cspell-base-program ,cspell-args ,files) " ")))
+       (compilation-start command 'grep-mode))
+   (message "Cannot find cspell, please install with `npm install -g csepll`")))
 
 ;; (def-package! wucuo
 ;;   :init
