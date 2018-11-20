@@ -66,9 +66,9 @@
 ;; ///////////////////////// Git /////////////////////////
 (after! git-link
   (add-to-list 'git-link-remote-alist
-               '("isl-122-ubuntu" git-link-gitlab))
+               '("10.193.35.53" git-link-gitlab-http))
   (add-to-list 'git-link-commit-remote-alist
-               '("isl-122-ubuntu" git-link-commit-gitlab))
+               '("10.193.35.53" git-link-commit-gitlab-http))
 
   ;; OVERRIDE
   (advice-add #'git-link--select-remote :override #'git-link--read-remote)

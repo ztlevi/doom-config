@@ -64,6 +64,19 @@ repository root."
     (git-link-commit (git-link--select-remote))))
 
 ;;;###autoload
+(defun git-link-gitlab-http (hostname dirname filename branch commit start end)
+  (format "http://%s/%s/blob/%s/%s"
+	      hostname
+	      dirname
+	      (or branch commit)
+          (concat filename
+                  (when start
+                    (concat "#"
+                            (if end
+                                (format "L%s-%s" start end)
+                              (format "L%s" start)))))))
+
+;;;###autoload
 (defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
   (interactive "P")
