@@ -51,6 +51,7 @@
   )
 
 (def-package! ccls
+  :when (executable-find "ccls")
   :init (add-hook! (c-mode c++-mode objc-mode) #'+ccls//enable)
   :config
   ;; overlay is slow
