@@ -201,7 +201,10 @@
      :ni [M-return]   (λ! (+org/insert-item 'below))
      :ni [S-M-return] (λ! (+org/insert-item 'above))
      :localleader
-     :desc "Reveal in Typora" :n "o" #'+macos/reveal-in-typora
+     (:when IS-MAC
+       :desc "Reveal in Typora" :n "o" #'+macos/reveal-in-typora)
+     (:when IS-LINUX
+       :desc "Reveal in Typora" :n "o" #'+linux/reveal-in-typora)
      :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
      (:desc "Insert" :prefix "i"
        :n "r" #'markdown-table-insert-row
