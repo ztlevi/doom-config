@@ -84,6 +84,7 @@
      :n "l" #'flycheck-list-errors
      :n "v" #'flycheck-verify-setup)
    (:desc "open" :prefix "o"
+     :desc "Open link at point"    :n    "X" #'link-hint-open-link-at-point
      :desc "Ansi-Term"             :nm   "s" #'+term/open-popup
      :desc "Project run Ansi-Term" :nm   "S" #'+term/open-popup-in-project
      :desc "Eshell popup"          :nm   "e" #'+eshell/open-popup
