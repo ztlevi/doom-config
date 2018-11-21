@@ -1,11 +1,15 @@
 ;;; ~/.doom.d/+prog.el -*- lexical-binding: t; -*-
 
-;; ///////////////////////// COMPANY /////////////////////////
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; COMPANY
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (after! company
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
         company-show-numbers t
         company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)))
+
 
 (def-package! company-lsp
   :after company
@@ -17,7 +21,11 @@
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
-;; ///////////////////////// FLYCHECK /////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; FLYCHECK
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defvar cspell-base-program (executable-find "cspell"))
 (defvar cspell-config-file-path (concat "'" (expand-file-name  "~/Dotfiles/cspell.json") "'"))
 (defvar cspell-args (string-join `("--config" ,cspell-config-file-path) " "))
@@ -38,9 +46,11 @@
        (compilation-start command 'grep-mode))
    (message "Cannot find cspell, please install with `npm install -g csepll`")))
 
+
 ;; (def-package! wucuo
 ;;   :init
 ;;   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
+
 
 (after! flycheck
   (setq-default flycheck-disabled-checkers
@@ -64,7 +74,10 @@
   (flycheck-mode -1))
 ;; (add-hook! (emacs-lisp-mode) 'disable-flycheck-mode)
 
-;; ///////////////////////// PYTHON /////////////////////////
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PYTHON
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (after! python
   (setq python-indent-offset 4
         python-shell-interpreter "python3"
@@ -77,6 +90,7 @@
   ;;       python-shell-interpreter-args "-i")
   )
 
+
 (def-package! py-isort
   :init
   (setq python-sort-imports-on-save t)
@@ -86,8 +100,10 @@
       (py-isort-before-save)))
   (add-hook 'before-save-hook 'spacemacs//python-sort-imports))
 
+
 (def-package! importmagic
   :commands importmagic-fix-symbol-at-point)
+
 
 (def-package! pipenv
   :init
@@ -103,6 +119,7 @@
     (advice-add func :after (λ! (flycheck-mode -1) (flycheck-mode))))
   )
 
+
 (after! conda
   (setq conda-anaconda-home (expand-file-name "~/.conda"))
 
@@ -113,7 +130,11 @@
   (setq conda-message-on-environment-switch nil)
   (conda-env-autoactivate-mode t))
 
-;; //////////////////// JS, TS, WEB //////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; JS, WEB
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (def-package! import-js
   :init
   (add-hook! 'js2-mode-hook 'run-import-js))
@@ -123,10 +144,18 @@
   (web-mode-toggle-current-element-highlight)
   (web-mode-dom-errors-show))
 
-;; //////////////////////// GO ///////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GO
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (add-hook! 'go-mode-hook (setq indent-tabs-mode nil))
 
-;; ///////////////////////// LISP /////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LISP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (def-package! lispy
   :hook ((common-lisp-mode . lispy-mode)
          (emacs-lisp-mode . lispy-mode)
@@ -149,7 +178,11 @@
      (slurp/barf-lispy)
      additional-movement)))
 
-;; ///////////////////////// LSP /////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LSP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun toggle-lsp-ui-doc ()
   (interactive)
   (if lsp-ui-doc-mode
@@ -171,6 +204,7 @@
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
   (setq lsp-message-project-root-warning t)
   )
+
 
 (def-package! lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -197,14 +231,23 @@
      ))
   )
 
-;; /////////////////////////// RUST /////////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RUST
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (def-package! rust-mode
   :mode "\\.rs$")
+
 
 (def-package! lsp-rust
   :init (add-hook 'rust-mode-hook #'lsp-rust-enable))
 
-;; //////////////////////// Debug & Run ////////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DEBUG & RUN
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (after! quickrun
   (quickrun-add-command "c++/c1z"
     '((:command . "clang++")

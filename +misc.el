@@ -1,24 +1,31 @@
 ;;; ~/.doom.d/+misc.el -*- lexical-binding: t; -*-
 
-;; /////////////////////// NAVIGATION //////////////////////
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; NAVIGATION
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (setq evil-cross-lines t)
 
 (def-package! evil-nerd-commenter)
+
 
 (after! evil
   (evil-define-text-object evil-inner-buffer (count &optional beg end type)
     (list (point-min) (point-max)))
   (define-key evil-inner-text-objects-map "g" 'evil-inner-buffer))
 
+
 (after! evil-snipe
   (setq evil-snipe-scope 'buffer
         evil-snipe-repeat-scope 'buffer)
   (push 'prodigy-mode evil-snipe-disabled-modes))
 
+
 (def-package! avy
   :init
   (setq avy-timeout-seconds 0.2)
   (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
+
 
 (after! nav-flash
   ;; (defun nav-flash-show (&optional pos end-pos face delay)
@@ -30,7 +37,11 @@
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
-;; ///////////////////////// IVY ////////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; IVY
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (after! ivy
   ;; OVERRIDE
   (advice-add #'+ivy/projectile-find-file :override #'counsel-git)
@@ -46,6 +57,7 @@
   (push '(ivy-switch-buffer) ivy-display-functions-alist)
   )
 
+
 (after! counsel
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
         counsel-describe-function-function 'helpful-callable
@@ -53,9 +65,13 @@
         counsel-git-cmd "rg --files --hidden"
         counsel-grep-base-command counsel-rg-base-command))
 
-;; ///////////////////////// PROJECTILE ///////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PROJECTILE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (after! projectile
-  (setq compilation-read-command nil)  ; no prompt in projectile-compile-project
+  (setq compilation-read-command nil)   ; no prompt in projectile-compile-project
   ;; . -> Build
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
                                     :configure "cmake %s"
@@ -63,7 +79,10 @@
                                     :test "ctest")
   )
 
-;; ///////////////////////// Git /////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GIT
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (after! git-link
   (add-to-list 'git-link-remote-alist
                '("10.193.35.53" git-link-gitlab-http))
@@ -76,7 +95,11 @@
 
 (setq magit-repository-directories '(("~/Develop/Github" . 2)))
 
-;; //////////////////// ATOMIC CHROME /////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ATOMIC CHROME
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (def-package! atomic-chrome
   :defer 3
   :preface
@@ -111,7 +134,11 @@
         (message "Can't start atomic-chrome server, because port 64292 is already used")
       (atomic-chrome-start-server))))
 
-;; //////////////////////// PRODIGY ////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PRODIGY
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (after! prodigy
   (set-evil-initial-state!
     '(prodigy-mode)
@@ -169,9 +196,14 @@
   (add-hook 'prodigy-view-mode-hook
             #'(lambda() (set (make-local-variable 'after-change-functions) #'refresh-chrome-current-tab))))
 
-;; //////////////////////////// TERM ////////////////////////////////
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TERM
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (add-to-list 'auto-mode-alist '("zsh\\(?:env\\|rc\\)\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("zprofile\\'" . sh-mode))
+
 
 (after! eshell
   ;; eshell-mode imenu index
@@ -192,6 +224,7 @@
              ))
       (eshell/pushd p)))
   )
+
 
 (after! term
   ;; term-mode imenu index

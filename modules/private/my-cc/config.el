@@ -50,6 +50,7 @@
                (evil-normal-state))))
   )
 
+
 (def-package! ccls
   :when (executable-find "ccls")
   :init (add-hook! (c-mode c++-mode objc-mode) #'+ccls//enable)
@@ -78,7 +79,9 @@
     :references #'lsp-ui-peek-find-references)
   )
 
+
 (def-package! flycheck-google-cpplint)
+
 
 (after! flycheck
   (setq flycheck-c/c++-googlelint-executable "cpplint")

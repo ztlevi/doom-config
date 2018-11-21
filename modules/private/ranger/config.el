@@ -13,6 +13,7 @@
         (setq insert-directory-program gls))))
   (setq dired-listing-switches "-aBhl --group-directories-first"))
 
+
 (def-package! ranger
   :init
   (setq ranger-override-dired t)
@@ -61,10 +62,13 @@
    :n "oj" #'deer
    :n "oJ" #'ranger))
 
+
 (def-package! all-the-icons-dired
   :defer t
   :hook (dired-mode . all-the-icons-dired-mode))
 
+
 (def-package! font-lock+)
+
 
 (def-package! dired-x)
