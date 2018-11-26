@@ -30,21 +30,21 @@
 (defvar cspell-config-file-path (concat "'" (expand-file-name  "~/Dotfiles/cspell.json") "'"))
 (defvar cspell-args (string-join `("--config" ,cspell-config-file-path) " "))
 (defun cspell-check-buffer ()
- (interactive)
- (if cspell-base-program
-     (let* ((file-name (concat "'" (buffer-file-name) "'"))
-            (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
-       (compilation-start command 'grep-mode))
-   (message "Cannot find cspell, please install with `npm install -g csepll`")
-   ))
+  (interactive)
+  (if cspell-base-program
+      (let* ((file-name (concat "'" (buffer-file-name) "'"))
+             (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
+        (compilation-start command 'grep-mode))
+    (message "Cannot find cspell, please install with `npm install -g csepll`")
+    ))
 
 (defun cspell-check-directory ()
- (interactive)
- (if cspell-base-program
-     (let* ((files "'**/*.{js,jsx,ts,tsx,c,cc,cpp,h,hh,hpp,go,json}'")
-            (command (string-join `(,cspell-base-program ,cspell-args ,files) " ")))
-       (compilation-start command 'grep-mode))
-   (message "Cannot find cspell, please install with `npm install -g csepll`")))
+  (interactive)
+  (if cspell-base-program
+      (let* ((files "'**/*.{js,jsx,ts,tsx,c,cc,cpp,h,hh,hpp,go,json}'")
+             (command (string-join `(,cspell-base-program ,cspell-args ,files) " ")))
+        (compilation-start command 'grep-mode))
+    (message "Cannot find cspell, please install with `npm install -g csepll`")))
 
 
 ;; (def-package! wucuo
