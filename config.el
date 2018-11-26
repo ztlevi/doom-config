@@ -26,6 +26,7 @@
                     ("^\\*edit-indirect" :size 0.6)
                     ("^\\*YASnippet Tables\\*" :size 0.35)
                     ("^\\*grep\\*" :size 0.35)
+                    ("^\\*Anaconda\\*" :size 0.35)
                     ))
 
 ;; Load system profile for different machines
