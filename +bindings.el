@@ -171,7 +171,8 @@
  (:after python
    (:map python-mode-map
      :localleader
-     :n "i" 'importmagic-fix-symbol-at-point))
+     (:desc "Find" :prefix "f")
+     :desc "ImportMagic" :n "I" 'importmagic-fix-symbol-at-point))
  (:after js2-mode
    (:map js2-mode-map
      :localleader
