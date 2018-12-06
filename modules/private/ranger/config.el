@@ -9,8 +9,9 @@
   ;; initialized to make sure that `gls' is in `exec-path'
   (when IS-MAC
     (let ((gls (executable-find "gls")))
-      (when gls
-        (setq insert-directory-program gls))))
+      (if gls
+          (setq insert-directory-program gls)
+        (message "Please install `gls` using `brew instal coreutils`..."))))
   (setq dired-listing-switches "-aBhl --group-directories-first"))
 
 
