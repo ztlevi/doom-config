@@ -58,7 +58,7 @@
   ;; overlay is slow
   ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
   ;; https://github.com/maskray/ccls/blob/master/src/config.h
-  (setq ccls-extra-init-params
+  (setq ccls-initialization-options
         `(:clang (:pathMappings ,+ccls-path-mappings)
                  :completion
                  (

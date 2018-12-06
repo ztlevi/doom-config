@@ -5,10 +5,8 @@
 
 ;;;###autoload
 (defun +ccls//enable ()
-  (require 'ccls)
-  (condition-case nil
-      (lsp-ccls-enable)
-    (user-error nil)))
+  (when buffer-file-name
+    (lsp)))
 
 (defun ccls/callee ()
   (interactive)
