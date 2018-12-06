@@ -207,7 +207,6 @@
 
 
 (def-package! lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq lsp-ui-doc-border "black")
 
