@@ -30,13 +30,14 @@
     (advice-add #'markdown-preview :override #'+my/markdown-preview))
   )
 
-(def-package! edit-indirect)
+(def-package! edit-indirect :defer t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OTHERS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-package! blog-admin
+  :defer t
   :hook (blog-admin-backend-after-new-post . find-file)
   :init
   ;; do your configuration here
@@ -47,6 +48,7 @@
         blog-admin-backend-hexo-config-file "_config.yml"))
 
 (def-package! youdao-dictionary
+  :defer t
   :config
   ;; Enable Cache
   (setq url-automatic-caching t
@@ -57,11 +59,12 @@
         youdao-dictionary-use-chinese-word-segmentation t))
 
 (def-package! tldr
+  :defer t
   :config
   (setq tldr-directory-path (concat doom-etc-dir "tldr/"))
   (set-popup-rule! "^\\*tldr\\*" :side 'right :select t :quit t)
   )
 
-(def-package! link-hint)
+(def-package! link-hint :defer t)
 
-(def-package! symbol-overlay)
+(def-package! symbol-overlay :defer t)

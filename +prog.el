@@ -12,6 +12,7 @@
 
 
 (def-package! company-lsp
+  :defer t
   :after company
   :init
   ;; Language servers have better idea filtering and sorting,
@@ -48,6 +49,7 @@
 
 
 ;; (def-package! wucuo
+;;   :defer t
 ;;   :init
 ;;   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
 
@@ -92,6 +94,7 @@
 
 
 (def-package! py-isort
+  :defer t
   :init
   (setq python-sort-imports-on-save t)
   (defun spacemacs//python-sort-imports ()
@@ -102,10 +105,12 @@
 
 
 (def-package! importmagic
+  :defer t
   :commands importmagic-fix-symbol-at-point)
 
 
 (def-package! pipenv
+  :defer t
   :init
   (setq pipenv-with-projectile t)
   :config
@@ -135,6 +140,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-package! import-js
+  :defer t
   :init
   (add-hook! 'js2-mode-hook 'run-import-js))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
@@ -156,6 +162,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-package! lispy
+  :defer t
   :hook ((common-lisp-mode . lispy-mode)
          (emacs-lisp-mode . lispy-mode)
          (scheme-mode . lispy-mode)
@@ -167,6 +174,7 @@
   (add-hook 'lispy-mode-hook #'turn-off-smartparens-mode))
 
 (def-package! lispyville
+  :defer t
   :when (featurep! :feature evil)
   :hook (lispy-mode . lispyville-mode)
   :config
@@ -199,6 +207,7 @@
 (add-hook 'lsp-mode-hook #'my-lsp-mode-hook)
 
 (def-package! lsp-mode
+  :defer t
   :config
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
   (setq lsp-auto-guess-root t)
@@ -207,6 +216,7 @@
 
 
 (def-package! lsp-ui
+  :defer t
   :config
   (setq lsp-ui-doc-border "black")
 
@@ -236,10 +246,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-package! rust-mode
+  :defer t
   :mode "\\.rs$")
 
 
 (def-package! lsp-rust
+  :defer t
   :init (add-hook 'rust-mode-hook #'lsp-rust-enable))
 
 

@@ -52,6 +52,7 @@
 
 
 (def-package! ccls
+  :defer t
   :when (executable-find "ccls")
   :init (add-hook! (c-mode c++-mode objc-mode) #'+ccls//enable)
   :config
@@ -80,7 +81,7 @@
   )
 
 
-(def-package! flycheck-google-cpplint)
+(def-package! flycheck-google-cpplint :defer t)
 
 
 (after! flycheck

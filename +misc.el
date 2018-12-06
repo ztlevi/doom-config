@@ -6,7 +6,7 @@
 
 (setq evil-cross-lines t)
 
-(def-package! evil-nerd-commenter)
+(def-package! evil-nerd-commenter :defer t)
 
 
 (after! evil
@@ -22,6 +22,7 @@
 
 
 (def-package! avy
+  :defer t
   :init
   (setq avy-timeout-seconds 0.2)
   (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
