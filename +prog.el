@@ -12,7 +12,6 @@
 
 
 (def-package! company-lsp
-  :defer t
   :after company
   :init
   ;; Language servers have better idea filtering and sorting,
@@ -162,7 +161,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-package! lispy
-  :defer t
   :hook ((common-lisp-mode . lispy-mode)
          (emacs-lisp-mode . lispy-mode)
          (scheme-mode . lispy-mode)
@@ -174,7 +172,6 @@
   (add-hook 'lispy-mode-hook #'turn-off-smartparens-mode))
 
 (def-package! lispyville
-  :defer t
   :when (featurep! :feature evil)
   :hook (lispy-mode . lispyville-mode)
   :config
@@ -207,7 +204,6 @@
 (add-hook 'lsp-mode-hook #'my-lsp-mode-hook)
 
 (def-package! lsp-mode
-  :defer t
   :config
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
   (setq lsp-auto-guess-root t)
@@ -216,7 +212,6 @@
 
 
 (def-package! lsp-ui
-  :defer t
   :config
   (setq lsp-ui-doc-border "black")
 
@@ -246,12 +241,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-package! rust-mode
-  :defer t
   :mode "\\.rs$")
 
 
 (def-package! lsp-rust
-  :defer t
   :init (add-hook 'rust-mode-hook #'lsp-rust-enable))
 
 

@@ -1,7 +1,6 @@
 ;;; private/lsp-intellij/config.el -*- lexical-binding: t; -*-
 
 (def-package! lsp-intellij
-  :defer t
   :commands lsp-intellij-enable
   :hook
   (java-mode . lsp-intellij-enable)

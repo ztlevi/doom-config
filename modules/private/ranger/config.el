@@ -1,7 +1,6 @@
 ;;; private/ranger/config.el -*- lexical-binding: t; -*-
 
 (def-package! dired
-  :defer t
   :hook (dired-mode . +my/dired-setup)
   :config
   ;; Use GNU ls as `gls' from `coreutils' if available.  Add `(setq
@@ -71,7 +70,9 @@
   :hook (dired-mode . all-the-icons-dired-mode))
 
 
-(def-package! font-lock+ :defer t)
+(def-package! font-lock+)
 
 
-(def-package! dired-x :defer t)
+(def-package! dired-x
+  :defer t
+  :commands dired-omit-mode)
