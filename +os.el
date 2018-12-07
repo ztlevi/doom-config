@@ -53,13 +53,17 @@
   (defun ivy--read-apps ()
     (ivy-read "Select Applications:" linux-apps))
 
-  (defvar linux-terminal (if (file-exists-p "/usr/bin/konsole")
-                             "/usr/bin/konsole"
-                           "/usr/bin/gnome-terminal"))
+  (defvar linux-terminal (cond ((executable-find "terminator") "terminator")
+                               ((executable-find "konsole") "konsole")
+                               ((executable-find "gnome-terminal") "gnome-terminal")))
 
-  (defvar linux-finder (if (file-exists-p "/usr/bin/xdg-open")
-                           "/usr/bin/xdg-open"
-                         "/usr/bin/gvfs-open"))
+  (defun linux-terminal-args (dir)
+    (cond ((executable-find "terminator") (list "--working-directory" dir))
+          ((executable-find "konsole") (list "--workdir" dir))
+          ((executable-find "gnome-terminal") (list "--working-directory" dir))))
+
+  (defvar linux-finder (cond ((executable-find "xdg-open") "xdg-open")
+                             ((executable-find "gvfs-open") "gvfs-open")))
 
   (+shell!open-with open-in-default-program linux-finder)
 
@@ -71,9 +75,9 @@
   (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
-  (+shell!open-with reveal-in-terminal linux-terminal default-directory)
-  (+shell!open-with reveal-project-in-terminal linux-terminal
-                    (or (doom-project-root) default-directory))
+  (+shell!open-with reveal-in-terminal linux-terminal nil (linux-terminal-args default-directory))
+  (+shell!open-with reveal-project-in-terminal linux-terminal nil
+                    (linux-terminal-args (or (doom-project-root) default-directory)))
 
   (+shell!open-with reveal-in-typora "typora" buffer-file-name))
 

@@ -33,10 +33,12 @@
     (start-process "" nil app-name path)))
 
 ;;;###autoload
-(defmacro +shell!open-with (id &optional app dir)
+(defmacro +shell!open-with (id &optional app dir args)
   `(defun ,(intern (format "+linux/%s" id)) ()
      (interactive)
-     (+shell-open-with ,app ,dir)))
+     (if ,dir
+         (+shell-open-with ,app ,dir)
+       (apply 'start-process "" nil ,app ,args))))
 
 ;; PATCH counsel-esh-history
 ;;;###autoload
