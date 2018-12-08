@@ -40,6 +40,20 @@
          (+shell-open-with ,app ,dir)
        (apply 'start-process "" nil ,app ,args))))
 
+;;;###autoload
+(defmacro make--shell (name ip &rest arglist)
+  `(defun ,(intern (format "my-shell-%s" name)) ,arglist
+     (interactive)
+     (let ((default-directory ,(format "/ssh:%s:" ip))
+           (explicit-shell-file-name "/bin/bash"))
+       (shell (generate-new-buffer-name ,(format "*%s*" name))))))
+
+;;;###autoload
+(defmacro make--ssh (name ip &rest arglist)
+  `(defun ,(intern (format "my-ssh-%s" name)) ,arglist
+     (interactive)
+     (find-file ,(format "/ssh:%s:" ip))))
+
 ;; PATCH counsel-esh-history
 ;;;###autoload
 (defun +my/ivy-eshell-history ()
