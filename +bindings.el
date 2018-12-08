@@ -136,6 +136,18 @@
 
  (:map +popup-mode-map
    :n "q" #'quit-window)
+ (:after ranger
+   (:map ranger-normal-mode-map
+     "g" nil
+     "q" #'ranger-close-and-kill-inactive-buffers
+     "f" #'counsel-find-file
+     "M-g" #'ranger-go
+     "C-<tab>" #'ranger-next-tab
+     "C-S-<tab>" #'ranger-prev-tab
+     "U" #'dired-unmark-all-files
+     "u" #'dired-unmark
+     "(" #'dired-hide-details-mode
+     "+" #'dired-create-directory))
  (:after lispy
    (:map lispy-mode-map
      :i "_" #'special-lispy-different
