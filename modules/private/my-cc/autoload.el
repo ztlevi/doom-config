@@ -5,8 +5,8 @@
 
 ;;;###autoload
 (defun +ccls//enable ()
-  (when buffer-file-name
-    (lsp)))
+  (require 'ccls)
+  (lsp))
 
 (defun ccls/callee ()
   (interactive)
