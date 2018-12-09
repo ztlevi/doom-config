@@ -45,6 +45,19 @@
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
 
+(after! ranger
+  (defun ranger-close-and-kill-inactive-buffers ()
+    "ranger close current buffer and kill inactive ranger buffers"
+    (interactive)
+    (ranger-close)
+    (ranger-kill-buffers-without-window))
+  ;; do not kill buffer if exists in windows
+  (defun ranger-disable ()
+    "Interactively disable ranger-mode."
+    (interactive)
+    (ranger-revert)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IVY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -100,7 +113,11 @@
   (advice-add #'git-link--select-remote :override #'git-link--read-remote)
   )
 
-(setq magit-repository-directories '(("~/Develop/Github" . 2)))
+
+(after! magit
+  (setq magit-repository-directories '(("~/Develop/Github" . 2)))
+  ;; (magit-wip-mode t)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

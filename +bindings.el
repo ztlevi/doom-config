@@ -71,7 +71,8 @@
      :desc "Switch workspace" :n [tab] #'+workspace/switch-to
      :desc "Display tab bar"  :n "."   #'+workspace/display)
    (:desc "file" :prefix "f"
-     :n "f" #'counsel-find-file)
+     :n "f" #'counsel-find-file
+     :nm "j" #'deer)
    (:desc "git" :prefix "g"
      :desc "Magit status" :nm "g" #'magit-status
      :desc "Magit browse commit" :n "O" #'+vc/git-browse-commit
