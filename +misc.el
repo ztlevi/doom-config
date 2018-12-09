@@ -116,8 +116,8 @@
 
 (after! magit
   (setq magit-repository-directories '(("~/Develop/Github" . 2)))
-  ;; (magit-wip-mode t)
-  )
+
+  (magit-wip-after-apply-mode t))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
