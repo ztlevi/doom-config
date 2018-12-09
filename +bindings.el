@@ -84,13 +84,14 @@
      :n "l" #'flycheck-list-errors
      :n "v" #'flycheck-verify-setup)
    (:desc "open" :prefix "o"
+     :desc "Kill ring"             :n    "k" #'helm-show-kill-ring
+     :desc "Open link"             :n    "x" #'link-hint-open-link
      :desc "Open link at point"    :n    "X" #'link-hint-open-link-at-point
      :desc "Ansi-Term"             :nm   "s" #'+term/open-popup
      :desc "Project run Ansi-Term" :nm   "S" #'+term/open-popup-in-project
      :desc "Eshell popup"          :nm   "e" #'+eshell/open-popup
      :desc "Project run Eshell"    :nm   "E" #'projectile-run-eshell
      :desc "Ibuffer"               :nm   "I" #'ibuffer
-     :desc "Open link"             :n    "x" #'link-hint-open-link
      :desc "Youdao dictionary"     :n    "y" #'youdao-dictionary-search-at-point-tooltip
      :desc "Youdao play voice"     :n    "Y" #'youdao-dictionary-play-voice-at-point
      :desc "Debugger start"        :n    "d" #'+debugger:start
