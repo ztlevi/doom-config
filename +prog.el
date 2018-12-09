@@ -110,6 +110,7 @@
 
 (def-package! pipenv
   :defer t
+  :commands (pipenv-activate pipenv-deactivate)
   :init
   (setq pipenv-with-projectile t)
   :config

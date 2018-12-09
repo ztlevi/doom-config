@@ -38,6 +38,7 @@
 
 (def-package! blog-admin
   :defer t
+  :commands blog-admin-start
   :hook (blog-admin-backend-after-new-post . find-file)
   :init
   ;; do your configuration here
