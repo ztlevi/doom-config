@@ -102,7 +102,7 @@ npm install -g cspell prettier import-js trash
 
 **** pip
 #+BEGIN_SRC shell
-pip3 install pylint gnureadline black importmagic epc grip cpplint
+python3 -m pip install pylint gnureadline black importmagic epc grip cpplint
 #+END_SRC
 
 **** go: This module requires a valid ~GOPATH~, and the following Go packages:
@@ -132,7 +132,7 @@ npm install vue-language-server -g
 
 # python
 # pyls-mypy is a type integration for Python
-pip3 install 'python-language-server[all]' pyls-isort
+python3 -m pip install 'python-language-server[all]' pyls-isort
 
 # ccls https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
