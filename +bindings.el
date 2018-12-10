@@ -119,6 +119,7 @@
    (:desc "project" :prefix "p"
      :n "*" (+my/prefix-M-x "projectile-"))
    (:desc "toggle" :prefix "t"
+     :n "c" #'centered-window-mode-toggle
      :n "r" #'rjsx-mode
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
