@@ -105,6 +105,7 @@
 
 (def-package! importmagic
   :defer t
+  :hook (python-mode . importmagic-mode)
   :commands importmagic-fix-symbol-at-point)
 
 
