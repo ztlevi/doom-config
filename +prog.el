@@ -100,13 +100,14 @@
     (when (and python-sort-imports-on-save
                (derived-mode-p 'python-mode))
       (py-isort-before-save)))
-  (add-hook 'before-save-hook 'spacemacs//python-sort-imports))
+  (add-hook! 'python-mode-hook
+    (add-hook 'before-save-hook #'spacemacs//python-sort-imports nil t)))
 
 
 (def-package! importmagic
   :defer t
   :hook (python-mode . importmagic-mode)
-  :commands importmagic-fix-symbol-at-point)
+  :commands (importmagic-fix-imports importmagic-fix-symbol-at-point))
 
 
 (def-package! pipenv
@@ -143,7 +144,8 @@
 (def-package! import-js
   :defer t
   :init
-  (add-hook! 'js2-mode-hook 'run-import-js))
+  (add-hook! (js2-mode rjsx-mode)
+    (add-hook 'after-save-hook #'import-js-fix nil t)))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
 
 (after! web-mode

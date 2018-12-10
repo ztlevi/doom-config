@@ -188,17 +188,18 @@
    (:map python-mode-map
      :localleader
      (:desc "Find" :prefix "f")
-     :desc "ImportMagic" :n "I" 'importmagic-fix-symbol-at-point))
+     :desc "Import at point" :n "i" 'importmagic-fix-symbol-at-point
+     :desc "Import all"      :n "I" 'importmagic-fix-imports))
  (:after js2-mode
    (:map js2-mode-map
      :localleader
-     :n "i" 'import-js-import
-     :n "f" 'import-js-fix))
+     :desc "Import js"  :n "i" 'import-js-import
+     :desc "Import all" :n "f" 'import-js-fix))
  (:after rjsx-mode
    (:map rjsx-mode-map
      :localleader
-     :n "i" 'import-js-import
-     :n "f" 'import-js-fix))
+     :desc "Import js"  :n "i" 'import-js-import
+     :desc "Import all" :n "f" 'import-js-fix))
  (:after tide
    :map tide-references-mode-map
    "C-k" 'tide-find-previous-reference
