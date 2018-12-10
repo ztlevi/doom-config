@@ -9,6 +9,28 @@
 (setq org-directory "~/Dropbox/Org-Notes"
       org-agenda-files (list org-directory))
 
+(setq org-capture-templates
+      '(("t" "Personal todo" entry
+         (file+headline +org-capture-todo-file "Inbox")
+         "* TODO %?\n%i" :prepend t :kill-buffer t)
+        ("n" "Personal notes" entry
+         (file+headline +org-capture-notes-file "Inbox")
+         "* %u %?\n%i" :prepend t :kill-buffer t)
+
+        ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
+        ;; {todo,notes,changelog}.org file is found in a parent directory.
+        ("p" "Templates for projects")
+        ("pt" "Project todo" entry  ; {project-root}/todo.org
+         (file+headline +org-capture-project-todo-file "Inbox")
+         "* TODO %?\n%i" :prepend t :kill-buffer t)
+        ("pn" "Project notes" entry  ; {project-root}/notes.org
+         (file+headline +org-capture-project-notes-file "Inbox")
+         "* TODO %?\n%i" :prepend t :kill-buffer t)
+        ("pc" "Project changelog" entry  ; {project-root}/changelog.org
+         (file+headline +org-capture-project-notes-file "Unreleased")
+         "* TODO %?\n%i" :prepend t :kill-buffer t)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
