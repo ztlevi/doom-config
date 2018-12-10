@@ -73,8 +73,10 @@
                                 (swiper . ivy--regex-plus)
                                 (t . ivy--regex-ignore-order)))
 
-  (push '(+ivy/switch-workspace-buffer) ivy-display-functions-alist)
-  (push '(ivy-switch-buffer) ivy-display-functions-alist)
+  ;; Use minibuffer to display ivy functions
+  (dolist (func '(+ivy/switch-workspace-buffer
+                   ivy-switch-buffer))
+    (push `(,func) ivy-display-functions-alist))
   )
 
 

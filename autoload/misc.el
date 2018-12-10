@@ -54,6 +54,12 @@
      (interactive)
      (find-file ,(format "/ssh:%s:" ip))))
 
+;;;###autoload
+(defun +ivy/project-search-with-hidden-files ()
+  (interactive)
+  (let ((counsel-rg-base-command "rg -zS --no-heading --line-number --color never --hidden %s . "))
+    (+ivy/project-search)))
+
 ;; PATCH counsel-esh-history
 ;;;###autoload
 (defun +my/ivy-eshell-history ()

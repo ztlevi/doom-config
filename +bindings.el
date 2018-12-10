@@ -55,7 +55,7 @@
    (:desc "app" :prefix "a"
      :n "s" #'prodigy
      :n "b" #'blog-admin-start
-     :n "l" #'list-processes
+     :n "p" #'list-processes
      :nmv "x" #'align-regexp)
    (:desc "buffer" :prefix "b"
      :desc "Last buffer" :nmv "l" #'evil-switch-to-windows-last-buffer
@@ -133,6 +133,7 @@
      :n "t" #'yas/describe-tables)
    (:desc "search" :prefix "/"
      :desc "Project"   :nmv "/" #'+ivy/project-search
+     :desc "Project (hidden)" :nmv "h" #'+ivy/project-search-with-hidden-files
      :desc "Comments"  :nmv "c" #'counsel-imenu-comments
      :desc "Directory" :nmv "d" #'+ivy/project-search-from-cwd)
    )
