@@ -5,8 +5,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Load path from zsh login shell
-(defvar zsh-executable (cond (IS-LINUX "/home/linuxbrew/.linuxbrew/bin/zsh")
-                             (IS-MAC "/usr/bin/env zsh")))
+(defvar zsh-executable  "/usr/bin/env zsh")
 (let* ((zshpath (shell-command-to-string
                  (concat zsh-executable " -lc 'printenv PATH'")))
        (pathlst (split-string zshpath ":")))
