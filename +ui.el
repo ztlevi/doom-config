@@ -42,6 +42,7 @@
    `(web-mode-jsx-depth-5-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.5)))))
    `(flyspell-incorrect ((t (:underline ,(doom-color 'red)))))
    `(flyspell-duplicate ((t (:underline ,(doom-color 'orange)))))
+   `(ein:cell-input-area ((t (:background ,(doom-color 'base0)))))
    ))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
