@@ -54,12 +54,12 @@
   (defun ivy--read-apps ()
     (ivy-read "Select Applications:" linux-apps))
 
-  (defvar linux-terminal (cond ((executable-find "terminator") "terminator")
+  (defvar linux-terminal (cond ((executable-find "tilix") "tilix")
                                ((executable-find "konsole") "konsole")
                                ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)
-    (cond ((executable-find "terminator") (list "--working-directory" dir))
+    (cond ((executable-find "tilix") (list dir))
           ((executable-find "konsole") (list "--workdir" dir))
           ((executable-find "gnome-terminal") (list "--working-directory" dir))))
 
