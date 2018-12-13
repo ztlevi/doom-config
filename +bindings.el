@@ -124,6 +124,7 @@
      :n "d" #'toggle-debug-on-error
      :n "D" #'+my/realtime-elisp-doc
      :n "L" #'toggle-truncate-lines
+     :n "I" #'ivy-rich-mode
      :n "v" #'visual-line-mode)
    (:desc "jump" :prefix "j"
      :n "j" #'avy-goto-char-timer
