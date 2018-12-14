@@ -119,6 +119,23 @@ repository root."
           (lambda () (backward-char 2))
         (evil-ex command-string)))))
 
+;;;###autoload
+(defun iterm-open-new-tab (dir &optional args)
+  (do-applescript
+   (format
+    "
+    tell application \"iTerm2\"
+        activate
+        tell current window
+            create tab with default profile
+            tell the current session
+                write text \"cd %s\"
+            end tell
+        end tell
+    end tell
+"
+    dir)))
+
 ;; "http://xuchunyang.me/Opening-iTerm-From-an-Emacs-Buffer/"
 ;;;###autoload
 (defun +my/iterm-shell-command (command &optional prefix)

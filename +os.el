@@ -36,11 +36,14 @@
   (+macos!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
-  (+macos!open-with reveal-in-terminal "iterm" default-directory)
-  (+macos!open-with reveal-project-in-terminal "iterm"
-                    (or (doom-project-root) default-directory))
+  (+macos!open-with reveal-in-typora "Typora" buffer-file-name)
 
-  (+macos!open-with reveal-in-typora "Typora" buffer-file-name))
+  (defun +macos/reveal-in-terminal ()
+    (interactive)
+    (iterm-open-new-tab default-directory))
+  (defun +macos/reveal-project-in-terminal ()
+    (interactive)
+    (iterm-open-new-tab (or (doom-project-root) default-directory))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
