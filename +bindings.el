@@ -49,7 +49,6 @@
 
  (:leader
    :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
-   :desc "window"      :nmv "w"  evil-window-map
 
    :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
    (:desc "app" :prefix "a"
