@@ -201,9 +201,6 @@
      (:desc "Find" :prefix "f")
      :desc "Import at point" :n "i" 'importmagic-fix-symbol-at-point
      :desc "Import all"      :n "I" 'importmagic-fix-imports))
- (:after ein-notebook
-   (:map ein:notebook-mode-map
-     "M-s" 'ein:notebook-save-notebook-command))
  (:after js2-mode
    (:map js2-mode-map
      :localleader
