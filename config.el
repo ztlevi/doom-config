@@ -19,14 +19,15 @@
 (advice-add 'risky-local-variable-p :override #'ignore)
 
 (set-popup-rules! '(("^\\*helpful" :size 0.35)
-                    ("^\\*Ibuffer\\*" :size 0.35)
+                    ("^\\*Ibuffer\\*$" :size 0.35)
                     ("^\\*info.*" :size 80 :side right)
                     ("^\\*Man.*" :size 80 :side right)
                     ("^\\*Customize" :actions display-buffer)
                     ("^\\*edit-indirect" :size 0.6)
-                    ("^\\*YASnippet Tables\\*" :size 0.35)
-                    ("^\\*grep\\*" :size 0.35)
-                    ("^\\*Anaconda\\*" :size 0.35)
+                    ("^\\*YASnippet Tables\\*$" :size 0.35)
+                    ("^\\*grep\\*$" :size 0.35)
+                    ("^\\*Anaconda\\*$" :size 0.35)
+                    ("^\\*helm kill ring\\*$" :size 0.35)
                     ))
 
 ;; Load system profile for different machines
