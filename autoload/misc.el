@@ -124,7 +124,7 @@ repository root."
   (do-applescript
    (format
     "
-    tell application \"iTerm2\"
+    tell application \"/Applications/iTerm.app\"
         activate
         tell current window
             create tab with default profile
