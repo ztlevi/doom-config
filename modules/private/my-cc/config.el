@@ -88,7 +88,9 @@
   (setq flycheck-c/c++-googlelint-executable "cpplint")
   (flycheck-add-next-checker 'c/c++-gcc '(warning . c/c++-googlelint))
 
-  (setq flycheck-c/c++-gcc-executable "gcc-7")
+  (setq flycheck-c/c++-gcc-executable "gcc-7"
+        flycheck-gcc-include-path '("/usr/local/inclue"))
+
   (add-hook! c++-mode-hook
     (setq flycheck-gcc-language-standard "c++11"
           flycheck-clang-language-standard "c++11"))
