@@ -11,6 +11,7 @@
            edit-indirect
            atomic-chrome
            all-the-icons-dired
+           (font-lock+ :recipe (:fetcher github :repo "emacsmirror/font-lock-plus"))
            link-hint
            symbol-overlay
            tldr
