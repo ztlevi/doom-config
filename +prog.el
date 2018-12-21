@@ -213,7 +213,6 @@
   (require 'lsp-clients)
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
   (setq lsp-auto-guess-root t)
-  (setq lsp-message-project-root-warning t)
   )
 
 
