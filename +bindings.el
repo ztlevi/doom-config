@@ -224,7 +224,14 @@
  (:after org
    (:map org-mode-map
      :localleader
+     :n "s" #'org-schedule
      :n "L" #'org-toggle-link-display))
+ (:after evil-org
+   (:map evil-org-mode-map
+     :i "C-d" nil
+     :i "C-t" nil
+     :i "C-h" nil
+     :i "C-k" nil))
  (:after markdown-mode
    (:map markdown-mode-map
      :ni [M-return]   (λ! (+org/insert-item 'below))
