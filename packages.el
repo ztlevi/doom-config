@@ -23,5 +23,5 @@
 (packages! lsp-mode lsp-ui company-lsp
            wucuo import-js
            importmagic py-isort
-           lsp-rust rust-mode
+           rust-mode
            )
