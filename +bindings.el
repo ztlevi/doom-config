@@ -197,9 +197,22 @@
  (:after python
    (:map python-mode-map
      :localleader
-     (:desc "Find" :prefix "f")
      :desc "Import at point" :n "i" 'importmagic-fix-symbol-at-point
-     :desc "Import all"      :n "I" 'importmagic-fix-imports))
+     :desc "Import all"      :n "I" 'importmagic-fix-imports
+     (:desc "Find" :prefix "f")
+     (:desc "Test" :prefix "t")
+     (:desc "ENV" :prefix "e"
+       :n "c" #'conda-env-activate
+       :n "C" #'conda-env-deactivate
+       :n "w" #'pyvenv-workon
+       :n "v" #'pyvenv-activate
+       :n "V" #'pyvenv-deactivate
+       :n "p" #'pipenv-activate
+       :n "P" #'pipenv-deactivate)))
+ (:after pyenv-mode
+   (:map pyenv-mode-map
+     "C-c C-s" nil
+     "C-c C-u" nil))
  (:after js2-mode
    (:map js2-mode-map
      :localleader
