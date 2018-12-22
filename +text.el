@@ -6,10 +6,10 @@
 ;; ORG
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(after! org
-  (setq org-directory "~/Dropbox/Org-Notes"
+(setq org-directory "~/Dropbox/Org-Notes"
         org-agenda-files (list org-directory))
 
+(after! org
   (setq org-capture-templates
         '(("t" "Personal todo" entry
            (file+headline +org-capture-todo-file "Inbox")
