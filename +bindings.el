@@ -83,8 +83,8 @@
         :desc "Switch workspace" :n [tab] #'+workspace/switch-to
         :desc "Display tab bar"  :n "."   #'+workspace/display)
       (:prefix "f"                      ; file
-        :n "f" #'counsel-find-file
-        :nm "j" #'deer)
+        :desc "find file" :n "f" #'counsel-find-file
+        :desc "deer"      :nm "j" #'deer)
       (:prefix "g"                      ; git
         :desc "Magit status" :nm "g" #'magit-status
         :desc "Magit browse commit" :n "O" #'+vc/git-browse-commit
@@ -92,10 +92,10 @@
       (:prefix "h"                      ; help
         :n "C" #'helpful-command)
       (:prefix "e"                      ; error
-        :n "n" #'flycheck-next-error
-        :n "p" #'flycheck-previous-error
-        :n "l" #'flycheck-list-errors
-        :n "v" #'flycheck-verify-setup)
+        :desc "flycheck-next-error"     :n "n" #'flycheck-next-error
+        :desc "flycheck-previous-error" :n "p" #'flycheck-previous-error
+        :desc "flycheck-list-errors"    :n "l" #'flycheck-list-errors
+        :desc "flycheck-verify-setup"   :n "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
         :desc "Kill ring"             :n    "k" #'helm-show-kill-ring
         :desc "Open link"             :n    "x" #'link-hint-open-link
