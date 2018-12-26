@@ -54,21 +54,9 @@
 (def-package! ccls
   :when (executable-find "ccls")
   :defer t
-  :init (add-hook! (c-mode c++-mode objc-mode) #'+ccls//enable)
+  :init (add-hook! (c-mode c++-mode cuda-mode objc-mode) #'+ccls//enable)
   :config
-  ;; overlay is slow
-  ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
-  ;; https://github.com/maskray/ccls/blob/master/src/config.h
-  (setq ccls-initialization-options
-        `(:clang (:pathMappings ,+ccls-path-mappings)
-                 :completion
-                 (
-                  :includeBlacklist
-                  ("^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
-                   "^/usr/(local/)?include/c\\+\\+/v1/"
-                   ))
-                 :diagnostics (:frequencyMs 5000)
-                 :index (:reparseForDependency 1)))
+  (add-hook 'lsp-after-open-hook #'ccls-code-lens-mode)
 
   (with-eval-after-load 'projectile
     (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
