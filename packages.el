@@ -21,7 +21,7 @@
 
 ;; programming
 (packages! lsp-mode lsp-ui company-lsp
-           wucuo import-js
+           import-js indium
            importmagic py-isort
            rust-mode
            )
