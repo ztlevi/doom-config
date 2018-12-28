@@ -7,7 +7,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq org-directory "~/Dropbox/Org-Notes"
-        org-agenda-files (list org-directory))
+      org-agenda-files (list org-directory))
 
 (after! org
   (setq org-capture-templates
@@ -30,6 +30,8 @@
           ("pc" "Project changelog" entry  ; {project-root}/changelog.org
            (file+headline +org-capture-project-notes-file "Unreleased")
            "* TODO %?\n%i" :prepend t :kill-buffer t)))
+
+  (setq org-log-into-drawer "LOGBOOK")
 
   (set-evil-initial-state!
     '(org-agenda-mode)
