@@ -6,6 +6,11 @@
 (make--ssh "huawei-storage" "admin@10.213.37.36")
 (make--shell "huawei-storage" "admin@10.213.37.36")
 
+(after! ssh-deploy
+  (setq ssh-deploy-async 1
+        ssh-deploy-automatically-detect-remote-changes 1))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; NAVIGATION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,7 +80,7 @@
 
   ;; Use minibuffer to display ivy functions
   (dolist (func '(+ivy/switch-workspace-buffer
-                   ivy-switch-buffer))
+                  ivy-switch-buffer))
     (push `(,func) ivy-display-functions-alist))
   )
 
