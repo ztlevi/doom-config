@@ -79,7 +79,7 @@
       (:prefix "c"                      ; code
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-directory)
-      (:prefix ([tab] . "workspace")
+      (:prefix [tab]
         :desc "Switch workspace" [tab] #'+workspace/switch-to
         :desc "Display tab bar"  "."   #'+workspace/display)
       (:prefix "f"                      ; file
