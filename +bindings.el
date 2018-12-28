@@ -281,7 +281,7 @@
    "C-;" #'ivy-avy
    "C-k" #'ivy-kill-line
    "C-v" #'ivy-scroll-up-command
-   "A-v" #'ivy-scroll-down-command)
+   "s-v" #'ivy-scroll-down-command)
  (:after magit-blame
    (:map magit-blame-mode-map
      :n "o" #'magit-blame--git-link-commit))
@@ -302,7 +302,7 @@
    (:map company-active-map
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"   #'company-next-page
-     "A-v"   #'company-previous-page
+     "s-v"   #'company-previous-page
      "<tab>" nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
@@ -312,7 +312,7 @@
 
 (cond (IS-MAC
        (setq mac-command-modifier 'meta
-             mac-option-modifier  'alt)))
+             mac-option-modifier  'super)))
 
 (define-key!
   ;; Buffer-local font scaling
