@@ -64,91 +64,91 @@
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
-      (:prefix "a"                      ; app
-        :n "s" #'prodigy
-        :n "b" #'blog-admin-start
-        :n "p" #'list-processes
-        :nmv "x" #'align-regexp)
+      (:prefix ("a" . "app")
+        "s" #'prodigy
+        "b" #'blog-admin-start
+        "p" #'list-processes
+        "x" #'align-regexp)
       (:prefix "b"                      ; buffer
-        :desc "Last buffer" :nmv "l" #'evil-switch-to-windows-last-buffer
-        :nmv  "b" #'ivy-switch-buffer
-        :nm   "r" #'revert-buffer-no-confirm
-        :nm   "m" #'view-echo-area-messages
-        :nm   "U" #'+my/untabify-buffer
-        :nmv  "k" #'kill-current-buffer)
+        :desc "Last buffer" "l" #'evil-switch-to-windows-last-buffer
+        "b" #'ivy-switch-buffer
+        "r" #'revert-buffer-no-confirm
+        "m" #'view-echo-area-messages
+        "U" #'+my/untabify-buffer
+        "k" #'kill-current-buffer)
       (:prefix "c"                      ; code
-        :desc "Cspell check buffer" :n "c" #'cspell-check-buffer
-        :desc "Cspell check directory" :n "C" #'cspell-check-directory)
-      (:prefix [tab]                    ;workspace
-        :desc "Switch workspace" :n [tab] #'+workspace/switch-to
-        :desc "Display tab bar"  :n "."   #'+workspace/display)
+        :desc "Cspell check buffer"    "c" #'cspell-check-buffer
+        :desc "Cspell check directory" "C" #'cspell-check-directory)
+      (:prefix ([tab] . "workspace")
+        :desc "Switch workspace" [tab] #'+workspace/switch-to
+        :desc "Display tab bar"  "."   #'+workspace/display)
       (:prefix "f"                      ; file
-        :desc "find file" :n "f" #'counsel-find-file
-        :desc "deer"      :nm "j" #'deer)
+        :desc "find file" "f" #'counsel-find-file
+        :desc "deer"      "j" #'deer)
       (:prefix "g"                      ; git
-        :desc "Magit status" :nm "g" #'magit-status
-        :desc "Magit browse commit" :n "O" #'+vc/git-browse-commit
-        :desc "M-x magit-*" :n "*" (+my/prefix-M-x "magit-"))
+        :desc "Magit status" "g" #'magit-status
+        :desc "Magit browse commit" "O" #'+vc/git-browse-commit
+        :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
-        :n "C" #'helpful-command)
-      (:prefix "e"                      ; error
-        :desc "flycheck-next-error"     :n "n" #'flycheck-next-error
-        :desc "flycheck-previous-error" :n "p" #'flycheck-previous-error
-        :desc "flycheck-list-errors"    :n "l" #'flycheck-list-errors
-        :desc "flycheck-verify-setup"   :n "v" #'flycheck-verify-setup)
+        "C" #'helpful-command)
+      (:prefix ("e" . "error")
+        :desc "flycheck-next-error"     "n" #'flycheck-next-error
+        :desc "flycheck-previous-error" "p" #'flycheck-previous-error
+        :desc "flycheck-list-errors"    "l" #'flycheck-list-errors
+        :desc "flycheck-verify-setup"   "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
-        :desc "Kill ring"             :n    "k" #'helm-show-kill-ring
-        :desc "Open link"             :n    "x" #'link-hint-open-link
-        :desc "Open link at point"    :n    "X" #'link-hint-open-link-at-point
-        :desc "Ansi-Term"             :nm   "s" #'+term/open-popup
-        :desc "Project run Ansi-Term" :nm   "S" #'+term/open-popup-in-project
-        :desc "Eshell popup"          :nm   "e" #'+eshell/open-popup
-        :desc "Project run Eshell"    :nm   "E" #'projectile-run-eshell
-        :desc "Ibuffer"               :nm   "I" #'ibuffer
-        :desc "Youdao dictionary"     :n    "y" #'youdao-dictionary-search-at-point-tooltip
-        :desc "Youdao play voice"     :n    "Y" #'youdao-dictionary-play-voice-at-point
-        :desc "Debugger start"        :n    "d" #'+debugger:start
+        :desc "Kill ring"             "k" #'helm-show-kill-ring
+        :desc "Open link"             "x" #'link-hint-open-link
+        :desc "Open link at point"    "X" #'link-hint-open-link-at-point
+        :desc "Ansi-Term"             "s" #'+term/open-popup
+        :desc "Project run Ansi-Term" "S" #'+term/open-popup-in-project
+        :desc "Eshell popup"          "e" #'+eshell/open-popup
+        :desc "Project run Eshell"    "E" #'projectile-run-eshell
+        :desc "Ibuffer"               "I" #'ibuffer
+        :desc "Youdao dictionary"     "y" #'youdao-dictionary-search-at-point-tooltip
+        :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
+        :desc "Debugger start"        "d" #'+debugger:start
         (:when IS-MAC
-          :desc "Reveal in default program"  :nm "f" #'+macos/open-in-default-program
-          :desc "Reveal in Finder"           :nm "o" #'+macos/reveal-in-finder
-          :desc "Reveal project in Finder"   :nm "O" #'+macos/reveal-project-in-finder
-          :desc "Reveal in Terminal"         :nm "t" #'+macos/reveal-in-terminal
-          :desc "Reveal project in Terminal" :nm "T" #'+macos/reveal-project-in-terminal
-          :desc "Reveal file in Apps"        :nm "," #'+macos/reveal-in-apps
-          :desc "Reveal project in Apps"     :nm "." #'+macos/reveal-project-in-apps)
+          :desc "Reveal in default program"  "f" #'+macos/open-in-default-program
+          :desc "Reveal in Finder"           "o" #'+macos/reveal-in-finder
+          :desc "Reveal project in Finder"   "O" #'+macos/reveal-project-in-finder
+          :desc "Reveal in Terminal"         "t" #'+macos/reveal-in-terminal
+          :desc "Reveal project in Terminal" "T" #'+macos/reveal-project-in-terminal
+          :desc "Reveal file in Apps"        "," #'+macos/reveal-in-apps
+          :desc "Reveal project in Apps"     "." #'+macos/reveal-project-in-apps)
         (:when IS-LINUX
-          :desc "Reveal in default program"  :nm "f" #'+linux/open-in-default-program
-          :desc "Reveal in Finder"           :nm "o" #'+linux/reveal-in-finder
-          :desc "Reveal project in Finder"   :nm "O" #'+linux/reveal-project-in-finder
-          :desc "Reveal in Terminal"         :nm "t" #'+linux/reveal-in-terminal
-          :desc "Reveal project in Terminal" :nm "T" #'+linux/reveal-project-in-terminal
-          :desc "Reveal file in Apps"        :nm "," #'+linux/reveal-in-apps
-          :desc "Reveal project in Apps"     :nm "." #'+linux/reveal-project-in-apps))
+          :desc "Reveal in default program"  "f" #'+linux/open-in-default-program
+          :desc "Reveal in Finder"           "o" #'+linux/reveal-in-finder
+          :desc "Reveal project in Finder"   "O" #'+linux/reveal-project-in-finder
+          :desc "Reveal in Terminal"         "t" #'+linux/reveal-in-terminal
+          :desc "Reveal project in Terminal" "T" #'+linux/reveal-project-in-terminal
+          :desc "Reveal file in Apps"        "," #'+linux/reveal-in-apps
+          :desc "Reveal project in Apps"     "." #'+linux/reveal-project-in-apps))
       (:prefix "i"                      ; insert
-        :n "v" #'add-dir-local-variable
-        :n "o" #'symbol-overlay-put
-        :n "q" #'symbol-overlay-remove-all)
+        "v" #'add-dir-local-variable
+        "o" #'symbol-overlay-put
+        "q" #'symbol-overlay-remove-all)
       (:prefix "p"                      ; project
         "*" (+my/prefix-M-x "projectile-"))
       (:prefix "t"                      ; toggle
-        :n "c" #'centered-window-mode
-        :n "r" #'rjsx-mode
-        :n "d" #'toggle-debug-on-error
-        :n "D" #'+my/realtime-elisp-doc
-        :n "L" #'toggle-truncate-lines
-        :n "I" #'ivy-rich-mode
-        :n "v" #'visual-line-mode)
-      (:prefix "j"                      ; jump
-        :n "j" #'avy-goto-char-timer
-        :n "l" #'avy-goto-line
-        :n "b" #'avy-pop-mark)
-      (:prefix "s"                     ; snippet
-        :n "t" #'yas/describe-tables)
+        "c" #'centered-window-mode
+        "r" #'rjsx-mode
+        "d" #'toggle-debug-on-error
+        "D" #'+my/realtime-elisp-doc
+        "L" #'toggle-truncate-lines
+        "I" #'ivy-rich-mode
+        "v" #'visual-line-mode)
+      (:prefix ("j" . "jump")
+        "j" #'avy-goto-char-timer
+        "l" #'avy-goto-line
+        "b" #'avy-pop-mark)
+      (:prefix "s"                      ; snippet
+        "t" #'yas/describe-tables)
       (:prefix "/"                      ; search
-        :desc "Project"   :nmv "/" #'+ivy/project-search
-        :desc "Project (hidden)" :nmv "h" #'+ivy/project-search-with-hidden-files
-        :desc "Comments"  :nmv "c" #'counsel-imenu-comments
-        :desc "Directory" :nmv "d" #'+ivy/project-search-from-cwd))
+        :desc "Project"   "/" #'+ivy/project-search
+        :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files
+        :desc "Comments"  "c" #'counsel-imenu-comments
+        :desc "Directory" "d" #'+ivy/project-search-from-cwd))
 
 (map!
  (:map +popup-mode-map
@@ -197,7 +197,7 @@
    :map emacs-lisp-mode-map
    :n "gh" #'helpful-at-point
    :localleader
-   :desc "Eval last expression" :n "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
+   :desc "Eval last expression" "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
  (:after lsp-ui
    :map lsp-ui-mode-map
    "C-j" #'toggle-lsp-ui-doc)
@@ -210,16 +210,16 @@
  (:after python
    :localleader
    :map python-mode-map
-   :desc "Import at point" :n "i" 'importmagic-fix-symbol-at-point
-   :desc "Import all" :n "I" 'importmagic-fix-imports
-   (:prefix "v"
-     :n "c" #'conda-env-activate
-     :n "C" #'conda-env-deactivate
-     :n "w" #'pyvenv-workon
-     :n "v" #'pyvenv-activate
-     :n "V" #'pyvenv-deactivate
-     :n "p" #'pipenv-activate
-     :n "P" #'pipenv-deactivate))
+   :desc "Import at point" "i" #'importmagic-fix-symbol-at-point
+   :desc "Import all"      "I" #'importmagic-fix-imports
+   (:prefix ("v" . "ENV")
+     "c" #'conda-env-activate
+     "C" #'conda-env-deactivate
+     "w" #'pyvenv-workon
+     "v" #'pyvenv-activate
+     "V" #'pyvenv-deactivate
+     "p" #'pipenv-activate
+     "P" #'pipenv-deactivate))
  (:after pyenv-mode
    (:map pyenv-mode-map
      "C-c C-s" nil
@@ -227,13 +227,13 @@
  (:after js2-mode
    (:map js2-mode-map
      :localleader
-     :desc "Import js"  :n "i" 'import-js-import
-     :desc "Import all" :n "f" 'import-js-fix))
+     :desc "Import js"  "i" 'import-js-import
+     :desc "Import all" "f" 'import-js-fix))
  (:after rjsx-mode
    (:map rjsx-mode-map
      :localleader
-     :desc "Import js"  :n "i" 'import-js-import
-     :desc "Import all" :n "f" 'import-js-fix))
+     :desc "Import js"  "i" 'import-js-import
+     :desc "Import all" "f" 'import-js-fix))
  (:after tide
    :map tide-references-mode-map
    "C-k" 'tide-find-previous-reference
@@ -241,15 +241,14 @@
    "C-j" 'tide-find-next-reference
    "n" 'tide-find-next-reference
    "C-l" 'tide-goto-reference)
- (:after rust-mode
-   (:map rust-mode-map
-     :localleader
-     :n "=" #'rust-format-buffer))
  (:after org
    (:map org-mode-map
      :localleader
-     :n "s" #'org-schedule
-     :n "L" #'org-toggle-link-display))
+     "s" #'org-schedule
+     (:prefix ("a" . "Archive")
+       "a" #'org-archive-subtree-default
+       "s" #'org-archive-subtree)
+     "L" #'org-toggle-link-display))
  (:after evil-org
    (:map evil-org-mode-map
      :i "C-d" nil
@@ -262,13 +261,13 @@
      :ni [S-M-return] (λ! (+org/insert-item 'above))
      :localleader
      (:when IS-MAC
-       :desc "Reveal in Typora" :n "o" #'+macos/reveal-in-typora)
+       :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
      (:when IS-LINUX
-       :desc "Reveal in Typora" :n "o" #'+linux/reveal-in-typora)
-     :desc "Edit" :n "x" (+my/simulate-key "C-c C-s")
-     (:desc "Insert" :prefix "i"
-       :n "r" #'markdown-table-insert-row
-       :n "c" #'markdown-table-insert-column)))
+       :desc "Reveal in Typora" "o" #'+linux/reveal-in-typora)
+     :desc "Edit" "x" (+my/simulate-key "C-c C-s")
+     (:prefix ("i" . "Insert")
+       "r" #'markdown-table-insert-row
+       "c" #'markdown-table-insert-column)))
  (:after grep
    :map grep-mode-map
    "SPC" nil)

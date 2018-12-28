@@ -29,26 +29,7 @@
             (lambda ()
               (modify-syntax-entry ?_ "w")))
 
-  (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
-
-  (map!
-   :map (c-mode-map c++-mode-map)
-   (:localleader
-     :n "a" #'ccls/references-address
-     :n "c" #'ccls-call-hierarchy
-     :n "f" #'ccls/references-not-call
-     :n "lp" #'ccls-preprocess-file
-     :n "lf" #'ccls-reload
-     :n "m" #'ccls/references-macro
-     :n "r" #'ccls/references-read
-     :n "w" #'ccls/references-write
-     :desc "breakpoint"
-     :n "db" (lambda ()
-               (interactive)
-               (evil-open-above 1)
-               (insert "volatile static int z=0;while(!z)asm(\"pause\");")
-               (evil-normal-state))))
-  )
+  (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode)))
 
 
 (def-package! ccls
