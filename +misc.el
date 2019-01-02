@@ -7,8 +7,7 @@
 (make--shell "huawei-storage" "admin@10.213.37.36")
 
 (after! ssh-deploy
-  (setq ssh-deploy-async 1
-        ssh-deploy-automatically-detect-remote-changes 1))
+  (setq ssh-deploy-automatically-detect-remote-changes 1))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
