@@ -17,6 +17,7 @@
            (blog-admin :recipe (:fetcher github :repo "codefalling/blog-admin"))
            youdao-dictionary
            wucuo
+           org-wild-notifier
            )
 
 ;; programming

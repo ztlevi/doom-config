@@ -38,6 +38,14 @@
     'emacs))
 
 
+(def-package! org-wild-notifier
+  :defer t
+  :init
+  (add-hook 'doom-post-init-hook #'org-wild-notifier-mode t)
+  :config
+  (setq alert-default-style 'libnotify))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
