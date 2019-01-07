@@ -8,8 +8,8 @@
              +modeline-height 32))
       (IS-LINUX
        (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
-       (setq doom-font (font-spec :family "Ubuntu Mono" :size (eval (round (* 18 resolution-factor))))
-             doom-big-font (font-spec :family "Ubuntu Mono" :size (eval (round (* 24 resolution-factor))))
+       (setq doom-font (font-spec :family "Operator Mono" :size (eval (round (* 16 resolution-factor))) :weight 'light)
+             doom-big-font (font-spec :family "Operator Mono" :size (eval (round (* 22 resolution-factor))))
              +modeline-height (eval (round (* 32 resolution-factor))))))
 
 (setq +doom-modeline-buffer-file-name-style 'relative-to-project)
