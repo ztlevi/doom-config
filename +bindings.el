@@ -5,54 +5,43 @@
   [remap forward-word] #'forward-char
   [remap backward-word] #'backward-char)
 
+(define-key!
+  "C-h h" nil
+  "C-h C-k" #'find-function-on-key
+  "C-h C-f" #'find-function-at-point
+  "C-h C-v" #'find-variable-at-point
+  "<f8>"    #'describe-mode
+
+  "C-M-\\" #'indent-region-or-buffer
+  "C-`" #'+popup/toggle
+  "M-w" #'+workspace/close-window-or-workspace
+  "M-a" #'mark-whole-buffer
+  "M-c" #'evil-yank
+  "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
+  "M-s" #'evil-write-all
+  "M-f" #'swiper
+  "C-s" #'swiper
+  "M-e" #'+ivy/switch-workspace-buffer
+  "M-p" #'counsel-git
+  "C-;" #'flyspell-correct-previous-word-generic
+  "M-m" #'kmacro-call-macro
+  "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
+  "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
+  "M-/" #'evilnc-comment-or-uncomment-lines)
+
 (map!
- "C-M-\\" #'indent-region-or-buffer
- "C-h h" nil
- "C-h C-k" #'find-function-on-key
- "C-h C-f" #'find-function-at-point
- "C-h C-v" #'find-variable-at-point
- "<f8>"    #'describe-mode
-
- :nmvi "C-`" #'+popup/toggle
- :nmvi "M-w" #'+workspace/close-window-or-workspace
- :nmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
- :nmvi "C-a" #'doom/backward-to-bol-or-indent
- :nmvi "M-a" #'mark-whole-buffer
- :nmvi "M-c" #'evil-yank
- :nmvi "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
- :nmvi "M-s" #'evil-write-all
- :nmvi "M-f" #'swiper
- :nmvi "C-s" #'swiper
- :nmvi "M-e" #'+ivy/switch-workspace-buffer
- :nmvi "M-p" #'counsel-git
- :nmvi "C-;" #'flyspell-correct-previous-word-generic
- :nmvi "M-m" #'kmacro-call-macro
- :nmvi "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
- :nmvi "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
- :nmvi "M-/" #'evilnc-comment-or-uncomment-lines
- :nv   "M-." #'+lookup/definition
-
- :i "C-n" #'next-line
- :i "C-p" #'previous-line
- :i "C-k" #'kill-line
- :i "C-d" #'delete-forward-char
+ :gi "C-n" #'next-line
+ :gi "C-p" #'previous-line
+ :gi "C-k" #'kill-line
+ :gi "C-d" #'delete-forward-char
 
  :v "C-r"   #'+my/evil-quick-replace
  :v "<del>" (kbd "\"_d")
  :v "<backspace>" (kbd "\"_d")
 
- (:when (featurep! :feature workspaces)
-   :nmvi "M-t" #'+workspace/new
-   :nmvi "M-1" (λ! (+workspace/switch-to 0))
-   :nmvi "M-2" (λ! (+workspace/switch-to 1))
-   :nmvi "M-3" (λ! (+workspace/switch-to 2))
-   :nmvi "M-4" (λ! (+workspace/switch-to 3))
-   :nmvi "M-5" (λ! (+workspace/switch-to 4))
-   :nmvi "M-6" (λ! (+workspace/switch-to 5))
-   :nmvi "M-7" (λ! (+workspace/switch-to 6))
-   :nmvi "M-8" (λ! (+workspace/switch-to 7))
-   :nmvi "M-9" (λ! (+workspace/switch-to 8))
-   )
+ :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
+ :gnmvi "C-a" #'doom/backward-to-bol-or-indent
+ :gnmvi "M-." #'+lookup/definition
 
  (:prefix "C-x"
    :n "e"  #'pp-eval-last-sexp)
@@ -281,7 +270,8 @@
    "C-;" #'ivy-avy
    "C-k" #'ivy-kill-line
    "C-v" #'ivy-scroll-up-command
-   "s-v" #'ivy-scroll-down-command)
+   "A-v" #'ivy-scroll-down-command
+   "M-v" #'yank)
  (:after magit-blame
    (:map magit-blame-mode-map
      :n "o" #'magit-blame--git-link-commit))
@@ -292,6 +282,7 @@
      "SPC" nil))
  (:after evil-vars
    :map evil-ex-completion-map
+   "C-b" nil
    "C-k" #'kill-line
    "C-d" #'delete-forward-char)
  (:after evil-collection-info
@@ -302,43 +293,10 @@
    (:map company-active-map
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"   #'company-next-page
-     "s-v"   #'company-previous-page
+     "A-v"   #'company-previous-page
      "<tab>" nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
  (:after term
    (:map term-raw-map
      :i "M-v" #'term-paste)))
-
-(cond (IS-MAC
-       (setq mac-command-modifier 'meta
-             mac-option-modifier  'super)))
-
-(define-key!
-  ;; Buffer-local font scaling
-  "M-+" (λ! (text-scale-set 0))
-  "M-=" #'text-scale-increase
-  "M--" #'text-scale-decrease
-  ;; Fix frame-switching on MacOS
-  "M-`" #'other-frame
-  ;; Simple window/frame navigation/manipulation
-  "M-w" #'delete-window
-  "M-W" #'delete-frame
-  "M-n" #'+default/new-buffer
-  "M-N" #'make-frame
-  ;; Textmate-esque bindings
-  "M-a" #'mark-whole-buffer
-  "M-b" #'+default/compile
-  "M-f" #'swiper
-  "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
-  ;; Restore OS undo, save, copy, & paste keys (without cua-mode, because
-  ;; it imposes some other functionality and overhead we don't need)
-  "M-z" #'undo
-  "M-s" #'save-buffer
-  "M-c" (if (featurep 'evil) 'evil-yank 'copy-region-as-kill)
-  "M-v" #'yank
-  ;; textmate-esque newline insertion
-  [M-return]    #'evil-open-below
-  [S-M-return]  #'evil-open-above
-  ;; textmate-esque deletion
-  [M-backspace] #'doom/backward-kill-to-bol-and-indent)
