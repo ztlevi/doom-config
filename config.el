@@ -28,6 +28,7 @@
                     ("^\\*grep\\*$" :size 0.35)
                     ("^\\*Anaconda\\*$" :size 0.35)
                     ("^\\*helm kill ring\\*$" :size 0.35)
+                    ((lambda (buf _) (with-current-buffer buf (eq major-mode 'forge-topic-mode))) :size 0.35)
                     ))
 
 ;; Load system profile for different machines
