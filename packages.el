@@ -17,6 +17,7 @@
            youdao-dictionary
            wucuo
            org-wild-notifier
+           forge
            )
 
 ;; programming

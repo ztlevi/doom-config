@@ -126,6 +126,10 @@
   (magit-wip-after-apply-mode t))
 
 
+(def-package! forge
+  :after magit)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ATOMIC CHROME
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -136,7 +140,7 @@
   (defun +my/atomic-chrome-server-running-p ()
     (cond ((executable-find "lsof")
            (zerop (call-process "lsof" nil nil nil "-i" ":64292")))
-          ((executable-find "netstat") ; Windows
+          ((executable-find "netstat")  ; Windows
            (zerop (call-process-shell-command "netstat -aon | grep 64292")))))
   :hook
   (atomic-chrome-edit-mode . +my/atomic-chrome-mode-setup)
