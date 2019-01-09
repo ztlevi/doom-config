@@ -46,6 +46,7 @@
    :ni "/" #'company-files
    :desc "Text properties at point" :nmv "f" (λ! (message "%S" (text-properties-at (point))))))
 
+;; leader/localleader is not compatible with :gnvmi
 (map! :leader
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
