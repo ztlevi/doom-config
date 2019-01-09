@@ -1,11 +1,6 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
-(define-key! 'global
-  [remap swiper] #'swiper
-  [remap forward-word] #'forward-char
-  [remap backward-word] #'backward-char)
-
-(define-key!
+(define-key! 'override                  ; Override will override other maps corresponding keys
   "C-h h" nil
   "C-h C-k" #'find-function-on-key
   "C-h C-f" #'find-function-at-point
@@ -32,6 +27,8 @@
 (map!
  :gi "C-n" #'next-line
  :gi "C-p" #'previous-line
+ :gi "C-b" #'backward-char
+ :gi "C-f" #'forward-char
  :gi "C-k" #'kill-line
  :gi "C-d" #'delete-forward-char
 
@@ -59,12 +56,10 @@
         "p" #'list-processes
         "x" #'align-regexp)
       (:prefix "b"                      ; buffer
-        :desc "Last buffer" "l" #'evil-switch-to-windows-last-buffer
-        "b" #'ivy-switch-buffer
+        :desc "Last buffer"   "l" #'evil-switch-to-windows-last-buffer
+        :desc "Switch buffer" "b" #'ivy-switch-buffer
         "r" #'revert-buffer-no-confirm
-        "m" #'view-echo-area-messages
-        "U" #'+my/untabify-buffer
-        "k" #'kill-current-buffer)
+        "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-directory)
@@ -72,10 +67,9 @@
         :desc "Switch workspace" [tab] #'+workspace/switch-to
         :desc "Display tab bar"  "."   #'+workspace/display)
       (:prefix "f"                      ; file
-        :desc "find file" "f" #'counsel-find-file
-        :desc "deer"      "j" #'deer)
+        :desc "Find file" "f" #'counsel-find-file
+        :desc "Deer"      "j" #'deer)
       (:prefix "g"                      ; git
-        :desc "Magit status" "g" #'magit-status
         :desc "Magit browse commit" "O" #'+vc/git-browse-commit
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
@@ -136,8 +130,7 @@
       (:prefix "/"                      ; search
         :desc "Project"   "/" #'+ivy/project-search
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files
-        :desc "Comments"  "c" #'counsel-imenu-comments
-        :desc "Directory" "d" #'+ivy/project-search-from-cwd))
+        :desc "Comments"  "c" #'counsel-imenu-comments))
 
 (map!
  (:map +popup-mode-map
