@@ -89,6 +89,7 @@
         counsel-describe-function-function 'helpful-callable
         counsel-describe-variable-function 'helpful-variable
         counsel-git-cmd "rg --files --hidden"
+        counsel-rg-base-command "rg -zS --no-heading --line-number --max-columns 1000 --color never %s ."
         counsel-grep-base-command counsel-rg-base-command))
 
 
