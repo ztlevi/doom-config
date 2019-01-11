@@ -3,7 +3,8 @@
 
 ;; disabled packages
 (packages! (exec-path-from-shell :disable t)
-           (solaire-mode :disable t))
+           (solaire-mode :disable t)
+           (magithub :disable t))
 
 ;; misc
 (packages! avy
