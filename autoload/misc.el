@@ -99,6 +99,13 @@ repository root."
                               (format "L%s" start)))))))
 
 ;;;###autoload
+(defun git-link-commit-gitlab-http (hostname dirname commit)
+  (format "http://%s/%s/commit/%s"
+	  hostname
+	  dirname
+	  commit))
+
+;;;###autoload
 (defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
   (interactive "P")
