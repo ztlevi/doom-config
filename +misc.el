@@ -127,6 +127,10 @@
   (magit-wip-after-apply-mode t))
 
 
+(after! magit-todos
+  (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
+
+
 (def-package! forge
   :after magit)
 
