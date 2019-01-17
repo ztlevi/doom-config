@@ -37,8 +37,6 @@
   :defer t
   :init (add-hook! (c-mode c++-mode cuda-mode objc-mode) #'+ccls//enable)
   :config
-  (add-hook 'lsp-after-open-hook #'ccls-code-lens-mode)
-
   (with-eval-after-load 'projectile
     (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
 
