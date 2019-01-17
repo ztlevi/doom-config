@@ -77,10 +77,13 @@
       (:prefix "h"                      ; help
         "C" #'helpful-command)
       (:prefix ("e" . "error")
-        :desc "flycheck-next-error"     "n" #'flycheck-next-error
-        :desc "flycheck-previous-error" "p" #'flycheck-previous-error
-        :desc "flycheck-list-errors"    "l" #'flycheck-list-errors
-        :desc "flycheck-verify-setup"   "v" #'flycheck-verify-setup)
+        :desc "Flymake next error"      "n" #'flymake-goto-next-error
+        :desc "Flymake previous error"  "p" #'flymake-goto-prev-error
+        :desc "Flymake list errors"     "l" #'flymake-show-diagnostics-buffer
+        :desc "Flycheck next error"     "N" #'flycheck-next-error
+        :desc "Flycheck previous error" "P" #'flycheck-previous-error
+        :desc "Flycheck list errors"    "L" #'flycheck-list-errors
+        :desc "Flycheck verify setup"   "V" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
         :desc "Kill ring"             "k" #'helm-show-kill-ring
         :desc "Open link"             "x" #'link-hint-open-link
