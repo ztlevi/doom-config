@@ -232,10 +232,12 @@
    (:map org-mode-map
      :localleader
      "s" #'org-schedule
+     "w" #'org-refile
+     "z" #'org-add-note
+     "L" #'org-toggle-link-display
      (:prefix ("a" . "Archive")
        "a" #'org-archive-subtree-default
-       "s" #'org-archive-subtree)
-     "L" #'org-toggle-link-display))
+       "s" #'org-archive-subtree)))
  (:after evil-org
    (:map evil-org-mode-map
      :i "C-d" nil
