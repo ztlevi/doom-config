@@ -212,8 +212,6 @@
   (toggle-lsp-ui-doc))
 
 (def-package! lsp-mode
-  :init
-  (add-hook 'lsp-mode-hook #'my-lsp-mode-hook)
   :config
   (require 'lsp-clients)
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
@@ -222,6 +220,8 @@
 
 
 (def-package! lsp-ui
+  :init
+  (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
   :config
   (setq lsp-ui-doc-border "black")
 
