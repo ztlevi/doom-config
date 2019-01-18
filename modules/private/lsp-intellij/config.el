@@ -8,12 +8,7 @@
   :init
   (add-hook! (java-mode kotlin-mode)
     (setq-local company-lsp-enable-snippet t)
-    (setq-local company-lsp-cache-candidates t))
-  :config
-  (set-company-backend! '(java-mode kotlin-mode) 'company-lsp)
-  (set-lookup-handlers! '(java-mode kotlin-mode)
-    :definition #'lsp-ui-peek-find-definitions
-    :references #'lsp-ui-peek-find-references))
+    (setq-local company-lsp-cache-candidates t)))
 
 (map!
  :map* (java-mode-map kotlin-mode-map)

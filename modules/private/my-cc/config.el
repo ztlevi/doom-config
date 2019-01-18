@@ -40,12 +40,7 @@
   (with-eval-after-load 'projectile
     (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
 
-  (evil-set-initial-state 'ccls-tree-mode 'emacs)
-  (set-company-backend! '(c-mode c++-mode objc-mode) 'company-lsp)
-  (set-lookup-handlers! '(c-mode c++-mode objc-mode)
-    :definition #'lsp-ui-peek-find-definitions
-    :references #'lsp-ui-peek-find-references)
-  )
+  (evil-set-initial-state 'ccls-tree-mode 'emacs))
 
 
 (def-package! flycheck-google-cpplint)

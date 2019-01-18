@@ -186,7 +186,9 @@
    :desc "Eval last expression" "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
  (:after lsp-ui
    :map lsp-ui-mode-map
-   "C-j" #'toggle-lsp-ui-doc)
+   "C-j" #'toggle-lsp-ui-doc
+   :nv "gd" #'lsp-ui-peek-find-definitions
+   :nv "gD" #'lsp-ui-peek-find-references)
  (:after lsp-ui-peek
    :map lsp-ui-peek-mode-map
    "h" #'lsp-ui-peek--select-prev-file

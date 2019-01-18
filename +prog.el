@@ -17,7 +17,8 @@
   ;; Language servers have better idea filtering and sorting,
   ;; don't filter results on the client side.
   (setq company-transformers nil
-        company-lsp-cache-candidates nil))
+        company-lsp-cache-candidates nil)
+  (set-company-backend! 'lsp-mode 'company-lsp))
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
@@ -230,7 +231,13 @@
 
   (setq lsp-ui-doc-include-signature t
         lsp-ui-sideline-enable nil
+        lsp-ui-doc-max-height 8
+        lsp-ui-doc-max-width 35
         lsp-ui-sideline-ignore-duplicate t)
+
+  ;; (set-lookup-handlers! 'lsp-ui-mode
+  ;;   :definition #'lsp-ui-peek-find-definitions
+  ;;   :references #'lsp-ui-peek-find-references)
 
   (after! lsp-ui-mode
     (custom-set-faces
