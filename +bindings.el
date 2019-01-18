@@ -71,7 +71,6 @@
         :desc "Find file" "f" #'counsel-find-file
         :desc "Deer"      "j" #'deer)
       (:prefix "g"                      ; git
-        :desc "Forge" "F" #'forge-dispatch
         :desc "Magit browse commit" "O" #'+vc/git-browse-commit
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
