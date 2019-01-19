@@ -255,6 +255,8 @@
        :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
      (:when IS-LINUX
        :desc "Reveal in Typora" "o" #'+linux/reveal-in-typora)
+     :desc "Insert header line"      "-" #'org-table-insert-hline
+     :desc "Crete Table from region" "|" #'org-table-create-or-convert-from-region
      :desc "Edit" "x" (+my/simulate-key "C-c C-s")
      (:prefix ("i" . "Insert")
        "r" #'markdown-table-insert-row
