@@ -124,6 +124,7 @@
         "d" #'toggle-debug-on-error
         "D" #'+my/realtime-elisp-doc
         "L" #'toggle-truncate-lines
+        "S" #'size-indication-mode
         "I" #'ivy-rich-mode
         "v" #'visual-line-mode)
       (:prefix ("j" . "jump")
