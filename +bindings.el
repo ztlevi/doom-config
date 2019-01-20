@@ -232,6 +232,7 @@
    "C-l" 'tide-goto-reference)
  (:after org
    (:map org-mode-map
+     "M-t" #'org-todo
      :localleader
      "s" #'org-schedule
      "w" #'org-refile
