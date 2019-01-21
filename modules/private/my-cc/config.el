@@ -15,10 +15,6 @@
 
   (setq-default c-basic-offset 2)
 
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (modify-syntax-entry ?_ "w")))
-
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode)))
 
 
