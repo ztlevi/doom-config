@@ -1,18 +1,6 @@
 ;;; private/my-cc/config.el -*- lexical-binding: t; -*-
 
 (after! cc-mode
-  ;; https://github.com/radare/radare2
-  (c-add-style
-   "radare2"
-   '((c-basic-offset . 4)
-     (indent-tabs-mode . t)
-     (c-auto-align-backslashes . nil)
-     (c-offsets-alist
-      (arglist-intro . ++)
-      (arglist-cont . ++)
-      (arglist-cont-nonempty . ++)
-      (statement-cont . ++)
-      )))
   (c-add-style
    "my-cc" '("user"
              (c-basic-offset . 2)
@@ -24,6 +12,8 @@
                  (topmost-intro . 0)
                  (arglist-cont-nonempty . +)))))
   (setq c-default-style "my-cc")
+
+  (setq-default c-basic-offset 2)
 
   (add-hook 'c-mode-common-hook
             (lambda ()
