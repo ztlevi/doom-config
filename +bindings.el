@@ -7,6 +7,7 @@
   "C-h C-v" #'find-variable-at-point
   "<f8>"    #'describe-mode
 
+  "C-M-o"  #'other-frame
   "C-M-\\" #'indent-region-or-buffer
   "C-`" #'+popup/toggle
   "M-w" #'+workspace/close-window-or-workspace
