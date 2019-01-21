@@ -273,6 +273,7 @@
    :map ivy-minibuffer-map
    "<tab>" #'ivy-partial-or-done
    "C-<return>" #'ivy-immediate-done
+   "C-b" nil
    "C-j" #'ivy-call-and-recenter
    "C-;" #'ivy-avy
    "C-k" #'ivy-kill-line
