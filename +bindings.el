@@ -2,8 +2,11 @@
 
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)
- (:map override  ;; general-override-mode-map
-   "M-q" (if (daemonp) #'delete-frame #'evil-quit-all))
+ (:map override ;; general-override-mode-map
+   "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
+   "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
+   "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
+
  "C-h h" nil
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
@@ -23,8 +26,6 @@
  "M-p" #'counsel-git
  "C-;" #'flyspell-correct-previous-word-generic
  "M-m" #'kmacro-call-macro
- "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
- "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
  "M-/" #'evilnc-comment-or-uncomment-lines)
 
 (map!
