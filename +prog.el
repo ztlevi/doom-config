@@ -20,8 +20,6 @@
         company-lsp-cache-candidates nil)
   (set-company-backend! 'lsp-mode 'company-lsp))
 
-(set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FLYCHECK
