@@ -1,29 +1,31 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
-(define-key! 'override                  ; Override will override other maps corresponding keys
-  "C-h h" nil
-  "C-h C-k" #'find-function-on-key
-  "C-h C-f" #'find-function-at-point
-  "C-h C-v" #'find-variable-at-point
-  "<f8>"    #'describe-mode
+(map!
+ ;; overrides other minor mode keymaps (just for non-evil)
+ (:map override  ;; general-override-mode-map
+   "M-q" (if (daemonp) #'delete-frame #'evil-quit-all))
+ "C-h h" nil
+ "C-h C-k" #'find-function-on-key
+ "C-h C-f" #'find-function-at-point
+ "C-h C-v" #'find-variable-at-point
+ "<f8>"    #'describe-mode
 
-  "C-M-o"  #'other-frame
-  "C-M-\\" #'indent-region-or-buffer
-  "C-`" #'+popup/toggle
-  "M-w" #'+workspace/close-window-or-workspace
-  "M-a" #'mark-whole-buffer
-  "M-c" #'evil-yank
-  "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
-  "M-s" #'evil-write-all
-  "M-f" #'swiper
-  "C-s" #'swiper
-  "M-e" #'+ivy/switch-workspace-buffer
-  "M-p" #'counsel-git
-  "C-;" #'flyspell-correct-previous-word-generic
-  "M-m" #'kmacro-call-macro
-  "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
-  "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
-  "M-/" #'evilnc-comment-or-uncomment-lines)
+ "C-M-o"  #'other-frame
+ "C-M-\\" #'indent-region-or-buffer
+ "C-`" #'+popup/toggle
+ "M-w" #'+workspace/close-window-or-workspace
+ "M-a" #'mark-whole-buffer
+ "M-c" #'evil-yank
+ "M-s" #'evil-write-all
+ "M-f" #'swiper
+ "C-s" #'swiper
+ "M-e" #'+ivy/switch-workspace-buffer
+ "M-p" #'counsel-git
+ "C-;" #'flyspell-correct-previous-word-generic
+ "M-m" #'kmacro-call-macro
+ "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
+ "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line
+ "M-/" #'evilnc-comment-or-uncomment-lines)
 
 (map!
  :gi "C-n" #'next-line
