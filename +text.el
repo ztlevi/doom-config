@@ -43,7 +43,7 @@
   :init
   (add-hook 'doom-post-init-hook #'org-wild-notifier-mode t)
   :config
-  (setq alert-default-style 'libnotify))
+  (setq alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
