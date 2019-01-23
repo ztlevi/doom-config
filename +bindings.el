@@ -3,7 +3,7 @@
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
-   "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
+   "M-q" #'evil-quit-all
    "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
 
@@ -106,16 +106,16 @@
           :desc "Reveal project in Finder"   "O" #'+macos/reveal-project-in-finder
           :desc "Reveal in Terminal"         "t" #'+macos/reveal-in-terminal
           :desc "Reveal project in Terminal" "T" #'+macos/reveal-project-in-terminal
-          :desc "Reveal file in Apps"        "," #'+macos/reveal-in-apps
-          :desc "Reveal project in Apps"     "." #'+macos/reveal-project-in-apps)
+          :desc "Reveal file in Apps"        "," #'+shell/reveal-in-apps
+          :desc "Reveal project in Apps"     "." #'+shell/reveal-project-in-apps)
         (:when IS-LINUX
-          :desc "Reveal in default program"  "f" #'+linux/open-in-default-program
-          :desc "Reveal in Finder"           "o" #'+linux/reveal-in-finder
-          :desc "Reveal project in Finder"   "O" #'+linux/reveal-project-in-finder
-          :desc "Reveal in Terminal"         "t" #'+linux/reveal-in-terminal
-          :desc "Reveal project in Terminal" "T" #'+linux/reveal-project-in-terminal
-          :desc "Reveal file in Apps"        "," #'+linux/reveal-in-apps
-          :desc "Reveal project in Apps"     "." #'+linux/reveal-project-in-apps))
+          :desc "Reveal in default program"  "f" #'+shell/open-in-default-program
+          :desc "Reveal in Finder"           "o" #'+shell/reveal-in-finder
+          :desc "Reveal project in Finder"   "O" #'+shell/reveal-project-in-finder
+          :desc "Reveal in Terminal"         "t" #'+shell/reveal-in-terminal
+          :desc "Reveal project in Terminal" "T" #'+shell/reveal-project-in-terminal
+          :desc "Reveal file in Apps"        "," #'+shell/reveal-in-apps
+          :desc "Reveal project in Apps"     "." #'+shell/reveal-project-in-apps))
       (:prefix "i"                      ; insert
         "v" #'add-dir-local-variable
         "o" #'symbol-overlay-put

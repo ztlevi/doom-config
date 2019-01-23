@@ -25,19 +25,24 @@
 ;; MACOS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(when IS-MAC
-  (defvar mac-apps '("Clion" "IntelliJ IDEA" "Visual Studio Code")
-    "MacOS applications collection used for `+macos!open-with' method")
-  (defun ivy--read-apps ()
-    (ivy-read "Select Applications:" mac-apps))
+;; Add executable: Clion -> Tools -> Create Command Line Launcher
+(defvar shell-apps '("clion" "charm" "code" "idea")
+  "Applications collection used for `+shell!open-with' method")
+(defun ivy--read-apps ()
+  (ivy-read "Select Applications:" shell-apps))
+(defun get-filename-with-line-number ()
+  (concat (concat (buffer-file-name) ":")
+          (number-to-string (line-number-at-pos))))
 
+(when IS-MAC
   (when (file-directory-p "/Applications/ForkLift.app")
     (+macos!open-with reveal-in-finder "forklift" default-directory)
     (+macos!open-with reveal-project-in-finder "forklift"
                       (or (doom-project-root) default-directory)))
 
-  (+macos!open-with reveal-in-apps (ivy--read-apps) default-directory)
-  (+macos!open-with reveal-project-in-apps (ivy--read-apps)
+  (+shell!open-with reveal-in-apps (ivy--read-apps)
+                    (get-filename-with-line-number))
+  (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
   (+macos!open-with reveal-in-typora "Typora" buffer-file-name)
@@ -55,12 +60,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when IS-LINUX
-  ;; Add executable: Clion -> Tools -> Create Command Line Launcher
-  (defvar linux-apps '("clion" "intellij idea" "code")
-    "Linux applications collection used for `+shell!open-with' method")
-  (defun ivy--read-apps ()
-    (ivy-read "Select Applications:" linux-apps))
-
   (defvar linux-terminal (cond ((executable-find "tilix") "tilix")
                                ((executable-find "konsole") "konsole")
                                ((executable-find "gnome-terminal") "gnome-terminal")))
@@ -79,7 +78,8 @@
   (+shell!open-with reveal-project-in-finder linux-finder
                     (or (doom-project-root) default-directory))
 
-  (+shell!open-with reveal-in-apps (ivy--read-apps) default-directory)
+  (+shell!open-with reveal-in-apps (ivy--read-apps)
+                    (get-filename-with-line-number))
   (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 

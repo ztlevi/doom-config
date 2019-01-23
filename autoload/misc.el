@@ -15,8 +15,8 @@
      (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
 
 ;;;###autoload
-(defun +shell-open-with (&optional app-name path)
-  "Send PATH to APP-NAME on OSX."
+(defun +shell-open-with (&optional app-name path args)
+  "Open shell application."
   (interactive)
   (let* ((process-connection-type nil)
          (path (expand-file-name
@@ -25,19 +25,25 @@
                  (or path (if (derived-mode-p 'dired-mode)
                               (dired-get-file-for-visit)
                             (buffer-file-name)))
-                 nil t)))
-         (command (if app-name
-                      (format "%s '%s'" (shell-quote-argument app-name) path)
-                    (format "'%s'" path))))
-    (message "Running: %s" command)
-    (start-process "" nil app-name path)))
+                 nil t))))
+
+    ;; app specific args
+    (cond (
+           ;; Add "-g" if the path comes with line number
+           (and (string= app-name "code")
+                (string-match-p "\\:" path))
+           (setq args "-g")
+           ))
+
+    (setq command (format "%s %s %s" app-name args path))
+    (start-process "" nil app-name args path)))
 
 ;;;###autoload
 (defmacro +shell!open-with (id &optional app dir args)
-  `(defun ,(intern (format "+linux/%s" id)) ()
+  `(defun ,(intern (format "+shell/%s" id)) ()
      (interactive)
      (if ,dir
-         (+shell-open-with ,app ,dir)
+         (+shell-open-with ,app ,args ,dir)
        (apply 'start-process "" nil ,app ,args))))
 
 ;;;###autoload
@@ -101,9 +107,9 @@ repository root."
 ;;;###autoload
 (defun git-link-commit-gitlab-http (hostname dirname commit)
   (format "http://%s/%s/commit/%s"
-	  hostname
-	  dirname
-	  commit))
+	      hostname
+	      dirname
+	      commit))
 
 ;;;###autoload
 (defun magit-blame--git-link-commit (arg)
