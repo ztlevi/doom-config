@@ -180,7 +180,8 @@
   ;; (setq lsp-highlight-symbol-at-point nil)
 
   ;; toggle off lsp-ui-doc by default
-  (toggle-lsp-ui-doc))
+  ;; (toggle-lsp-ui-doc)
+  )
 
 (def-package! lsp-mode
   :config
@@ -197,7 +198,7 @@
   (setq lsp-ui-doc-border "black")
 
   ;; set lsp-ui-doc position
-  (setq lsp-ui-doc-position 'at-point)
+  ;; (setq lsp-ui-doc-position 'at-point)
 
   (setq lsp-ui-doc-include-signature t
         lsp-ui-sideline-enable nil
