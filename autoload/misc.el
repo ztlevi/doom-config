@@ -15,36 +15,37 @@
      (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
 
 ;;;###autoload
-(defun +shell-open-with (&optional app-name path args)
+(defun +shell-open-with (&optional app-name dir args)
   "Open shell application."
   (interactive)
   (let* ((process-connection-type nil)
-         (path (expand-file-name
-                (replace-regexp-in-string
-                 "'" "\\'"
-                 (or path (if (derived-mode-p 'dired-mode)
-                              (dired-get-file-for-visit)
-                            (buffer-file-name)))
-                 nil t))))
+         (dir (expand-file-name
+               (replace-regexp-in-string
+                "'" "\\'"
+                (or dir (if (derived-mode-p 'dired-mode)
+                            (dired-get-file-for-visit)
+                          (buffer-file-name)))
+                nil t)))
+         ;; app specific args
+         (args (cond ((and ;; Add "-g" if the dir comes with line number
+                       (string= app-name "code") (string-match-p "\\:" dir))
+                      "-g")))
+         )
 
-    ;; app specific args
-    (cond (
-           ;; Add "-g" if the path comes with line number
-           (and (string= app-name "code")
-                (string-match-p "\\:" path))
-           (setq args "-g")
-           ))
-
-    (setq command (format "%s %s %s" app-name args path))
-    (start-process "" nil app-name args path)))
+    (if args
+        (progn
+          (setq command (format "%s %s %s" app-name args dir))
+          (start-process "" nil app-name args dir))
+      (progn
+        (setq command (format "%s %s" app-name dir))
+        (start-process "" nil app-name dir)))
+    (message command)))
 
 ;;;###autoload
 (defmacro +shell!open-with (id &optional app dir args)
   `(defun ,(intern (format "+shell/%s" id)) ()
      (interactive)
-     (if ,dir
-         (+shell-open-with ,app ,args ,dir)
-       (apply 'start-process "" nil ,app ,args))))
+     (+shell-open-with ,app ,dir ,args)))
 
 ;;;###autoload
 (defmacro make--shell (name ip &rest arglist)

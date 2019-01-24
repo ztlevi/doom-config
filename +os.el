@@ -72,7 +72,7 @@
   (defvar linux-finder (cond ((executable-find "xdg-open") "xdg-open")
                              ((executable-find "gvfs-open") "gvfs-open")))
 
-  (+shell!open-with open-in-default-program linux-finder)
+  (+shell!open-with open-in-default-program linux-finder buffer-file-name)
 
   (+shell!open-with reveal-in-finder linux-finder default-directory)
   (+shell!open-with reveal-project-in-finder linux-finder
