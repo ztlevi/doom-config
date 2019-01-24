@@ -109,12 +109,8 @@
   :commands (importmagic-fix-imports importmagic-fix-symbol-at-point))
 
 
-(def-package! pipenv
-  :defer t
-  :commands (pipenv-activate pipenv-deactivate)
-  :init
+(after! pipenv
   (setq pipenv-with-projectile t)
-  :config
   ;; Override pipenv--clean-response to trim color codes
   (defun pipenv--clean-response (response)
     "Clean up RESPONSE from shell command."
@@ -219,14 +215,6 @@
      ;; '(lsp-ui-sideline-symbol ((t (:foreground "grey30" :box nil))))
      ))
   )
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; RUST
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(def-package! rust-mode
-  :mode "\\.rs$")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
