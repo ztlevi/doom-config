@@ -104,6 +104,17 @@
                                     :configure "cmake %s"
                                     :compile "cmake --build Debug"
                                     :test "ctest")
+
+  ;; set projectile-known-projects after magit
+  (after! magit
+    (defvar +my/repo-list '("~/.emacs.d/" "~/.doom.d/" "~/Dropbox/Org-Notes/"
+                            "~/Dropbox/Snippets/" "~/Dropbox/Developer/" "~/Dotfiles/"))
+    (let ((magit-repos '())
+          (home (expand-file-name "~")))
+      (dolist (repo (magit-list-repos))
+        (string-match home repo)
+        (push (replace-match "~" nil nil repo 0) magit-repos))
+      (setq projectile-known-projects (append magit-repos +my/repo-list))))
   )
 
 
@@ -122,7 +133,7 @@
 
 
 (after! magit
-  (setq magit-repository-directories '(("~/Develop/Github" . 2)))
+  (setq magit-repository-directories '(("~/Developer" . 2)))
 
   (magit-wip-after-apply-mode t))
 
