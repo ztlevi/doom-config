@@ -62,10 +62,10 @@
 
   (flycheck-add-mode 'typescript-tslint 'web-mode)
   (after! tide
-    (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-    (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
-    (flycheck-add-next-checker 'typescript-tslint 'typescript-tide 'append)
-    (flycheck-add-next-checker 'javascript-eslint 'tsx-tide 'append))
+    (flycheck-add-next-checker 'javascript-eslint '(t . javascript-tide) 'append)
+    (flycheck-add-next-checker 'javascript-eslint '(t . jsx-tide) 'append)
+    (flycheck-add-next-checker 'typescript-tslint '(t .  typescript-tide) 'append)
+    (flycheck-add-next-checker 'javascript-eslint '(t . tsx-tide) 'append))
 
   ;; customize flycheck temp file prefix
   (setq-default flycheck-temp-prefix ".flycheck"))

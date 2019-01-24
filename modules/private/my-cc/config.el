@@ -34,7 +34,7 @@
 
 (after! flycheck
   (setq flycheck-c/c++-googlelint-executable "cpplint")
-  (flycheck-add-next-checker 'c/c++-gcc '(warning . c/c++-googlelint))
+  (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
 
   (setq flycheck-c/c++-gcc-executable "gcc-7"
         flycheck-gcc-include-path '("/usr/local/inclue"))
