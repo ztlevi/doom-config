@@ -112,6 +112,7 @@
     (let ((magit-repos '())
           (home (expand-file-name "~")))
       (dolist (repo (magit-list-repos))
+        (setq repo (concat repo "/"))
         (string-match home repo)
         (push (replace-match "~" nil nil repo 0) magit-repos))
       (setq projectile-known-projects (append magit-repos +my/repo-list))))
