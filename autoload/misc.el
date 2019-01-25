@@ -15,39 +15,6 @@
      (setq unread-command-events (listify-key-sequence (read-kbd-macro ,key))))))
 
 ;;;###autoload
-(defun +shell-open-with (&optional app-name dir args)
-  "Open shell application."
-  (interactive)
-  (let* ((process-connection-type nil)
-         (dir (expand-file-name
-               (replace-regexp-in-string
-                "'" "\\'"
-                (or dir (if (derived-mode-p 'dired-mode)
-                            (dired-get-file-for-visit)
-                          (buffer-file-name)))
-                nil t)))
-         ;; app specific args
-         (args (cond ((and ;; Add "-g" if the dir comes with line number
-                       (string= app-name "code") (string-match-p "\\:" dir))
-                      "-g")))
-         )
-
-    (if args
-        (progn
-          (setq command (format "%s %s %s" app-name args dir))
-          (start-process "" nil app-name args dir))
-      (progn
-        (setq command (format "%s %s" app-name dir))
-        (start-process "" nil app-name dir)))
-    (message command)))
-
-;;;###autoload
-(defmacro +shell!open-with (id &optional app dir args)
-  `(defun ,(intern (format "+shell/%s" id)) ()
-     (interactive)
-     (+shell-open-with ,app ,dir ,args)))
-
-;;;###autoload
 (defmacro make--shell (name ip &rest arglist)
   `(defun ,(intern (format "my-shell-%s" name)) ,arglist
      (interactive)
@@ -197,108 +164,31 @@ With PREFIX, cd to project root."
   (let* ((imenu-create-index-function 'evilnc-imenu-create-index-function))
     (counsel-imenu)))
 
-(defun my/define-key (keymap key def &rest bindings)
-  "Define multi keybind with KEYMAP KEY DEF BINDINGS."
-  (interactive)
-  (while key
-    (define-key keymap (kbd key) def)
-    (setq key (pop bindings)
-          def (pop bindings))))
 
-(defun my/realgud-eval-nth-name-forward (n)
-  (interactive "p")
+;; if the first line is too long, enable fundamental by default
+;;;###autoload
+(defun get-nth-line-length (n)
+  "Length of the Nth line."
   (save-excursion
-    (let (name)
-      (while (and (> n 0) (< (point) (point-max)))
-        (let ((p (point)))
-          (if (not (c-forward-name))
-              (progn
-                (c-forward-token-2)
-                (when (= (point) p) (forward-char 1)))
-            (setq name (buffer-substring-no-properties p (point)))
-            (cl-decf n 1))))
-      (when name
-        (realgud:cmd-eval name)
-        nil))))
-
-(defun my/realgud-eval-nth-name-backward (n)
-  (interactive "p")
-  (save-excursion
-    (let (name)
-      (while (and (> n 0) (> (point) (point-min)))
-        (let ((p (point)))
-          (c-backward-token-2)
-          (when (= (point) p) (backward-char 1))
-          (setq p (point))
-          (when (c-forward-name)
-            (setq name (buffer-substring-no-properties p (point)))
-            (goto-char p)
-            (cl-decf n 1))))
-      (when name
-        (realgud:cmd-eval name)
-        nil))))
-
-(defun my/realgud-eval-region-or-word-at-point ()
-  (interactive)
-  (when-let*
-      ((cmdbuf (realgud-get-cmdbuf))
-       (process (get-buffer-process cmdbuf))
-       (expr
-        (if (evil-visual-state-p)
-            (let ((range (evil-visual-range)))
-              (buffer-substring-no-properties (evil-range-beginning range)
-                                              (evil-range-end range)))
-          (word-at-point)
-          )))
-    (with-current-buffer cmdbuf
-	  (setq realgud:process-filter-save (process-filter process))
-	  (set-process-filter process 'realgud:eval-process-output))
-    (realgud:cmd-eval expr)
-    ))
-
-(defun +my//realtime-elisp-doc-function ()
-  (-when-let* ((w (selected-window))
-               (s (intern-soft (current-word))))
-    (describe-symbol s)
-    (select-window w)))
+    (goto-char (point-min))
+    (if (zerop (forward-line (1- n)))
+        (- (line-end-position)
+           (line-beginning-position)))))
 
 ;;;###autoload
-(defun +my/realtime-elisp-doc ()
-  (interactive)
-  (when (eq major-mode 'emacs-lisp-mode)
-    (if (advice-function-member-p #'+my//realtime-elisp-doc-function eldoc-documentation-function)
-        (remove-function (local 'eldoc-documentation-function) #'+my//realtime-elisp-doc-function)
-      (add-function :after-while (local 'eldoc-documentation-function) #'+my//realtime-elisp-doc-function))))
+(defun +my/check-minified-file ()
+  (and
+   (not (member (file-name-extension (buffer-file-name))
+                '("org" "md" "markdown" "txt" "rtf")))
+   (cl-loop for i from 1 to 30
+            if (> (get-nth-line-length i) 1000)
+            return t
+            finally return nil)))
+
 
 ;;;###autoload
-(defun +my/realgud-eval-nth-name-forward (n)
-  (interactive "p")
-  (save-excursion
-    (let (name)
-      (while (and (> n 0) (< (point) (point-max)))
-        (let ((p (point)))
-          (if (not (c-forward-name))
-              (progn
-                (c-forward-token-2)
-                (when (= (point) p) (forward-char 1)))
-            (setq name (buffer-substring-no-properties p (point)))
-            (cl-decf n 1))))
-      (when name
-        (realgud:cmd-eval name)))))
-
-;;;###autoload
-(defun +my/realgud-eval-nth-name-backward (n)
-  (interactive "p")
-  (save-excursion
-    (let (name)
-      (while (and (> n 0) (> (point) (point-min)))
-        (let ((p (point)))
-          (c-backward-token-2)
-          (when (= (point) p) (backward-char 1))
-          (setq p (point))
-          (when (c-forward-name)
-            (setq name (buffer-substring-no-properties p (point)))
-            (goto-char p)
-            (cl-decf n 1))))
-      (when name
-        (realgud:cmd-eval name)))))
+(defmacro measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (message "%.06f" (float-time (time-since time)))))

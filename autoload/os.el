@@ -30,3 +30,37 @@ non-nil value to enable trashing for file operations."
   (when (not (fboundp 'system-move-file-to-trash))
     (defalias 'system-move-file-to-trash
       'os--trash-move-file-to-trash)))
+
+
+;;;###autoload
+(defun +shell-open-with (&optional app-name dir args)
+  "Open shell application."
+  (interactive)
+  (let* ((process-connection-type nil)
+         (dir (expand-file-name
+               (replace-regexp-in-string
+                "'" "\\'"
+                (or dir (if (derived-mode-p 'dired-mode)
+                            (dired-get-file-for-visit)
+                          (buffer-file-name)))
+                nil t)))
+         ;; app specific args
+         (args (cond ((and ;; Add "-g" if the dir comes with line number
+                       (string= app-name "code") (string-match-p "\\:" dir))
+                      "-g")))
+         )
+
+    (if args
+        (progn
+          (setq command (format "%s %s %s" app-name args dir))
+          (start-process "" nil app-name args dir))
+      (progn
+        (setq command (format "%s %s" app-name dir))
+        (start-process "" nil app-name dir)))
+    (message command)))
+
+;;;###autoload
+(defmacro +shell!open-with (id &optional app dir args)
+  `(defun ,(intern (format "+shell/%s" id)) ()
+     (interactive)
+     (+shell-open-with ,app ,dir ,args)))

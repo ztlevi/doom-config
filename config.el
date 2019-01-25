@@ -18,6 +18,9 @@
 ;; disable risky local variables warning
 (advice-add 'risky-local-variable-p :override #'ignore)
 
+;; check minified-file
+(add-to-list 'magic-mode-alist (cons #'+my/check-minified-file 'fundamental-mode))
+
 (set-popup-rules! '(("^\\*helpful" :size 0.35)
                     ("^\\*Ibuffer\\*$" :size 0.35)
                     ("^\\*info.*" :size 80 :side right)
