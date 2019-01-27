@@ -4,6 +4,7 @@
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
    "M-q" #'evil-quit-all
+   "M-p" #'counsel-git
    "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
 
@@ -23,7 +24,6 @@
  "M-f" #'swiper
  "C-s" #'swiper
  "M-e" #'+ivy/switch-workspace-buffer
- "M-p" #'counsel-git
  "C-;" #'flyspell-correct-previous-word-generic
  "M-m" #'kmacro-call-macro
  "M-/" #'evilnc-comment-or-uncomment-lines)
