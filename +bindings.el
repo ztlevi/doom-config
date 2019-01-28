@@ -1,34 +1,58 @@
 ;;; private/my/+bindings.el -*- lexical-binding: t; -*-
 
+(when IS-MAC (setq mac-command-modifier 'meta
+                   mac-option-modifier  'alt))
+
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
-   "M-q" #'evil-quit-all
+   "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
    "M-p" #'counsel-git
    "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
-
+ "M-`"   #'other-frame
+ "C-M-o" #'other-frame
+ "C-`"   #'+popup/toggle
+ ;; fix OS window/frame navigation/manipulation keys
+ "M-w" #'delete-window
+ "M-W" #'delete-frame
+ "M-n" #'+default/new-buffer
+ "M-N" #'make-frame
+ ;; Restore OS undo, save, copy, & paste keys (without cua-mode, because
+ ;; it imposes some other functionality and overhead we don't need)
+ "M-z" #'undo
+ "M-c" (if (featurep 'evil) #'evil-yank #'copy-region-as-kill)
+ "M-v" #'yank
+ "M-s" #'evil-write-all
+ ;; Buffer-local font scaling
+ "M-+" (λ! (text-scale-set 0))
+ "M-=" #'text-scale-increase
+ "M--" #'text-scale-decrease
+ ;; Conventional text-editing keys & motions
+ "M-a" #'mark-whole-buffer
+ :gi [M-return]    #'+default/newline-below
+ :gi [M-S-return]  #'+default/newline-above
+ :gi [M-backspace] #'backward-kill-word
+ :gi [M-left]      #'backward-word
+ :gi [M-right]     #'forward-word
+ ;; Swiper
+ "M-f" #'swiper
+ "C-s" #'swiper
+ ;; Help
  "C-h h" nil
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
  "<f8>"    #'describe-mode
-
- "C-M-o"  #'other-frame
- "C-M-\\" #'indent-region-or-buffer
- "C-`" #'+popup/toggle
- "M-w" #'+workspace/close-window-or-workspace
- "M-a" #'mark-whole-buffer
- "M-c" #'evil-yank
- "M-s" #'evil-write-all
- "M-f" #'swiper
- "C-s" #'swiper
+ ;; Others
  "M-e" #'+ivy/switch-workspace-buffer
- "C-;" #'flyspell-correct-previous-word-generic
+ "C-M-\\" #'indent-region-or-buffer
  "M-m" #'kmacro-call-macro
- "M-/" #'evilnc-comment-or-uncomment-lines)
+ "M-/" #'evilnc-comment-or-uncomment-lines
+ "C-;" #'flyspell-correct-previous-word-generic)
 
 (map!
+ ;; Unix text-editing keys & motions
  :gi "C-n" #'next-line
  :gi "C-p" #'previous-line
  :gi "C-b" #'backward-char
