@@ -12,7 +12,6 @@
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  "M-`"   #'other-frame
  "C-M-o" #'other-frame
- "C-`"   #'+popup/toggle
  ;; fix OS window/frame navigation/manipulation keys
  "M-w" #'delete-window
  "M-W" #'delete-frame
