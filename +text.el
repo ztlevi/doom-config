@@ -33,9 +33,22 @@
 
   (setq org-log-into-drawer "LOGBOOK")
 
-  (set-evil-initial-state!
-    '(org-agenda-mode)
-    'emacs))
+  ;; Schedule/deadline popup with default time
+  (defvar org-default-time "10:30"
+    "The default time for deadlines.")
+
+  (defun advise-org-default-time (func arg &optional time)
+    (let ((old-time (symbol-function #'org-read-date)))
+      (cl-letf (((symbol-function #'org-read-date)
+                 #'(lambda (&optional a b c d default-time f g)
+                     (let ((default-time (or default-time
+                                             org-default-time)))
+                       (apply old-time a b c d f default-time g)
+                       ))))
+        (apply func arg time))))
+
+  (advice-add #'org-deadline :around #'advise-org-default-time)
+  (advice-add #'org-schedule :around #'advise-org-default-time))
 
 
 (def-package! org-wild-notifier
