@@ -308,6 +308,9 @@
    "C-v" #'ivy-scroll-up-command
    "A-v" #'ivy-scroll-down-command
    "M-v" #'yank)
+ (:after magit-diff
+   (:map magit-diff-mode-map            ; for magit diff/rev mode
+     "C-o" #'magit-diff-visit-file-other-window))
  (:after magit-blame
    (:map magit-blame-mode-map
      :n "o" #'magit-blame--git-link-commit))
