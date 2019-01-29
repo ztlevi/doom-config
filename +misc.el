@@ -134,7 +134,8 @@
 
 
 (after! magit
-  (setq magit-repository-directories '(("~/Developer" . 2)))
+  (setq magit-repository-directories '(("~/Developer" . 2))
+        magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
   (magit-wip-after-apply-mode t))
 
