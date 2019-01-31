@@ -60,7 +60,7 @@ repository root."
     (git-link-commit (git-link--select-remote))))
 
 ;;;###autoload
-(defun git-link-gitlab-http (hostname dirname filename branch commit start end)
+(defun git-link-github-http (hostname dirname filename branch commit start end)
   (format "http://%s/%s/blob/%s/%s"
 	      hostname
 	      dirname
@@ -73,7 +73,7 @@ repository root."
                               (format "L%s" start)))))))
 
 ;;;###autoload
-(defun git-link-commit-gitlab-http (hostname dirname commit)
+(defun git-link-commit-github-http (hostname dirname commit)
   (format "http://%s/%s/commit/%s"
 	      hostname
 	      dirname
