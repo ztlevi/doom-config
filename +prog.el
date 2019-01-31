@@ -122,7 +122,7 @@
 
 
 (after! conda
-  (setq conda-anaconda-home (expand-file-name "~/.conda"))
+  (setq conda-env-home-directory (expand-file-name "~/.conda"))
 
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
