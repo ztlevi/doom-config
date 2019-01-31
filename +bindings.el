@@ -47,7 +47,7 @@
  "M-e" #'+ivy/switch-workspace-buffer
  "C-M-\\" #'indent-region-or-buffer
  "M-m" #'kmacro-call-macro
- "M-/" #'evilnc-comment-or-uncomment-lines
+ "M-/" #'doom/toggle-comment-region-or-line
  "C-;" #'flyspell-correct-previous-word-generic)
 
 (map!

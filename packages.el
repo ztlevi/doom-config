@@ -10,7 +10,6 @@
 
 ;; misc
 (packages! avy
-           evil-nerd-commenter
            edit-indirect
            atomic-chrome
            link-hint
