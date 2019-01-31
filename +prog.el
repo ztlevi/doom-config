@@ -78,6 +78,8 @@
 ;; PYTHON
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook! python-mode #'lsp)
+
 (after! python
   (setq python-indent-offset 4
         python-shell-interpreter "python3"
