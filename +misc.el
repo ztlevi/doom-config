@@ -105,10 +105,14 @@
                                     :compile "cmake --build Debug"
                                     :test "ctest")
 
-  ;; set projectile-known-projects after magit
-  (after! magit
-    (defvar +my/repo-list '("~/.emacs.d/" "~/.doom.d/" "~/Dropbox/Org-Notes/"
-                            "~/Dropbox/Snippets/" "~/Dropbox/Developer/" "~/Dotfiles/"))
+
+  ;; Add personal repos and scan git projects
+  (defvar +my/repo-list '("~/.emacs.d/" "~/.doom.d/" "~/Dropbox/Org-Notes/"
+                          "~/Dropbox/Snippets/" "~/Dropbox/Developer/" "~/Dotfiles/"))
+
+  (defun update-projectile-known-projects ()
+    (interactive)
+    (require 'magit)
     (let ((magit-repos '())
           (home (expand-file-name "~")))
       (dolist (repo (magit-list-repos))
@@ -116,6 +120,10 @@
         (string-match home repo)
         (push (replace-match "~" nil nil repo 0) magit-repos))
       (setq projectile-known-projects (append magit-repos +my/repo-list))))
+
+  ;; set projectile-known-projects after magit
+  (after! magit
+    (update-projectile-known-projects))
   )
 
 

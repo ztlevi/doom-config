@@ -145,7 +145,8 @@
         "o" #'symbol-overlay-put
         "q" #'symbol-overlay-remove-all)
       (:prefix "p"                      ; project
-        "*" (+my/prefix-M-x "projectile-"))
+        "*" (+my/prefix-M-x "projectile-")
+        :desc "Update projectile list" "u" #'update-projectile-known-projects)
       (:prefix "t"                      ; toggle
         "c" #'centered-window-mode
         "r" #'rjsx-mode
