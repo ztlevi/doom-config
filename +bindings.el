@@ -81,7 +81,8 @@
       (:prefix ("a" . "app")
         "s" #'prodigy
         "b" #'blog-admin-start
-        "p" #'list-processes
+        :desc "List process" "p" #'list-processes
+        :desc "Kill process" "P" #'counsel-list-processes
         "x" #'align-regexp)
       (:prefix "b"                      ; buffer
         :desc "Last buffer"   "l" #'evil-switch-to-windows-last-buffer
