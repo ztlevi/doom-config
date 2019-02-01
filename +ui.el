@@ -43,6 +43,7 @@
    `(web-mode-jsx-depth-5-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.5)))))
    `(flyspell-incorrect ((t (:underline ,(doom-color 'red)))))
    `(flyspell-duplicate ((t (:underline ,(doom-color 'orange)))))
+   '(flymake-warning ((t (:underline nil))))
    `(ein:cell-input-area ((t (:background ,(doom-lighten (doom-color 'red) 0.85)))))
    `(ein:cell-input-prompt ((t (:background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))))
    ))
