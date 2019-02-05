@@ -6,7 +6,7 @@
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
-   "M-q" (if (daemonp) #'delete-frame #'evil-quit-all)
+   "M-q" (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
    "M-p" #'counsel-git
    "M-;" #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
