@@ -5,17 +5,6 @@
   (flycheck-mode -1)
   (flycheck-mode +1))
 
-;;;###autoload
-(defun doom/toggle-comment-region-or-line ()
-  "Comments or uncomments the whole region or if no region is
-selected, then the current line."
-  (interactive)
-  (let (beg end)
-    (if (region-active-p)
-        (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)))
-
 (defun my/realgud-eval-nth-name-forward (n)
   (interactive "p")
   (save-excursion
