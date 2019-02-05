@@ -17,9 +17,13 @@
  "M-W" #'delete-frame
  "M-n" #'+default/new-buffer
  "M-N" #'make-frame
+ "C-M-f" #'toggle-frame-fullscreen
+ ;; Restore somewhat common navigation
+ "M-l" #'goto-line
  ;; Restore OS undo, save, copy, & paste keys (without cua-mode, because
  ;; it imposes some other functionality and overhead we don't need)
  "M-z" #'undo
+ "M-Z" #'redo
  "M-c" (if (featurep 'evil) #'evil-yank #'copy-region-as-kill)
  "M-v" #'yank
  "M-s" #'evil-write-all
