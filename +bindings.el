@@ -33,11 +33,11 @@
  "M--" #'text-scale-decrease
  ;; Conventional text-editing keys & motions
  "M-a" #'mark-whole-buffer
- :gi [M-return]    #'+default/newline-below
- :gi [M-S-return]  #'+default/newline-above
- :gi [M-backspace] #'backward-kill-word
- :gi [M-left]      #'backward-word
- :gi [M-right]     #'forward-word
+ :gni [M-return]    #'+default/newline-below
+ :gni [M-S-return]  #'+default/newline-above
+ :gi  [M-backspace] #'backward-kill-word
+ :gi  [M-left]      #'backward-word
+ :gi  [M-right]     #'forward-word
  ;; Swiper
  "M-f" #'swiper
  "C-s" #'swiper
