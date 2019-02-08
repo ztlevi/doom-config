@@ -106,20 +106,26 @@
                                     :test "ctest")
 
 
-  ;; Add personal repos and scan git projects
-  (defvar +my/repo-list '("~/.emacs.d/" "~/.doom.d/" "~/Dropbox/Org-Notes/"
-                          "~/Dropbox/Snippets/" "~/Dropbox/Developer/" "~/Dotfiles/"))
+  ;; Add personal repo root to scan git projects
+  (defvar +my/repo-root-list '("~" "~/Dropbox"))
 
   (defun update-projectile-known-projects ()
     (interactive)
     (require 'magit)
-    (let ((magit-repos '())
+    (let (magit-repos
+          magit-abs-repos
           (home (expand-file-name "~")))
-      (dolist (repo (magit-list-repos))
+      ;; append magit repos at root with depth 1
+      (dolist (root +my/repo-root-list)
+        (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
+      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos)))
+
+      ;; convert abs path to relative path (HOME)
+      (dolist (repo magit-abs-repos)
         (setq repo (concat repo "/"))
         (string-match home repo)
         (push (replace-match "~" nil nil repo 0) magit-repos))
-      (setq projectile-known-projects (append magit-repos +my/repo-list))))
+      (setq projectile-known-projects magit-repos)))
 
   ;; set projectile-known-projects after magit
   (after! magit
