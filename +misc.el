@@ -162,6 +162,21 @@
   (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
 
 
+;; magit-todos uses hl-todo-keywords
+(after! hl-todo
+  (setq hl-todo-keyword-faces
+        `(("TODO"  . ,(face-foreground 'warning))
+          ("HACK"  . ,(face-foreground 'warning))
+          ("TEMP"  . ,(face-foreground 'warning))
+          ("DONE"  . ,(face-foreground 'success))
+          ("NOTE"  . ,(face-foreground 'success))
+          ("DONT"  . ,(face-foreground 'error))
+          ("FAIL"  . ,(face-foreground 'error))
+          ("FIXME" . ,(face-foreground 'error))
+          ("XXX"   . ,(face-foreground 'error))
+          ("XXXX"  . ,(face-foreground 'error)))))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ATOMIC CHROME
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
