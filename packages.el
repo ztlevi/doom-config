@@ -4,7 +4,6 @@
 ;; disabled packages
 (packages! (exec-path-from-shell :disable t)
            (solaire-mode :disable t)
-           (magithub :disable t)
            (anaconda-mode :disable t)
            (company-anaconda :disable t))
 
@@ -19,7 +18,6 @@
            youdao-dictionary
            wucuo
            org-wild-notifier
-           forge
            )
 
 ;; programming
