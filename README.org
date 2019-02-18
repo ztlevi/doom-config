@@ -134,9 +134,16 @@ npm install vue-language-server -g
 # pyls-mypy is a type integration for Python
 python3 -m pip install 'python-language-server[all]' pyls-isort
 
-# ccls https://github.com/MaskRay/ccls/wiki/Getting-started
+# ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
+
+# bingo: https://github.com/saibing/bingo
+git clone https://github.com/saibing/bingo.git
+cd bingo
+GO111MODULE=on go install
+# If you live in China and may not be able to download golang.org/x/ dependency module, please set GOPROXY as follow:
+export GOPROXY=https://athens.azurefd.net/
 #+END_SRC
 
 *** For MacOS, according to the discussion [[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
