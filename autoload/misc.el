@@ -1,6 +1,17 @@
 ;;; private/my/autoload/misc.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
+(defun doom/toggle-comment-region-or-line ()
+  "Comments or uncomments the whole region or if no region is
+selected, then the current line."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
+
+;;;###autoload
 (define-inline +my/prefix-M-x (prefix)
   (inline-quote
    (lambda () (interactive)
