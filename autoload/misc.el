@@ -73,9 +73,9 @@ repository root."
 ;;;###autoload
 (defun git-link-github-http (hostname dirname filename branch commit start end)
   (format "http://%s/%s/blob/%s/%s"
-	      hostname
-	      dirname
-	      (or branch commit)
+          hostname
+          dirname
+          (or branch commit)
           (concat filename
                   (when start
                     (concat "#"
@@ -86,9 +86,9 @@ repository root."
 ;;;###autoload
 (defun git-link-commit-github-http (hostname dirname commit)
   (format "http://%s/%s/commit/%s"
-	      hostname
-	      dirname
-	      commit))
+          hostname
+          dirname
+          commit))
 
 ;;;###autoload
 (defun magit-blame--git-link-commit (arg)
