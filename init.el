@@ -73,10 +73,12 @@
        docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs
+       flycheck          ; tasing you for every semicolon you forget
+       flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        macos             ; MacOS-specific commands
        make              ; run make tasks from Emacs
-       (magit +forge)    ; a git porcelain for Emacs
+       magit             ; a git porcelain for Emacs
        ;;password-store    ; password manager for nerds
        pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
