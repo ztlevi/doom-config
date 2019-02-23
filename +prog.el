@@ -188,9 +188,7 @@
   ;; (toggle-lsp-ui-doc)
   )
 
-(def-package! lsp-mode
-  :config
-  (require 'lsp-clients)
+(after! lsp-mode
   ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
   (setq lsp-auto-guess-root t)
   )
@@ -198,22 +196,16 @@
 
 (def-package! lsp-ui
   :init
+  (setq lsp-ui-doc-use-webkit t)
   (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
   :config
-  (setq lsp-ui-doc-border "black")
+  (setq lsp-ui-doc-border "black"
+        lsp-prefer-flymake t
+        lsp-ui-sideline-enable nil
+        lsp-ui-doc-include-signature t)
 
   ;; set lsp-ui-doc position
   ;; (setq lsp-ui-doc-position 'at-point)
-
-  (setq lsp-ui-doc-include-signature t
-        lsp-ui-sideline-enable nil
-        lsp-ui-doc-max-height 8
-        lsp-ui-doc-max-width 35
-        lsp-ui-sideline-ignore-duplicate t)
-
-  ;; (set-lookup-handlers! 'lsp-ui-mode
-  ;;   :definition #'lsp-ui-peek-find-definitions
-  ;;   :references #'lsp-ui-peek-find-references)
 
   (after! lsp-ui-mode
     (custom-set-faces
