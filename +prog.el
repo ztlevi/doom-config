@@ -196,7 +196,6 @@
 
 (def-package! lsp-ui
   :init
-  (setq lsp-ui-doc-use-webkit t)
   (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
   :config
   (setq lsp-prefer-flymake t
