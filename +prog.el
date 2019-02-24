@@ -199,22 +199,12 @@
   (setq lsp-ui-doc-use-webkit t)
   (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
   :config
-  (setq lsp-ui-doc-border "black"
-        lsp-prefer-flymake t
+  (setq lsp-prefer-flymake t
         lsp-ui-sideline-enable nil
         lsp-ui-doc-include-signature t)
 
   ;; set lsp-ui-doc position
   ;; (setq lsp-ui-doc-position 'at-point)
-
-  (after! lsp-ui-mode
-    (custom-set-faces
-     ;; '(ccls-sem-global-variable-face ((t (:underline t :weight extra-bold))))
-     '(lsp-face-highlight-read ((t (:background "#f1aaa3"))))
-     '(lsp-face-highlight-write ((t (:background "#a6dade"))))
-     ;; '(lsp-ui-sideline-current-symbol ((t (:foreground "grey38" :box nil))))
-     ;; '(lsp-ui-sideline-symbol ((t (:foreground "grey30" :box nil))))
-     ))
   )
 
 
