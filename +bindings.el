@@ -316,6 +316,9 @@
    "C-v" #'ivy-scroll-up-command
    "A-v" #'ivy-scroll-down-command
    "M-v" #'yank)
+ (:after magit-mode
+   (:map magit-mode-map
+     "M-w" nil))
  (:after magit-diff
    (:map magit-diff-mode-map            ; for magit diff/rev mode
      "C-o" #'magit-diff-visit-file-other-window))
