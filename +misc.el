@@ -158,7 +158,10 @@
   (magit-wip-after-apply-mode t))
 
 
-(after! magit-todos
+(def-package! magit-todos
+  :init
+  (setq magit-todos-ignored-keywords nil)
+  :config
   (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
 
 
