@@ -18,21 +18,8 @@
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode)))
 
 
-(def-package! ccls
-  :when (executable-find "ccls")
-  :defer t
-  :init (add-hook! (c-mode c++-mode cuda-mode objc-mode) #'+ccls//enable)
-  :config
-  (with-eval-after-load 'projectile
-    (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
-
-  (evil-set-initial-state 'ccls-tree-mode 'emacs))
-
-
-(def-package! flycheck-google-cpplint)
-
-
 (after! flycheck
+  (require 'flycheck-google-cpplint)
   (setq flycheck-c/c++-googlelint-executable "cpplint")
   (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
 
