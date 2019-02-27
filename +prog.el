@@ -60,6 +60,10 @@
                   c/c++-clang c/c++-cppcheck c/c++-gcc
                   ))
 
+  ;; customize flycheck temp file prefix
+  (setq-default flycheck-temp-prefix ".flycheck")
+
+  ;; ========================= JS & TS =========================
   (flycheck-add-mode 'typescript-tslint 'web-mode)
   (after! tide
     (flycheck-add-next-checker 'javascript-eslint '(t . javascript-tide) 'append)
@@ -67,20 +71,51 @@
     (flycheck-add-next-checker 'typescript-tslint '(t .  typescript-tide) 'append)
     (flycheck-add-next-checker 'javascript-eslint '(t . tsx-tide) 'append))
 
-  ;; customize flycheck temp file prefix
-  (setq-default flycheck-temp-prefix ".flycheck"))
+  ;; ========================= CC =========================
+    (require 'flycheck-google-cpplint)
+  (setq flycheck-c/c++-googlelint-executable "cpplint")
+  (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
+
+  (setq flycheck-c/c++-gcc-executable "gcc-7"
+        flycheck-gcc-include-path '("/usr/local/inclue"))
+
+  (add-hook! c++-mode-hook
+    (setq flycheck-gcc-language-standard "c++11"
+          flycheck-clang-language-standard "c++11"))
+  )
 
 (defun disable-flycheck-mode ()
   (flycheck-mode -1))
 ;; (add-hook! (emacs-lisp-mode) 'disable-flycheck-mode)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; CC
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(after! cc-mode
+  (c-add-style
+   "my-cc" '("user"
+             (c-basic-offset . 2)
+             (c-offsets-alist
+              . ((innamespace . 0)
+                 (access-label . -)
+                 (case-label . 0)
+                 (member-init-intro . +)
+                 (topmost-intro . 0)
+                 (arglist-cont-nonempty . +)))))
+  (setq c-default-style "my-cc")
+
+  (setq-default c-basic-offset 2)
+
+  (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PYTHON
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 (after! python
-  (add-hook! python-mode #'lsp)
   (setq python-indent-offset 4
         python-shell-interpreter "python3"
         pippel-python-command "python3"

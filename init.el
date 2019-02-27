@@ -169,6 +169,5 @@
        (default +bindings +snippets +smartparens)
 
        :private
-       my-cc
        lsp-intellij
        )

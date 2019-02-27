@@ -26,4 +26,5 @@
            import-js indium
            importmagic py-isort
            rust-mode
+           (flycheck-google-cpplint :recipe (:fetcher github :repo "flycheck/flycheck-google-cpplint"))
            )
