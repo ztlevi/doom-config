@@ -58,6 +58,7 @@
                   javascript-jshint handlebars
                   json-jsonlist json-python-json
                   c/c++-clang c/c++-cppcheck c/c++-gcc
+                  python-pylint
                   ))
 
   ;; customize flycheck temp file prefix
