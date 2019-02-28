@@ -64,7 +64,7 @@
   ;; customize flycheck temp file prefix
   (setq-default flycheck-temp-prefix ".flycheck")
 
-  ;; ========================= JS & TS =========================
+  ;; ======================== JS & TS ========================
   (flycheck-add-mode 'typescript-tslint 'web-mode)
   (after! tide
     (flycheck-add-next-checker 'javascript-eslint '(t . javascript-tide) 'append)
@@ -72,7 +72,7 @@
     (flycheck-add-next-checker 'typescript-tslint '(t .  typescript-tide) 'append)
     (flycheck-add-next-checker 'javascript-eslint '(t . tsx-tide) 'append))
 
-  ;; ========================= CC =========================
+  ;; ======================== CC ========================
     (require 'flycheck-google-cpplint)
   (setq flycheck-c/c++-googlelint-executable "cpplint")
   (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
@@ -222,11 +222,6 @@
 
   ;; toggle off lsp-ui-doc by default
   ;; (toggle-lsp-ui-doc)
-  )
-
-(after! lsp-mode
-  ;; avoid popup warning buffer if lsp can't found root directory (such as edit simple *.py file)
-  (setq lsp-auto-guess-root t)
   )
 
 
