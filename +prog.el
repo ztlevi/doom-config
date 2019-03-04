@@ -73,7 +73,7 @@
     (flycheck-add-next-checker 'javascript-eslint '(t . tsx-tide) 'append))
 
   ;; ======================== CC ========================
-    (require 'flycheck-google-cpplint)
+  (require 'flycheck-google-cpplint)
   (setq flycheck-c/c++-googlelint-executable "cpplint")
   (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
 
