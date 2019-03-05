@@ -168,6 +168,11 @@ With PREFIX, cd to project root."
 " )))
 
 ;;;###autoload
+(defun +my/window-focus-google-chrome ()
+  (cond (IS-MAC (shell-command "open -a \"/Applications/Google Chrome.app\""))
+        (IS-LINUX (shell-command "wmctrl -a \"Google Chrome\""))))
+
+;;;###autoload
 (defun counsel-imenu-comments ()
   "Imenu display comments."
   (interactive)

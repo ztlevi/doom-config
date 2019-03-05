@@ -57,6 +57,7 @@ non-nil value to enable trashing for file operations."
       (progn
         (setq command (format "%s %s" app-name dir))
         (start-process "" nil app-name dir)))
+    (shell-command (concat "wmctrl -a \"" app-name "\" "))
     (message command)))
 
 ;;;###autoload
