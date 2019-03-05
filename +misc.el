@@ -202,6 +202,7 @@
             ("emacs-china\\.org"   . gfm-mode)
             ("stackexchange\\.com" . gfm-mode)
             ("stackoverflow\\.com" . gfm-mode)
+            ("discordapp\\.com"    . gfm-mode)
             ;; jupyter notebook
             ("localhost\\:8888"    . python-mode)
             ("lintcode\\.com"      . python-mode)
