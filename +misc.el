@@ -152,6 +152,7 @@
 
 (after! magit
   (setq magit-repository-directories '(("~/Developer" . 2))
+        magit-save-repository-buffers nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
   (magit-wip-after-apply-mode t))

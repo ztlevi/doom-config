@@ -6,8 +6,13 @@
 ;; ORG
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq org-directory "~/Dropbox/Org-Notes"
-      org-agenda-files (list org-directory))
+(setq org-directory (expand-file-name "~/Dropbox/Org-Notes")
+      org-agenda-files (list org-directory)
+      org-ellipsis " ▼ "
+
+      ;; The standard unicode characters are usually misaligned depending on the
+      ;; font. This bugs me. Markdown #-marks for headlines are more elegant.
+      org-bullets-bullet-list '("#"))
 
 (after! org
   (setq org-capture-templates
