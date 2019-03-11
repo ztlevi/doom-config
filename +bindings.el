@@ -34,8 +34,8 @@
  "M--" #'text-scale-decrease
  ;; Conventional text-editing keys & motions
  "M-a" #'mark-whole-buffer
- :gni [M-return]    #'+default/newline-below
- :gni [M-S-return]  #'+default/newline-above
+ :gni [M-RET]    #'+default/newline-below
+ :gni [M-S-RET]  #'+default/newline-above
  :gi  [M-backspace] #'backward-kill-word
  :gi  [M-left]      #'backward-word
  :gi  [M-right]     #'forward-word
@@ -210,7 +210,7 @@
    (:map lispyville-mode-map
      :n "M-r"   nil
      :n "M-s"   nil
-     :ni "M-v"   nil
+     :n "M-v"   nil
      :n "C-M-r" #'lispy-raise-sexp
      :n "C-M-s" #'lispy-splice
      :n "M-V"   #'lispy-convolute-sexp
@@ -287,8 +287,8 @@
      :i "C-k" nil))
  (:after markdown-mode
    (:map markdown-mode-map
-     :ni [M-return]   (λ! (+org/insert-item 'below))
-     :ni [S-M-return] (λ! (+org/insert-item 'above))
+     :ni [M-RET]   (λ! (+org/insert-item 'below))
+     :ni [S-M-RE] (λ! (+org/insert-item 'above))
      :localleader
      (:when IS-MAC
        :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
@@ -308,7 +308,7 @@
    "SPC" nil
    :map ivy-minibuffer-map
    "TAB" #'ivy-partial-or-done
-   "C-<return>" #'ivy-immediate-done
+   "C-RET" #'ivy-immediate-done
    "C-b" nil
    "C-j" #'ivy-call-and-recenter
    "C-;" #'ivy-avy
@@ -341,10 +341,10 @@
    "?" #'Info-search-backward)
  (:after company
    (:map company-active-map
+     "TAB"   nil
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"   #'company-next-page
      "A-v"   #'company-previous-page
-     "TAB" nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
  (:after term
