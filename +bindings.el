@@ -173,8 +173,6 @@
         :desc "Comments"  "c" #'counsel-imenu-comments))
 
 (map!
- (:map +popup-mode-map
-   :n "q" #'quit-window)
  (:after ranger
    (:map ranger-normal-mode-map
      "M-1" nil
