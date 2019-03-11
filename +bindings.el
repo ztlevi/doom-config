@@ -97,8 +97,8 @@
       (:prefix "c"                      ; code
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-directory)
-      (:prefix [tab]
-        :desc "Switch workspace" [tab] #'+workspace/switch-to
+      (:prefix "TAB"
+        :desc "Switch workspace" "TAB" #'+workspace/switch-to
         :desc "Display tab bar"  "."   #'+workspace/display)
       (:prefix "f"                      ; file
         :desc "Find file" "f" #'counsel-find-file
@@ -191,8 +191,8 @@
      "q" #'ranger-close-and-kill-inactive-buffers
      "f" #'counsel-find-file
      "M-g" #'ranger-go
-     "C-<tab>" #'ranger-next-tab
-     "C-S-<tab>" #'ranger-prev-tab
+     "C-TAB" #'ranger-next-tab
+     "C-S-TAB" #'ranger-prev-tab
      "U" #'dired-unmark-all-files
      "u" #'dired-unmark
      "(" #'dired-hide-details-mode
@@ -210,11 +210,11 @@
    (:map lispyville-mode-map
      :n "M-r"   nil
      :n "M-s"   nil
-     :n "M-v"   nil
+     :ni "M-v"   nil
      :n "C-M-r" #'lispy-raise-sexp
      :n "C-M-s" #'lispy-splice
      :n "M-V"   #'lispy-convolute-sexp
-     :n "<tab>" #'lispyville-prettify))
+     :n "TAB" #'lispyville-prettify))
  (:after elisp-mode
    :map emacs-lisp-mode-map
    :n "gh" #'helpful-at-point
@@ -307,7 +307,7 @@
    :map ivy-occur-grep-mode-map
    "SPC" nil
    :map ivy-minibuffer-map
-   "<tab>" #'ivy-partial-or-done
+   "TAB" #'ivy-partial-or-done
    "C-<return>" #'ivy-immediate-done
    "C-b" nil
    "C-j" #'ivy-call-and-recenter
@@ -344,7 +344,7 @@
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"   #'company-next-page
      "A-v"   #'company-previous-page
-     "<tab>" nil
+     "TAB" nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
  (:after term
