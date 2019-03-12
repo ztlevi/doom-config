@@ -33,6 +33,7 @@
    `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
    '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
    '(lsp-intellij-face-code-lens-run ((t (:background "honeydew"))))
+   `(ivy-posframe-border ((t (:background ,(doom-color 'blue)))))
    '(markdown-header-face-1 ((t (:inherit org-level-1))))
    '(markdown-header-face-2 ((t (:inherit org-level-2))))
    '(markdown-header-face-3 ((t (:inherit org-level-3))))
