@@ -277,6 +277,12 @@
      (:prefix ("a" . "Archive")
        "a" #'org-archive-subtree-default
        "s" #'org-archive-subtree)))
+ (:after evil-vars
+   (:map evil-window-map
+     :leader
+     (:prefix "w"
+       "<" (λ! (evil-window-decrease-width 20))
+       ">" (λ! (evil-window-increase-width 20)))))
  (:after evil-org
    (:map evil-org-mode-map
      :i "C-d" nil
