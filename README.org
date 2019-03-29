@@ -4,16 +4,16 @@ This is my private doom emacs configuration. Specifically configured for
 Javascript, Python, C++, Rust, and Go.
 
 * Table of Contents :TOC:
-- [[Screenshot][Screenshot]]
-- [[Installation][Installation]]
-  - [[Step1: Install Emacs][Step1: Install Emacs]]
-  - [[Step2: Install Doom Emacs][Step2: Install Doom Emacs]]
-  - [[Step3: Dependencies and Configuration][Step3: Dependencies and Configuration]]
-- [[Features][Features]]
-- [[Configuration][Configuration]]
-- [[Appendix][Appendix]]
-  - [[Commands][Commands]]
-  - [[Hacks][Hacks]]
+- [[#screenshot][Screenshot]]
+- [[#installation][Installation]]
+  - [[#step1-install-emacs][Step1: Install Emacs]]
+  - [[#step2-install-doom-emacs][Step2: Install Doom Emacs]]
+  - [[#step3-dependencies-and-configuration][Step3: Dependencies and Configuration]]
+- [[#features][Features]]
+- [[#configuration][Configuration]]
+- [[#appendix][Appendix]]
+  - [[#commands][Commands]]
+  - [[#hacks][Hacks]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -64,6 +64,12 @@ git clone https://github.com/ztlevi/doom-config ~/.doom.d
 
 cd ~/.emacs.d
 make quickstart
+#+END_SRC
+
+(Optional) For shell environment variables:
+#+BEGIN_SRC shell
+./bin/doom env enable
+./bin/doom env refresh
 #+END_SRC
 ** Step3: Dependencies and Configuration
 This Emacs configuration is written for Emacs 25.1+ on Mac OS X 10.11+ and Linux Arch. Windows users may need to tweak the config for themselves.
