@@ -109,6 +109,7 @@
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
         :desc "View *Messages*" "m" #'view-echo-area-messages
+        "m" #'describe-mode
         "C" #'helpful-command)
       (:prefix ("e" . "error")
         :desc "Flymake next error"      "n" #'flymake-goto-next-error
@@ -308,6 +309,9 @@
  (:after grep
    :map grep-mode-map
    "SPC" nil)
+ (:after wgrep
+   :map wgrep-mode-map
+   "C-j" #'ivy-occur-press-and-switch)
  (:after ivy
    :map ivy-occur-grep-mode-map
    "SPC" nil
