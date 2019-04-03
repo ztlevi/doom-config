@@ -5,6 +5,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (make--ssh "huawei-storage" "admin@10.213.37.36")
 (make--shell "huawei-storage" "admin@10.213.37.36")
+(make--ssh "huawei-gpu" "root@10.213.37.34")
+(make--shell "huawei-gpu" "root@10.213.37.34")
 
 (after! ssh-deploy
   (setq ssh-deploy-automatically-detect-remote-changes 1))
