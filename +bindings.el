@@ -283,6 +283,8 @@
    (:map evil-window-map
      :leader
      (:prefix "w"
+       "-" (λ! (evil-window-decrease-height 10))
+       "+" (λ! (evil-window-increase-height 10))
        "<" (λ! (evil-window-decrease-width 20))
        ">" (λ! (evil-window-increase-width 20)))))
  (:after evil-org
