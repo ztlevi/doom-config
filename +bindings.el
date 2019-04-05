@@ -327,6 +327,9 @@
    "C-v" #'ivy-scroll-up-command
    "A-v" #'ivy-scroll-down-command
    "M-v" #'yank)
+ (:after minibuffer
+   :map minibuffer-local-map
+   "C-k" 'kill-line)
  (:after magit-mode
    (:map magit-mode-map
      "M-w" nil))
