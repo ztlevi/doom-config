@@ -99,6 +99,9 @@ Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. r
 **** Ubuntu
 #+BEGIN_SRC shell
 sudo apt install mplayer clang-format wmctrl
+
+# for vterm
+sudo apt install libvterm-dev libtool-bin
 #+END_SRC
 
 **** npm

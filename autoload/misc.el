@@ -29,9 +29,8 @@ selected, then the current line."
 (defmacro make--shell (name ip &rest arglist)
   `(defun ,(intern (format "my-shell-%s" name)) ,arglist
      (interactive)
-     (let ((default-directory ,(format "/ssh:%s:" ip))
-           (explicit-shell-file-name "/bin/bash"))
-       (shell (generate-new-buffer-name ,(format "*%s*" name))))))
+     (find-file ,(format "/ssh:%s:" ip))
+     (vterm-toggle-cd)))
 
 ;;;###autoload
 (defmacro make--ssh (name ip &rest arglist)

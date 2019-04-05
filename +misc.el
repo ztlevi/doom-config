@@ -312,3 +312,6 @@
 (after! term
   ;; term-mode imenu index
   (add-hook! 'term-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
+
+(def-package! vterm-toggle
+  :defer t)

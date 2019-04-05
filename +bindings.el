@@ -109,7 +109,6 @@
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
         :desc "View *Messages*" "m" #'view-echo-area-messages
-        "m" #'describe-mode
         "C" #'helpful-command)
       (:prefix ("e" . "error")
         :desc "Flymake next error"      "n" #'flymake-goto-next-error
@@ -123,8 +122,8 @@
         :desc "Kill ring"             "k" #'helm-show-kill-ring
         :desc "Open link"             "x" #'link-hint-open-link
         :desc "Open link at point"    "X" #'link-hint-open-link-at-point
-        :desc "Ansi-Term"             "s" #'+term/open-popup
-        :desc "Project run Ansi-Term" "S" #'+term/open-popup-in-project
+        :desc "Vterm"             "s" #'+vterm/open-popup
+        :desc "Project run Vterm" "S" #'+vterm/open-popup-in-project
         :desc "Eshell popup"          "e" #'+eshell/open-popup
         :desc "Project run Eshell"    "E" #'projectile-run-eshell
         :desc "Ibuffer"               "I" #'ibuffer
@@ -361,6 +360,9 @@
      "A-v"   #'company-previous-page
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
+ (:after vterm
+   (:map vterm-mode-map
+     "M-e" nil))
  (:after term
    (:map term-raw-map
      :i "M-v" #'term-paste)))
