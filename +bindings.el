@@ -9,6 +9,7 @@
    "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
    "M-p"   #'counsel-git
    "C-S-p" #'counsel-git
+   "M-y"   #'helm-show-kill-ring
    "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  "M-`"   #'other-frame
