@@ -77,30 +77,34 @@ This Emacs configuration is written for Emacs 25.1+ on Mac OS X 10.11+ and Linux
 *** Dependencies needed
 Install dependencies including search tools, utils, and linters.
 
-**** MacOS
+**** OS
+***** MacOS
 #+BEGIN_SRC sh :tangle (if (doom-system-os 'macos) "yes")
 # search tool
 brew install ripgrep grep
 # utils
-brew install fd sqlite hub watchman gpg2 coreutils ctags gnu-tar mplayer clang-format
+brew install fd sqlite hub watchman gpg2 coreutils ctags gnu-tar mplayer clang-format direnv
 # language
 brew install shellcheck aspell hadolint wordnet languagetool
 # Cask
 brew cask install xquartz
 #+END_SRC
 
-**** Arch Linux
+***** Arch Linux
 #+BEGIN_SRC sh :dir /sudo:: :tangle (if (doom-system-os 'arch) "yes")
-sudo pacman --needed --noconfirm -S sqlite ripgrep clang-format fd wmctrl
+sudo pacman --needed --noconfirm -S sqlite ripgrep clang-format fd wmctrl direnv
 #+END_SRC
 
 Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
 
-**** Ubuntu
+***** Ubuntu
 #+BEGIN_SRC shell
-sudo apt install mplayer clang-format wmctrl
+sudo apt install mplayer clang-format wmctrl direnv
 
-# for vterm
+#+END_SRC
+
+- For vterm
+#+BEGIN_SRC shell
 sudo apt install libvterm-dev libtool-bin
 #+END_SRC
 

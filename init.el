@@ -15,7 +15,7 @@
        :completion
        (company          ; the ultimate code completion backend
         +auto            ; as-you-type code completion
-        ;;+childframe      ; a nicer company UI (Emacs 26+ only)
+        +childframe      ; a nicer company UI (Emacs 26+ only)
         )
        ;;(helm             ; the *other* search engine for love and life
        ;;+fuzzy)          ; enable fuzzy search backend for helm
@@ -67,6 +67,7 @@
 
        :tools
        ;;ansible
+       direnv
        docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs

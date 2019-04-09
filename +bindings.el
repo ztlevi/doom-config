@@ -48,6 +48,7 @@
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
+ "C-h m"   #'describe-mode
  "<f8>"    #'describe-mode
  ;; Others
  "M-e" #'+ivy/switch-workspace-buffer
