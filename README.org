@@ -24,14 +24,14 @@ Javascript, Python, C++, Rust, and Go.
 - *Method 1*: Use brew cask(Recommended)
   #+BEGIN_SRC shell
 brew tap railwaycat/emacsmacport
-brew cask install emacs-mac-spacemacs-icon
+brew cask install emacs-mac
   #+END_SRC
 
 - *Method 2*: Just brew, need compiling. (more customization)
   #+BEGIN_SRC shell
 brew tap railwaycat/emacsmacport
 rm -r /Applications/Emacs.app
-brew install emacs-mac --with-gnutls --with-natural-title-bar
+brew install emacs-mac --with-modules --with-natural-title-bar
 # create alias in /Applications
 ln -Fs `sudo find /usr/local/Cellar/emacs-mac -name "Emacs.app"` /Applications/Emacs.app
   #+END_SRC
