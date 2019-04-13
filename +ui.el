@@ -53,7 +53,8 @@
 (when IS-MAC
   ;; enable ligatures support
   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-  (mac-auto-operator-composition-mode))
+  (ignore-errors
+    (mac-auto-operator-composition-mode)))
 
 (after! ibuffer
   ;; set ibuffer name column width
