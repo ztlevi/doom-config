@@ -10,6 +10,7 @@
    "M-p"   #'counsel-git
    "C-S-p" #'counsel-git
    "M-y"   #'helm-show-kill-ring
+   "C-h m" #'describe-mode
    "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  "M-`"   #'other-frame
@@ -48,7 +49,6 @@
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
- "C-h m"   #'describe-mode
  "<f8>"    #'describe-mode
  ;; Others
  "M-e" #'+ivy/switch-workspace-buffer
