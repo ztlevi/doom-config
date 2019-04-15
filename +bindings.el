@@ -333,6 +333,8 @@
    "C-k" 'kill-line)
  (:after magit-mode
    (:map magit-mode-map
+     "M-p" nil
+     "M-n" nil
      "M-w" nil))
  (:after magit-diff
    (:map magit-diff-mode-map            ; for magit diff/rev mode
