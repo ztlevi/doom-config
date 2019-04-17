@@ -320,7 +320,7 @@
    "SPC" nil
    :map ivy-minibuffer-map
    "TAB" #'ivy-partial-or-done
-   "C-RET" #'ivy-immediate-done
+   "<C-return>" #'ivy-immediate-done
    "C-b" nil
    "C-j" #'ivy-call-and-recenter
    "C-;" #'ivy-avy
