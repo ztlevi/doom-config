@@ -148,7 +148,10 @@
 (def-package! importmagic
   :defer t
   :hook (python-mode . importmagic-mode)
-  :commands (importmagic-fix-imports importmagic-fix-symbol-at-point))
+  :commands (importmagic-fix-imports importmagic-fix-symbol-at-point)
+  :config
+  (dolist (func '(importmagic-fix-imports importmagic-fix-symbol-at-point))
+    (advice-add func :before #'revert-buffer-no-confirm)))
 
 
 (after! pipenv
