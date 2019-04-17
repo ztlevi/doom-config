@@ -5,7 +5,16 @@
   "Revert buffer without confirmation."
   (interactive)
   (save-buffer)
-  (find-alternate-file buffer-file-name))
+  (revert-buffer :ignore-auto :noconfirm))
+
+;;;###autoload
+(defun reload-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive)
+  (save-buffer)
+  (let ((f buffer-file-name))
+    (kill-this-buffer)
+    (find-file f)))
 
 ;;;###autoload
 (defun indent-buffer ()

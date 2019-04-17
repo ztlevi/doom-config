@@ -95,6 +95,7 @@
         :desc "Switch buffer" "b" #'ivy-switch-buffer
         "h" #'+doom-dashboard/open
         "r" #'revert-buffer-no-confirm
+        "R" #'reload-buffer-no-confirm
         "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
