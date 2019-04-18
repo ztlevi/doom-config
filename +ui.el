@@ -47,7 +47,10 @@
    '(flymake-warning ((t (:underline nil))))
    `(ein:cell-input-area ((t (:background ,(doom-lighten (doom-color 'red) 0.85)))))
    `(ein:cell-input-prompt ((t (:background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))))
-   ))
+   )
+  (when (string= doom-theme "doom-city-lights")
+      (custom-set-faces
+       `(hl-line ((t (:background ,(doom-color 'base0))))))))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
 (when IS-MAC
