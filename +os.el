@@ -13,7 +13,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Add executable: Clion -> Tools -> Create Command Line Launcher
-(defvar shell-apps '("clion" "charm" "code" "idea")
+(defvar shell-apps '("clion" "pycharm" "code" "idea")
   "Applications collection used for `+shell!open-with' method")
 (defun ivy--read-apps ()
   (ivy-read "Select Applications:" shell-apps))
@@ -28,7 +28,9 @@
                       (or (doom-project-root) default-directory)))
 
   (+shell!open-with reveal-in-apps (ivy--read-apps)
-                    (get-filename-with-line-number))
+                    (buffer-file-name)
+                    ;; (get-filename-with-line-number)
+                    )
   (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
@@ -66,7 +68,9 @@
                     (or (doom-project-root) default-directory))
 
   (+shell!open-with reveal-in-apps (ivy--read-apps)
-                    (get-filename-with-line-number))
+                    (buffer-file-name)
+                    ;; (get-filename-with-line-number)
+                    )
   (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
