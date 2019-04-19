@@ -28,7 +28,7 @@
  "M-z" #'undo
  "M-Z" #'redo
  "M-c" (if (featurep 'evil) #'evil-yank #'copy-region-as-kill)
- "M-v" #'yank
+ "M-v" #'yank-with-delete-region
  "M-s" #'evil-write-all
  ;; Buffer-local font scaling
  "M-+" (λ! (text-scale-set 0))

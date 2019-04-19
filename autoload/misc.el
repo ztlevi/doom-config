@@ -1,6 +1,13 @@
 ;;; private/my/autoload/misc.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
+(defun yank-with-delete-region ()
+  (interactive)
+  (when (evil-visual-state-p)
+    (delete-region (region-beginning) (region-end)))
+  (yank))
+
+;;;###autoload
 (defun doom/toggle-comment-region-or-line ()
   "Comments or uncomments the whole region or if no region is
 selected, then the current line."
