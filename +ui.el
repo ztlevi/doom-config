@@ -50,7 +50,8 @@
    )
   (when (string= doom-theme "doom-city-lights")
       (custom-set-faces
-       `(hl-line ((t (:background ,(doom-color 'base0))))))))
+       `(hl-line ((t (:background ,(doom-color 'base0)))))
+       `(markdown-code-face ((t (:background ,(doom-color 'base2))))))))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
 (when IS-MAC
