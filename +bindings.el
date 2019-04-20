@@ -225,9 +225,6 @@
  (:after lsp-ui
    :map lsp-ui-mode-map
    "C-j" #'toggle-lsp-ui-doc
-   :nmvi "M-." #'lsp-ui-peek-find-definitions
-   :nv "gd" #'lsp-ui-peek-find-definitions
-   :nv "gD" #'lsp-ui-peek-find-references
    :localleader
    "r" #'lsp-rename)
  (:after lsp-ui-peek
