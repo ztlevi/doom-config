@@ -282,10 +282,10 @@
    (:map evil-window-map
      :leader
      (:prefix "w"
-       "-" (λ! (evil-window-decrease-height 10))
-       "+" (λ! (evil-window-increase-height 10))
-       "<" (λ! (evil-window-decrease-width 20))
-       ">" (λ! (evil-window-increase-width 20)))))
+       :desc "evil-window-decrease-height" "-" (λ! (evil-window-decrease-height 10))
+       :desc "evil-window-increase-height" "+" (λ! (evil-window-increase-height 10))
+       :desc "evil-window-decrease-width" "<" (λ! (evil-window-decrease-width 20))
+       :desc "evil-window-increase-width" ">" (λ! (evil-window-increase-width 20)))))
  (:after evil-org
    (:map evil-org-mode-map
      :i "C-d" nil
