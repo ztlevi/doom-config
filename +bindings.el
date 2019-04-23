@@ -31,7 +31,7 @@
  "M-v" #'yank-with-delete-region
  "M-s" #'evil-write-all
  ;; Buffer-local font scaling
- "M-+" (λ! (text-scale-set 0))
+ "M-0" (λ! (text-scale-set 0))
  "M-=" #'text-scale-increase
  "M--" #'text-scale-decrease
  ;; Conventional text-editing keys & motions
