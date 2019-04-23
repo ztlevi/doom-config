@@ -276,8 +276,8 @@
      "z" #'org-add-note
      "L" #'org-toggle-link-display
      (:prefix ("a" . "Archive")
-       "a" #'org-archive-subtree-default
-       "s" #'org-archive-subtree)))
+       :desc "Org default archive as DONE" "a" (λ! (org-todo "DONE") (org-archive-subtree-default))
+       :desc "Org archive as DONE"         "s" (λ! (org-todo "DONE") (org-archive-subtree)))))
  (:after evil-vars
    (:map evil-window-map
      :leader
