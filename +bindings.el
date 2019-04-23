@@ -312,7 +312,7 @@
    "SPC" nil)
  (:after wgrep
    :map wgrep-mode-map
-   "C-j" #'ivy-occur-press-and-switch)
+   :n "RET" #'ivy-occur-press-and-switch)
  (:after ivy
    :map ivy-occur-grep-mode-map
    "SPC" nil
