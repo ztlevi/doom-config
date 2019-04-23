@@ -192,6 +192,7 @@
      "g" nil
      "q" #'ranger-close-and-kill-inactive-buffers
      "f" #'counsel-find-file
+     "F" #'dired-narrow                 ; use `; g` to quit dired-narrow
      "M-g" #'ranger-go
      "C-TAB" #'ranger-next-tab
      "C-S-TAB" #'ranger-prev-tab

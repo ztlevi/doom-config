@@ -10,6 +10,7 @@
 
 ;; misc
 (packages! avy
+           dired-narrow
            edit-indirect
            atomic-chrome
            link-hint
