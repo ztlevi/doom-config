@@ -234,7 +234,9 @@
   :config
   (setq lsp-prefer-flymake t
         lsp-ui-sideline-enable nil
-        lsp-ui-doc-include-signature t)
+        lsp-ui-doc-include-signature t
+        lsp-use-native-json t
+        lsp-print-io nil)
 
   ;; set lsp-ui-doc position
   ;; (setq lsp-ui-doc-position 'at-point)
