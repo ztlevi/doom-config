@@ -1,6 +1,6 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-one-light)
 
 (when (display-graphic-p)
   (cond (IS-MAC
