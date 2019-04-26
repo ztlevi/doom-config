@@ -72,18 +72,12 @@
   ;; OVERRIDE
   (advice-add #'+ivy/projectile-find-file :override #'counsel-git)
 
-  (setq ivy-initial-inputs-alist nil
-        ivy-format-function (quote ivy-format-function-arrow)
-        ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
-                                (counsel-grep . ivy--regex-plus)
-                                (swiper . ivy--regex-plus)
-                                (t . ivy--regex-ignore-order)))
+  ;; ivy/flx already sets ivy-re-builders-alist
 
   ;; Use minibuffer to display ivy functions
-  (dolist (func '(+ivy/switch-workspace-buffer
-                  ivy-switch-buffer))
-    (push `(,func) ivy-display-functions-alist))
-  )
+  (dolist (fn '(+ivy/switch-workspace-buffer
+                ivy-switch-buffer))
+    (setf (alist-get fn ivy-display-functions-alist) #'ivy-display-function-fallback)))
 
 
 (after! counsel
