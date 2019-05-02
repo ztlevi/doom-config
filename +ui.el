@@ -34,6 +34,8 @@
    '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
    '(lsp-intellij-face-code-lens-run ((t (:background "honeydew"))))
    `(ivy-posframe-border ((t (:background ,(doom-color 'blue)))))
+   `(magit-diff-file-heading ((t (:background ,(doom-lighten (doom-color 'blue) 0.5)))))
+   `(magit-diff-file-heading-highlight ((t (:background ,(doom-lighten (doom-color 'blue) 0.2)))))
    '(markdown-header-face-1 ((t (:inherit org-level-1))))
    '(markdown-header-face-2 ((t (:inherit org-level-2))))
    '(markdown-header-face-3 ((t (:inherit org-level-3))))
