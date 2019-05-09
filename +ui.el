@@ -51,16 +51,22 @@
    `(ein:cell-input-prompt ((t (:background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))))
    )
   (when (string= doom-theme "doom-city-lights")
-      (custom-set-faces
-       `(hl-line ((t (:background ,(doom-color 'base0)))))
-       `(markdown-code-face ((t (:background ,(doom-color 'base2))))))))
+    (custom-set-faces
+     `(hl-line ((t (:background ,(doom-color 'base0)))))
+     `(markdown-code-face ((t (:background ,(doom-color 'base2))))))))
 (add-hook! 'doom-load-theme-hook #'+my/set-faces)
 
 (when IS-MAC
   ;; enable ligatures support
   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
   (ignore-errors
-    (mac-auto-operator-composition-mode)))
+    (mac-auto-operator-composition-mode))
+
+  ;; Lower internal-border-width on MacOS
+  (setq ivy-posframe-parameters
+        `((min-width . 90)
+          (min-height . ,ivy-height)
+          (internal-border-width . 5))))
 
 (after! ibuffer
   ;; set ibuffer name column width
