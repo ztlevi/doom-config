@@ -317,7 +317,9 @@
    :n "RET" #'ivy-occur-press-and-switch)
  (:after ivy
    :map ivy-occur-grep-mode-map
+   "C-d" nil
    "SPC" nil
+   "DEL" #'ivy-occur-delete-candidate
    :map ivy-minibuffer-map
    "TAB" #'ivy-partial-or-done
    "<C-return>" #'ivy-immediate-done
