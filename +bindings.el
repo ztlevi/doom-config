@@ -114,13 +114,13 @@
         :desc "View *Messages*" "m" #'view-echo-area-messages
         "C" #'helpful-command)
       (:prefix ("e" . "error")
-        :desc "Flymake next error"      "n" #'flymake-goto-next-error
-        :desc "Flymake previous error"  "p" #'flymake-goto-prev-error
-        :desc "Flymake list errors"     "l" #'flymake-show-diagnostics-buffer
-        :desc "Flycheck next error"     "N" #'flycheck-next-error
-        :desc "Flycheck previous error" "P" #'flycheck-previous-error
-        :desc "Flycheck list errors"    "L" #'flycheck-list-errors
-        :desc "Flycheck verify setup"   "V" #'flycheck-verify-setup)
+        :desc "Flymake next error"      "N" #'flymake-goto-next-error
+        :desc "Flymake previous error"  "P" #'flymake-goto-prev-error
+        :desc "Flymake list errors"     "L" #'flymake-show-diagnostics-buffer
+        :desc "Flycheck next error"     "n" #'flycheck-next-error
+        :desc "Flycheck previous error" "p" #'flycheck-previous-error
+        :desc "Flycheck list errors"    "l" #'flycheck-list-errors
+        :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
         :desc "Kill ring"             "k" #'helm-show-kill-ring
         :desc "Open link"             "x" #'link-hint-open-link
@@ -159,7 +159,6 @@
       (:prefix "t"                      ; toggle
         "c" #'centered-window-mode
         "r" #'rjsx-mode
-        "m" #'flymake-mode
         "d" #'toggle-debug-on-error
         "D" #'+my/realtime-elisp-doc
         "L" #'toggle-truncate-lines

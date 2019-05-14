@@ -232,7 +232,7 @@
   :init
   (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
   :config
-  (setq lsp-prefer-flymake t
+  (setq lsp-prefer-flymake nil
         lsp-ui-sideline-enable nil
         lsp-ui-doc-include-signature t
         lsp-use-native-json t
