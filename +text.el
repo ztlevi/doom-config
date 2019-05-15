@@ -87,7 +87,7 @@
     (advice-add #'markdown-preview :override #'+my/markdown-preview))
   )
 
-(def-package! edit-indirect :defer t)
+;; (def-package! edit-indirect :defer t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OTHERS
