@@ -30,6 +30,7 @@
 ;; my custom faces
 (defun +my/set-faces ()
   (custom-set-faces
+   '(variable-pitch ((t (:family nil))))
    `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
    '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
    '(lsp-intellij-face-code-lens-run ((t (:background "honeydew"))))
