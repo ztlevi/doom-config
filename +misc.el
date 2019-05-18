@@ -63,6 +63,13 @@
     (interactive)
     (ranger-revert)))
 
+(after! dash-docs
+  (setq dash-docs-use-workaround-for-emacs-bug nil)
+
+  ;; Use chrome to browse
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program (executable-find "google-chrome"))
+  (setq dash-docs-browser-func 'browse-url-generic))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IVY
