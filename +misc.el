@@ -68,7 +68,9 @@
 
   ;; Use chrome to browse
   (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program (executable-find "google-chrome"))
+        browse-url-generic-program (if IS-MAC
+                                       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+                                     (executable-find "google-chrome")))
   (setq dash-docs-browser-func 'browse-url-generic))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
