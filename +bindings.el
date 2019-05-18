@@ -84,7 +84,7 @@
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
-      (:prefix ("a" . "app")
+      (:prefix-map ("a" . "app")
         "s" #'prodigy
         "b" #'blog-admin-start
         :desc "List process" "p" #'list-processes
@@ -113,7 +113,7 @@
       (:prefix "h"                      ; help
         :desc "View *Messages*" "m" #'view-echo-area-messages
         "C" #'helpful-command)
-      (:prefix ("e" . "error")
+      (:prefix-map ("e" . "error")
         :desc "Flymake next error"      "N" #'flymake-goto-next-error
         :desc "Flymake previous error"  "P" #'flymake-goto-prev-error
         :desc "Flymake list errors"     "L" #'flymake-show-diagnostics-buffer
@@ -165,7 +165,7 @@
         "S" #'size-indication-mode
         "I" #'ivy-rich-mode
         "v" #'visual-line-mode)
-      (:prefix ("j" . "jump")
+      (:prefix-map ("j" . "jump")
         "j" #'avy-goto-char-timer
         "l" #'avy-goto-line
         "b" #'avy-pop-mark)
