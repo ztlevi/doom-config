@@ -10,6 +10,7 @@
 
 ;; misc
 (packages! avy
+           helm
            dired-narrow
            ;; edit-indirect ;; Purge this since it has issue with inserting curly brackets
            atomic-chrome
