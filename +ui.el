@@ -28,34 +28,41 @@
 (setq display-line-numbers-type nil)
 
 ;; my custom faces
-(defun +my/set-faces ()
-  (custom-set-faces
-   '(variable-pitch ((t (:family nil))))
-   `(show-paren-match ((t (:background ,(doom-color 'teal) :foreground ,(doom-color 'base1)))))
-   '(tide-hl-identifier-face ((t (:inherit lsp-face-highlight-read))))
-   '(lsp-intellij-face-code-lens-run ((t (:background "honeydew"))))
-   `(ivy-posframe-border ((t (:background ,(doom-color 'blue)))))
-   `(magit-diff-file-heading ((t (:background ,(doom-lighten (doom-color 'blue) 0.5)))))
-   `(magit-diff-file-heading-highlight ((t (:background ,(doom-lighten (doom-color 'blue) 0.2)))))
-   '(markdown-header-face-1 ((t (:inherit org-level-1))))
-   '(markdown-header-face-2 ((t (:inherit org-level-2))))
-   '(markdown-header-face-3 ((t (:inherit org-level-3))))
-   `(web-mode-jsx-depth-1-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.9)))))
-   `(web-mode-jsx-depth-2-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.8)))))
-   `(web-mode-jsx-depth-3-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.7)))))
-   `(web-mode-jsx-depth-4-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.6)))))
-   `(web-mode-jsx-depth-5-face ((t (:background ,(doom-lighten (doom-color 'teal) 0.5)))))
-   `(flyspell-incorrect ((t (:underline ,(doom-color 'red)))))
-   `(flyspell-duplicate ((t (:underline ,(doom-color 'orange)))))
-   '(flymake-warning ((t (:underline nil))))
-   `(ein:cell-input-area ((t (:background ,(doom-lighten (doom-color 'red) 0.85)))))
-   `(ein:cell-input-prompt ((t (:background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))))
-   )
-  (when (string= doom-theme "doom-city-lights")
-    (custom-set-faces
-     `(hl-line ((t (:background ,(doom-color 'base0)))))
-     `(markdown-code-face ((t (:background ,(doom-color 'base2))))))))
-(add-hook! 'doom-load-theme-hook #'+my/set-faces)
+(custom-set-faces!
+ (variable-pitch :family nil)
+ (show-paren-match :background (doom-color 'teal) :foreground (doom-color 'base1))
+ (tide
+  (tide-hl-identifier-face :inherit 'lsp-face-highlight-read))
+ (lsp
+  (lsp-intellij-face-code-lens-run :background "honeydew"))
+ (ivy-posframe
+  (ivy-posframe-border :background (doom-color 'blue)))
+ (magit
+  (magit-diff-file-heading :background (doom-lighten (doom-color 'blue) 0.5))
+  (magit-diff-file-heading-highlight :background (doom-lighten (doom-color 'blue) 0.2)))
+ (markdown-mode
+  (markdown-header-face-1 :inherit 'org-level-1)
+  (markdown-header-face-2 :inherit 'org-level-2)
+  (markdown-header-face-3 :inherit 'org-level-3))
+ (web-mode
+  (web-mode-jsx-depth-1-face :background (doom-lighten (doom-color 'teal) 0.9))
+  (web-mode-jsx-depth-2-face :background (doom-lighten (doom-color 'teal) 0.8))
+  (web-mode-jsx-depth-3-face :background (doom-lighten (doom-color 'teal) 0.7))
+  (web-mode-jsx-depth-4-face :background (doom-lighten (doom-color 'teal) 0.6))
+  (web-mode-jsx-depth-5-face :background (doom-lighten (doom-color 'teal) 0.5)))
+ (flyspell
+  (flyspell-incorrect :underline (doom-color 'red))
+  (flyspell-duplicate :underline (doom-color 'orange)))
+ (flymake-warning :underline nil)
+ (ein
+  (ein:cell-input-area :background (doom-lighten (doom-color 'red) 0.85))
+  (ein:cell-input-prompt :background (doom-color 'red) :foreground (doom-color 'base0) :bold t)))
+
+(when (string= doom-theme "doom-city-lights")
+  (custom-set-faces!
+   (hl-line :background (doom-color 'base0))
+   (markdown-mode
+    (markdown-code-face :background (doom-color 'base2)))))
 
 (when IS-MAC
   ;; enable ligatures support
