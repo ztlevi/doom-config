@@ -34,7 +34,7 @@
   (+shell!open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
-  (+macos!open-with reveal-in-typora "Typora" buffer-file-name)
+  (+macos!open-with reveal-in-typora "typora" buffer-file-name)
 
   (defun +macos/reveal-in-terminal ()
     (interactive)
