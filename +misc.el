@@ -83,7 +83,7 @@
 
   (setq ivy-initial-inputs-alist nil
         ivy-format-function (quote ivy-format-function-arrow)
-        ivy-re-builders-alist '((counse-rg . ivy--regex-plus)
+        ivy-re-builders-alist '((counsel-rg . ivy--regex-plus)
                                 (counsel-grep . ivy--regex-plus)
                                 (swiper . ivy--regex-plus)
                                 (t . ivy--regex-ignore-order)))
