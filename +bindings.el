@@ -171,7 +171,7 @@
         "l" #'avy-goto-line
         "b" #'avy-pop-mark)
       (:prefix "s"                      ; snippet
-        "t" #'yas/describe-tables)
+        "t" #'yas-describe-tables)
       (:prefix "/"                      ; search
         :desc "Project"   "/" #'+ivy/project-search
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files
