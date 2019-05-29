@@ -33,8 +33,8 @@
  (show-paren-match :background (doom-color 'teal) :foreground (doom-color 'base1))
  (tide
   (tide-hl-identifier-face :inherit 'lsp-face-highlight-read))
- (lsp
-  (lsp-intellij-face-code-lens-run :background "honeydew"))
+ ;; (lsp
+ ;;  (lsp-intellij-face-code-lens-run :background "honeydew"))
  (ivy-posframe
   (ivy-posframe-border :background (doom-color 'blue)))
  (magit
