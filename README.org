@@ -100,7 +100,6 @@ Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. r
 ***** Ubuntu
 #+BEGIN_SRC shell
 sudo apt install mplayer clang-format wmctrl direnv
-
 #+END_SRC
 
 - For vterm
@@ -125,14 +124,6 @@ brew install go
 
 # arch
 sudo pacman --needed --noconfirm -S go
-
-# Dependencies
-go get -u github.com/motemen/gore
-go get -u github.com/mdempsky/gocode
-go get -u golang.org/x/tools/cmd/godoc
-go get -u golang.org/x/tools/cmd/goimports
-go get -u golang.org/x/tools/cmd/gorename
-go get -u golang.org/x/tools/cmd/guru
 #+END_SRC
 
 *** Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
@@ -151,12 +142,8 @@ python3 -m pip install --upgrade 'python-language-server[all]' pyls-isort
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
 
-# bingo: https://github.com/saibing/bingo
-git clone https://github.com/saibing/bingo.git
-cd bingo
-GO111MODULE=on go install
-# If you live in China and may not be able to download golang.org/x/ dependency module, please set GOPROXY as follow:
-export GOPROXY=https://athens.azurefd.net/
+# gopls
+go get -u golang.org/x/tools/cmd/gopls
 #+END_SRC
 
 *** For MacOS, according to the discussion [[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
