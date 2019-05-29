@@ -240,6 +240,15 @@
 
   ;; set lsp-ui-doc position
   ;; (setq lsp-ui-doc-position 'at-point)
+
+  ;; Add remapping until doom has better async solution
+  (define-key! lsp-ui-mode-map
+    [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
+    [remap xref-find-references]  #'lsp-ui-peek-find-references
+    ;; `set-lookup-handlers!' won't work for lsp-ui-peek commands, because they
+    ;; don't switch buffers
+    [remap +lookup/definition] #'lsp-ui-peek-find-definitions
+    [remap +lookup/references] #'lsp-ui-peek-find-references)
   )
 
 
