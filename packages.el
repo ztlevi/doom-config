@@ -6,7 +6,8 @@
            (solaire-mode :disable t)
            (cquery :disable t)
            (anaconda-mode :disable t)
-           (company-anaconda :disable t))
+           (company-anaconda :disable t)
+           (diredfl :disable t))
 
 ;; misc
 (packages! avy
