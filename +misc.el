@@ -81,13 +81,6 @@
   ;; OVERRIDE
   (advice-add #'+ivy/projectile-find-file :override #'counsel-git)
 
-  (setq ivy-initial-inputs-alist nil
-        ivy-format-function (quote ivy-format-function-arrow)
-        ivy-re-builders-alist '((counsel-rg . ivy--regex-plus)
-                                (counsel-grep . ivy--regex-plus)
-                                (swiper . ivy--regex-plus)
-                                (t . ivy--regex-ignore-order)))
-
   ;; Use minibuffer to display ivy functions
   (dolist (fn '(+ivy/switch-workspace-buffer
                 ivy-switch-buffer))
