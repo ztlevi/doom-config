@@ -4,6 +4,6 @@
 # --
 <figure style="width:100%;display:block;margin-left:auto;margin-right:auto;">
 <img src="$1" alt="$2"/>
-<figcaption>$3</figcaption>
 </figure>
+<figcaption style="text-align:center">$3</figcaption>
 $0
