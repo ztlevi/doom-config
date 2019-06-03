@@ -119,6 +119,7 @@
         :desc "Flymake list errors"     "L" #'flymake-show-diagnostics-buffer
         :desc "Flycheck next error"     "n" #'flycheck-next-error
         :desc "Flycheck previous error" "p" #'flycheck-previous-error
+        :desc "Flycheck explain error"  "e" #'flycheck-explain-error-at-point
         :desc "Flycheck list errors"    "l" #'flycheck-list-errors
         :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
