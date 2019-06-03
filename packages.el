@@ -7,7 +7,8 @@
            (cquery :disable t)
            (anaconda-mode :disable t)
            (company-anaconda :disable t)
-           (diredfl :disable t))
+           (diredfl :disable t)
+           (pyimport :disable t))
 
 ;; misc
 (packages! avy
