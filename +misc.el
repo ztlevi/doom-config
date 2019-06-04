@@ -252,13 +252,12 @@
            ("LC_ALL" "en_US.UTF-8")))
   ;; define service
   (prodigy-define-service
-    :name "Leetcode Solution Website"
-    :command "python"
-    :args '("-m" "SimpleHTTPServer" "6005")
-    :cwd "~/Developer/Github/leetcode"
-    :tags '(leetcode)
-    ;; if don't want to browse instantly, delete the following line
-    :init (lambda () (browse-url "http://localhost:6005"))
+    :name "ML Gitbook"
+    :command "npm"
+    :args '("start")
+    :cwd "~/Developer/Github/Machine_Learning_Questions"
+    :tags '(npm gitbook)
+    :init (lambda () (browse-url "http://localhost:4000"))
     :kill-signal 'sigkill
     :kill-process-buffer-on-stop t)
 
@@ -278,17 +277,6 @@
     :args '("deploy" "--generate")
     :cwd blog-admin-backend-path
     :tags '(hexo deploy)
-    :kill-signal 'sigkill
-    :kill-process-buffer-on-stop t)
-
-  (prodigy-define-service
-    :name "Hackathon backend"
-    :env '(("REDISCLOUD_URL" "redis://rediscloud:MeQVSBSNp82uhej2QW42vQxV2TEcd5xq@redis-14678.c44.us-east-1-2.ec2.cloud.redislabs.com:14678"))
-    :command "npm"
-    :args '("run" "start")
-    :cwd "~/Developer/Github/cryptocurrency_exchange_app/backend"
-    :tags '(express)
-    :init (lambda () (switch-to-buffer "*prodigy-hackathon-backend*"))
     :kill-signal 'sigkill
     :kill-process-buffer-on-stop t)
 
