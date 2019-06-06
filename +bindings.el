@@ -298,8 +298,8 @@
  (:after markdown-mode
    (:map markdown-mode-map
      :desc "Markdown Cycle" :nv [tab] #'markdown-cycle
-     :desc "Insert item below" :ni [M-RET]   (λ! (+org/insert-item 'below))
-     :desc "Insert item above" :ni [S-M-RE] (λ! (+org/insert-item 'above))
+     :desc "Insert item below" :ni "<C-return>"   (λ! (+org/insert-item 'below))
+     :desc "Insert item above" :ni "<S-C-return>" (λ! (+org/insert-item 'above))
      :localleader
      (:when IS-MAC
        :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
