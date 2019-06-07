@@ -252,12 +252,21 @@
            ("LC_ALL" "en_US.UTF-8")))
   ;; define service
   (prodigy-define-service
-    :name "ML Gitbook"
+    :name "ML Gitbook Start"
     :command "npm"
     :args '("start")
     :cwd "~/Developer/Github/Machine_Learning_Questions"
     :tags '(npm gitbook)
     :init (lambda () (browse-url "http://localhost:4000"))
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+
+  (prodigy-define-service
+    :name "ML Gitbook Publish"
+    :command "npm"
+    :args '("run" "docs:publish")
+    :cwd "~/Developer/Github/Machine_Learning_Questions"
+    :tags '(npm gitbook)
     :kill-signal 'sigkill
     :kill-process-buffer-on-stop t)
 
