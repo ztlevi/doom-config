@@ -300,17 +300,17 @@
      :desc "Markdown Cycle" :nv [tab] #'markdown-cycle
      :desc "Insert item below" :ni "<C-return>"   (λ! (+org/insert-item 'below))
      :desc "Insert item above" :ni "<S-C-return>" (λ! (+org/insert-item 'above))
-     :localleader
-     (:when IS-MAC
-       :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
-     (:when IS-LINUX
-       :desc "Reveal in Typora" "o" #'+shell/reveal-in-typora)
-     :desc "Insert header line"      "-" #'org-table-insert-hline
-     :desc "Crete Table from region" "|" #'org-table-create-or-convert-from-region
-     :desc "Edit" "x" (+my/simulate-key "C-c C-s")
-     (:prefix ("i" . "Insert")
-       "r" #'markdown-table-insert-row
-       "c" #'markdown-table-insert-column)))
+     (:localleader
+       (:when IS-MAC
+         :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
+       (:when IS-LINUX
+         :desc "Reveal in Typora" "o" #'+shell/reveal-in-typora)
+       :desc "Insert header line" "-" #'org-table-insert-hline
+       :desc "Crete Table from region" "|" #'org-table-create-or-convert-from-region
+       :desc "Edit" "x" (+my/simulate-key "C-c C-s")
+       (:prefix ("i" . "Insert")
+         "r" #'markdown-table-insert-row
+         "c" #'markdown-table-insert-column))))
  (:after grep
    :map grep-mode-map
    "SPC" nil)

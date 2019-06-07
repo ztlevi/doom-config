@@ -14,7 +14,7 @@
 (packages! avy
            helm
            dired-narrow
-           ;; edit-indirect ;; Purge this since it has issue with inserting curly brackets
+           edit-indirect
            atomic-chrome
            link-hint
            symbol-overlay
