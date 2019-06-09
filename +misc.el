@@ -84,7 +84,7 @@
   ;; Use minibuffer to display ivy functions
   (dolist (fn '(+ivy/switch-workspace-buffer
                 ivy-switch-buffer))
-    (setf (alist-get fn ivy-display-functions-alist) #'ivy-display-function-fallback))
+    (setf (alist-get fn ivy-posframe-display-functions-alist) #'ivy-display-function-fallback))
 
   (after! ivy-prescient
     (setq ivy-prescient-retain-classic-highlighting t)))
