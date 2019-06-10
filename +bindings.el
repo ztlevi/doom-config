@@ -7,8 +7,8 @@
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
    "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
-   "M-p"   #'counsel-git
-   "C-S-p" #'counsel-git
+   "M-p"   #'+ivy/projectile-find-file
+   "C-S-p" #'+ivy/projectile-find-file
    "M-y"   #'helm-show-kill-ring
    "C-h m" #'describe-mode
    "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line

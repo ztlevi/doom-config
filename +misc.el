@@ -78,9 +78,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! ivy
-  ;; OVERRIDE
-  (advice-add #'+ivy/projectile-find-file :override #'counsel-git)
-
   ;; Use minibuffer to display ivy functions
   (dolist (fn '(+ivy/switch-workspace-buffer
                 ivy-switch-buffer))
@@ -94,7 +91,6 @@
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
         counsel-describe-function-function 'helpful-callable
         counsel-describe-variable-function 'helpful-variable
-        counsel-git-cmd "rg --files --hidden"
         counsel-rg-base-command "rg -zS --no-heading --line-number --max-columns 1000 --color never %s ."
         counsel-grep-base-command counsel-rg-base-command))
 
