@@ -127,8 +127,8 @@
         :desc "Lsp ui imenu"          "i" #'lsp-ui-imenu
         :desc "Open link"             "x" #'link-hint-open-link
         :desc "Open link at point"    "X" #'link-hint-open-link-at-point
-        :desc "Vterm"             "s" #'+vterm/open-popup
-        :desc "Project run Vterm" "S" #'+vterm/open-popup-in-project
+        :desc "Vterm"                 "s" #'+vterm/toggle
+        :desc "Project run Vterm"     "S" #'+vterm/here
         :desc "Eshell popup"          "e" #'+eshell/open-popup
         :desc "Project run Eshell"    "E" #'projectile-run-eshell
         :desc "Ibuffer"               "I" #'ibuffer
@@ -370,7 +370,8 @@
      "C-i"   #'company-complete-selection))
  (:after vterm
    (:map vterm-mode-map
-     "M-e" nil))
+     "M-e" nil
+     "M-w" #'+workspace/close-window-or-workspace))
  (:after term
    (:map term-raw-map
      :i "M-v" #'term-paste)))
