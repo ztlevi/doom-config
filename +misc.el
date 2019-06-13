@@ -119,7 +119,7 @@
 
 
   ;; Add personal repo root to scan git projects
-  (defvar +my/repo-root-list '("~" "~/Dropbox"))
+  (defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src"))
 
   (defun update-projectile-known-projects ()
     (interactive)
