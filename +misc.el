@@ -61,7 +61,13 @@
   (defun ranger-disable ()
     "Interactively disable ranger-mode."
     (interactive)
-    (ranger-revert)))
+    (ranger-revert))
+
+  (advice-add! '(wdired-change-to-wdired-mode) :before (λ! (all-the-icons-dired-mode -1)))
+  (advice-add! '(wdired-finish-edit) :after (λ! (all-the-icons-dired-mode +1))))
+
+(add-hook! dired-mode #'dired-hide-details-mode)
+
 
 (after! dash-docs
   (setq dash-docs-use-workaround-for-emacs-bug nil)
