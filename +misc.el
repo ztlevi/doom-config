@@ -51,7 +51,12 @@
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
 
-(after! ranger
+(def-package! ranger
+  :config
+  (setq ranger-hide-cursor t
+        ranger-show-hidden 'format
+        ranger-deer-show-details nil)
+
   (defun ranger-close-and-kill-inactive-buffers ()
     "ranger close current buffer and kill inactive ranger buffers"
     (interactive)
@@ -61,14 +66,11 @@
   (defun ranger-disable ()
     "Interactively disable ranger-mode."
     (interactive)
-    (ranger-revert))
+    (ranger-revert)))
 
-  (setq ranger-hide-cursor t)
-
+(after! all-the-icons-dired
   (advice-add! '(wdired-change-to-wdired-mode) :before (λ! (all-the-icons-dired-mode -1)))
   (advice-add! '(wdired-finish-edit) :after (λ! (all-the-icons-dired-mode +1))))
-
-(add-hook! dired-mode #'dired-hide-details-mode)
 
 
 (after! dash-docs
@@ -91,7 +93,7 @@
 
 
 (after! ivy-posframe
-    ;; Use minibuffer to display ivy functions
+  ;; Use minibuffer to display ivy functions
   (dolist (fn '(+ivy/switch-workspace-buffer
                 ivy-switch-buffer))
     (setf (alist-get fn ivy-posframe-display-functions-alist) #'ivy-display-function-fallback)))
