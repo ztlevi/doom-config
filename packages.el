@@ -29,6 +29,6 @@
 ;; programming
 (packages! lsp-mode lsp-ui company-lsp
            import-js indium
-           importmagic py-isort
+           lsp-python-ms importmagic py-isort
            (flycheck-google-cpplint :recipe (:fetcher github :repo "flycheck/flycheck-google-cpplint"))
            )

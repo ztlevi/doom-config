@@ -132,6 +132,17 @@
   ;;       python-shell-interpreter-args "-i")
   )
 
+(def-package! lsp-python-ms
+  :demand nil
+  :hook (python-mode . lsp)
+  :config
+  ;; for executable of language server, if it's not symlinked on your PATH
+  (setq lsp-python-ms-executable
+        (string-trim (shell-command-to-string
+         "fd -a ^Microsoft.Python.LanguageServer$ $HOME/.vscode/extensions | tail -1")))
+  ;; for dev build of language server
+  (setq lsp-python-ms-dir
+        (file-name-directory lsp-python-ms-executable)))
 
 (def-package! py-isort
   :defer t
