@@ -101,8 +101,7 @@
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-directory)
       (:prefix "TAB"
-        :desc "Switch workspace" "TAB" #'+workspace/switch-to
-        :desc "Display tab bar"  "."   #'+workspace/display)
+        :desc "Switch workspace" "TAB" #'+workspace/other)
       (:prefix "f"                      ; file
         :desc "Find file" "f" #'counsel-find-file
         :desc "Deer"      "j" #'deer)
