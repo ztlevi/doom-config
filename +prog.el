@@ -136,10 +136,15 @@
   :demand nil
   :hook (python-mode . lsp)
   :config
+  ;; NOTE: This requires fd, VSCode and it's python plugin installed
+  ;; And you have to open a python file in VSCode afterwards
+  ;; Otherwise, you can take a look at the setup function here
+  ;; https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-lsp.el#L122
+
   ;; for executable of language server, if it's not symlinked on your PATH
   (setq lsp-python-ms-executable
         (string-trim (shell-command-to-string
-         "fd -a ^Microsoft.Python.LanguageServer$ $HOME/.vscode/extensions | tail -1")))
+                      "fd -a ^Microsoft.Python.LanguageServer$ $HOME/.vscode/extensions | tail -1")))
   ;; for dev build of language server
   (setq lsp-python-ms-dir
         (file-name-directory lsp-python-ms-executable)))
