@@ -135,7 +135,7 @@ npm i -g typescript
 npm install vue-language-server -g
 
 # python
-# pyls-mypy is a type integration for Python
+# Using VSCode's mspyls now, not needed unless you use pyls
 python3 -m pip install --upgrade 'python-language-server[all]' pyls-isort
 
 # ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
