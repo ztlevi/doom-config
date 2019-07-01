@@ -30,7 +30,7 @@
 ;; my custom faces
 (custom-set-faces!
  (variable-pitch :family nil)
- (show-paren-match :background (doom-color 'teal) :foreground (doom-color 'base1))
+ (show-paren-match :background (doom-lighten (doom-color 'teal) 0.4) :foreground (doom-color 'base1))
  (tide
   (tide-hl-identifier-face :inherit 'lsp-face-highlight-read))
  ;; (lsp
