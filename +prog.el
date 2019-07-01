@@ -183,6 +183,10 @@
 
 
 (after! conda
+  (when IS-LINUX
+    ;; Ubuntu anaconda
+    (setq conda-anaconda-home "~/anaconda3"))
+
   (setq conda-env-home-directory (expand-file-name "~/.conda"))
 
   ;; restart flycheck-mode after env activate and deactivate
