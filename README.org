@@ -135,8 +135,8 @@ npm i -g typescript
 npm install vue-language-server -g
 
 # python
-# Using VSCode's mspyls now, not needed unless you use pyls
-python3 -m pip install --upgrade 'python-language-server[all]' pyls-isort
+# Install: M-x lsp-python-ms-setup
+# Update:  M-x lsp-python-ms-update-server
 
 # ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
