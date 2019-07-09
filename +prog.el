@@ -180,10 +180,7 @@
 
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
-    (advice-add func :after #'reset-flycheck))
-
-  (setq conda-message-on-environment-switch nil)
-  (conda-env-autoactivate-mode t))
+    (advice-add func :after #'reset-flycheck)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
