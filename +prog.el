@@ -133,8 +133,6 @@
   )
 
 (def-package! lsp-python-ms
-  :demand nil
-  :hook (python-mode . lsp)
   :config
   (setq lsp-python-ms-dir (concat doom-cache-dir "mspyls")
         lsp-python-ms-executable (concat doom-cache-dir "mspyls/Microsoft.Python.LanguageServer")))
