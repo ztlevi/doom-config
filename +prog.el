@@ -135,8 +135,8 @@
 (def-package! lsp-python-ms
   :config
   (setq lsp-python-executable-cmd "python3"
-        lsp-python-ms-dir (concat doom-cache-dir "mspyls")
-        lsp-python-ms-executable (concat doom-cache-dir "mspyls/Microsoft.Python.LanguageServer")))
+        lsp-python-ms-dir (concat doom-etc-dir "mspyls")
+        lsp-python-ms-executable (concat doom-etc-dir "mspyls/Microsoft.Python.LanguageServer")))
 
 (def-package! py-isort
   :defer t
