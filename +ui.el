@@ -32,8 +32,7 @@
  '(variable-pitch :family nil)
  `(show-paren-match :background ,(doom-lighten (doom-color 'teal) 0.4) :foreground ,(doom-color 'base1))
  '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
- ;; (lsp
- ;;  (lsp-intellij-face-code-lens-run :background "honeydew"))
+ ;; '(lsp-intellij-face-code-lens-run :background "honeydew")
  `(ivy-posframe-border :background ,(doom-color 'blue))
  `(magit-diff-file-heading :background ,(doom-lighten (doom-color 'blue) 0.5))
  `(magit-diff-file-heading-highlight :background ,(doom-lighten (doom-color 'blue) 0.2))
@@ -50,7 +49,7 @@
  '(flymake-warning :underline nil)
  '(flycheck-warning :underline nil)
  `(ein:cell-input-area :background ,(doom-lighten (doom-color 'red) 0.85))
- `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground (doom-color 'base0) :bold t))
+ `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
 
 (when (string= doom-theme "doom-city-lights")
   (custom-set-faces!
