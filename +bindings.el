@@ -128,7 +128,7 @@
         :desc "Open link at point"    "X" #'link-hint-open-link-at-point
         :desc "Vterm"                 "s" #'+vterm/toggle
         :desc "Project run Vterm"     "S" #'+vterm/here
-        :desc "Eshell popup"          "e" #'+eshell/open-popup
+        :desc "Toggle eshell popup"   "e" #'+eshell/toggle
         :desc "Project run Eshell"    "E" #'projectile-run-eshell
         :desc "Ibuffer"               "I" #'ibuffer
         :desc "Youdao dictionary"     "y" #'youdao-dictionary-search-at-point-tooltip
