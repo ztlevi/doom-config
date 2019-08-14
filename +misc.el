@@ -1,5 +1,12 @@
 ;;; ~/.doom.d/+misc.el -*- lexical-binding: t; -*-
 
+;; Use chrome to browse
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program
+      (cond (IS-MAC "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+            ((executable-find "/opt/google/chrome/chrome") "/opt/google/chrome/chrome")
+            ((executable-find "google-chrome") "google-chrome")))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SSH
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,12 +82,6 @@
 
 (after! dash-docs
   (setq dash-docs-use-workaround-for-emacs-bug nil)
-
-  ;; Use chrome to browse
-  (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program (if IS-MAC
-                                       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-                                     (executable-find "google-chrome")))
   (setq dash-docs-browser-func 'browse-url-generic))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
