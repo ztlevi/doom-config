@@ -22,6 +22,7 @@
            (blog-admin :recipe (:fetcher github :repo "codefalling/blog-admin"))
            youdao-dictionary
            wucuo
+           (grip-mode :recipe (:fetcher github :repo "seagle0128/grip-mode"))
            org-wild-notifier
            (vterm-toggle :recipe (:fetcher github :repo "jixiuf/vterm-toggle"))
            )

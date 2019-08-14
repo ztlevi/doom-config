@@ -8,6 +8,9 @@
 ;; More information about these modules (and what flags they support) can be
 ;; found in modules/README.org.
 
+;; Temp fix for GNU issue
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (doom! :completion
        (company          ; the ultimate code completion backend
         +auto            ; as-you-type code completion
@@ -74,7 +77,7 @@
        direnv
        docker
        editorconfig      ; let someone else argue about tabs vs spaces
-       ein               ; tame Jupyter notebooks with emacs
+       ;; ein               ; tame Jupyter notebooks with emacs
        eval              ; run code, run (also, repls)
        (flycheck
         +childframe)     ; tasing you for every semicolon you forget

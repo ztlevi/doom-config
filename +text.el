@@ -70,22 +70,8 @@
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(after! markdown-mode
-  ;; memo: install grip > ‘pip3 install grip‘
-  (defvar +my/markdown-process nil)
-  (defun +my/markdown-preview (&rest _)
-    "Preview markdown file by using grip."
-    (when (process-live-p +my/markdown-process)
-      (kill-process +my/markdown-process))
-    (setq +my/markdown-process
-          (start-process-shell-command "grip markdown-preview"
-                                       markdown-output-buffer-name
-                                       (format "grip --browser '%s'" (buffer-file-name)))))
+(def-package! grip-mode :defer t)
 
-  ;; OVERRIDE
-  (when (executable-find "grip")
-    (advice-add #'markdown-preview :override #'+my/markdown-preview))
-  )
 
 (def-package! edit-indirect :defer t)
 

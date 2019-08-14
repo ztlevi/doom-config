@@ -304,6 +304,7 @@
          :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
        (:when IS-LINUX
          :desc "Reveal in Typora" "o" #'+shell/reveal-in-typora)
+       :desc "Grip mode"          "g" #'grip-mode
        :desc "Insert header line" "-" #'org-table-insert-hline
        :desc "Crete Table from region" "|" #'org-table-create-or-convert-from-region
        :desc "Edit" "x" (+my/simulate-key "C-c C-s")
