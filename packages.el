@@ -2,8 +2,7 @@
 ;;; private/my/packages.el
 
 ;; disabled packages
-(packages! (exec-path-from-shell :disable t)
-           (solaire-mode :disable t)
+(packages! (solaire-mode :disable t)
            (cquery :disable t)
            (anaconda-mode :disable t)
            (company-anaconda :disable t)
