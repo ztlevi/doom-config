@@ -320,6 +320,8 @@
 ;; TERM
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(set-formatter! 'shfmt "shfmt -i=2")
+
 (after! eshell
   ;; eshell-mode imenu index
   (add-hook! 'eshell-mode-hook (setq-local imenu-generic-expression '(("Prompt" " λ \\(.*\\)" 1))))
@@ -344,6 +346,7 @@
 (after! term
   ;; term-mode imenu index
   (add-hook! 'term-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
+
 
 (def-package! vterm-toggle
   :defer t)
