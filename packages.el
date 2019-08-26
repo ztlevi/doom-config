@@ -5,7 +5,6 @@
 (packages! (solaire-mode :disable t)
            (anaconda-mode :disable t)
            (company-anaconda :disable t)
-           (diredfl :disable t)
            (dired-k :disable t)
            (pyimport :disable t))
 
