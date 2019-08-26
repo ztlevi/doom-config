@@ -3,16 +3,17 @@
 
 ;; disabled packages
 (packages! (solaire-mode :disable t)
-           (cquery :disable t)
            (anaconda-mode :disable t)
            (company-anaconda :disable t)
            (diredfl :disable t)
+           (dired-k :disable t)
            (pyimport :disable t))
 
 ;; misc
 (packages! avy
            helm
            dired-narrow
+           diff-hl
            edit-indirect
            atomic-chrome
            link-hint
