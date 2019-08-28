@@ -64,10 +64,7 @@
     (mac-auto-operator-composition-mode))
 
   ;; Lower internal-border-width on MacOS
-  (setq ivy-posframe-parameters
-        `((min-width . 90)
-          (min-height . ,ivy-height)
-          (internal-border-width . 5))))
+  (setq ivy-posframe-border-width 5))
 
 (after! ibuffer
   ;; set ibuffer name column width
