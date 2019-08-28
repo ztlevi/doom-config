@@ -277,9 +277,11 @@
      "w" #'org-refile
      "z" #'org-add-note
      "L" #'org-toggle-link-display
+     "a" nil
      (:prefix ("a" . "Archive")
        :desc "Org default archive as DONE" "a" (λ! (org-todo "DONE") (org-archive-subtree-default))
-       :desc "Org archive as DONE"         "s" (λ! (org-todo "DONE") (org-archive-subtree)))))
+       :desc "Org archive as DONE"         "s" (λ! (org-todo "DONE") (org-archive-subtree)))
+     "A" #'org-attach))
  (:after evil-vars
    (:map evil-window-map
      :leader
