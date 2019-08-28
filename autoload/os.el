@@ -61,7 +61,7 @@ non-nil value to enable trashing for file operations."
     (message command)))
 
 ;;;###autoload
-(defmacro +shell!open-with (id &optional app dir args)
+(defmacro +shell--open-with (id &optional app dir args)
   `(defun ,(intern (format "+shell/%s" id)) ()
      (interactive)
      (+shell-open-with ,app ,dir ,args)))

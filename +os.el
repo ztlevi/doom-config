@@ -14,7 +14,7 @@
 
 ;; Add executable: Clion -> Tools -> Create Command Line Launcher
 (defvar shell-apps '("pycharm" "studio" "clion" "code" "idea")
-  "Applications collection used for `+shell!open-with' method")
+  "Applications collection used for `+shell--open-with' method")
 (defun ivy--read-apps ()
   (ivy-read "Select Applications:" shell-apps))
 (defun get-filename-with-line-number ()
@@ -23,18 +23,18 @@
 
 (when IS-MAC
   (when (file-directory-p "/Applications/ForkLift.app")
-    (+macos!open-with reveal-in-finder "forklift" default-directory)
-    (+macos!open-with reveal-project-in-finder "forklift"
+    (+macos--open-with reveal-in-finder "forklift" default-directory)
+    (+macos--open-with reveal-project-in-finder "forklift"
                       (or (doom-project-root) default-directory)))
 
-  (+shell!open-with reveal-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-in-apps (ivy--read-apps)
                     (buffer-file-name)
                     ;; (get-filename-with-line-number)
                     )
-  (+shell!open-with reveal-project-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
-  (+macos!open-with reveal-in-typora "typora" buffer-file-name)
+  (+macos--open-with reveal-in-typora "typora" buffer-file-name)
 
   (defun +macos/reveal-in-terminal ()
     (interactive)
@@ -61,24 +61,24 @@
   (defvar linux-finder (cond ((executable-find "xdg-open") "xdg-open")
                              ((executable-find "gvfs-open") "gvfs-open")))
 
-  (+shell!open-with open-in-default-program linux-finder buffer-file-name)
+  (+shell--open-with open-in-default-program linux-finder buffer-file-name)
 
-  (+shell!open-with reveal-in-finder linux-finder default-directory)
-  (+shell!open-with reveal-project-in-finder linux-finder
+  (+shell--open-with reveal-in-finder linux-finder default-directory)
+  (+shell--open-with reveal-project-in-finder linux-finder
                     (or (doom-project-root) default-directory))
 
-  (+shell!open-with reveal-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-in-apps (ivy--read-apps)
                     (buffer-file-name)
                     ;; (get-filename-with-line-number)
                     )
-  (+shell!open-with reveal-project-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
-  (+shell!open-with reveal-in-terminal linux-terminal nil (linux-terminal-args default-directory))
-  (+shell!open-with reveal-project-in-terminal linux-terminal nil
+  (+shell--open-with reveal-in-terminal linux-terminal nil (linux-terminal-args default-directory))
+  (+shell--open-with reveal-project-in-terminal linux-terminal nil
                     (linux-terminal-args (or (doom-project-root) default-directory)))
 
-  (+shell!open-with reveal-in-typora "typora" buffer-file-name))
+  (+shell--open-with reveal-in-typora "typora" buffer-file-name))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
