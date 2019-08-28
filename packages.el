@@ -2,33 +2,33 @@
 ;;; private/my/packages.el
 
 ;; disabled packages
-(packages! (solaire-mode :disable t)
-           (anaconda-mode :disable t)
-           (company-anaconda :disable t)
-           (dired-k :disable t)
-           (pyimport :disable t))
+(disable-packages! solaire-mode
+                   anaconda-mode
+                   company-anaconda
+                   dired-k
+                   pyimport)
 
 ;; misc
-(packages! avy
-           helm
-           dired-narrow
-           diff-hl
-           edit-indirect
-           atomic-chrome
-           link-hint
-           symbol-overlay
-           tldr
-           (blog-admin :recipe (:fetcher github :repo "codefalling/blog-admin"))
-           youdao-dictionary
-           wucuo
-           grip-mode
-           org-wild-notifier
-           (vterm-toggle :recipe (:fetcher github :repo "jixiuf/vterm-toggle"))
-           )
+(package! avy)
+(package! helm)
+(package! dired-narrow) 
+(package! diff-hl) 
+(package! edit-indirect) 
+(package! atomic-chrome) 
+(package! link-hint) 
+(package! symbol-overlay) 
+(package! tldr) 
+(package! (blog-admin :recipe (:fetcher github :repo "codefalling/blog-admin"))) 
+(package! youdao-dictionary) 
+(package! wucuo) 
+(package! grip-mode) 
+(package! org-wild-notifier) 
+(package! (vterm-toggle :recipe (:fetcher github :repo "jixiuf/vterm-toggle"))) 
 
 ;; programming
-(packages! lsp-mode lsp-ui company-lsp
-           import-js indium
-           lsp-python-ms importmagic py-isort
-           (flycheck-google-cpplint :recipe (:fetcher github :repo "flycheck/flycheck-google-cpplint"))
-           )
+(package! import-js) 
+(package! indium) 
+(package! lsp-python-ms) 
+(package! importmagic) 
+(package! py-isort) 
+(package! (flycheck-google-cpplint :recipe (:fetcher github :repo "flycheck/flycheck-google-cpplint"))) 
