@@ -91,7 +91,6 @@
         :desc "Kill process" "P" #'counsel-list-processes
         "x" #'align-regexp)
       (:prefix "b"                      ; buffer
-        :desc "Last buffer"   "l" #'evil-switch-to-windows-last-buffer
         :desc "Switch buffer" "b" #'ivy-switch-buffer
         "h" #'+doom-dashboard/open
         "r" #'revert-buffer-no-confirm
