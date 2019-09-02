@@ -76,16 +76,6 @@
     (ranger-revert)))
 
 
-(def-package! diff-hl
-  :defer t
-  :hook
-  (dired-mode . diff-hl-dired-mode)
-  (magit-post-refresh . diff-hl-magit-post-refresh)
-  :config
-  ;; use margin instead of fringe
-  (diff-hl-margin-mode))
-
-
 (after! all-the-icons-dired
   (advice-add 'wdired-change-to-wdired-mode :before (λ! (all-the-icons-dired-mode -1)))
   (advice-add 'wdired-finish-edit :after (λ! (all-the-icons-dired-mode +1))))
