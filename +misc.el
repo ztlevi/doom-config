@@ -95,6 +95,10 @@
 
 
 (after! ivy-posframe
+  ;; Lower internal-border-width on MacOS
+  (when IS-MAC
+    (setq ivy-posframe-border-width 5))
+
   ;; Use minibuffer to display ivy functions
   (dolist (fn '(+ivy/switch-workspace-buffer
                 ivy-switch-buffer))

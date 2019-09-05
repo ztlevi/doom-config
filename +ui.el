@@ -1,6 +1,6 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
-(setq doom-theme 'doom-one-light)
+(load-theme 'doom-one-light t)
 
 (when (display-graphic-p)
   (cond (IS-MAC
@@ -53,18 +53,14 @@
 
 (when (string= doom-theme "doom-city-lights")
   (custom-set-faces!
-   (hl-line :background (doom-color 'base0))
-   (markdown-mode
-    (markdown-code-face :background (doom-color 'base2)))))
+   `(hl-line :background ,(doom-color 'base0))
+   `(markdown-code-face :background ,(doom-color 'base2))))
 
 (when IS-MAC
   ;; enable ligatures support
   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
   (ignore-errors
-    (mac-auto-operator-composition-mode))
-
-  ;; Lower internal-border-width on MacOS
-  (setq ivy-posframe-border-width 5))
+    (mac-auto-operator-composition-mode)))
 
 (after! ibuffer
   ;; set ibuffer name column width
