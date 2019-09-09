@@ -65,12 +65,6 @@ git clone https://github.com/ztlevi/doom-config ~/.doom.d
 cd ~/.emacs.d
 make quickstart
 #+END_SRC
-
-(Optional) For shell environment variables:
-#+BEGIN_SRC shell
-./bin/doom env enable
-./bin/doom env refresh
-#+END_SRC
 ** Step3: Dependencies and Configuration
 This Emacs configuration is written for Emacs 25.1+ on Mac OS X 10.11+ and Linux Arch. Windows users may need to tweak the config for themselves.
 
