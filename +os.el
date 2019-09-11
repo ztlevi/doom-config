@@ -54,9 +54,9 @@
                                ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)
-    (cond ((executable-find "tilix") (list dir))
-          ((executable-find "konsole") (list "--workdir" dir))
-          ((executable-find "gnome-terminal") (list "--working-directory" dir))))
+    (cond ((executable-find "tilix") (concat "--display=:1 " "--working-directory='" dir "'"))
+          ((executable-find "konsole") (concat "--workdir='" dir "'"))
+          ((executable-find "gnome-terminal") (concat "--working-directory='" dir "'"))))
 
   (defvar linux-finder (cond ((executable-find "xdg-open") "xdg-open")
                              ((executable-find "gvfs-open") "gvfs-open")))
@@ -74,8 +74,8 @@
   (+shell--open-with reveal-project-in-apps (ivy--read-apps)
                     (or (doom-project-root) default-directory))
 
-  (+shell--open-with reveal-in-terminal linux-terminal nil (linux-terminal-args default-directory))
-  (+shell--open-with reveal-project-in-terminal linux-terminal nil
+  (+shell--open-with reveal-in-terminal linux-terminal (linux-terminal-args default-directory))
+  (+shell--open-with reveal-project-in-terminal linux-terminal
                     (linux-terminal-args (or (doom-project-root) default-directory)))
 
   (+shell--open-with reveal-in-typora "typora" buffer-file-name))

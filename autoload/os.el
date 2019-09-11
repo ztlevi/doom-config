@@ -33,35 +33,25 @@ non-nil value to enable trashing for file operations."
 
 
 ;;;###autoload
-(defun +shell-open-with (&optional app-name dir args)
+(defun +shell-open-with (&optional app-name args)
   "Open shell application."
   (interactive)
   (let* ((process-connection-type nil)
-         (dir (expand-file-name
-               (replace-regexp-in-string
-                "'" "\\'"
-                (or dir (if (derived-mode-p 'dired-mode)
-                            (dired-get-file-for-visit)
-                          (buffer-file-name)))
-                nil t)))
          ;; app specific args
          (args (cond ((and ;; Add "-g" if the dir comes with line number
-                       (string= app-name "code") (string-match-p "\\:" dir))
-                      "-g")))
-         )
+                       (string= app-name "code") (string-match-p "\\:" args))
+                      "-g")
+                     (t args))))
 
-    (if args
-        (progn
-          (setq command (format "%s %s %s" app-name args dir))
-          (start-process "" nil app-name args dir))
-      (progn
-        (setq command (format "%s %s" app-name dir))
-        (start-process "" nil app-name dir)))
+    (setq command (format "%s %s" app-name args))
+    (shell-command command)
     (shell-command (concat "wmctrl -a \"" app-name "\" "))
     (message command)))
 
+;; (shell-command "tilix --working-directory='~' --display=:1")
+
 ;;;###autoload
-(defmacro +shell--open-with (id &optional app dir args)
+(defmacro +shell--open-with (id &optional app args)
   `(defun ,(intern (format "+shell/%s" id)) ()
      (interactive)
-     (+shell-open-with ,app ,dir ,args)))
+     (+shell-open-with ,app ,args)))
