@@ -36,12 +36,7 @@ non-nil value to enable trashing for file operations."
 (defun +shell-open-with (&optional app-name args)
   "Open shell application."
   (interactive)
-  (let* ((process-connection-type nil)
-         ;; app specific args
-         (args (cond ((and ;; Add "-g" if the dir comes with line number
-                       (string= app-name "code") (string-match-p "\\:" args))
-                      "-g")
-                     (t args))))
+  (let* ((process-connection-type nil))
 
     (setq command (format "%s %s" app-name args))
     (shell-command command)

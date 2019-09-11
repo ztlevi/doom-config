@@ -25,14 +25,12 @@
   (when (file-directory-p "/Applications/ForkLift.app")
     (+macos--open-with reveal-in-finder "forklift" default-directory)
     (+macos--open-with reveal-project-in-finder "forklift"
-                      (or (doom-project-root) default-directory)))
+                       (or (doom-project-root) default-directory)))
 
   (+shell--open-with reveal-in-apps (ivy--read-apps)
-                    (buffer-file-name)
-                    ;; (get-filename-with-line-number)
-                    )
+                     (string-join `("-g '" ,(get-filename-with-line-number) "'")))
   (+shell--open-with reveal-project-in-apps (ivy--read-apps)
-                    (or (doom-project-root) default-directory))
+                     (or (doom-project-root) default-directory))
 
   (+macos--open-with reveal-in-typora "typora" buffer-file-name)
 
@@ -65,18 +63,16 @@
 
   (+shell--open-with reveal-in-finder linux-finder default-directory)
   (+shell--open-with reveal-project-in-finder linux-finder
-                    (or (doom-project-root) default-directory))
+                     (or (doom-project-root) default-directory))
 
   (+shell--open-with reveal-in-apps (ivy--read-apps)
-                    (buffer-file-name)
-                    ;; (get-filename-with-line-number)
-                    )
+                     (string-join `("-g '" ,(get-filename-with-line-number) "'")))
   (+shell--open-with reveal-project-in-apps (ivy--read-apps)
-                    (or (doom-project-root) default-directory))
+                     (or (doom-project-root) default-directory))
 
   (+shell--open-with reveal-in-terminal linux-terminal (linux-terminal-args default-directory))
   (+shell--open-with reveal-project-in-terminal linux-terminal
-                    (linux-terminal-args (or (doom-project-root) default-directory)))
+                     (linux-terminal-args (or (doom-project-root) default-directory)))
 
   (+shell--open-with reveal-in-typora "typora" buffer-file-name))
 
