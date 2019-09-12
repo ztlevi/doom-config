@@ -72,6 +72,9 @@
     (flycheck-add-next-checker 'typescript-tslint '(t .  typescript-tide) 'append)
     (flycheck-add-next-checker 'javascript-eslint '(t . tsx-tide) 'append))
 
+  ;; ======================== Python ========================
+  (require 'flycheck-mypy)
+
   ;; ======================== CC ========================
   (require 'flycheck-google-cpplint)
   (setq flycheck-c/c++-googlelint-executable "cpplint")
