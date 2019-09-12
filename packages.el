@@ -27,8 +27,7 @@
 ;; programming
 (package! import-js) 
 (package! indium) 
-(package! lsp-python-ms) 
-(package! importmagic) 
+(package! importmagic)
 (package! py-isort)
 (package! flycheck-mypy)
 (package! flycheck-google-cpplint :recipe (:host github :repo "flycheck/flycheck-google-cpplint"))

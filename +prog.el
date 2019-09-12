@@ -135,8 +135,7 @@
   ;;       python-shell-interpreter-args "-i")
   )
 
-(def-package! lsp-python-ms
-  :config
+(after! lsp-python-ms
   (setq lsp-python-executable-cmd "python3"
         lsp-python-ms-dir (concat doom-etc-dir "mspyls")
         lsp-python-ms-executable (concat doom-etc-dir "mspyls/Microsoft.Python.LanguageServer")))
