@@ -136,7 +136,7 @@
   )
 
 (after! lsp-python-ms
-  (setq lsp-python-executable-cmd "python3"
+  (setq lsp-python-ms-python-executable-cmd "python3"
         lsp-python-ms-dir (concat doom-etc-dir "mspyls")
         lsp-python-ms-executable (concat doom-etc-dir "mspyls/Microsoft.Python.LanguageServer")))
 
