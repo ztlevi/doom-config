@@ -133,7 +133,11 @@
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
-  )
+
+  (set-formatter! 'black
+    (string-join `("black" "-q" "-l" "120"
+                  ,(when (format-all--buffer-extension-p "pyi") "--pyi") "-")
+                 " ")))
 
 (after! lsp-python-ms
   (setq lsp-python-ms-python-executable-cmd "python3"
@@ -144,12 +148,14 @@
   :defer t
   :init
   (setq python-sort-imports-on-save t)
-  (defun spacemacs//python-sort-imports ()
+  (defun +python/python-sort-imports ()
+    (interactive)
     (when (and python-sort-imports-on-save
                (derived-mode-p 'python-mode))
       (py-isort-before-save)))
-  (add-hook! 'python-mode-hook
-    (add-hook 'before-save-hook #'spacemacs//python-sort-imports nil t)))
+  ;; (add-hook! 'python-mode-hook
+  ;;   (add-hook 'before-save-hook #'+python/python-sort-imports nil t))
+  )
 
 
 (def-package! importmagic

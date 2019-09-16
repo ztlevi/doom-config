@@ -241,8 +241,10 @@
  (:after python
    :localleader
    :map python-mode-map
-   :desc "Import at point" "i" #'importmagic-fix-symbol-at-point
-   :desc "Import all"      "I" #'importmagic-fix-imports
+   (:prefix ("i" . "Import")
+     :desc "Import at point" "i" #'importmagic-fix-symbol-at-point
+     :desc "Import all"      "a" #'importmagic-fix-imports
+     :desc "Sort imports"    "s" #'+python/python-sort-imports)
    (:prefix ("v" . "ENV")
      "c" #'conda-env-activate
      "C" #'conda-env-deactivate
