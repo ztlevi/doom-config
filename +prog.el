@@ -133,11 +133,21 @@
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
+  )
 
-  (set-formatter! 'black
-    (string-join `("black" "-q" "-l" "120"
-                  ,(when (format-all--buffer-extension-p "pyi") "--pyi") "-")
-                 " ")))
+
+(after! format-all
+  (add-to-list '+format-on-save-enabled-modes 'python-mode t))
+
+
+(use-package! autopep8
+  :defer t
+  :init
+  (add-hook! 'python-mode-hook
+    (add-hook 'before-save-hook 'autopep8-before-save nil t))
+  :commands autopep8-before-save
+  :config
+  (setq autopep8-line-length 120))
 
 (after! lsp-python-ms
   (setq lsp-python-ms-python-executable-cmd "python3"

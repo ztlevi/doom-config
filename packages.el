@@ -28,6 +28,7 @@
 (package! import-js) 
 (package! indium) 
 (package! importmagic)
+(package! autopep8 :recipe (:host github :repo "ianschenck/autopep8-el"))
 (package! py-isort)
 (package! flycheck-mypy)
 (package! flycheck-google-cpplint :recipe (:host github :repo "flycheck/flycheck-google-cpplint"))
