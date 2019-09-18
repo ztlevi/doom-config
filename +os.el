@@ -74,7 +74,7 @@
   (+shell--open-with reveal-project-in-terminal linux-terminal
                      (linux-terminal-args (or (doom-project-root) default-directory)))
 
-  (+shell--open-with reveal-in-typora "typora" buffer-file-name))
+  (+shell--open-with reveal-in-typora "typora" (concat buffer-file-name " &")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
