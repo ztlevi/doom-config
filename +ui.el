@@ -51,10 +51,9 @@
  `(ein:cell-input-area :background ,(doom-lighten (doom-color 'red) 0.85))
  `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
 
-(when (string= doom-theme "doom-city-lights")
-  (custom-set-faces!
-   `(hl-line :background ,(doom-color 'base0))
-   `(markdown-code-face :background ,(doom-color 'base2))))
+(custom-theme-set-faces! 'doom-city-lights
+                         `(hl-line :background ,(doom-color 'base0))
+                         `(markdown-code-face :background ,(doom-color 'base2)))
 
 (when IS-MAC
   ;; enable ligatures support
