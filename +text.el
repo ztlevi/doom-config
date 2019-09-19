@@ -57,7 +57,7 @@
   (advice-add #'org-schedule :around #'advise-org-default-time))
 
 
-(def-package! org-wild-notifier
+(use-package! org-wild-notifier
   :defer t
   :init
   (add-hook 'doom-post-init-hook #'org-wild-notifier-mode t)
@@ -70,16 +70,16 @@
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def-package! grip-mode :defer t)
+(use-package! grip-mode :defer t)
 
 
-(def-package! edit-indirect :defer t)
+(use-package! edit-indirect :defer t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OTHERS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def-package! blog-admin
+(use-package! blog-admin
   :defer t
   :commands blog-admin-start
   :hook (blog-admin-backend-after-new-post . find-file)
@@ -91,7 +91,7 @@
         blog-admin-backend-new-post-with-same-name-dir nil
         blog-admin-backend-hexo-config-file "_config.yml"))
 
-(def-package! youdao-dictionary
+(use-package! youdao-dictionary
   :defer t
   :config
   ;; Enable Cache
@@ -102,13 +102,13 @@
         ;; Enable Chinese word segmentation support
         youdao-dictionary-use-chinese-word-segmentation t))
 
-(def-package! tldr
+(use-package! tldr
   :defer t
   :config
   (setq tldr-directory-path (concat doom-etc-dir "tldr/"))
   (set-popup-rule! "^\\*tldr\\*" :side 'right :select t :quit t)
   )
 
-(def-package! link-hint :defer t)
+(use-package! link-hint :defer t)
 
-(def-package! symbol-overlay :defer t)
+(use-package! symbol-overlay :defer t)

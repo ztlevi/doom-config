@@ -11,7 +11,7 @@
         company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)))
 
 
-(def-package! company-lsp
+(use-package! company-lsp
   :after company
   :init
   ;; Language servers have better idea filtering and sorting,
@@ -46,7 +46,7 @@
     (message "Cannot find cspell, please install with `npm install -g csepll`")))
 
 
-;; (def-package! wucuo
+;; (use-package! wucuo
 ;;   :defer t
 ;;   :init
 ;;   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
@@ -143,7 +143,7 @@
         lsp-python-ms-extra-paths `(,(expand-file-name "~/av/python_root"))
         lsp-python-ms-executable (concat doom-etc-dir "mspyls/Microsoft.Python.LanguageServer")))
 
-(def-package! py-isort
+(use-package! py-isort
   :defer t
   :init
   (setq python-sort-imports-on-save t)
@@ -157,7 +157,7 @@
   )
 
 
-(def-package! importmagic
+(use-package! importmagic
   :defer t
   :hook (python-mode . importmagic-mode)
   :commands (importmagic-fix-imports importmagic-fix-symbol-at-point)
@@ -194,11 +194,11 @@
 ;; JS, WEB
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def-package! indium
+(use-package! indium
   :defer t)
 
 
-(def-package! import-js
+(use-package! import-js
   :defer t
   :init
   (add-hook! (js2-mode rjsx-mode) (run-import-js))
@@ -242,7 +242,7 @@
   )
 
 
-(def-package! lsp-ui
+(use-package! lsp-ui
   :init
   (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
   :config

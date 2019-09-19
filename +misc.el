@@ -23,7 +23,7 @@
 
 (setq evil-cross-lines t)
 
-(def-package! evil-nerd-commenter :defer t)
+(use-package! evil-nerd-commenter :defer t)
 
 
 (after! evil
@@ -38,7 +38,7 @@
   (push 'prodigy-mode evil-snipe-disabled-modes))
 
 
-(def-package! avy
+(use-package! avy
   :defer t
   :init
   (setq avy-timeout-seconds 0.2)
@@ -56,7 +56,7 @@
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
 
-(def-package! ranger
+(use-package! ranger
   :config
   (setq ranger-hide-cursor t
         ranger-show-hidden 'format
@@ -187,7 +187,7 @@
   (magit-wip-after-apply-mode t))
 
 
-(def-package! magit-todos
+(use-package! magit-todos
   :init
   (setq magit-todos-ignored-keywords nil)
   :config
@@ -213,7 +213,7 @@
 ;; ATOMIC CHROME
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def-package! atomic-chrome
+(use-package! atomic-chrome
   :defer 3
   :preface
   (defun +my/atomic-chrome-server-running-p ()
@@ -341,5 +341,5 @@
   (add-hook! 'term-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
 
 
-(def-package! vterm-toggle
+(use-package! vterm-toggle
   :defer t)
