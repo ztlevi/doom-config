@@ -137,11 +137,9 @@
 
 
 (after! lsp-python-ms
-  (setq lsp-python-ms-python-executable-cmd "python3"
-        lsp-python-ms-dir (concat doom-etc-dir "mspyls")
-        lsp-file-watch-threshold nil
-        lsp-python-ms-extra-paths `(,(expand-file-name "~/av/python_root"))
-        lsp-python-ms-executable (concat doom-etc-dir "mspyls/Microsoft.Python.LanguageServer")))
+  (setq lsp-file-watch-threshold nil
+        lsp-python-ms-python-executable-cmd "python3"
+        lsp-python-ms-extra-paths `(,(expand-file-name "~/av/python_root"))))
 
 (use-package! py-isort
   :defer t
