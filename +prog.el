@@ -136,19 +136,6 @@
   )
 
 
-(after! format-all
-  (add-to-list '+format-on-save-enabled-modes 'python-mode t))
-
-
-(use-package! autopep8
-  :defer t
-  :init
-  (add-hook! 'python-mode-hook
-    (add-hook 'before-save-hook 'autopep8-before-save nil t))
-  :commands autopep8-before-save
-  :config
-  (setq autopep8-line-length 120))
-
 (after! lsp-python-ms
   (setq lsp-python-ms-python-executable-cmd "python3"
         lsp-python-ms-dir (concat doom-etc-dir "mspyls")
