@@ -101,6 +101,7 @@
         "R" #'reload-buffer-no-confirm
         "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
+        :desc "Toggle Comment"         "/" #'doom/toggle-comment-region-or-line
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-directory)
       (:prefix "TAB"
