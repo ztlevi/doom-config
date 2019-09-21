@@ -4,19 +4,19 @@
                    mac-option-modifier  'alt))
 
 ;; Distinguish C-i from TAB
-(define-key input-decode-map "\C-i" [C-i])
+(when (display-graphic-p)
+  (define-key input-decode-map "\C-i" [C-i])
+ "<C-i>"   #'better-jumper-jump-forward)
 
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
    "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
    "M-p"   #'+ivy/projectile-find-file
-   "C-S-p" #'+ivy/projectile-find-file
    "M-y"   #'helm-show-kill-ring
    "C-h m" #'describe-mode
    "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
- "<C-i>"   #'better-jumper-jump-forward
  "M-`"   #'other-frame
  "C-M-o" #'other-frame
  ;; fix OS window/frame navigation/manipulation keys
