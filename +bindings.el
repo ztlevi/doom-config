@@ -6,7 +6,7 @@
 ;; Distinguish C-i from TAB
 (when (display-graphic-p)
   (define-key input-decode-map "\C-i" [C-i])
- "<C-i>"   #'better-jumper-jump-forward)
+  "<C-i>"   #'better-jumper-jump-forward)
 
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)

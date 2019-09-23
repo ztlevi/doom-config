@@ -114,10 +114,13 @@
 (use-package! counsel-etags
   :init
   (add-hook 'prog-mode-hook
-        (lambda ()
-          (add-hook 'after-save-hook
-            'counsel-etags-virtual-update-tags 'append 'local)))
+            (lambda ()
+              (add-hook 'after-save-hook
+                        'counsel-etags-virtual-update-tags 'append 'local)))
   :config
+  (map!
+   :nv "ge"  #'counsel-etags-find-tag-at-point)
+
   (setq counsel-etags-update-interval 60)
   (add-to-list 'counsel-etags-ignore-directories "build"))
 
