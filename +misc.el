@@ -111,6 +111,17 @@
         counsel-grep-base-command counsel-rg-base-command))
 
 
+(use-package! counsel-etags
+  :init
+  (add-hook 'prog-mode-hook
+        (lambda ()
+          (add-hook 'after-save-hook
+            'counsel-etags-virtual-update-tags 'append 'local)))
+  :config
+  (setq counsel-etags-update-interval 60)
+  (add-to-list 'counsel-etags-ignore-directories "build"))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; QUICKRUN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

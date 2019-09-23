@@ -23,9 +23,10 @@
 (package! grip-mode) 
 (package! org-wild-notifier) 
 (package! vterm-toggle :recipe (:host github :repo "jixiuf/vterm-toggle"))
+(package! counsel-etags)
 
 ;; programming
-(package! import-js) 
+(package! import-js)
 (package! indium) 
 (package! importmagic)
 (package! py-isort)

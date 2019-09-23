@@ -112,6 +112,7 @@
 
   (setq-default c-basic-offset 2)
 
+  (add-to-list 'auto-mode-alist '("\\.inl\\'" . +cc-c-c++-objc-mode))
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode)))
 
 
