@@ -137,8 +137,7 @@
 
 
 (after! lsp-python-ms
-  (setq lsp-file-watch-threshold nil
-        lsp-python-ms-python-executable-cmd "python3"
+  (setq lsp-python-ms-python-executable-cmd "python3"
         lsp-python-ms-extra-paths `(,(expand-file-name "~/av/python_root"))))
 
 (use-package! py-isort
@@ -238,17 +237,28 @@
   ;; toggle off lsp-ui-doc by default
   ;; (toggle-lsp-ui-doc)
   )
+;; (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
 
-
-(use-package! lsp-ui
-  :init
-  (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
-  :config
-  (setq lsp-prefer-flymake nil
-        lsp-ui-sideline-enable nil
-        lsp-ui-doc-include-signature t
-        lsp-use-native-json t
+(after! lsp-mode
+  (setq lsp-use-native-json t
         lsp-print-io nil)
+  (dolist (dir '("[/\\\\]\\.ccls-cache$"
+                 "[/\\\\]\\.mypy-cache$"
+                 "[/\\\\]\\.pytest-cache$"
+                 "bazel-bin$"
+                 "bazel-code$"
+                 "bazel-genfiles$"
+                 "bazel-out$"
+                 "bazel-testlogs$"
+                 "[/\\\\]\\.clwb$"
+                 ))
+    (push dir lsp-file-watch-ignored))
+  )
+
+
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-include-signature t)
 
   ;; set lsp-ui-doc position
   ;; (setq lsp-ui-doc-position 'at-point)
