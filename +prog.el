@@ -128,9 +128,6 @@
         flycheck-python-pylint-executable "pylint"
         flycheck-python-flake8-executable "flake8")
 
-  ;; Resolve pylint cannot find relative PYTHONPATH issue
-  (add-hook! python-mode (setenv "PYTHONPATH" (doom-project-root)))
-
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
@@ -138,8 +135,8 @@
 
 
 (after! lsp-python-ms
-  (setq lsp-python-ms-python-executable-cmd "python3"
-        lsp-python-ms-extra-paths `(,(expand-file-name "~/av/python_root"))))
+  (setq lsp-python-ms-python-executable-cmd "python3"))
+
 
 (use-package! py-isort
   :defer t
