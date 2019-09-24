@@ -147,8 +147,8 @@
     (when (and python-sort-imports-on-save
                (derived-mode-p 'python-mode))
       (py-isort-before-save)))
-  ;; (add-hook! 'python-mode-hook
-  ;;   (add-hook 'before-save-hook #'+python/python-sort-imports nil t))
+  (add-hook! 'python-mode-hook
+    (add-hook 'before-save-hook #'+python/python-sort-imports nil t))
   )
 
 
