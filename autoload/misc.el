@@ -118,6 +118,20 @@ repository root."
         (evil-ex command-string)))))
 
 ;;;###autoload
+(defun +my/markdown-copy-fix ()
+  (interactive)
+  (let ((case-fold-search nil))
+    (dolist (pair '(("<pre>" . "```python")
+                    ("<\/pre>" . "```")
+                    ("\\*" . "*")
+                    ("\\#" . "#")))
+      (goto-char (point-min))
+      ;; if you need regexp, use search-forward-regexp
+      (while (search-forward (car pair) nil t)
+        (replace-match (cdr pair))))))
+
+
+;;;###autoload
 (defun iterm-open-new-tab (dir &optional args)
   (do-applescript
    (format
