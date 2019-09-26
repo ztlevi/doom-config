@@ -168,7 +168,7 @@
         (push (replace-match "~" nil nil repo 0) magit-repos))
       (setq projectile-known-projects magit-repos)
       (if (file-directory-p "~/av/detection/")
-          (push "~/av/detection/" projectile-known-projects))))
+          (push "~/av/detection/python/private/" projectile-known-projects))))
 
   ;; set projectile-known-projects after magit
   (after! magit
