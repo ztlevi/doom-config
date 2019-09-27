@@ -36,14 +36,14 @@ selected, then the current line."
 (defmacro make--shell (name ip &rest arglist)
   `(defun ,(intern (format "my-shell-%s" name)) ,arglist
      (interactive)
-     (find-file ,(format "/ssh:%s:" ip))
+     (find-file ,(format "/sshx:%s:" ip))
      (vterm-toggle-cd)))
 
 ;;;###autoload
 (defmacro make--ssh (name ip &rest arglist)
   `(defun ,(intern (format "my-ssh-%s" name)) ,arglist
      (interactive)
-     (find-file ,(format "/ssh:%s:" ip))))
+     (find-file ,(format "/sshx:%s:" ip))))
 
 ;;;###autoload
 (defun +ivy/project-search-with-hidden-files ()
