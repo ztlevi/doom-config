@@ -137,6 +137,11 @@
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
+
+  ;; ignore some linting info
+  (if (featurep! :tools lsp)
+      (setq lsp-pyls-plugins-pycodestyle-ignore '("E501")
+            lsp-pyls-plugins-pylint-args [ "--errors-only" ]))
   )
 
 
