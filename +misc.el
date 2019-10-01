@@ -153,6 +153,7 @@
 
   (defun update-projectile-known-projects ()
     (interactive)
+    (require 'projectile)
     (require 'magit)
     (let (magit-repos
           magit-abs-repos
@@ -166,7 +167,9 @@
       (dolist (repo magit-abs-repos)
         (string-match home repo)
         (push (replace-match "~" nil nil repo 0) magit-repos))
-      (setq projectile-known-projects magit-repos)))
+      (setq projectile-known-projects magit-repos)
+      (if (file-directory-p "~/Developer/detection/")
+          (push "~/Developer/detection/" projectile-known-projects))))
 
   ;; set projectile-known-projects after magit
   (after! magit
