@@ -4,7 +4,6 @@
 ;; disabled packages
 (disable-packages! solaire-mode
                    anaconda-mode
-                   lsp-python-ms
                    company-anaconda
                    dired-k
                    pyimport)
