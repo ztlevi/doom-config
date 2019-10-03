@@ -78,6 +78,26 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DOCKER
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun get-docker-project-filename ()
+  (string-join `("/code/" ,(file-relative-name (buffer-file-name) "~/av")) ""))
+
+(+docker--open-with reveal-in-docker-pycharm "pycharm" "/usr/local/pycharm-2017.1.2/bin/pycharm.sh"
+                    (get-docker-project-filename))
+(+docker--open-with reveal-in-docker-clion "clion" "/usr/local/clion/bin/clion.sh"
+                    (get-docker-project-filename))
+
+(defun docker-open-apps ()
+  (interactive)
+  (ivy-read "Select Docker apps"
+            '(+docker/reveal-in-docker-pycharm +docker/reveal-in-docker-clion)
+            :action #'counsel-M-x-action
+            ))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TRASH
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

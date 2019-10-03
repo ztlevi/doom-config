@@ -50,3 +50,20 @@ non-nil value to enable trashing for file operations."
   `(defun ,(intern (format "+shell/%s" id)) ()
      (interactive)
      (+shell-open-with ,app ,args)))
+
+;;;###autoload
+(defun +docker-open-with (&optional container app-name args)
+  "Open shell application."
+  (interactive)
+  (let* ((process-connection-type nil))
+
+    (setq command (format "docker exec --user user %s %s %s" container app-name args))
+    (shell-command command)
+    (shell-command (concat "wmctrl -a \"" app-name "\" "))
+    (message command)))
+
+;;;###autoload
+(defmacro +docker--open-with (id &optional container app args)
+  `(defun ,(intern (format "+docker/%s" id)) ()
+     (interactive)
+     (+docker-open-with ,container ,app ,args)))

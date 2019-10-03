@@ -137,7 +137,7 @@
         :desc "Ibuffer"               "I" #'ibuffer
         :desc "Youdao dictionary"     "y" #'youdao-dictionary-search-at-point-tooltip
         :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
-        :desc "Debugger start"        "d" #'+debugger:start
+        :desc "Docker open apps"      "d" #'docker-open-apps
         (:when IS-MAC
           :desc "Reveal in default program"  "f" #'+macos/open-in-default-program
           :desc "Reveal in Finder"           "o" #'+macos/reveal-in-finder
