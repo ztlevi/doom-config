@@ -38,6 +38,3 @@
 (let ((profile "~/.config/doom/profile.el"))
   (when (file-exists-p profile)
     (load-file profile)))
-
-;; TEMP: add env
-(setq conda-env-home-directory (expand-file-name "~/.conda"))

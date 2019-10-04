@@ -183,13 +183,14 @@
   (dolist (func '(pipenv-activate pipenv-deactivate))
     (advice-add func :after #'reset-flycheck)))
 
+;; TEMP: add conda env
+(add-hook! python-mode
+    (setq conda-env-home-directory (expand-file-name "~/.conda")))
 
 (after! conda
   (when IS-LINUX
     ;; Ubuntu anaconda
     (setq conda-anaconda-home "~/anaconda3"))
-
-  (setq conda-env-home-directory (expand-file-name "~/.conda"))
 
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
