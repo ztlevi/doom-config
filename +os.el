@@ -82,7 +82,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun get-docker-project-filename ()
-  (string-join `("/code/" ,(file-relative-name (buffer-file-name) "~/av")) ""))
+  (string-join `("/code/" ,(replace-regexp-in-string "detection/python/private" "python_root/detection"
+                                                     (file-relative-name (buffer-file-name) "~/av")))))
 
 (+docker--open-with reveal-in-docker-pycharm "pycharm" "/usr/local/pycharm-2017.1.2/bin/pycharm.sh"
                     (get-docker-project-filename))
