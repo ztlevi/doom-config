@@ -151,26 +151,6 @@
   ;; Add personal repo root to scan git projects
   (defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src"))
 
-  (defun update-projectile-known-projects ()
-    (interactive)
-    (require 'projectile)
-    (require 'magit)
-    (let (magit-repos
-          magit-abs-repos
-          (home (expand-file-name "~")))
-      ;; append magit repos at root with depth 1
-      (dolist (root +my/repo-root-list)
-        (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
-      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos)))
-
-      ;; convert abs path to relative path (HOME)
-      (dolist (repo magit-abs-repos)
-        (string-match home repo)
-        (push (replace-match "~" nil nil repo 0) magit-repos))
-      (setq projectile-known-projects magit-repos)
-      (if (file-directory-p "~/av/detection/python/private/")
-          (push "~/av/detection/python/private/" projectile-known-projects))))
-
   ;; set projectile-known-projects after magit
   (after! magit
     (update-projectile-known-projects))
