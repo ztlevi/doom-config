@@ -33,37 +33,28 @@ non-nil value to enable trashing for file operations."
 
 
 ;;;###autoload
-(defun +shell-open-with (&optional app-name args)
+(defun +shell-open-with (&optional app-name args container)
   "Open shell application."
   (interactive)
   (let* ((process-connection-type nil))
-
-    (setq command (format "%s %s" app-name args))
+    (if container
+        (setq command (format "docker exec --user user %s %s %s" container app-name args))
+      (setq command (format "%s %s" app-name args)))
     (shell-command command)
-    (shell-command (concat "wmctrl -a \"" app-name "\" "))
-    (message command)))
+    (message command)
+    (when IS-LINUX
+      (shell-command (concat "wmctrl -a \"" app-name "\" ")))))
 
 ;; (shell-command "tilix --working-directory='~' --display=:1")
 
 ;;;###autoload
 (defmacro +shell--open-with (id &optional app args)
   `(defun ,(intern (format "+shell/%s" id)) ()
-     (interactive)
-     (+shell-open-with ,app ,args)))
+       (interactive)
+       (+shell-open-with ,app ,args)))
 
 ;;;###autoload
-(defun +docker-open-with (&optional container app-name args)
-  "Open shell application."
-  (interactive)
-  (let* ((process-connection-type nil))
-
-    (setq command (format "docker exec --user user %s %s %s" container app-name args))
-    (shell-command command)
-    (shell-command (concat "wmctrl -a \"" app-name "\" "))
-    (message command)))
-
-;;;###autoload
-(defmacro +docker--open-with (id &optional container app args)
+(defmacro +docker--open-with (id &optional app args container)
   `(defun ,(intern (format "+docker/%s" id)) ()
      (interactive)
-     (+docker-open-with ,container ,app ,args)))
+     (+shell-open-with ,app ,args ,container)))

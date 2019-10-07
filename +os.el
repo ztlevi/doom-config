@@ -85,17 +85,16 @@
   (string-join `("/code/" ,(replace-regexp-in-string "detection/python/private" "python_root/detection"
                                                      (file-relative-name (buffer-file-name) "~/av")))))
 
-(+docker--open-with reveal-in-docker-pycharm "pycharm" "/usr/local/pycharm-2017.1.2/bin/pycharm.sh"
-                    (get-docker-project-filename))
-(+docker--open-with reveal-in-docker-clion "clion" "/usr/local/clion/bin/clion.sh"
-                    (get-docker-project-filename))
+(+docker--open-with reveal-in-docker-pycharm "/usr/local/pycharm-2017.1.2/bin/pycharm.sh"
+                    (get-docker-project-filename) "pycharm")
+(+docker--open-with reveal-in-docker-clion "/usr/local/clion/bin/clion.sh"
+                    (get-docker-project-filename) "clion")
 
-(defun docker-open-apps ()
+(defun +docker/reveal-in-apps ()
   (interactive)
   (ivy-read "Select Docker apps"
             '(+docker/reveal-in-docker-pycharm +docker/reveal-in-docker-clion)
-            :action #'counsel-M-x-action
-            ))
+            :action #'counsel-M-x-action))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
