@@ -52,24 +52,28 @@ selected, then the current line."
     (+ivy/project-search)))
 
 ;;;###autoload
-(defun update-projectile-known-projects ()
-    (interactive)
-    (require 'magit)
-    (let (magit-repos
-          magit-abs-repos
-          (home (expand-file-name "~")))
-      ;; append magit repos at root with depth 1
-      (dolist (root +my/repo-root-list)
-        (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
-      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos)))
+(defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src" "~/.cache")
+  "personal repo root to scan git projects")
 
-      ;; convert abs path to relative path (HOME)
-      (dolist (repo magit-abs-repos)
-        (string-match home repo)
-        (push (replace-match "~" nil nil repo 0) magit-repos))
-      (setq projectile-known-projects magit-repos)
-      (if (file-directory-p "~/av/detection/")
-          (push "~/av/detection/python/private/" projectile-known-projects))))
+;;;###autoload
+(defun update-projectile-known-projects ()
+  (interactive)
+  (require 'magit)
+  (let (magit-repos
+        magit-abs-repos
+        (home (expand-file-name "~")))
+    ;; append magit repos at root with depth 1
+    (dolist (root +my/repo-root-list)
+      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
+    (setq magit-abs-repos (append magit-abs-repos (magit-list-repos)))
+
+    ;; convert abs path to relative path (HOME)
+    (dolist (repo magit-abs-repos)
+      (string-match home repo)
+      (push (replace-match "~" nil nil repo 0) magit-repos))
+    (setq projectile-known-projects magit-repos)
+    (if (file-directory-p "~/av/detection/")
+        (push "~/av/detection/python/private/" projectile-known-projects))))
 
 ;; PATCH counsel-esh-history
 ;;;###autoload

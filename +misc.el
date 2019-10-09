@@ -148,10 +148,6 @@
                                     :compile "cmake --build Debug"
                                     :test "ctest")
 
-
-  ;; Add personal repo root to scan git projects
-  (defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src"))
-
   ;; set projectile-known-projects after magit
   (after! magit
     (update-projectile-known-projects))
