@@ -70,6 +70,8 @@
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(remove-hook 'markdown-mode-hook #'auto-fill-mode)
+
 (use-package! grip-mode :defer t)
 
 
