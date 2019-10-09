@@ -5,20 +5,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! company
-  (setq company-minimum-prefix-length 2
-        company-quickhelp-delay nil
-        company-show-numbers t
-        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)))
+  (setq company-idle-delay 0.2))
 
 
-(use-package! company-lsp
-  :after company
-  :init
-  ;; Language servers have better idea filtering and sorting,
-  ;; don't filter results on the client side.
-  (setq company-transformers nil
-        company-lsp-cache-candidates nil)
-  (set-company-backend! 'lsp-mode 'company-lsp))
+(use-package! company-tabnine
+  :init (add-to-list 'company-backends #'company-tabnine)
+  ;; (require 'company-tabnine)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -185,7 +178,7 @@
 
 ;; TEMP: add conda env
 (add-hook! python-mode
-    (setq conda-env-home-directory (expand-file-name "~/.conda")))
+  (setq conda-env-home-directory (expand-file-name "~/.conda")))
 
 (after! conda
   (when IS-LINUX

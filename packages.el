@@ -24,12 +24,11 @@
 (package! org-wild-notifier)
 (package! vterm-toggle :recipe (:host github :repo "jixiuf/vterm-toggle"))
 (package! counsel-etags)
-;; TEMP: company-box use fix branch
-(package! company-box :recipe (:host github :repo "andersjohansson/company-box" :branch "customize-scrollbar"))
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! import-js)
+(package! company-tabnine)
 (package! indium)
 (package! importmagic)
 (package! py-isort)
