@@ -226,9 +226,7 @@
      :n "TAB" #'lispyville-prettify))
  (:after elisp-mode
    :map emacs-lisp-mode-map
-   :n "gh" #'helpful-at-point
-   :localleader
-   :desc "Eval last expression" "e" (λ! (save-excursion (forward-sexp) (eval-last-sexp nil))))
+   :n "gh" #'helpful-at-point)
  (:after lsp-ui
    :map lsp-ui-mode-map
    "C-j" #'toggle-lsp-ui-doc
