@@ -6,7 +6,7 @@
 ;; ORG
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq org-directory (expand-file-name "~/Dropbox/Org-Notes")
+(setq org-directory (expand-file-name "~/org-notes")
       org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
 
