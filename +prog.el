@@ -246,18 +246,24 @@
   (setq lsp-use-native-json t
         lsp-print-io nil)
   (dolist (dir '("[/\\\\]\\.ccls-cache$"
-                 "[/\\\\]\\.mypy-cache$"
-                 "[/\\\\]\\.pytest-cache$"
-                 "bazel-bin$"
-                 "bazel-code$"
-                 "bazel-genfiles$"
-                 "bazel-out$"
-                 "bazel-testlogs$"
+                 "[/\\\\]\\.mypy_cache$"
+                 "[/\\\\]\\.pytest_cache$"
+                 "[/\\\\]bazel-bin$"
+                 "[/\\\\]bazel-code$"
+                 "[/\\\\]bazel-genfiles$"
+                 "[/\\\\]bazel-out$"
+                 "[/\\\\]bazel-testlogs$"
+                 "[/\\\\]\\.cache$"
+                 "[/\\\\]_build$"
                  "[/\\\\]\\.clwb$"
+                 "[/\\\\]motionplanning$"
+                 "[/\\\\]firmware$"
+                 "[/\\\\]calibration_data$"
+                 "[/\\\\]third_party$"
+                 "[/\\\\]third-party$"
                  ))
     (push dir lsp-file-watch-ignored))
   )
-
 
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil
