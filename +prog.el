@@ -119,6 +119,8 @@
 ;; PYTHON
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-to-list 'auto-mode-alist '("\\.asl\\'" . python-mode))
+
 (after! python
   (setq python-indent-offset 4
         python-shell-interpreter "python3"
