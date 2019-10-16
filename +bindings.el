@@ -111,6 +111,8 @@
         :desc "Find file" "f" #'counsel-find-file
         :desc "Deer"      "j" #'deer)
       (:prefix "g"                      ; git
+        "s" nil
+        :desc "Smerge" "s" smerge-basic-map
         :desc "Magit browse commit" "oc" #'+vc/git-browse-commit
         :desc "Magit wip worktree"  "w"  #'magit-wip-log-worktree
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
