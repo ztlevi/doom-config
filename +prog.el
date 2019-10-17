@@ -18,13 +18,13 @@
 ;; FLYCHECK
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar cspell-base-program (executable-find "cspell"))
-(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/Dotfiles/cspell.json") "'"))
+(defvar cspell-base-program "cspell")
+(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/Dotfiles/misc/apps/.cspell.json") "'"))
 (defvar cspell-args (string-join `("--config" ,cspell-config-file-path) " "))
 (defun cspell-check-buffer ()
   (interactive)
   (if cspell-base-program
-      (let* ((file-name (concat "'" (buffer-file-name) "'"))
+      (let* ((file-name (concat "'" (file-name-nondirectory (buffer-file-name)) "'"))
              (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
         (compilation-start command 'grep-mode))
     (message "Cannot find cspell, please install with `npm install -g csepll`")
@@ -33,11 +33,14 @@
 (defun cspell-check-directory ()
   (interactive)
   (if cspell-base-program
-      (let* ((files "'**/*.{js,jsx,ts,tsx,c,cc,cpp,h,hh,hpp,go,json}'")
-             (command (string-join `(,cspell-base-program ,cspell-args ,files) " ")))
+      (let* ((project-root (doom-project-root))
+             (default-directory
+               (if (string-match-p "av/detection" project-root)
+                   (expand-file-name "~/av")
+                 project-root))
+             (command (string-join `("git diff --name-only origin/develop | xargs -I{}" ,cspell-base-program ,cspell-args "'{}'") " ")))
         (compilation-start command 'grep-mode))
     (message "Cannot find cspell, please install with `npm install -g csepll`")))
-
 
 ;; (use-package! wucuo
 ;;   :defer t
