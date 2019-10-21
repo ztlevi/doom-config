@@ -122,7 +122,11 @@
 ;; PYTHON
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'auto-mode-alist '("\\.asl\\'" . python-mode))
+(define-derived-mode asl-mode
+  python-mode "ARGO Schema Language Mode"
+  "Major mode for asl file."
+  (flycheck-mode -1))
+(add-to-list 'auto-mode-alist '("\\.asl\\'" . asl-mode))
 
 (after! python
   (setq python-indent-offset 4
