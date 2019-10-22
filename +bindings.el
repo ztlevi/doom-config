@@ -135,7 +135,6 @@
         :desc "Project run Vterm"     "S" #'+vterm/here
         :desc "Toggle eshell popup"   "e" #'+eshell/toggle
         :desc "Project run Eshell"    "E" #'projectile-run-eshell
-        :desc "Ibuffer"               "I" #'ibuffer
         :desc "Youdao dictionary"     "y" #'youdao-dictionary-search-at-point-tooltip
         :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
         :desc "Debugger start"        "d" #'+debugger:start
@@ -313,7 +312,6 @@
        (:when IS-LINUX
          :desc "Reveal in Typora" "o" #'+shell/reveal-in-typora)
        :desc "Fix Copy"           "F" #'+my/markdown-copy-fix
-       :desc "Grip mode"          "g" #'grip-mode
        :desc "Insert header line" "-" #'org-table-insert-hline
        :desc "Crete Table from region" "|" #'org-table-create-or-convert-from-region
        :desc "Edit" "x" (+my/simulate-key "C-c C-s")

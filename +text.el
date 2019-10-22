@@ -70,11 +70,7 @@
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(after! markdown-mode
-  (remove-hook 'markdown-mode-hook #'auto-fill-mode))
-
-
-(use-package! grip-mode :defer t)
+(remove-hook 'text-mode-hook #'auto-fill-mode)
 
 
 (use-package! edit-indirect :defer t)

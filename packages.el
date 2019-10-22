@@ -20,7 +20,6 @@
 (package! blog-admin :recipe (:host github :repo "codefalling/blog-admin"))
 (package! youdao-dictionary)
 (package! wucuo)
-(package! grip-mode)
 (package! org-wild-notifier)
 (package! vterm-toggle :recipe (:host github :repo "jixiuf/vterm-toggle"))
 (package! counsel-etags)
