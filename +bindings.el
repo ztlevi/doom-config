@@ -107,8 +107,6 @@
       (:prefix "TAB"
         :desc "Switch workspace" "TAB" #'+workspace/other)
       (:prefix "f"                      ; file
-        :desc "Save all"  "s" #'evil-write-all
-        :desc "Find file" "f" #'counsel-find-file
         :desc "Deer"      "j" #'deer)
       (:prefix "g"                      ; git
         "s" nil
