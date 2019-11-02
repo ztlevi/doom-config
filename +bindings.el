@@ -164,7 +164,6 @@
         :desc "Update projectile list" "u" #'update-projectile-known-projects)
       (:prefix "t"                      ; toggle
         "c" #'centered-window-mode
-        "r" #'rjsx-mode
         "d" #'toggle-debug-on-error
         "D" #'+my/realtime-elisp-doc
         "L" #'toggle-truncate-lines
