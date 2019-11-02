@@ -29,6 +29,7 @@
                     ("^\\*edit-indirect" :size 0.6)
                     ("^\\*YASnippet Tables\\*$" :size 0.35)
                     ("^\\*grep\\*$" :size 0.35)
+                    ("^\\*pytest\\*" :size 0.35)
                     ("^\\*Anaconda\\*$" :size 0.35)
                     ("^\\*helm kill ring\\*$" :size 0.35)
                     ((lambda (buf _) (with-current-buffer buf (eq major-mode 'forge-topic-mode))) :size 0.35)
