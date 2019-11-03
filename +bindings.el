@@ -162,6 +162,14 @@
       (:prefix "p"                      ; project
         "*" (+my/prefix-M-x "projectile-")
         :desc "Update projectile list" "u" #'update-projectile-known-projects)
+      (:prefix ("d" . "debug")
+        :desc "Start dap debugger" "d" #'+my/dap-start
+        "b" #'dap-breakpoint-toggle
+        "h" #'dap-hydra
+        "l" #'dap-ui-locals
+        "s" #'dap-ui-sessions
+        "k" #'dap-delete-session
+        "K" #'dap-delete-all-sessions)
       (:prefix "t"                      ; toggle
         "c" #'centered-window-mode
         "d" #'toggle-debug-on-error
