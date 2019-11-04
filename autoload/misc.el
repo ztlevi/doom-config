@@ -72,7 +72,7 @@ selected, then the current line."
       (string-match home repo)
       (push (replace-match "~" nil nil repo 0) magit-repos))
     (setq projectile-known-projects magit-repos)
-    (if (file-directory-p "~/av/detection/")
+    (if (file-directory-p "~/av/detection/python/private/")
         (push "~/av/detection/python/private/" projectile-known-projects))))
 
 ;; PATCH counsel-esh-history
