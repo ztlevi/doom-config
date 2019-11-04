@@ -190,6 +190,9 @@
           "github.argo.ai" forge-github-repository)
         forge-alist)
 
+  ;; TEMP
+  ;; (setq ghub-use-workaround-for-emacs-bug 'force)
+
   (defvar forge-show-all-issues-and-pullreqs t
     "If nil, only show issues and pullreqs assigned to me.")
 
@@ -210,8 +213,9 @@
         (remove-hook! 'magit-status-sections-hook #'forge-insert-assigned-pullreqs nil t)
         (magit-add-section-hook 'magit-status-sections-hook 'forge-insert-pullreqs nil t)
         (magit-add-section-hook 'magit-status-sections-hook 'forge-insert-issues nil t)))
+
     ;; refresh magit-status buffer
-    (magit-status))
+    (magit-refresh))
 
   ;; Only show issues and pullreqs assigned to me
   (+my/forge-toggle-all-issues-and-pullreqs)
