@@ -46,6 +46,12 @@
   (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
 
 
+(use-package! imenu-list
+  :defer t
+  :config
+  (set-popup-rules! '(("^\\*Ilist\\*" :side right :size 40 :select t))))
+
+
 (after! nav-flash
   ;; (defun nav-flash-show (&optional pos end-pos face delay)
   ;; ...

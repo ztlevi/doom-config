@@ -128,7 +128,7 @@
         :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
         :desc "Kill ring"             "k" #'helm-show-kill-ring
-        :desc "Lsp ui imenu"          "i" #'lsp-ui-imenu
+        :desc "Imenu list"            "i" #'imenu-list-smart-toggle
         :desc "Open link"             "x" #'link-hint-open-link
         :desc "Open link at point"    "X" #'link-hint-open-link-at-point
         :desc "Vterm"                 "s" #'+vterm/toggle
