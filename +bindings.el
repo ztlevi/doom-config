@@ -85,7 +85,6 @@
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
-      "Bookmarks" "RET" #'helm-bookmarks
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
@@ -191,6 +190,8 @@
         :desc "Comments"  "c" #'counsel-imenu-comments))
 
 (map!
+ (:after helm
+   "Bookmarks" "RET" #'helm-bookmarks)
  (:after ranger
    (:map ranger-normal-mode-map
      "M-1" nil
