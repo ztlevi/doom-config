@@ -129,8 +129,7 @@ npm i -g typescript
 npm install vue-language-server -g
 
 # python
-# Install: M-x lsp-python-ms-setup
-# Update:  M-x lsp-python-ms-update-server
+emacs --batch -f lsp-python-ms-update-server
 
 # ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
