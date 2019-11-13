@@ -115,7 +115,6 @@
         :desc "Magit wip worktree"  "w"  #'magit-wip-log-worktree
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
-        :desc "View *Messages*" "m" #'view-echo-area-messages
         "C" #'helpful-command)
       (:prefix-map ("e" . "error")
         :desc "Flymake next error"      "N" #'flymake-goto-next-error

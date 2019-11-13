@@ -295,7 +295,7 @@
     :default "c++"))
 
 
-(after! realgud (advice-remove #'realgud :terminate #'+debugger--cleanup-after-realgud-a))
+(after! realgud (advice-remove #'realgud:terminate #'+debugger--cleanup-after-realgud-a))
 
 
 (defun +my/dap-start ()
