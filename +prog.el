@@ -93,7 +93,7 @@
 ;; CC
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(def-package! bazel-mode
+(use-package! bazel-mode
   :defer t
   :init
   (add-to-list 'auto-mode-alist '("BUILD\\(\\.bazel\\)?\\'" . bazel-mode))
@@ -284,19 +284,6 @@
   ;; (setq lsp-ui-doc-position 'at-point)
   )
 
-
-(defun +my/dap-start ()
-  (interactive)
-  (dap-mode 1)
-  (call-interactively #'dap-debug))
-
-(add-hook! dap-mode-hook ((dap-tooltip-mode 1) (tooltip-mode 1)))
-
-(after! dap-mode
- (add-hook 'dap-stopped-hook
-           (lambda (arg) (call-interactively #'dap-hydra))))
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEBUG & RUN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -308,3 +295,18 @@
                    "%e %a"))
       (:remove  . ("%e")))
     :default "c++"))
+
+
+(after! realgud (advice-remove #'realgud :terminate #'+debugger--cleanup-after-realgud-a))
+
+
+(defun +my/dap-start ()
+  (interactive)
+  (dap-mode 1)
+  (call-interactively #'dap-debug))
+
+(add-hook! dap-mode-hook ((dap-tooltip-mode 1) (tooltip-mode 1)))
+
+(after! dap-mode
+ (add-hook 'dap-stopped-hook
+           (lambda (arg) (call-interactively #'dap-hydra))))

@@ -137,7 +137,6 @@
         :desc "Project run Eshell"    "E" #'projectile-run-eshell
         :desc "Youdao dictionary"     "y" #'youdao-dictionary-search-at-point-tooltip
         :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
-        :desc "Debugger start"        "d" #'+debugger:start
         :desc "Docker open apps"      ";" #'+docker/reveal-in-apps
         (:when IS-MAC
           :desc "Reveal in default program"  "f" #'+macos/open-in-default-program
@@ -169,7 +168,8 @@
         "l" #'dap-ui-locals
         "s" #'dap-ui-sessions
         "k" #'dap-delete-session
-        "K" #'dap-delete-all-sessions)
+        "K" #'dap-delete-all-sessions
+        "S" #'realgud-short-key-mode)
       (:prefix "t"                      ; toggle
         "c" #'centered-window-mode
         "d" #'toggle-debug-on-error

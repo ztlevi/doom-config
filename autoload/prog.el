@@ -121,3 +121,26 @@
   (cl-letf (((symbol-function 'yes-or-no-p) (lambda (&rest args) t))
             ((symbol-function 'y-or-n-p) (lambda (&rest args) t)))
     ad-do-it))
+
+
+;;;###autoload
+(defun +my/python-toggle-breakpoint ()
+  "Add a break point, highlight it."
+  (interactive)
+  (let ((trace (cond ((executable-find "trepan3k") "import trepan.api; trepan.api.debug()")
+                     ((executable-find "wdb") "import wdb; wdb.set_trace()")
+                     ((executable-find "ipdb") "import ipdb; ipdb.set_trace()")
+                     ((executable-find "pudb") "import pudb; pudb.set_trace()")
+                     ((executable-find "ipdb3") "import ipdb; ipdb.set_trace()")
+                     ((executable-find "pudb3") "import pudb; pudb.set_trace()")
+                     ;; ((executable-find "python3.7") "breakpoint()")
+                     ;; ((executable-find "python3.8") "breakpoint()")
+                     (t "import pdb; pdb.set_trace()")))
+        (line (thing-at-point 'line)))
+    (if (and line (string-match trace line))
+        (kill-whole-line)
+      (progn
+        (back-to-indentation)
+        (insert trace)
+        (insert "\n")
+        (python-indent-line)))))
