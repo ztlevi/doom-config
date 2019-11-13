@@ -132,6 +132,7 @@
   (setq python-indent-offset 4
         python-shell-interpreter "python3"
         pippel-python-command "python3"
+        conda-env-home-directory (expand-file-name "~/.conda")
         importmagic-python-interpreter "python3"
         flycheck-python-pylint-executable "pylint"
         flycheck-python-flake8-executable "flake8")
@@ -185,9 +186,6 @@
   (dolist (func '(pipenv-activate pipenv-deactivate))
     (advice-add func :after #'reset-flycheck)))
 
-;; TEMP: add conda env
-(add-hook! python-mode
-  (setq conda-env-home-directory (expand-file-name "~/.conda")))
 
 (after! conda
   (when IS-LINUX
