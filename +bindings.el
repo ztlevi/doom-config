@@ -109,7 +109,8 @@
       (:prefix "TAB"
         :desc "Switch workspace" "TAB" #'+workspace/other)
       (:prefix "f"                      ; file
-        :desc "Deer"      "j" #'deer)
+        :desc "Save all" "s" #'evil-write-all
+        :desc "Deer"     "j" #'deer)
       (:prefix "g"                      ; git
         "s" nil
         :desc "Smerge" "s" smerge-basic-map
