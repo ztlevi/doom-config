@@ -103,7 +103,7 @@ sudo apt install libvterm-dev libtool-bin
 
 **** npm
 #+BEGIN_SRC shell
-npm install -g indium cspell prettier import-js trash-cli
+npm install -g cspell prettier import-js trash-cli
 #+END_SRC
 
 **** pip

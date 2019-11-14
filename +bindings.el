@@ -49,16 +49,16 @@
  "M-f" #'swiper
  "C-s" #'swiper
  ;; Help
- "C-h h" nil
+ "C-h h"   nil
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
  "<f8>"    #'describe-mode
  ;; Others
- "M-e" #'+ivy/switch-workspace-buffer
+ "M-e"    #'+ivy/switch-workspace-buffer
  "C-M-\\" #'indent-region-or-buffer
- "M-m" #'kmacro-call-macro
- "M-/" #'doom/toggle-comment-region-or-line)
+ "M-m"    #'kmacro-call-macro
+ "M-/"    #'doom/toggle-comment-region-or-line)
 
 (map!
  ;; Unix text-editing keys & motions
@@ -205,7 +205,7 @@
      "M-8" nil
      "M-9" nil
      "M-0" nil
-     "g" nil
+     "g"   nil
      "q" #'ranger-close-and-kill-inactive-buffers
      "f" #'counsel-find-file
      "F" #'dired-narrow                 ; use `; g` to quit dired-narrow
@@ -270,41 +270,33 @@
  (:after js2-mode
    (:map js2-mode-map
      :localleader
-     :desc "Import js"  "i" 'import-js-import
-     :desc "Import all" "f" 'import-js-fix))
+     :desc "Import js"  "i" #'import-js-import
+     :desc "Import all" "f" #'import-js-fix))
  (:after rjsx-mode
    (:map rjsx-mode-map
      :localleader
-     :desc "Import js"  "i" 'import-js-import
-     :desc "Import all" "f" 'import-js-fix))
+     :desc "Import js"  "i" #'import-js-import
+     :desc "Import all" "f" #'import-js-fix))
  (:after tide
    :map tide-references-mode-map
-   "C-k" 'tide-find-previous-reference
-   "p" 'tide-find-previous-reference
-   "C-j" 'tide-find-next-reference
-   "n" 'tide-find-next-reference
-   "C-l" 'tide-goto-reference)
+   "C-k" #'tide-find-previous-reference
+   "p"   #'tide-find-previous-reference
+   "C-j" #'tide-find-next-reference
+   "n"   #'tide-find-next-reference
+   "C-l" #'tide-goto-reference)
  (:after org
    (:map org-mode-map
-     "M-t" #'org-todo
      :localleader
-     "s" #'org-schedule
-     "w" #'org-refile
      "z" #'org-add-note
-     "L" #'org-toggle-link-display
-     "a" nil
-     (:prefix ("a" . "Archive")
-       :desc "Org default archive as DONE" "a" (λ! (org-todo "DONE") (org-archive-subtree-default))
-       :desc "Org archive as DONE"         "s" (λ! (org-todo "DONE") (org-archive-subtree)))
-     "A" #'org-attach))
+     "L" #'org-toggle-link-display))
  (:after evil-vars
    (:map evil-window-map
      :leader
      (:prefix "w"
        :desc "evil-window-decrease-height" "-" (λ! (evil-window-decrease-height 10))
        :desc "evil-window-increase-height" "+" (λ! (evil-window-increase-height 10))
-       :desc "evil-window-decrease-width" "<" (λ! (evil-window-decrease-width 20))
-       :desc "evil-window-increase-width" ">" (λ! (evil-window-increase-width 20)))))
+       :desc "evil-window-decrease-width" "<"  (λ! (evil-window-decrease-width 20))
+       :desc "evil-window-increase-width" ">"  (λ! (evil-window-increase-width 20)))))
  (:after evil-org
    (:map evil-org-mode-map
      :i "C-d" nil
