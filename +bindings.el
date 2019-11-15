@@ -98,6 +98,7 @@
         "x" #'align-regexp)
       (:prefix "b"                      ; buffer
         :desc "Switch buffer" "b" #'ivy-switch-buffer
+        :desc "Switch workspace buffer" "B" #'+ivy/switch-workspace-buffer
         "h" #'+doom-dashboard/open
         "r" #'revert-buffer-no-confirm
         "R" #'reload-buffer-no-confirm
