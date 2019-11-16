@@ -5,11 +5,9 @@
 (disable-packages! solaire-mode
                    anaconda-mode
                    company-anaconda
-                   dired-k
                    pyimport)
 
 ;; misc
-(package! avy)
 (package! helm)
 (package! dired-narrow)
 (package! edit-indirect)

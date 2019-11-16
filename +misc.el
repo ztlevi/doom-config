@@ -39,13 +39,6 @@
   (push 'prodigy-mode evil-snipe-disabled-modes))
 
 
-(use-package! avy
-  :defer t
-  :init
-  (setq avy-timeout-seconds 0.2)
-  (setq avy-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
-
-
 (use-package! imenu-list
   :defer t
   :config
