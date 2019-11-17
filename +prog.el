@@ -231,23 +231,6 @@
 ;; LSP & DAP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun toggle-lsp-ui-doc ()
-  (interactive)
-  (if lsp-ui-doc-mode
-      (progn
-        (lsp-ui-doc-mode -1)
-        (lsp-ui-doc--hide-frame))
-    (lsp-ui-doc-mode 1)))
-
-(defun my-lsp-mode-hook ()
-  ;; disable lsp-highlight-symbol
-  ;; (setq lsp-highlight-symbol-at-point nil)
-
-  ;; toggle off lsp-ui-doc by default
-  ;; (toggle-lsp-ui-doc)
-  )
-;; (add-hook 'lsp-ui-mode-hook #'my-lsp-mode-hook)
-
 (after! lsp-mode
   (setq lsp-use-native-json t
         lsp-print-io nil)
@@ -269,13 +252,14 @@
     (push dir lsp-file-watch-ignored))
   )
 
+
+(add-hook 'lsp-ui-mode-hook (λ!! #'lsp-ui-doc-mode -1))
+
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil
-        lsp-ui-doc-include-signature t)
+        lsp-ui-doc-include-signature t
+        lsp-ui-doc-position 'at-point))
 
-  ;; set lsp-ui-doc position
-  ;; (setq lsp-ui-doc-position 'at-point)
-  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEBUG & RUN

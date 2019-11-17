@@ -244,7 +244,7 @@
    :n "gh" #'helpful-at-point)
  (:after lsp-ui
    :map lsp-ui-mode-map
-   "C-j" #'toggle-lsp-ui-doc
+   "C-j" (λ!! #'lsp-ui-doc-mode)
    :localleader
    "r" #'lsp-rename)
  (:after lsp-ui-peek
