@@ -22,7 +22,9 @@
 ;; NAVIGATION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq evil-cross-lines t)
+(setq evil-cross-lines t
+      evil-split-window-below t
+      evil-vsplit-window-right t)
 
 (use-package! evil-nerd-commenter :defer t)
 
