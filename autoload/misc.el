@@ -56,6 +56,9 @@ selected, then the current line."
   "personal repo root to scan git projects")
 
 ;;;###autoload
+(defvar +my/user-custom-repos '("/media/ztlevi/Disk2/data/argo" "~/av/detection/python/private/"))
+
+;;;###autoload
 (defun update-projectile-known-projects ()
   (interactive)
   (require 'magit)
@@ -72,8 +75,9 @@ selected, then the current line."
       (string-match home repo)
       (push (replace-match "~" nil nil repo 0) magit-repos))
     (setq projectile-known-projects magit-repos)
-    (if (file-directory-p "~/av/detection/python/private/")
-        (push "~/av/detection/python/private/" projectile-known-projects))))
+    (dolist (repo +my/user-custom-repos)
+      (if (file-directory-p repo)
+          (push repo projectile-known-projects)))))
 
 ;; PATCH counsel-esh-history
 ;;;###autoload
