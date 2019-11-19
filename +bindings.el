@@ -186,13 +186,11 @@
       (:prefix-map ("j" . "jump")
         "j" #'avy-goto-char-timer
         "l" #'avy-goto-line
-        "b" #'avy-pop-mark)
-      (:prefix "s"                      ; snippet
+        "b" #'avy-pop-mark
         "t" #'yas-describe-tables)
-      (:prefix "/"                      ; search
-        :desc "Project"   "/" #'+ivy/project-search
-        :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files
-        :desc "Comments"  "c" #'counsel-imenu-comments))
+      (:prefix "s"                      ; search
+        :desc "Comments"  "c" #'counsel-imenu-comments
+        :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
  (:after helm
