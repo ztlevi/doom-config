@@ -302,6 +302,9 @@
        :desc "evil-window-increase-height" "+" (λ! (evil-window-increase-height 10))
        :desc "evil-window-decrease-width" "<"  (λ! (evil-window-decrease-width 20))
        :desc "evil-window-increase-width" ">"  (λ! (evil-window-increase-width 20)))))
+ (:after iedit
+   (:map iedit-mode-occurrence-keymap
+     "M-D" nil))
  (:after evil-org
    (:map evil-org-mode-map
      :i "C-d" nil
