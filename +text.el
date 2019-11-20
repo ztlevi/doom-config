@@ -9,7 +9,7 @@
 (setq org-directory (expand-file-name "~/org-notes")
       org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
-
+      org-babel-python-command "python3"
       ;; The standard unicode characters are usually misaligned depending on the
       ;; font. This bugs me. Markdown #-marks for headlines are more elegant.
       org-bullets-bullet-list '("#"))
