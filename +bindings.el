@@ -309,6 +309,8 @@
      :i "C-h" nil
      :i "C-k" nil))
  (:after markdown-mode
+   (:map evil-markdown-mode-map
+     :i "C-d" nil)
    (:map markdown-mode-map
      :desc "Markdown Cycle" :nv [tab] #'markdown-cycle
      :desc "Insert item below" :ni "<C-return>"   (λ! (+org/insert-item-below 1))
