@@ -14,7 +14,6 @@
    "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
    "M-p"   #'+ivy/projectile-find-file
    "M-y"   #'helm-show-kill-ring
-   "C-h m" #'describe-mode
    "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
    "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  "M-`"   #'other-frame

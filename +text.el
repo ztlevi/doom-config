@@ -62,7 +62,7 @@
   :init
   (add-hook 'doom-after-init-modules-hook #'org-wild-notifier-mode t)
   :config
-  (setq org-wild-notifier-alert-time 15
+  (setq org-wild-notifier-alert-time 5
         alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
 
 
