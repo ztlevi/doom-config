@@ -74,7 +74,6 @@
  :v "<backspace>" (kbd "\"_d")
  :nmv "-" (λ! (better-jumper-jump-backward 1))
  :nmv "=" (λ! (better-jumper-jump-forward 1))
- :nmv "f" #'avy-goto-char-timer
 
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
