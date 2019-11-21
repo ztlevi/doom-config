@@ -85,10 +85,10 @@
   (string-join `("/code/" ,(replace-regexp-in-string "detection/python/private" "python_root/detection"
                                                      (file-relative-name (buffer-file-name) "~/av")))))
 
-(+docker--open-with reveal-in-docker-pycharm "/usr/local/pycharm-2017.1.2/bin/pycharm.sh"
-                    (get-docker-project-filename) "pycharm")
+(+docker--open-with reveal-in-docker-pycharm "/usr/local/pycharm-2019.2.5/bin/pycharm.sh"
+                    (get-docker-project-filename) "pycharm" "pycharm")
 (+docker--open-with reveal-in-docker-clion "/usr/local/clion/bin/clion.sh"
-                    (get-docker-project-filename) "clion")
+                    (get-docker-project-filename) "clion" "clion")
 
 (defun +docker/reveal-in-apps ()
   (interactive)
