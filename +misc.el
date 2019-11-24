@@ -57,6 +57,9 @@
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
+;; Use ) key to toggle it
+(after! dired
+  (remove-hook 'dired-after-readin-hook '+dired-enable-git-info-h))
 
 (use-package! ranger
   :config
