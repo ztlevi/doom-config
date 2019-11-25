@@ -46,8 +46,6 @@ non-nil value to enable trashing for file operations."
     (when IS-LINUX
       (shell-command (concat "wmctrl -a \"" app-window-name "\" ")))))
 
-;; (shell-command "tilix --working-directory='~' --display=:1")
-
 ;;;###autoload
 (defmacro +shell--open-with (id &optional app args)
   `(defun ,(intern (format "+shell/%s" id)) ()

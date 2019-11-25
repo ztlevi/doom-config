@@ -52,7 +52,7 @@
                                ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)
-    (cond ((executable-find "tilix") (concat "--display=:1 " "--working-directory='" dir "'"))
+    (cond ((executable-find "tilix") (concat "--display=" (getenv "DISPLAY") " --working-directory='" dir "'"))
           ((executable-find "konsole") (concat "--workdir='" dir "'"))
           ((executable-find "gnome-terminal") (concat "--working-directory='" dir "'"))))
 
