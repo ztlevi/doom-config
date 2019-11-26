@@ -40,8 +40,8 @@ non-nil value to enable trashing for file operations."
     (if (string= "" app-window-name) (setq app-window-name app-name))
     (if container
         (setq command (format "docker exec --user user %s %s %s" container app-name args))
-      (setq command (format "%s %s" app-name args)))
-    (shell-command command)
+      (setq command (format "%s %s &" app-name args)))
+    (shell-command command nil nil)
     (message command)
     (when IS-LINUX
       (shell-command (concat "wmctrl -a \"" app-window-name "\" ")))))
