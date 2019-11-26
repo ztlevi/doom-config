@@ -183,7 +183,8 @@
         git-commit-style-convention-checks nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
-  (magit-wip-after-apply-mode t))
+  (magit-wip-after-apply-mode t)
+  (magit-wip-before-change-mode t))
 
 
 ;; TEMP: fix github-repository-id is void error
