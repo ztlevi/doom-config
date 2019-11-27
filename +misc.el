@@ -243,6 +243,7 @@
           ("DONE"  . ,(face-foreground 'success))
           ("NOTE"  . ,(face-foreground 'success))
           ("DONT"  . ,(face-foreground 'error))
+          ("DEBUG"  . ,(face-foreground 'error))
           ("FAIL"  . ,(face-foreground 'error))
           ("FIXME" . ,(face-foreground 'error))
           ("XXX"   . ,(face-foreground 'error))
