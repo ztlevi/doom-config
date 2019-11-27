@@ -360,8 +360,6 @@
      :n "o" #'magit-blame--git-link-commit))
  (:after git-rebase
    (:map git-rebase-mode-map
-     "M-j" #'git-rebase-move-line-down
-     "M-k" #'git-rebase-move-line-up
      "SPC" nil))
  (:after evil-vars
    :map evil-ex-completion-map
