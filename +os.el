@@ -47,12 +47,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when IS-LINUX
-  (defvar linux-terminal (cond ((executable-find "tilix") "tilix")
+  (defvar linux-terminal (cond ((executable-find "xst") "xst")
                                ((executable-find "konsole") "konsole")
                                ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)
-    (cond ((executable-find "tilix") (concat "--display=" (getenv "DISPLAY") " --working-directory='" dir "'"))
+    (cond ((executable-find "xst") (concat "zsh -c 'cd " dir ";zsh'"))
           ((executable-find "konsole") (concat "--workdir='" dir "'"))
           ((executable-find "gnome-terminal") (concat "--working-directory='" dir "'"))))
 
