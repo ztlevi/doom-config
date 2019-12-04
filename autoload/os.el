@@ -40,8 +40,8 @@ non-nil value to enable trashing for file operations."
     (if (string= "" app-window-name) (setq app-window-name app-name))
     (if container
         (setq command (format "docker exec --user user %s %s %s" container app-name args))
-      (setq command (format "%s %s &" app-name args)))
-    (shell-command command nil nil)
+      (setq command (format "%s %s" app-name args)))
+    (async-shell-command-no-window command)
     (message command)
     (when IS-LINUX
       (shell-command (concat "wmctrl -a \"" app-window-name "\" ")))))
@@ -49,8 +49,8 @@ non-nil value to enable trashing for file operations."
 ;;;###autoload
 (defmacro +shell--open-with (id &optional app args)
   `(defun ,(intern (format "+shell/%s" id)) ()
-       (interactive)
-       (+shell-open-with ,app ,args)))
+     (interactive)
+     (+shell-open-with ,app ,args)))
 
 ;;;###autoload
 (defmacro +docker--open-with (id &optional app args container app-window-name)
