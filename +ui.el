@@ -55,6 +55,8 @@
 
 (custom-theme-set-faces! 'doom-city-lights
                          `(hl-line :background ,(doom-color 'base0))
+                         `(magit-diff-file-heading-highlight :foreground ,(doom-color 'base0))
+                         `(magit-diff-file-heading :foreground ,(doom-color 'base4))
                          `(markdown-code-face :background ,(doom-color 'base2)))
 
 (when IS-MAC
