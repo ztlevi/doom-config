@@ -122,18 +122,22 @@ sudo pacman --needed --noconfirm -S go
 
 *** Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
 #+BEGIN_SRC shell
-# Javascript
-npm i -g typescript
-
-# Vue
-npm install vue-language-server -g
-
 # python
 # M-x lsp-python-ms-update-server
 
 # ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
 brew install ccls
+
+# Rust
+rustup update
+rustup component add rls rust-analysis rust-src
+
+# Javascript
+npm i -g typescript
+
+# Vue
+npm install vue-language-server -g
 
 # gopls
 go get -u golang.org/x/tools/gopls
