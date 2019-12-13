@@ -123,7 +123,7 @@ sudo pacman --needed --noconfirm -S go
 *** Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
 #+BEGIN_SRC shell
 # python
-# M-x lsp-python-ms-update-server
+# M-x lsp-python-ms-setup
 
 # ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
