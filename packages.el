@@ -26,7 +26,6 @@
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! import-js)
-(package! company-tabnine)
 (package! importmagic)
 (package! py-isort)
 (package! flycheck-mypy)
