@@ -257,6 +257,11 @@ With PREFIX, cd to project root."
      ,@body
      (message "%.06f" (float-time (time-since time)))))
 
+;;;###autoload
+(defun +default/search-project-regex ()
+  "Search project with regex."
+  (let ((+ivy-alternative-search-fn #'ivy--regex-plus))
+    (+default/search-project)))
 ;;
 ;;; Scratch frame
 

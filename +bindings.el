@@ -187,6 +187,7 @@
         "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
         :desc "Comments"  "c" #'counsel-imenu-comments
+        :desc "Search project with regex" "P" #'+default/search-project-regex
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
