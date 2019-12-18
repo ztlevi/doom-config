@@ -66,6 +66,11 @@
         alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
 
 
+(after! ox-pandoc
+  (setq org-pandoc-options-for-revealjs '((variable . "highlight-theme=github")
+                                          (variable . "theme=white"))))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
