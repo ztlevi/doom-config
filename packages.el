@@ -23,6 +23,9 @@
 (package! counsel-etags)
 (package! imenu-list)
 
+;; ui
+(package! company-box)
+
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! import-js)
