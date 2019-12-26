@@ -1,24 +1,26 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
+;; line number
+(setq display-line-numbers 'relative)
+
+
 (if (display-graphic-p)
-    (load-theme 'doom-city-lights t)
+    (load-theme 'doom-nord t)
   (load-theme 'doom-one t))
 
 (when (display-graphic-p)
   (cond (IS-MAC
-         (setq doom-font (font-spec :family "Operator Mono Lig" :size 16)
-               doom-big-font (font-spec :family "Operator Mono Lig" :size 22)
+         (setq doom-font (font-spec :family "FuraCode Nerd Font" :size 16)
+               doom-big-font (font-spec :family "FuraCode Nerd Font" :size 22)
                doom-modeline-height 32))
         (IS-LINUX
          (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
-         (setq doom-font (font-spec :family "Operator Mono" :size (eval (round (* 14 resolution-factor))) :weight 'light)
-               doom-big-font (font-spec :family "Operator Mono" :size (eval (round (* 20 resolution-factor))))
+         (setq doom-font (font-spec :family "FuraCode Nerd Font" :size (eval (round (* 14 resolution-factor))) :weight 'light)
+               doom-big-font (font-spec :family "FuraCode Nerd Font" :size (eval (round (* 20 resolution-factor))))
                doom-modeline-height (eval (round (* 32 resolution-factor))))))
 
   ;; set initl screen size
-  (setq initial-frame-alist
-        '((width . 110)
-          (height . 65))))
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
 (setq doom-modeline-buffer-file-name-style 'relative-to-project)
 
@@ -27,7 +29,7 @@
 (remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 
 ;; disable line-numbers by default
-(setq display-line-numbers-type nil)
+;; (setq display-line-numbers-type nil)
 
 ;; my custom faces
 (custom-set-faces!
@@ -53,11 +55,11 @@
  `(ein:cell-input-area :background ,(doom-lighten (doom-color 'red) 0.85))
  `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
 
-(custom-theme-set-faces! 'doom-city-lights
-                         `(hl-line :background ,(doom-color 'base0))
-                         `(magit-diff-file-heading-highlight :foreground ,(doom-color 'base0))
-                         `(magit-diff-file-heading :foreground ,(doom-color 'base4))
-                         `(markdown-code-face :background ,(doom-color 'base2)))
+; (custom-theme-set-faces! 'doom-city-lights
+;                          `(hl-line :background ,(doom-color 'base0))
+;                          `(magit-diff-file-heading-highlight :foreground ,(doom-color 'base0))
+;                          `(magit-diff-file-heading :foreground ,(doom-color 'base4))
+;                          `(markdown-code-face :background ,(doom-color 'base2)))
 
 (when IS-MAC
   ;; enable ligatures support

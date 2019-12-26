@@ -48,7 +48,7 @@
 
 (when IS-LINUX
   (defvar linux-terminal (cond ((executable-find "xst") "xst")
-                               ((executable-find "konsole") "konsole")
+                               ((executable-find "tilix") "tilix")
                                ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)

@@ -5,7 +5,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! company
-  (setq company-idle-delay 0.2))
+  (setq company-idle-delay 0
+        company-show-numbers t
+        company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                            company-preview-frontend
+                            company-echo-metadata-frontend
+                            )))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -116,6 +121,8 @@
 ;; PYTHON
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq lsp-python-ms-nupkg-channel "beta")
+(setq lsp-python-ms-dir "~/.local/mspyls")
 (define-derived-mode asl-mode
   python-mode "ARGO Schema Language Mode"
   "Major mode for asl file."
@@ -124,26 +131,23 @@
 
 (after! python
   (setq python-indent-offset 4
-        python-shell-interpreter "python3"
-        pippel-python-command "python3"
-        conda-env-home-directory (expand-file-name "~/.conda")
-        importmagic-python-interpreter "python3"
-        flycheck-python-pylint-executable "pylint"
-        flycheck-python-flake8-executable "flake8")
+        importmagic-python-interpreter "~/.pyenv/versions/3.7.5/bin/python"
+        flycheck-python-pylint-executable "~/.pyenv/versions/3.7.5/bin/pylint"
+        flycheck-python-flake8-executable "~/.pyenv/versions/3.7.5/bin/flake8"))
 
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
 
   ;; ignore some linting info
-  (if (featurep! :tools lsp)
-      (setq lsp-pyls-plugins-pycodestyle-ignore '("E501")
-            lsp-pyls-plugins-pylint-args [ "--errors-only" ]))
-  )
+  ;; (if (featurep! :tools lsp)
+  ;;     (setq lsp-pyls-plugins-pycodestyle-ignore '("E501")
+  ;;           lsp-pyls-plugins-pylint-args [ "--errors-only" ]))
+  ;; )
 
 
 (after! lsp-python-ms
-  (setq lsp-python-ms-python-executable-cmd "python3"))
+  (setq lsp-python-ms-python-executable-cmd "~/.pyenv/shims/python"))
 
 
 (use-package! py-isort
@@ -181,14 +185,14 @@
     (advice-add func :after #'reset-flycheck)))
 
 
-(after! conda
-  (when IS-LINUX
-    ;; Ubuntu anaconda
-    (setq conda-anaconda-home "~/anaconda3"))
+;; (after! conda
+;;   (when IS-LINUX
+;;     ;; Ubuntu anaconda
+;;     (setq conda-anaconda-home "~/anaconda3"))
 
-  ;; restart flycheck-mode after env activate and deactivate
-  (dolist (func '(conda-env-activate conda-env-deactivate))
-    (advice-add func :after #'reset-flycheck)))
+;;   ;; restart flycheck-mode after env activate and deactivate
+;;   (dolist (func '(conda-env-activate conda-env-deactivate))
+;;     (advice-add func :after #'reset-flycheck)))
 
 
 ;; For pytest-mode

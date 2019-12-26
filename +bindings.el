@@ -86,7 +86,7 @@
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
-      :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
+      :desc "project-find-file" :nmv "SPC" #'projectile-find-file
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
       (:prefix-map ("a" . "app")
@@ -113,7 +113,7 @@
         :desc "Deer"     "j" #'deer)
       (:prefix "g"                      ; git
         "s" nil
-        :desc "Smerge" "s" smerge-basic-map
+        :desc "Status" "s" #'magit-status
         :desc "Magit browse commit" "oc" #'+vc/git-browse-commit
         :desc "Magit wip worktree"  "w"  #'magit-wip-log-worktree
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
@@ -373,7 +373,7 @@
    "?" #'Info-search-backward)
  (:after company
    (:map company-active-map
-     "TAB"   nil
+     "<tab>"   #'company-complete-selection
      ;; Don't interfere with `evil-delete-backward-word' in insert mode
      "C-v"   #'company-next-page
      "A-v"   #'company-previous-page
