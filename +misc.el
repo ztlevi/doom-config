@@ -103,9 +103,10 @@
     (setq ivy-posframe-border-width 5))
 
   ;; Use minibuffer to display ivy functions
-  (dolist (fn '(+ivy/switch-workspace-buffer
-                ivy-switch-buffer))
-    (setf (alist-get fn ivy-posframe-display-functions-alist) #'ivy-display-function-fallback)))
+  ;; (dolist (fn '(+ivy/switch-workspace-buffer
+  ;;               ivy-switch-buffer))
+  ;;   (setf (alist-get fn ivy-posframe-display-functions-alist) #'ivy-display-function-fallback))
+  )
 
 
 (after! counsel

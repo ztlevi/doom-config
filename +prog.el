@@ -1,17 +1,48 @@
 ;;; ~/.doom.d/+prog.el -*- lexical-binding: t; -*-
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BETTER EDIT EXP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; smart kill parens
+(use-package! elec-pair
+  :ensure nil
+  :hook (after-init . electric-pair-mode)
+  :init (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit))
+
+;; Hungry Delete
+(use-package hungry-delete
+  :diminish
+  :hook (after-init . global-hungry-delete-mode)
+  :config (setq-default hungry-delete-chars-to-skip " \t\f\v"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; COMPANY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! company
   (setq company-idle-delay 0
+        company-minimum-prefix-length 3
         company-show-numbers t
+        company-tooltip-minimum-width 80
+        company-tooltip-minimum 5
         company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
                             company-preview-frontend
                             company-echo-metadata-frontend
                             )))
 
+(def-package! company-prescient
+  :after company
+  :hook (company-mode . company-prescient-mode))
+
+(use-package! company-tabnine
+  :after company
+  :config
+  (cl-pushnew 'company-tabnine (default-value 'company-backends)))
+
+(def-package! counsel-tramp
+  :commands (counsel-tramp))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FLYCHECK
@@ -149,6 +180,14 @@
 (after! lsp-python-ms
   (setq lsp-python-ms-python-executable-cmd "~/.pyenv/shims/python"))
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq company-backends '(company-files
+                                     company-dabbrev
+                                     ))))
+
+(setq +lsp-company-backend '(company-lsp company-tabnine :with company-yasnippet))
+
 
 (use-package! py-isort
   :defer t
@@ -211,6 +250,8 @@
   (add-hook! (js2-mode rjsx-mode)
     (add-hook 'after-save-hook #'import-js-fix nil t)))
 (advice-add '+javascript|cleanup-tide-processes :after 'kill-import-js)
+(after! js2-mode (setq js2-basic-offset 2))
+(after! css-mode (setq css-indent-offset 2))
 
 
 (after! web-mode
@@ -231,7 +272,7 @@
 
 (after! lsp-mode
   (setq lsp-use-native-json t
-        lsp-print-io nil)
+        lsp-log-io nil)
   (dolist (dir '("[/\\\\]\\.ccls-cache$"
                  "[/\\\\]\\.mypy_cache$"
                  "[/\\\\]\\.pytest_cache$"

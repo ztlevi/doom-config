@@ -33,3 +33,14 @@
 (package! py-isort)
 (package! flycheck-mypy)
 (package! flycheck-google-cpplint :recipe (:host github :repo "flycheck/flycheck-google-cpplint"))
+
+;; completion
+(package! prescient)
+(package! counsel-tramp)
+(package! company-prescient)
+(package! company-tabnine)
+
+
+;; better edit
+(package! elec-pair)
+(package! hungry-delete)
