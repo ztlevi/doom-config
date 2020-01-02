@@ -112,3 +112,6 @@
 (use-package! link-hint :defer t)
 
 (use-package! symbol-overlay :defer t)
+
+(after! so-long
+  (setq so-long-target-modes (delete 'text-mode so-long-target-modes)))
