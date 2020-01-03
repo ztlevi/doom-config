@@ -227,6 +227,10 @@
   )
 
 
+(after! browse-at-remote
+  (add-to-list 'browse-at-remote-remote-type-domains '("github.argo.ai" . "github")))
+
+
 (use-package! magit-todos
   :init
   (setq magit-todos-ignored-keywords nil)
