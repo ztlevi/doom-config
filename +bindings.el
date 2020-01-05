@@ -222,6 +222,9 @@
      :i "_" #'special-lispy-different
      :i [remap kill-line] #'lispy-kill
      :i [remap delete-backward-char] #'lispy-delete-backward
+     :n "M-r"   nil
+     :n "M-s"   nil
+     :n "M-v"   nil
      :n "M-<left>" #'lispy-forward-barf-sexp
      :n "M-<right>" #'lispy-forward-slurp-sexp
      :n "C-M-<left>" #'lispy-backward-slurp-sexp
