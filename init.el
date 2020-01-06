@@ -44,6 +44,7 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
+       zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -82,6 +83,7 @@
        flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
+        ;; +dictionary      ; enable word definition and thesaurus lookup functionality
         +devdocs         ; ...on devdocs.io online
         +docsets)        ; ...or in Dash docsets locally
        lsp

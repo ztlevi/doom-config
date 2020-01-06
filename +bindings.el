@@ -86,6 +86,7 @@
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
+      :desc "Jump to bookmark" "RET" #'helm-bookmarks
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
@@ -191,9 +192,6 @@
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
- (:after helm
-   :leader
-   :desc "Jump to bookmark" "RET" #'helm-bookmarks)
  (:after ranger
    (:map ranger-normal-mode-map
      "M-1" nil
