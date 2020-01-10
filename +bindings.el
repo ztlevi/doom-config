@@ -336,6 +336,7 @@
    "C-d" nil
    "SPC" nil
    "DEL" #'ivy-occur-delete-candidate
+   :nv "gr" #'ivy-occur-revert-buffer
    :map ivy-minibuffer-map
    "TAB" #'ivy-partial-or-done
    "<C-return>" #'ivy-immediate-done
