@@ -122,9 +122,17 @@
             ((symbol-function 'y-or-n-p) (lambda (&rest args) t)))
     ad-do-it))
 
+;;;###autoload
+(defun +python/annotate-pdb ()
+  "Highlight break point lines."
+  (interactive)
+  (highlight-lines-matching-regexp "breakpoint()" 'breakpoint-enabled)
+  (highlight-lines-matching-regexp "import \\(pdb\\|ipdb\\|pudb\\|wdb\\)" 'breakpoint-enabled)
+  (highlight-lines-matching-regexp "\\(pdb\\|ipdb\\|pudb\\|wdb\\).set_trace()" 'breakpoint-enabled)
+  (highlight-lines-matching-regexp "trepan.api.debug()") 'breakpoint-enabled)
 
 ;;;###autoload
-(defun +my/python-toggle-breakpoint ()
+(defun +python/toggle-breakpoint ()
   "Add a break point, highlight it."
   (interactive)
   (let ((trace (cond ((executable-find "trepan3k") "import trepan.api; trepan.api.debug()")
@@ -133,8 +141,8 @@
                      ((executable-find "pudb") "import pudb; pudb.set_trace()")
                      ((executable-find "ipdb3") "import ipdb; ipdb.set_trace()")
                      ((executable-find "pudb3") "import pudb; pudb.set_trace()")
-                     ;; ((executable-find "python3.7") "breakpoint()")
-                     ;; ((executable-find "python3.8") "breakpoint()")
+                     ((executable-find "python3.7") "breakpoint()")
+                     ((executable-find "python3.8") "breakpoint()")
                      (t "import pdb; pdb.set_trace()")))
         (line (thing-at-point 'line)))
     (if (and line (string-match trace line))
@@ -143,4 +151,5 @@
         (back-to-indentation)
         (insert trace)
         (insert "\n")
-        (python-indent-line)))))
+        (python-indent-line))))
+  (+python/annotate-pdb))

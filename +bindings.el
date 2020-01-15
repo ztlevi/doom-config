@@ -252,6 +252,7 @@
  (:after python
    :localleader
    :map python-mode-map
+   :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
    (:prefix ("i" . "Import")
      :desc "Import at point" "i" #'importmagic-fix-symbol-at-point
      :desc "Import all"      "a" #'importmagic-fix-imports
