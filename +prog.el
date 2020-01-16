@@ -252,6 +252,14 @@
                  "[/\\\\]third-party$"
                  ))
     (push dir lsp-file-watch-ignored))
+  ;; Add the clangd client for C++ mode.
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection
+                     '("lsp.sh" "clangd"
+                       "mkdir -p .clangd && clangd --compile-commands-dir=/code --background-index=true --clang-tidy"))
+    :major-modes '(c++-mode)
+    :server-id 'argo-clangd))
   )
 
 
