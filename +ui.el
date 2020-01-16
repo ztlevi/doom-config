@@ -32,6 +32,7 @@
 ;; my custom faces
 (custom-set-faces!
  '(variable-pitch :family nil)
+ '(font-lock-doc-face :italic t)
  `(show-paren-match :background ,(doom-lighten (doom-color 'teal) 0.4) :foreground ,(doom-color 'base1))
  '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
  `(breakpoint-enabled :background ,(doom-color 'red) :foreground "white")
