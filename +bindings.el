@@ -109,7 +109,7 @@
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-directory)
       (:prefix "TAB"
-        :desc "Switch workspace" "TAB" #'+workspace/other)
+        :desc "Switch workspace" "TAB" #'+workspace/switch-to)
       (:prefix "f"                      ; file
         :desc "Save all" "s" #'evil-write-all
         :desc "Deer"     "j" #'deer)
