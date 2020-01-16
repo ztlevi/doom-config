@@ -197,7 +197,6 @@
        (default +bindings +snippets +smartparens)
 
        :private
-       ;; lsp-intellij
        )
 
 (setq custom-file (expand-file-name "custom.el" doom-local-dir))

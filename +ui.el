@@ -36,7 +36,6 @@
  '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
  `(breakpoint-enabled :background ,(doom-color 'red) :foreground "white")
  `(lsp-ui-peek-highlight :foreground "white")
- ;; '(lsp-intellij-face-code-lens-run :background "honeydew")
  `(ivy-posframe-border :background ,(doom-color 'blue))
  `(magit-diff-file-heading :background ,(doom-lighten (doom-color 'blue) 0.5))
  `(magit-diff-file-heading-highlight :background ,(doom-lighten (doom-color 'blue) 0.2))
