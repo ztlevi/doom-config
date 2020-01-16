@@ -153,3 +153,11 @@
         (insert "\n")
         (python-indent-line))))
   (+python/annotate-pdb))
+
+;;;###autoload
+(defun +python/autoflake-remove-imports ()
+  "Remove unused imports."
+  (interactive)
+  (shell-command
+   (concat "autoflake --in-place --remove-all-unused-imports " (buffer-file-name)))
+  (revert-buffer-no-confirm))

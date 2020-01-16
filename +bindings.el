@@ -254,9 +254,9 @@
    :map python-mode-map
    :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
    (:prefix ("i" . "Import")
+     :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
      :desc "Import at point" "i" #'importmagic-fix-symbol-at-point
-     :desc "Import all"      "a" #'importmagic-fix-imports
-     :desc "Sort imports"    "s" #'+python/python-sort-imports)
+     :desc "Import all"      "a" #'importmagic-fix-imports)
    (:prefix ("v" . "ENV")
      "c" #'conda-env-activate
      "C" #'conda-env-deactivate
