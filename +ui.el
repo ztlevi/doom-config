@@ -64,7 +64,7 @@
 (unless (display-graphic-p)
   (custom-set-faces!
     `(font-lock-comment-face :foreground ,(doom-color 'base6))
-    ))
+    `(font-lock-doc-face :foreground ,(doom-color 'base6))))
 
 (when IS-MAC
   ;; enable ligatures support
