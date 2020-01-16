@@ -60,6 +60,12 @@
                          `(magit-diff-file-heading :foreground ,(doom-color 'base4))
                          `(markdown-code-face :background ,(doom-color 'base2)))
 
+;; for terminal
+(unless (display-graphic-p)
+  (custom-set-faces!
+    `(font-lock-comment-face :foreground ,(doom-color 'base6))
+    ))
+
 (when IS-MAC
   ;; enable ligatures support
   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
