@@ -103,7 +103,7 @@ sudo apt install libvterm-dev libtool-bin
 
 **** npm
 #+BEGIN_SRC shell
-npm install -g cspell prettier import-js trash-cli
+npm install -g cspell prettier import-js
 #+END_SRC
 
 **** pip
@@ -124,6 +124,9 @@ sudo pacman --needed --noconfirm -S go
 #+BEGIN_SRC shell
 # python
 # M-x lsp-python-ms-setup
+
+# Bash
+npm i -g bash-language-server
 
 # ccls: https://github.com/MaskRay/ccls/wiki/Getting-started
 brew tap twlz0ne/homebrew-ccls
