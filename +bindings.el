@@ -193,6 +193,9 @@
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
+ (:map prog-mode-map
+   :i "TAB" #'doom/dumb-indent
+   :i "<backtab>" #'doom/dumb-dedent)
  (:after ranger
    (:map ranger-normal-mode-map
      "M-1" nil
