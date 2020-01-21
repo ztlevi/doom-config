@@ -253,9 +253,6 @@
    "k" #'lsp-ui-peek--select-prev
    "l" #'lsp-ui-peek--select-next-file)
  (:after python
-   :map python-mode-map
-   :i "TAB" #'python-indent-shift-right
-   :i "<backtab>" #'python-indent-shift-left
    :localleader
    :map python-mode-map
    :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
