@@ -47,16 +47,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when IS-LINUX
-  (defvar linux-terminal (cond ((executable-find "tilix") "tilix")
+  (defvar linux-terminal (cond ((executable-find "xst") "xst")
+                               ((executable-find "tilix") "tilix")
                                ((executable-find "konsole") "konsole")
-                               ((executable-find "gnome-terminal") "gnome-terminal")
-                               ((executable-find "xst") "xst")))
+                               ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)
-    (cond ((executable-find "tilix") (concat "--display=:1 " "--working-directory='" dir "'"))
+    (cond ((executable-find "xst") (concat "zsh -c 'cd " dir ";zsh'"))
+          ((executable-find "tilix") (concat "--display=:1 " "--working-directory='" dir "'"))
           ((executable-find "konsole") (concat "--workdir='" dir "'"))
-          ((executable-find "gnome-terminal") (concat "--working-directory='" dir "'"))
-          ((executable-find "xst") (concat "zsh -c 'cd " dir ";zsh'"))))
+          ((executable-find "gnome-terminal") (concat "--working-directory='" dir "'"))))
 
 
   (defvar linux-finder (cond ((executable-find "xdg-open") "xdg-open")
