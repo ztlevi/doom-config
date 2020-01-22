@@ -380,10 +380,9 @@
    "?" #'Info-search-backward)
  (:after company
    (:map company-active-map
-     "TAB"   nil
-     ;; Don't interfere with `evil-delete-backward-word' in insert mode
-     "C-v"   #'company-next-page
-     "A-v"   #'company-previous-page
+     "TAB"       nil
+     [tab]       nil
+     [backtab]   nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
  (:after vterm
