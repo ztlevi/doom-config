@@ -123,7 +123,7 @@ sudo pacman --needed --noconfirm -S go
 *** Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
 #+BEGIN_SRC shell
 # python
-# M-x lsp-python-ms-setup
+# M-x lsp-python-ms-update-server
 
 # Bash
 npm i -g bash-language-server
