@@ -153,15 +153,17 @@
 (use-package! py-isort
   :defer t
   :init
-  (setq python-sort-imports-on-save t)
-  (defun +python/python-sort-imports ()
-    (interactive)
-    (when (and python-sort-imports-on-save
-               (derived-mode-p 'python-mode))
-      (py-isort-before-save)))
-  (add-hook! 'python-mode-hook
-    (add-hook 'before-save-hook #'+python/python-sort-imports nil t))
-  )
+  (define-minor-mode python-isort-autosave-mode
+    "Isort autosave mode."
+    :lighter " Isort"
+    :global nil
+    (when (not (derived-mode-p 'python-mode))
+      (error "Isort only works with Python buffers"))
+    (if python-isort-autosave-mode
+        (add-hook! 'before-save-hook #'py-isort-before-save nil t)
+      (remove-hook! 'before-save-hook #'py-isort-before-save nil t)))
+
+  (add-hook! 'python-mode-hook #'python-isort-autosave-mode))
 
 
 (use-package! importmagic

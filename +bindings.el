@@ -258,6 +258,7 @@
    :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
    (:prefix ("i" . "Import")
      :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
+     :desc "Isort buffer"    "s" #'python-isort-autosave-mode
      :desc "Import at point" "i" #'importmagic-fix-symbol-at-point
      :desc "Import all"      "a" #'importmagic-fix-imports)
    (:prefix ("v" . "ENV")
