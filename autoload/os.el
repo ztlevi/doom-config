@@ -47,13 +47,19 @@ non-nil value to enable trashing for file operations."
       (shell-command (concat "wmctrl -a \"" app-window-name "\" ")))))
 
 ;;;###autoload
+(defun notify-current-line-number ()
+  (alert (concat "line number " (number-to-string (line-number-at-pos))) :severity 'low))
+
+;;;###autoload
 (defmacro +shell--open-with (id &optional app args)
   `(defun ,(intern (format "+shell/%s" id)) ()
      (interactive)
-     (+shell-open-with ,app ,args)))
+     (+shell-open-with ,app ,args)
+     (notify-current-line-number)))
 
 ;;;###autoload
 (defmacro +docker--open-with (id &optional app args container app-window-name)
   `(defun ,(intern (format "+docker/%s" id)) ()
      (interactive)
-     (+shell-open-with ,app ,args ,container ,app-window-name)))
+     (+shell-open-with ,app ,args ,container ,app-window-name)
+     (notify-current-line-number)))
