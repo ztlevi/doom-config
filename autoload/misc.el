@@ -261,7 +261,8 @@ With PREFIX, cd to project root."
 ;;;###autoload
 (defun +default/search-project-regex ()
   "Search project with regex."
-  (let ((+ivy-alternative-search-fn #'ivy--regex-plus))
+  (interactive)
+  (let ((standard-search-fn #'ivy--regex-plus))
     (+default/search-project)))
 ;;
 ;;; Scratch frame
