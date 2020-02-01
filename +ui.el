@@ -20,7 +20,9 @@
         '((width . 110)
           (height . 65))))
 
-(setq doom-modeline-buffer-file-name-style 'relative-to-project)
+(after! doom-modeline
+  (setq doom-modeline-buffer-file-name-style 'relative-to-project
+        doom-modeline-major-mode-icon t))
 
 (setq +workspaces-on-switch-project-behavior t)
 
