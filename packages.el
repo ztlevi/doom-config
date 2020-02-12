@@ -7,6 +7,10 @@
                    company-anaconda
                    pyimport)
 
+;; TODO: remove once Straight.el fix
+(package! pfuture)
+(package! chinese-word-at-point)
+
 ;; misc
 (package! helm)
 (package! dired-narrow)
