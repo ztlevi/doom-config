@@ -107,7 +107,7 @@
         :desc "Toggle Comment"         "/" #'doom/toggle-comment-region-or-line
         :desc "Treemacs references"    "D" #'lsp-treemacs-references
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
-        :desc "Cspell check directory" "C" #'cspell-check-directory)
+        :desc "Cspell check directory" "C" #'cspell-check-HEAD)
       (:prefix "TAB"
         :desc "Switch workspace" "TAB" #'+workspace/switch-to)
       (:prefix "f"                      ; file

@@ -21,10 +21,10 @@
       (let* ((file-name (concat "'" (file-name-nondirectory (buffer-file-name)) "'"))
              (command (string-join `(,cspell-base-program ,cspell-args ,file-name) " ")))
         (compilation-start command 'grep-mode))
-    (message "Cannot find cspell, please install with `npm install -g csepll`")
+    (message "Cannot find cspell, please install with `npm install -g cspell`")
     ))
 
-(defun cspell-check-directory ()
+(defun cspell-check-HEAD ()
   (interactive)
   (if cspell-base-program
       (let* ((project-root (doom-project-root))
@@ -32,9 +32,9 @@
                (if (string-match-p "av/detection" project-root)
                    (expand-file-name "~/av")
                  project-root))
-             (command (string-join `("git diff --name-only origin/develop | xargs -I{}" ,cspell-base-program ,cspell-args "'{}'") " ")))
+             (command (string-join `("git diff --name-only HEAD | xargs -I{}" ,cspell-base-program ,cspell-args "'{}'") " ")))
         (compilation-start command 'grep-mode))
-    (message "Cannot find cspell, please install with `npm install -g csepll`")))
+    (message "Cannot find cspell, please install with `npm install -g cspell`")))
 
 ;; (use-package! wucuo
 ;;   :defer t
