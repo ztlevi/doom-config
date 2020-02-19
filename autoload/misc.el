@@ -243,8 +243,9 @@ With PREFIX, cd to project root."
 ;;;###autoload
 (defun +my/check-minified-file ()
   (and
-   (not (member (file-name-extension (buffer-file-name))
-                '("org" "md" "markdown" "txt" "rtf")))
+   (not (when (buffer-file-name)
+          (member (file-name-extension (buffer-file-name))
+                  '("org" "md" "markdown" "txt" "rtf"))))
    (cl-loop for i from 1 to (min 30 (count-lines (point-min) (point-max)))
             if (> (get-nth-line-length i) 1000)
             return t
