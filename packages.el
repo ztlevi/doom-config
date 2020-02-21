@@ -13,6 +13,7 @@
 (package! edit-indirect)
 (package! atomic-chrome)
 (package! link-hint)
+(package! git-link)
 (package! symbol-overlay)
 (package! tldr)
 (package! blog-admin :recipe (:host github :repo "codefalling/blog-admin"))

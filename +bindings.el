@@ -116,8 +116,9 @@
       (:prefix "g"                      ; git
         "s" nil
         :desc "Smerge" "s" smerge-basic-map
-        :desc "Magit browse commit" "oc" #'+vc/git-browse-commit
-        :desc "Magit wip worktree"  "w"  #'magit-wip-log-worktree
+        :desc "Browse file or region" "oo" #'git-link
+        :desc "Magit browse commit"   "oc" #'+vc/git-browse-commit
+        :desc "Magit wip worktree"    "w"  #'magit-wip-log-worktree
         :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
         "C" #'helpful-command)

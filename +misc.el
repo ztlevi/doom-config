@@ -162,6 +162,18 @@
 ;; GIT
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(after! git-link
+  (setq git-link-open-in-browser t)
+
+  (add-to-list 'git-link-remote-alist
+               '("rnd-github-usa-g\\.huawei\\.com" git-link-github-http))
+  (add-to-list 'git-link-commit-remote-alist
+               '("rnd-github-usa-g\\.huawei\\.com" git-link-commit-github-http))
+
+  ;; OVERRIDE
+  (advice-add #'git-link--select-remote :override #'git-link--read-remote)
+  )
+
 
 (after! magit
   (setq magit-repository-directories '(("~/Developer" . 2))
