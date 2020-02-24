@@ -52,12 +52,17 @@ selected, then the current line."
     (+ivy/project-search)))
 
 ;;;###autoload
+(defun +ivy/project-search-python-files ()
+  (interactive)
+  (let ((counsel-fzf-cmd "fd -e py -e md -e yaml | fzf -f \"%s\""))
+    (counsel-fzf)))
+
+;;;###autoload
 (defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src" "~/.cache")
   "personal repo root to scan git projects")
 
 ;;;###autoload
-(defvar +my/user-custom-repos '("/media/ztlevi/Disk2/data/argo" "~/av/detection/python/private/"
-                                "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org-notes"))
+(defvar +my/user-custom-repos '("/media/ztlevi/Disk2/data/argo" "~/av/detection/python/private/"))
 
 ;;;###autoload
 (defun update-projectile-known-projects ()

@@ -53,6 +53,7 @@
  "C-h C-v" #'find-variable-at-point
  "<f8>"    #'describe-mode
  ;; Others
+ "M-P"    #'+ivy/project-search-python-files
  "M-e"    #'+ivy/switch-workspace-buffer
  "C-M-\\" #'indent-region-or-buffer
  "M-m"    #'kmacro-call-macro
