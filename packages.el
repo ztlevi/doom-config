@@ -5,6 +5,7 @@
 (disable-packages! solaire-mode
                    anaconda-mode
                    company-anaconda
+                   lsp-python-ms
                    pyimport)
 
 ;; misc
