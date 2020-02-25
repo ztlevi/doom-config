@@ -125,7 +125,7 @@ sudo pacman --needed --noconfirm -S go
 # python
 # for msplys M-x lsp-python-ms-update-server, and remove `lsp-python-ms` from `packages.el`->disable-packages!
 # for pyls
-python3 -m pip install --upgrade 'python-language-server[all]'
+python3 -m pip install --upgrade 'python-language-server[all]' pyls-mypy pyls-isort
 
 # Bash
 npm i -g bash-language-server
