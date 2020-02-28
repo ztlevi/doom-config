@@ -59,7 +59,13 @@
 
 ;; Use ) key to toggle it
 (after! dired
-  (remove-hook 'dired-after-readin-hook '+dired-enable-git-info-h))
+  (remove-hook 'dired-after-readin-hook '+dired-enable-git-info-h)
+
+  ;; Rust version ls
+  (when-let (exa (executable-find "exa"))
+    (setq insert-directory-program exa)
+    (setq dired-listing-switches (string-join (list "-aBhl" "--group-directories-first") " ")))
+  )
 
 (use-package! ranger
   :config
