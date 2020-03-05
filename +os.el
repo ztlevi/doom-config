@@ -47,13 +47,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when IS-LINUX
-  (defvar linux-terminal (cond ((executable-find "xst") "xst")
+  (defvar linux-terminal (cond ((executable-find "alacritty") "alacritty")
+                               ((executable-find "xst") "xst")
                                ((executable-find "tilix") "tilix")
                                ((executable-find "konsole") "konsole")
                                ((executable-find "gnome-terminal") "gnome-terminal")))
 
   (defun linux-terminal-args (dir)
-    (cond ((executable-find "xst") (concat "zsh -c 'cd " dir ";zsh'"))
+    (cond ((executable-find "alacritty") (concat "--working-directory='" dir "'"))
+          ((executable-find "xst") (concat "zsh -c 'cd " dir ";zsh'"))
           ((executable-find "tilix") (concat "--display=:1 " "--working-directory='" dir "'"))
           ((executable-find "konsole") (concat "--workdir='" dir "'"))
           ((executable-find "gnome-terminal") (concat "--working-directory='" dir "'"))))
@@ -69,7 +71,7 @@
                      (or (doom-project-root) default-directory))
 
   (+shell--open-with reveal-in-apps (ivy--read-apps)
-                     (string-join `("-g '" ,(get-filename-with-line-number) "'")))
+                     (string-join `("'" ,(buffer-file-name) "'")))
   (+shell--open-with reveal-project-in-apps (ivy--read-apps)
                      (or (doom-project-root) default-directory))
 
