@@ -82,7 +82,7 @@ selected, then the current line."
          (when current-prefix-arg
            (counsel-read-directory-name "From directory: "))))
   (counsel-require-program find-program)
-  (let ((default-directory (or initial-directory default-directory)))
+  (let ((default-directory (doom-project-root)))
     (ivy-read "Find file: "
               (+ivy--counsel-file-jump-use-fd-rg-specific-files counsel-file-jump-args)
               :matcher #'counsel--find-file-matcher
