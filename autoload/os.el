@@ -63,3 +63,25 @@ non-nil value to enable trashing for file operations."
      (interactive)
      (+shell-open-with ,app ,args ,container ,app-window-name)
      (notify-current-line-number)))
+
+;;;###autoload
+(when IS-MAC
+  (defvar alacritty-bin "/Applications/Alacritty.app/Contents/MacOS/alacritty"
+    "Alacritty terminal binary localtion.")
+  (defvar iterm-bin "/Applications/iTerm.app/Contents/MacOS/iTerm2"
+    "iTerm2 terminal binary localtion.")
+
+  (defun +macos/reveal-in-terminal ()
+    (interactive)
+    (cond
+     ((executable-find alacritty-bin)
+      (+shell-open-with alacritty-bin (concat "--working-directory='" default-directory"'")))
+     ((executable-find iterm-bin)
+      (iterm-open-new-tab default-directory))))
+  (defun +macos/reveal-project-in-terminal ()
+    (interactive)
+    (cond
+     ((executable-find alacritty-bin)
+      (+shell-open-with alacritty-bin (concat "--working-directory='" (or (doom-project-root) default-directory)"'")))
+     ((executable-find iterm-bin)
+      (iterm-open-new-tab (or (doom-project-root) default-directory))))))
