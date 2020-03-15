@@ -75,29 +75,32 @@ Install dependencies including search tools, utils, and linters.
 ***** MacOS
 #+BEGIN_SRC sh :tangle (if (doom-system-os 'macos) "yes")
 # search tool
-brew install ripgrep grep
+brew install ripgrep grep exa
 # utils
-brew install fd sqlite hub watchman gpg2 coreutils ctags gnu-tar mplayer clang-format direnv
+brew install fd sqlite hub gpg2 coreutils ctags gnu-tar mplayer direnv
 # language
-brew install shellcheck aspell hadolint wordnet languagetool
+brew install shellcheck aspell languagetool clang-format
 # Cask
 brew cask install xquartz
 #+END_SRC
 
 ***** Arch Linux
 #+BEGIN_SRC sh :dir /sudo:: :tangle (if (doom-system-os 'arch) "yes")
-sudo pacman --needed --noconfirm -S sqlite ripgrep clang-format fd wmctrl direnv
+sudo pacman --needed --noconfirm -S sqlite ripgrep fd wmctrl exa languagetool
 #+END_SRC
 
 Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
 
 ***** Ubuntu
 #+BEGIN_SRC shell
-sudo apt install mplayer clang-format wmctrl direnv
+# Install linuxbrew
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+# Then follow the macos installaion guide except the Cask part
 #+END_SRC
 
 - For vterm
 #+BEGIN_SRC shell
+brew install cmake
 sudo apt install libvterm-dev libtool-bin
 #+END_SRC
 
@@ -125,7 +128,7 @@ sudo pacman --needed --noconfirm -S go
 # python
 # for msplys M-x lsp-python-ms-update-server, and remove `lsp-python-ms` from `packages.el`->disable-packages!
 # for pyls, anaconda pip fails on Arch Linux. I need to use system pip (/usr/bin/pip3) instead
-pip3 install --upgrade 'python-language-server[all]' pyls-mypy pyls-isort
+pip3 install --user --upgrade 'python-language-server[all]' pyls-mypy pyls-isort
 
 # Bash
 npm i -g bash-language-server
