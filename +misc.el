@@ -17,6 +17,10 @@
 (after! ssh-deploy
   (setq ssh-deploy-automatically-detect-remote-changes 1))
 
+(use-package! clipetty
+  :defer t
+  :hook (after-init . global-clipetty-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; NAVIGATION
