@@ -47,11 +47,9 @@
 
 (use-package! tmux-pane
   :defer t
-  :init
+  :config
   (defvar my-tmux-pane-mode-map
     (let ((map (make-sparse-keymap)))
-      (define-key map (kbd "C-x ]")
-        (lambda () (interactive) (tmux-pane--windmove "last"  "tmux select-pane -l")))
       (define-key map (kbd "C-x k")
         (lambda () (interactive) (tmux-pane--windmove "up"  "tmux select-pane -U")))
       (define-key map (kbd "C-x j")
@@ -59,6 +57,14 @@
       (define-key map (kbd "C-x h")
         (lambda () (interactive) (tmux-pane--windmove "left" "tmux select-pane -L")))
       (define-key map (kbd "C-x l")
+        (lambda () (interactive) (tmux-pane--windmove "right" "tmux select-pane -R")))
+      (define-key map (kbd "C-x C-k")
+        (lambda () (interactive) (tmux-pane--windmove "up"  "tmux select-pane -U")))
+      (define-key map (kbd "C-x C-j")
+        (lambda () (interactive) (tmux-pane--windmove "down"  "tmux select-pane -D")))
+      (define-key map (kbd "C-x C-h")
+        (lambda () (interactive) (tmux-pane--windmove "left" "tmux select-pane -L")))
+      (define-key map (kbd "C-x C-l")
         (lambda () (interactive) (tmux-pane--windmove "right" "tmux select-pane -R")))
       map))
 
