@@ -45,6 +45,11 @@
   (push 'prodigy-mode evil-snipe-disabled-modes))
 
 
+(use-package! tmux-pane
+  :defer t
+  :hook (after-init . tmux-pane-mode))
+
+
 (use-package! imenu-list
   :defer t
   :config
