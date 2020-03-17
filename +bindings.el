@@ -141,7 +141,8 @@
         :desc "Project run Vterm"     "S" #'+vterm/here
         :desc "Toggle eshell popup"   "e" #'+eshell/toggle
         :desc "Project run Eshell"    "E" #'projectile-run-eshell
-        :desc "Youdao dictionary"     "y" #'youdao-dictionary-search-at-point-tooltip
+        :desc "Youdao dictionary"     "y" (if (display-graphic-p) #'youdao-dictionary-search-at-point-tooltip
+                                            #'youdao-dictionary-search-at-point)
         :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
         :desc "Docker open apps"      ";" #'+docker/reveal-in-apps
         (:when IS-MAC
