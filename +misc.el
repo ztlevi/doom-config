@@ -19,6 +19,7 @@
 
 (use-package! clipetty
   :defer t
+  :unless (display-graphic-p)
   :hook (after-init . global-clipetty-mode))
 
 
