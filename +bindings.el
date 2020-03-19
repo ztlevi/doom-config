@@ -259,6 +259,7 @@
    :localleader
    :map python-mode-map
    :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
+   :desc "Copy pdb breakpoint" "B" #'+python/copy-pdb-breakpoint-of-current-line
    (:prefix ("i" . "Import")
      :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
      :desc "Isort buffer"    "s" #'python-isort-autosave-mode

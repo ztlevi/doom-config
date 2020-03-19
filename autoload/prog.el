@@ -155,6 +155,14 @@
   (+python/annotate-pdb))
 
 ;;;###autoload
+(defun +python/copy-pdb-breakpoint-of-current-line ()
+  "Copy a pdb like breakpoint on the current line."
+  (interactive)
+  (kill-new
+   (concat "b " (file-relative-name (buffer-file-name) (doom-project-root))
+           ":" (number-to-string (line-number-at-pos)))))
+
+;;;###autoload
 (defun +python/autoflake-remove-imports ()
   "Remove unused imports."
   (interactive)
