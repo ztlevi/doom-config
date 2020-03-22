@@ -62,8 +62,7 @@ git clone https://github.com/hlissner/doom-emacs -b develop ~/.emacs.d
 # Clone my config
 git clone https://github.com/ztlevi/doom-config ~/.doom.d
 
-cd ~/.emacs.d
-make quickstart
+~/.emacs.d/bin/doom install
 #+END_SRC
 ** Step3: Dependencies and Configuration
 This Emacs configuration is written for Emacs 25.1+ on Mac OS X 10.11+ and Linux Arch. Windows users may need to tweak the config for themselves.
