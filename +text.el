@@ -57,13 +57,13 @@
   (advice-add #'org-schedule :around #'advise-org-default-time))
 
 
-(use-package! org-wild-notifier
-  :defer t
-  :init
-  (add-hook 'doom-after-init-modules-hook #'org-wild-notifier-mode t)
-  :config
-  (setq org-wild-notifier-alert-time 5
-        alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
+;; (use-package! org-wild-notifier
+;;   :defer t
+;;   :init
+;;   (add-hook 'doom-after-init-modules-hook #'org-wild-notifier-mode t)
+;;   :config
+;;   (setq org-wild-notifier-alert-time 5
+;;         alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
 
 
 (after! ox-pandoc
