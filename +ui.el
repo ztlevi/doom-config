@@ -4,8 +4,8 @@
 
 (when (display-graphic-p)
   (cond (IS-MAC
-         (setq doom-font (font-spec :family "Operator Mono Lig" :size 16)
-               doom-big-font (font-spec :family "Operator Mono Lig" :size 22)
+         (setq doom-font (font-spec :family "Operator Mono Lig" :size 14)
+               doom-big-font (font-spec :family "Operator Mono Lig" :size 20)
                doom-modeline-height 32))
         (IS-LINUX
          (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
