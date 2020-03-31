@@ -278,16 +278,6 @@
         lsp-ui-doc-max-width 100
         lsp-ui-doc-position 'at-point))
 
-(use-package! lsp-treemacs
-  :defer t
-  :config
-  (lsp-treemacs-sync-mode 1))
-
-(use-package! lsp-treemacs
-  :defer t
-  :config
-  (lsp-treemacs-sync-mode 1))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEBUG & RUN

@@ -106,6 +106,8 @@
         "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
         :desc "Toggle Comment"         "/" #'doom/toggle-comment-region-or-line
+        :desc "Treemacs symbols"       "i" #'lsp-treemacs-symbols
+        :desc "LSP organize imports"   "I" #'lsp-organize-imports
         :desc "Treemacs references"    "D" #'lsp-treemacs-references
         :desc "Cspell check buffer"    "c" #'cspell-check-buffer
         :desc "Cspell check directory" "C" #'cspell-check-HEAD)
@@ -134,7 +136,7 @@
         :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
         :desc "Kill ring"             "k" #'helm-show-kill-ring
-        :desc "Treemacs symbols"      "i" #'lsp-treemacs-symbols
+        :desc "Imenu list"            "i" #'imenu-list
         :desc "Open link"             "x" #'link-hint-open-link
         :desc "Open link at point"    "X" #'link-hint-open-link-at-point
         :desc "Vterm"                 "s" #'+vterm/toggle
