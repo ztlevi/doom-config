@@ -52,6 +52,7 @@
   `(flyspell-duplicate :underline ,(doom-color 'orange))
   '(flymake-warning :underline nil)
   '(flycheck-warning :underline nil)
+  `(rime-default-face :background ,(doom-lighten (doom-color 'red) 0.85))
   `(ein:cell-input-area :background ,(doom-lighten (doom-color 'red) 0.85))
   `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
 

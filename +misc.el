@@ -24,6 +24,7 @@
   :bind
   ;; C-\ to toggle-input-method
   ;; C-` to toggle
+  ;; , and . to page up and down
   (:map rime-mode-map
     ;; open rime menu
     ("C-`" . 'rime-send-keybinding))
