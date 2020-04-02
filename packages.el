@@ -26,6 +26,7 @@
 (package! imenu-list)
 (package! tmux-pane)
 (package! clipetty)
+(package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))

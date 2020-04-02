@@ -8,6 +8,58 @@
             ((executable-find "google-chrome") "google-chrome")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; INPUT METHOD
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package! rime
+  :custom
+  (default-input-method "rime")
+  (rime-show-candidate 'posframe)
+  (rime-disable-predicates
+   '(rime-predicate-evil-mode-p
+     rime-predicate-after-alphabet-char-p
+     rime-predicate-prog-in-code-p))
+  :bind
+  ;; C-\ to toggle-input-method
+  (:map rime-mode-map
+    ;; open rime menu
+    ("C-`" . 'rime-send-keybinding)))
+
+(after! doom-modeline
+  (set-face-attribute 'rime-indicator-face nil
+                      :foreground 'unspecified
+                      :inherit 'doom-modeline-buffer-major-mode)
+  (set-face-attribute 'rime-indicator-dim-face nil
+                      :foreground 'unspecified
+                      :inherit 'doom-modeline-buffer-minor-mode)
+
+  (doom-modeline-def-segment input-method
+    "Define the current input method properties."
+    (propertize (cond (current-input-method
+                       (concat (doom-modeline-spc)
+                               current-input-method-title
+                               (doom-modeline-spc)))
+                      ((and (bound-and-true-p evil-local-mode)
+                            (bound-and-true-p evil-input-method))
+                       (concat
+                        (doom-modeline-spc)
+                        (nth 3 (assoc default-input-method input-method-alist))
+                        (doom-modeline-spc)))
+                      (t ""))
+                'face (if (doom-modeline--active)
+                          (or (get-text-property 0 'face (rime-lighter))
+                              'doom-modeline-buffer-major-mode)
+                        'mode-line-inactive)
+                'help-echo (concat
+                            "Current input method: "
+                            current-input-method
+                            "\n\
+mouse-2: Disable input method\n\
+mouse-3: Describe current input method")
+                'mouse-face 'mode-line-highlight
+                'local-map mode-line-input-method-map)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SSH
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
