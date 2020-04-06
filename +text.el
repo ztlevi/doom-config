@@ -120,3 +120,9 @@
 
 (after! so-long
   (setq so-long-target-modes (delete 'text-mode so-long-target-modes)))
+
+
+(use-package! adoc-mode
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode)))

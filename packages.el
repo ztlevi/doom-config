@@ -8,19 +8,22 @@
                    lsp-python-ms
                    pyimport)
 
+;; text
+;; (package! org-wild-notifier)
+(package! adoc-mode)
+(package! tldr)
+(package! edit-indirect)
+(package! blog-admin :recipe (:host github :repo "codefalling/blog-admin"))
+(package! youdao-dictionary)
+(package! link-hint)
+(package! symbol-overlay)
+
 ;; misc
 (package! helm)
 (package! dired-narrow)
-(package! edit-indirect)
 (package! atomic-chrome)
-(package! link-hint)
 (package! git-link)
-(package! symbol-overlay)
-(package! tldr)
-(package! blog-admin :recipe (:host github :repo "codefalling/blog-admin"))
-(package! youdao-dictionary)
 (package! wucuo)
-;; (package! org-wild-notifier)
 (package! vterm-toggle :recipe (:host github :repo "jixiuf/vterm-toggle"))
 (package! counsel-etags)
 (package! imenu-list)
