@@ -218,6 +218,7 @@
      "f" #'counsel-find-file
      "F" #'dired-narrow                 ; use `; g` to quit dired-narrow
      "M-g" #'ranger-go
+     "yr" #'ranger-copy-relative-path
      "C-TAB" #'ranger-next-tab
      "C-S-TAB" #'ranger-prev-tab
      "U" #'dired-unmark-all-files

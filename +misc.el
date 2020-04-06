@@ -169,6 +169,12 @@ mouse-3: Describe current input method")
         ranger-show-hidden 'format
         ranger-deer-show-details nil)
 
+  (defun ranger-copy-relative-path ()
+    "Copy the current file path relative to `default-directory path."
+    (interactive)
+    (let ((current-prefix-arg 1))
+      (call-interactively 'dired-copy-filename-as-kill)))
+
   (defun ranger-close-and-kill-inactive-buffers ()
     "ranger close current buffer and kill inactive ranger buffers"
     (interactive)
