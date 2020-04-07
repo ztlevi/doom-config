@@ -393,6 +393,10 @@
      [backtab]   nil
      "C-j"   #'company-show-location
      "C-i"   #'company-complete-selection))
+ (:after adoc-mode
+   (:map adoc-mode-map
+     :localleader
+     :desc "adoc preview" "p" (λ! (browse-url buffer-file-name))))
  (:after vterm
    (:map vterm-mode-map
      "M-e" nil
