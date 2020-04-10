@@ -75,11 +75,11 @@
     `(font-lock-comment-face :foreground ,(doom-color 'base6))
     `(font-lock-doc-face :foreground ,(doom-color 'base6))))
 
-(when IS-MAC
-  ;; enable ligatures support
-  ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-  (ignore-errors
-    (mac-auto-operator-composition-mode)))
+;; (when IS-MAC
+;;   ;; enable ligatures support
+;;   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
+;;   (ignore-errors
+;;     (mac-auto-operator-composition-mode)))
 
 (after! ibuffer
   ;; set ibuffer name column width
