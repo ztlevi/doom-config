@@ -155,12 +155,10 @@ mouse-3: Describe current input method")
 
 ;; Use ) key to toggle it
 (after! dired
-  (remove-hook 'dired-after-readin-hook '+dired-enable-git-info-h)
-
   ;; Rust version ls
   (when-let (exa (executable-find "exa"))
     (setq insert-directory-program exa)
-    (setq dired-listing-switches (string-join (list "-aBhl" "--group-directories-first") " ")))
+    (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " ")))
   )
 
 (use-package! ranger
@@ -185,11 +183,6 @@ mouse-3: Describe current input method")
     "Interactively disable ranger-mode."
     (interactive)
     (ranger-revert)))
-
-
-(after! all-the-icons-dired
-  (advice-add 'wdired-change-to-wdired-mode :before (λ! (all-the-icons-dired-mode -1)))
-  (advice-add 'wdired-finish-edit :after (λ! (all-the-icons-dired-mode +1))))
 
 
 (after! dash-docs
