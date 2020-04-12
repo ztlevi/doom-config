@@ -76,11 +76,6 @@ mouse-3: Describe current input method")
 (after! ssh-deploy
   (setq ssh-deploy-automatically-detect-remote-changes 1))
 
-(use-package! clipetty
-  :defer t
-  :unless (display-graphic-p)
-  :hook (after-init . global-clipetty-mode))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; NAVIGATION

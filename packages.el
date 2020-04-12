@@ -28,7 +28,6 @@
 (package! counsel-etags)
 (package! imenu-list)
 (package! tmux-pane)
-(package! clipetty)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 
 ;; programming
