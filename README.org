@@ -76,7 +76,7 @@ Install dependencies including search tools, utils, and linters.
 # search tool
 brew install ripgrep grep exa
 # utils
-brew install fd sqlite hub gpg2 coreutils ctags gnu-tar mplayer direnv
+brew install fd sqlite hub gpg2 coreutils ctags gnu-tar mplayer direnv libtool
 # language
 brew install shellcheck aspell languagetool clang-format
 # Cask
