@@ -83,7 +83,6 @@
  (:prefix "C-x"
    :n "e"  #'pp-eval-last-sexp)
  (:prefix "C-c"
-   :ni "/" #'company-files
    :desc "Text properties at point" :nmv "f" (λ! (message "%S" (text-properties-at (point))))))
 
 ;; leader/localleader is not compatible with :gnvmi
@@ -181,7 +180,8 @@
         "K" #'dap-delete-all-sessions
         "S" #'realgud-short-key-mode)
       (:prefix "t"                      ; toggle
-        "c" #'centered-window-mode
+        "c" #'rainbow-mode
+        "C" #'centered-window-mode
         "d" #'toggle-debug-on-error
         "D" #'+my/realtime-elisp-doc
         "L" #'toggle-truncate-lines
