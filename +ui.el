@@ -34,6 +34,8 @@
 ;; disable line-numbers by default
 (setq display-line-numbers-type nil)
 
+(defface breakpoint-enabled '((t)) "Breakpoint face.")
+
 ;; my custom faces
 (custom-set-faces!
   '(variable-pitch :family nil)
