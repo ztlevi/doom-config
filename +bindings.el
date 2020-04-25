@@ -195,7 +195,8 @@
         "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
         :desc "Comments"  "c" #'counsel-imenu-comments
-        :desc "Search project with regex" "P" #'+default/search-project-regex
+        :desc "Search project"            "p" #'color-rg-search-project
+        :desc "Search project customly"   "P" #'color-rg-customized-search
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
@@ -402,6 +403,13 @@
    (:map vterm-mode-map
      "M-e" nil
      "M-w" #'+workspace/close-window-or-workspace))
+ (:after color-rg
+   (:map color-rg-mode-map
+     "j" nil "k" nil "l" nil "h" nil
+     "C-k" #'color-rg-jump-prev-keyword
+     "C-j" #'color-rg-jump-next-keyword
+     :nv "gr" #'color-rg-rerun
+     ))
  (:after term
    (:map term-raw-map
      :i "M-v" #'term-paste)))

@@ -29,6 +29,7 @@
 (package! imenu-list)
 (package! tmux-pane)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
+(package! color-rg :recipe (:host github :repo "manateelazycat/color-rg"))
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
