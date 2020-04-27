@@ -191,13 +191,13 @@ repository root."
 (defun +my/markdown-copy-fix ()
   (interactive)
   (let ((case-fold-search nil))
-    (dolist (pair '(("<pre>" . "```python")
+    (dolist (pair '(("<pre.*>" . "```python")
                     ("<\/pre>" . "```")
                     ("\\*" . "*")
                     ("\\#" . "#")))
       (goto-char (point-min))
       ;; if you need regexp, use search-forward-regexp
-      (while (search-forward (car pair) nil t)
+      (while (re-search-forward (car pair) nil t)
         (replace-match (cdr pair))))))
 
 
