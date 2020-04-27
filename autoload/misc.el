@@ -50,8 +50,8 @@ selected, then the current line."
 (defun +my/search-project ()
   (interactive)
   (if current-prefix-arg
-      (+default/search-project)
-    (color-rg-search-project)))
+      (color-rg-search-project)
+    (+default/search-project)))
 
 ;;;###autoload
 (defun +ivy/project-search-with-hidden-files ()
@@ -61,26 +61,26 @@ selected, then the current line."
 
 ;;;###autoload
 (defun +ivy--counsel-file-jump-use-fd-rg-specific-files (args)
-    "Change `counsel-file-jump' to use fd or ripgrep, if they are available."
-    (cl-destructuring-bind (find-program . args)
-        (cond ((executable-find doom-projectile-fd-binary)
-               (cons doom-projectile-fd-binary (list "-t" "f" "-E" ".git" "-e" "py" "-e" "yaml" "-e" "md")))
-              ((executable-find "rg")
-               (split-string (format counsel-rg-base-command "--files --no-messages") " " t))
-              ((cons find-program args)))
-      (unless (listp args)
-        (user-error "`counsel-file-jump-args' is a list now, please customize accordingly."))
-      (counsel--call
-       (cons find-program args)
-       (lambda ()
-         (goto-char (point-min))
-         (let ((offset (if (member find-program (list "rg" doom-projectile-fd-binary)) 0 2))
-               files)
-           (while (< (point) (point-max))
-             (push (buffer-substring
-                    (+ offset (line-beginning-position)) (line-end-position)) files)
-             (forward-line 1))
-           (nreverse files))))))
+  "Change `counsel-file-jump' to use fd or ripgrep, if they are available."
+  (cl-destructuring-bind (find-program . args)
+      (cond ((executable-find doom-projectile-fd-binary)
+             (cons doom-projectile-fd-binary (list "-t" "f" "-E" ".git" "-e" "py" "-e" "yaml" "-e" "md")))
+            ((executable-find "rg")
+             (split-string (format counsel-rg-base-command "--files --no-messages") " " t))
+            ((cons find-program args)))
+    (unless (listp args)
+      (user-error "`counsel-file-jump-args' is a list now, please customize accordingly."))
+    (counsel--call
+     (cons find-program args)
+     (lambda ()
+       (goto-char (point-min))
+       (let ((offset (if (member find-program (list "rg" doom-projectile-fd-binary)) 0 2))
+             files)
+         (while (< (point) (point-max))
+           (push (buffer-substring
+                  (+ offset (line-beginning-position)) (line-end-position)) files)
+           (forward-line 1))
+         (nreverse files))))))
 
 ;;;###autoload
 (defun +ivy/project-search-specific-files (&optional initial-input initial-directory)

@@ -225,19 +225,22 @@ mouse-3: Describe current input method")
   (setq counsel-etags-update-interval 60)
   (add-to-list 'counsel-etags-ignore-directories "build"))
 
-(use-package! color-rg
-  :config
-  ;; https://emacs.stackexchange.com/a/10588/22102
-  (evil-make-overriding-map color-rg-mode-map 'normal)
-  ;; force update evil keymaps after git-timemachine-mode loaded
-  (add-hook 'color-rg-mode-hook #'evil-normalize-keymaps)
+;; FIX: exec-path-from-shell is required for mac, make it optional
+(when IS-MAC
+  (ignore-errors
+    (use-package! color-rg
+      :config
+      ;; https://emacs.stackexchange.com/a/10588/22102
+      (evil-make-overriding-map color-rg-mode-map 'normal)
+      ;; force update evil keymaps after git-timemachine-mode loaded
+      (add-hook 'color-rg-mode-hook #'evil-normalize-keymaps)
 
-  (custom-set-faces!
-    `(color-rg-font-lock-match :foreground ,(doom-color 'red))
-    `(color-rg-font-lock-header-line-text :foreground ,(doom-color 'dark-cyan))
-    `(color-rg-font-lock-function-location :foreground ,(doom-color 'magenta))
-    `(color-rg-font-lock-header-line-keyword :foreground ,(doom-color 'magenta))
-    `(color-rg-font-lock-header-line-edit-mode :foreground ,(doom-color 'magenta))))
+      (custom-set-faces!
+        `(color-rg-font-lock-match :foreground ,(doom-color 'red))
+        `(color-rg-font-lock-header-line-text :foreground ,(doom-color 'dark-cyan))
+        `(color-rg-font-lock-function-location :foreground ,(doom-color 'magenta))
+        `(color-rg-font-lock-header-line-keyword :foreground ,(doom-color 'magenta))
+        `(color-rg-font-lock-header-line-edit-mode :foreground ,(doom-color 'magenta))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
