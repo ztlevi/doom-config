@@ -45,6 +45,14 @@ selected, then the current line."
      (interactive)
      (find-file ,(format "/sshx:%s:" ip))))
 
+
+;;;###autoload
+(defun +my/search-project ()
+  (interactive)
+  (if current-prefix-arg
+      (+default/search-project)
+    (color-rg-search-project)))
+
 ;;;###autoload
 (defun +ivy/project-search-with-hidden-files ()
   (interactive)

@@ -195,7 +195,7 @@
         "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
         :desc "Comments"  "c" #'counsel-imenu-comments
-        :desc "Search project"            "p" #'color-rg-search-project
+        :desc "Search project"            "p" #'+my/search-project
         :desc "Search project customly"   "P" #'color-rg-customized-search
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
