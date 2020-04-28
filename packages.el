@@ -29,8 +29,6 @@
 (package! imenu-list)
 (package! tmux-pane)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
-(when IS-MAC
-  (package! exec-shell-from-path))
 (package! color-rg :recipe (:host github :repo "manateelazycat/color-rg"))
 (package! snails :recipe (:host github :repo "manateelazycat/snails"))
 (package! fuz :recipe (:host github :repo "rustify-emacs/fuz.el"))

@@ -227,6 +227,7 @@ mouse-3: Describe current input method")
 
 
 (use-package! color-rg
+  :custom (color-rg-mac-load-path-from-shell nil)
   :config
   ;; https://emacs.stackexchange.com/a/10588/22102
   (evil-make-overriding-map color-rg-mode-map 'normal)
@@ -243,6 +244,7 @@ mouse-3: Describe current input method")
 
 (when (display-graphic-p)
   (use-package! snails
+    :custom (snails-use-exec-path-from-shell nil)
     :load-path  "~/.emacs.d/.local/straight/repos/snails"
     :config
     (setq snails-input-buffer-text-scale 1)
