@@ -225,22 +225,46 @@ mouse-3: Describe current input method")
   (setq counsel-etags-update-interval 60)
   (add-to-list 'counsel-etags-ignore-directories "build"))
 
-;; FIX: exec-path-from-shell is required for mac, make it optional
-(when IS-MAC
-  (ignore-errors
-    (use-package! color-rg
-      :config
-      ;; https://emacs.stackexchange.com/a/10588/22102
-      (evil-make-overriding-map color-rg-mode-map 'normal)
-      ;; force update evil keymaps after git-timemachine-mode loaded
-      (add-hook 'color-rg-mode-hook #'evil-normalize-keymaps)
 
-      (custom-set-faces!
-        `(color-rg-font-lock-match :foreground ,(doom-color 'red))
-        `(color-rg-font-lock-header-line-text :foreground ,(doom-color 'dark-cyan))
-        `(color-rg-font-lock-function-location :foreground ,(doom-color 'magenta))
-        `(color-rg-font-lock-header-line-keyword :foreground ,(doom-color 'magenta))
-        `(color-rg-font-lock-header-line-edit-mode :foreground ,(doom-color 'magenta))))))
+(use-package! color-rg
+  :config
+  ;; https://emacs.stackexchange.com/a/10588/22102
+  (evil-make-overriding-map color-rg-mode-map 'normal)
+  ;; force update evil keymaps after git-timemachine-mode loaded
+  (add-hook 'color-rg-mode-hook #'evil-normalize-keymaps)
+
+  (custom-set-faces!
+    `(color-rg-font-lock-match :foreground ,(doom-color 'red))
+    `(color-rg-font-lock-header-line-text :foreground ,(doom-color 'dark-cyan))
+    `(color-rg-font-lock-function-location :foreground ,(doom-color 'magenta))
+    `(color-rg-font-lock-header-line-keyword :foreground ,(doom-color 'magenta))
+    `(color-rg-font-lock-header-line-edit-mode :foreground ,(doom-color 'magenta))))
+
+
+(when (display-graphic-p)
+  (use-package! snails
+    :load-path  "~/.emacs.d/.local/straight/repos/snails"
+    :config
+    (setq snails-input-buffer-text-scale 1)
+    (set-evil-initial-state!
+      '(snails-mode)
+      'insert)
+    (map!
+     (:map snails-mode-map
+       :nvi "C-g" #'snails-quit
+       :nvi "ESC ESC ESC" #'snail-quit
+       :nvi "C-n" #'snails-select-next-item
+       :nvi "C-p" #'snails-select-prev-item
+       :nvi "C-v" #'snails-select-next-backend
+       :nvi "M-v" #'snails-select-prev-backend
+       :nvi "RET" #'snails-candidate-do
+       :nvi "C-RET" #'snails-candiate-alternate-do))
+    )
+
+  (use-package! fuz
+    :config
+    (unless (require 'fuz-core nil t)
+      (fuz-build-and-load-dymod))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

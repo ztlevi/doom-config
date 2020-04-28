@@ -87,7 +87,7 @@
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
-      :desc "Jump to bookmark" "RET" #'helm-bookmarks
+      :desc "Snails" :nmv "RET" #'snails
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
@@ -195,6 +195,7 @@
         "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
         :desc "Comments"  "c" #'counsel-imenu-comments
+        :desc "Jump to bookmark" "m" #'helm-bookmarks
         :desc "Search project"            "p" #'+my/search-project
         :desc "Search project customly"   "P" #'color-rg-customized-search
         :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
