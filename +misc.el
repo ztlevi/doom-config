@@ -86,8 +86,6 @@ mouse-3: Describe current input method")
       evil-vsplit-window-right t
       evil-emacs-state-cursor '(box "deeppink"))
 
-(use-package! evil-nerd-commenter :defer t)
-
 
 (after! evil
   (evil-define-text-object evil-inner-buffer (count &optional beg end type)
