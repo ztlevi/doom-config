@@ -83,7 +83,8 @@ mouse-3: Describe current input method")
 
 (setq evil-cross-lines t
       evil-split-window-below t
-      evil-vsplit-window-right t)
+      evil-vsplit-window-right t
+      evil-emacs-state-cursor '(box "deeppink"))
 
 (use-package! evil-nerd-commenter :defer t)
 
