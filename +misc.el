@@ -159,7 +159,7 @@ mouse-3: Describe current input method")
     (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " ")))
   )
 
-(after! ranger
+(after! (:and ranger dired)
   (setq ranger-hide-cursor t
         ranger-show-hidden 'format
         ranger-deer-show-details nil)
