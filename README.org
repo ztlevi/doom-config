@@ -74,7 +74,7 @@ Install dependencies including search tools, utils, and linters.
 ***** MacOS
 #+BEGIN_SRC sh :tangle (if (doom-system-os 'macos) "yes")
 # search tool
-brew install ripgrep grep exa zstd
+brew install ripgrep grep exa zstd ctags
 # utils
 brew install fd sqlite hub gpg2 coreutils ctags gnu-tar mplayer direnv libtool
 # language
@@ -85,7 +85,7 @@ brew cask install xquartz
 
 ***** Arch Linux
 #+BEGIN_SRC sh :dir /sudo:: :tangle (if (doom-system-os 'arch) "yes")
-sudo pacman --needed --noconfirm -S sqlite ripgrep fd wmctrl exa languagetool zstd
+sudo pacman --needed --noconfirm -S sqlite ripgrep fd wmctrl exa languagetool zstd ctags
 #+END_SRC
 
 Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]
