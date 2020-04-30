@@ -64,7 +64,7 @@ selected, then the current line."
   "Change `counsel-file-jump' to use fd or ripgrep, if they are available."
   (cl-destructuring-bind (find-program . args)
       (cond ((executable-find doom-projectile-fd-binary)
-             (cons doom-projectile-fd-binary (list "-t" "f" "-E" ".git" "-e" "py" "-e" "yaml" "-e" "md")))
+             (cons doom-projectile-fd-binary (list "-t" "f" "-E" ".git" "-e" "py" "-e" "yaml" "-e" "md" "-e" "adoc")))
             ((executable-find "rg")
              (split-string (format counsel-rg-base-command "--files --no-messages") " " t))
             ((cons find-program args)))
