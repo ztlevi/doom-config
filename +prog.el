@@ -88,6 +88,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package! bazel-mode
+  :defer t
+  :commands bazel-mode
   :init
   (add-to-list 'auto-mode-alist '("BUILD\\(\\.bazel\\)?\\'" . bazel-mode))
   (add-to-list 'auto-mode-alist '("WORKSPACE\\'" . bazel-mode))

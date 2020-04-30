@@ -12,6 +12,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package! rime
+  :defer t
   :custom
   (rime-user-data-dir "~/.config/fcitx/rime")
   (default-input-method "rime")
@@ -29,42 +30,45 @@
     ;; open rime menu
     ("C-`" . 'rime-send-keybinding))
   (:map rime-active-mode-map
-    ("C-j" . 'rime-inline-ascii)))
+    ("C-j" . 'rime-inline-ascii))
+  :config
+  (after! doom-modeline
+    (set-face-attribute 'rime-indicator-face nil
+                        :foreground 'unspecified
+                        :inherit 'doom-modeline-buffer-major-mode)
+    (set-face-attribute 'rime-indicator-dim-face nil
+                        :foreground 'unspecified
+                        :inherit 'doom-modeline-buffer-minor-mode)
 
-
-(after! doom-modeline
-  (set-face-attribute 'rime-indicator-face nil
-                      :foreground 'unspecified
-                      :inherit 'doom-modeline-buffer-major-mode)
-  (set-face-attribute 'rime-indicator-dim-face nil
-                      :foreground 'unspecified
-                      :inherit 'doom-modeline-buffer-minor-mode)
-
-  (doom-modeline-def-segment input-method
-    "Define the current input method properties."
-    (propertize (cond (current-input-method
-                       (concat (doom-modeline-spc)
-                               current-input-method-title
-                               (doom-modeline-spc)))
-                      ((and (bound-and-true-p evil-local-mode)
-                            (bound-and-true-p evil-input-method))
-                       (concat
-                        (doom-modeline-spc)
-                        (nth 3 (assoc default-input-method input-method-alist))
-                        (doom-modeline-spc)))
-                      (t ""))
-                'face (if (doom-modeline--active)
-                          (or (get-text-property 0 'face (rime-lighter))
-                              'doom-modeline-buffer-major-mode)
-                        'mode-line-inactive)
-                'help-echo (concat
-                            "Current input method: "
-                            current-input-method
-                            "\n\
+    (doom-modeline-def-segment input-method
+      "Define the current input method properties."
+      (propertize (cond (current-input-method
+                         (concat (doom-modeline-spc)
+                                 current-input-method-title
+                                 (doom-modeline-spc)))
+                        ((and (bound-and-true-p evil-local-mode)
+                              (bound-and-true-p evil-input-method))
+                         (concat
+                          (doom-modeline-spc)
+                          (nth 3 (assoc default-input-method input-method-alist))
+                          (doom-modeline-spc)))
+                        (t ""))
+                  'face (if (doom-modeline--active)
+                            (or (get-text-property 0 'face (rime-lighter))
+                                'doom-modeline-buffer-major-mode)
+                          'mode-line-inactive)
+                  'help-echo (concat
+                              "Current input method: "
+                              current-input-method
+                              "\n\
 mouse-2: Disable input method\n\
 mouse-3: Describe current input method")
-                'mouse-face 'mode-line-highlight
-                'local-map mode-line-input-method-map)))
+                  'mouse-face 'mode-line-highlight
+                  'local-map mode-line-input-method-map)))
+  )
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SSH
@@ -155,8 +159,7 @@ mouse-3: Describe current input method")
     (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " ")))
   )
 
-(use-package! ranger
-  :config
+(after! ranger
   (setq ranger-hide-cursor t
         ranger-show-hidden 'format
         ranger-deer-show-details nil)
@@ -224,7 +227,9 @@ mouse-3: Describe current input method")
 
 
 (use-package! color-rg
+  :defer t
   :custom (color-rg-mac-load-path-from-shell nil)
+  :commands color-rg-search-project
   :config
   ;; https://emacs.stackexchange.com/a/10588/22102
   (evil-make-overriding-map color-rg-mode-map 'normal)
@@ -241,8 +246,10 @@ mouse-3: Describe current input method")
 
 (when (display-graphic-p)
   (use-package! snails
+    :defer t
     :custom (snails-use-exec-path-from-shell nil)
     :load-path  "~/.emacs.d/.local/straight/repos/snails"
+    :commands snails
     :config
     (setq snails-input-buffer-text-scale 1)
     (set-evil-initial-state!
@@ -261,6 +268,7 @@ mouse-3: Describe current input method")
     )
 
   (use-package! fuz
+    :defer t
     :config
     (unless (require 'fuz-core nil t)
       (fuz-build-and-load-dymod))))
@@ -365,10 +373,7 @@ mouse-3: Describe current input method")
   (add-to-list 'browse-at-remote-remote-type-domains '("github.argo.ai" . "github")))
 
 
-(use-package! magit-todos
-  :init
-  (setq magit-todos-ignored-keywords nil)
-  :config
+(after! magit-todos
   (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
 
 

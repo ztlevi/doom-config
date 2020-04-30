@@ -119,7 +119,8 @@
         :desc "Deer"     "j" #'deer)
       (:prefix "g"                      ; git
         "s" nil
-        :desc "Smerge" "s" smerge-basic-map
+        (:after smerge-mode
+          :desc "Smerge" "s" smerge-basic-map)
         :desc "Browse file or region" "oo" #'git-link
         :desc "Magit browse commit"   "oc" #'+vc/git-browse-commit
         :desc "Magit wip worktree"    "w"  #'magit-wip-log-worktree
