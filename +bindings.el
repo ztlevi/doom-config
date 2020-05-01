@@ -177,6 +177,7 @@
         "b" #'dap-breakpoint-toggle
         "h" #'dap-hydra
         "l" #'dap-ui-locals
+        "q" #'dap-disconnect
         "s" #'dap-ui-sessions
         "k" #'dap-delete-session
         "K" #'dap-delete-all-sessions
