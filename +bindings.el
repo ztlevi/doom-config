@@ -361,7 +361,6 @@
    "<C-return>" #'ivy-immediate-done
    "C-b" nil
    "C-j" #'ivy-call-and-recenter
-   "C-;" #'ivy-avy
    "C-k" #'ivy-kill-line
    "C-v" #'ivy-scroll-up-command
    "A-v" #'ivy-scroll-down-command
