@@ -36,7 +36,7 @@
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! import-js)
-(package! importmagic)
+;; (package! importmagic)
 (package! py-isort)
 (package! flycheck-mypy)
 (package! flycheck-google-cpplint :recipe (:host github :repo "flycheck/flycheck-google-cpplint"))
