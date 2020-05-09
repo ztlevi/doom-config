@@ -148,6 +148,7 @@
 
 
 (after! lsp-python-ms
+  ;; (set-lsp-priority! 'mspyls 1)
   (setq lsp-python-ms-python-executable-cmd "python3"))
 
 
