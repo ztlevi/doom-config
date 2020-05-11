@@ -169,3 +169,18 @@
   (shell-command
    (concat "autoflake --in-place --remove-all-unused-imports " (buffer-file-name)))
   (revert-buffer-no-confirm))
+
+;;;###autoload
+(defun +python/yank-module-import ()
+  "Copy the current module's name to the kill ring."
+  (interactive)
+  (if-let (import (string-join `("from"
+                                 ,(replace-regexp-in-string
+                                   "/" "\."
+                                   (file-relative-name (or (file-name-sans-extension (buffer-file-name))
+                                                           (bound-and-true-p list-buffers-directory))
+                                                       (doom-project-root)))
+                                 "import" ,(which-function))
+                               " "))
+      (message (kill-new (abbreviate-file-name import)))
+    (error "Couldn't find filename in current buffer")))
