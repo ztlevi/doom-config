@@ -358,3 +358,12 @@ you're done. This can be called from an external shell script."
           (set-frame-parameter frame 'old-fallback-buffer doom-fallback-buffer-name)
           (setq doom-fallback-buffer-name "*scratch*")
           (add-hook 'delete-frame-functions #'cleanup-scratch-frame))))))
+
+;;;###autoload
+(defun +default/yank-relative-buffer-filename ()
+  "Copy the current buffer's path to the kill ring."
+  (interactive)
+  (if-let (filename (file-relative-name (or buffer-file-name (bound-and-true-p list-buffers-directory))
+                                        (doom-project-root)))
+      (message (kill-new (abbreviate-file-name filename)))
+    (error "Couldn't find filename in current buffer")))
