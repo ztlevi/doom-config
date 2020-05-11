@@ -27,10 +27,10 @@
   ;; C-` to toggle
   ;; , and . to page up and down
   (:map rime-mode-map
-    ;; open rime menu
-    ("C-`" . 'rime-send-keybinding))
+   ;; open rime menu
+   ("C-`" . 'rime-send-keybinding))
   (:map rime-active-mode-map
-    ("C-j" . 'rime-inline-ascii))
+   ("C-j" . 'rime-inline-ascii))
   :config
   (after! doom-modeline
     (set-face-attribute 'rime-indicator-face nil
@@ -223,7 +223,22 @@ mouse-3: Describe current input method")
                         'counsel-etags-virtual-update-tags 'append 'local)))
   :config
   (setq counsel-etags-update-interval 60)
-  (add-to-list 'counsel-etags-ignore-directories "build"))
+  (dolist (dir '(".ccls-cache$"
+                 ".mypy_cache$"
+                 ".pytest_cache$"
+                 ".cache$"
+                 ".clwb$"
+                 "_build$"
+                 "__pycache__$"
+                 "bazel-bin$"
+                 "bazel-code$"
+                 "bazel-genfiles$"
+                 "bazel-out$"
+                 "bazel-testlogs$"
+                 "third_party$"
+                 "third-party$"
+                 ))
+    (push dir counsel-etags-ignore-directories)))
 
 
 (use-package! color-rg
@@ -257,14 +272,14 @@ mouse-3: Describe current input method")
       'insert)
     (map!
      (:map snails-mode-map
-       :nvi "C-g" #'snails-quit
-       :nvi "ESC ESC ESC" #'snail-quit
-       :nvi "C-n" #'snails-select-next-item
-       :nvi "C-p" #'snails-select-prev-item
-       :nvi "C-v" #'snails-select-next-backend
-       :nvi "M-v" #'snails-select-prev-backend
-       :nvi "RET" #'snails-candidate-do
-       :nvi "C-RET" #'snails-candiate-alternate-do))
+      :nvi "C-g" #'snails-quit
+      :nvi "ESC ESC ESC" #'snail-quit
+      :nvi "C-n" #'snails-select-next-item
+      :nvi "C-p" #'snails-select-prev-item
+      :nvi "C-v" #'snails-select-next-backend
+      :nvi "M-v" #'snails-select-prev-backend
+      :nvi "RET" #'snails-candidate-do
+      :nvi "C-RET" #'snails-candiate-alternate-do))
     )
 
   (use-package! fuz
