@@ -12,7 +12,7 @@ Javascript, Python, C++, Rust, and Go.
 - [[#features][Features]]
 - [[#configuration][Configuration]]
 - [[#appendix][Appendix]]
-  - [[#commands][Commands]]
+  - [[#ctags-reference][Ctags reference]]
   - [[#hacks][Hacks]]
 
 * Screenshot
@@ -164,8 +164,6 @@ An in-depth list of features, how to use them, and their dependencies.
 How to configure this module, including common problems and how to address them.
 
 * Appendix
-** Commands
-+ A list or table of public commands (and their keybinds) and functions that this module exposes.
-+ A brief description of how to use them
+** [[https://gist.github.com/redguardtoo/b12ddae3b8010a276e9b][Ctags reference]]
 ** Hacks
 + Include a list of ways this module changes default behavior
