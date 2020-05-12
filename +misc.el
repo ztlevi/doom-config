@@ -217,28 +217,11 @@ mouse-3: Describe current input method")
 (use-package! counsel-etags
   :defer t
   :init
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook
-                        'counsel-etags-virtual-update-tags 'append 'local)))
+  (add-hook! 'prog-mode-hook
+    (add-hook! 'after-save-hook
+               :append :local 'counsel-etags-virtual-update-tags))
   :config
-  (setq counsel-etags-update-interval 60)
-  (dolist (dir '(".ccls-cache$"
-                 ".mypy_cache$"
-                 ".pytest_cache$"
-                 ".cache$"
-                 ".clwb$"
-                 "_build$"
-                 "__pycache__$"
-                 "bazel-bin$"
-                 "bazel-code$"
-                 "bazel-genfiles$"
-                 "bazel-out$"
-                 "bazel-testlogs$"
-                 "third_party$"
-                 "third-party$"
-                 ))
-    (push dir counsel-etags-ignore-directories)))
+  (setq counsel-etags-update-interval 60))
 
 
 (use-package! color-rg
