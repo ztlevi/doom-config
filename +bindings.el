@@ -108,6 +108,7 @@
       (:prefix "c"                      ; code
        :desc "Toggle Comment"         "/" #'doom/toggle-comment-region-or-line
        :desc "Treemacs symbols"       "i" #'lsp-treemacs-symbols
+       :desc "Format-all buffer"      "F" #'format-all-buffer
        :desc "LSP organize imports"   "I" #'lsp-organize-imports
        :desc "Treemacs references"    "D" #'lsp-treemacs-references
        :desc "Cspell check buffer"    "c" #'cspell-check-buffer
