@@ -9,7 +9,7 @@
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
-(setq-default fill-column 100
+(setq-default fill-column 120
               delete-trailing-lines t)
 
 ;; Delete the selection when pasting
