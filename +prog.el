@@ -162,8 +162,8 @@
     (when (not (derived-mode-p 'python-mode))
       (error "Isort only works with Python buffers"))
     (if python-isort-autosave-mode
-        (add-hook! 'before-save-hook #'py-isort-before-save nil t)
-      (remove-hook! 'before-save-hook #'py-isort-before-save nil t)))
+        (add-hook! 'before-save-hook :local #'py-isort-before-save)
+      (remove-hook! 'before-save-hook :local #'py-isort-before-save)))
 
   (add-hook! 'python-mode-hook #'python-isort-autosave-mode))
 
