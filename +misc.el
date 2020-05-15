@@ -104,25 +104,26 @@ mouse-3: Describe current input method")
 
 
 (use-package! tmux-pane
+  :unless (display-graphic-p)
   :defer t
   :config
   (defvar my-tmux-pane-mode-map
     (let ((map (make-sparse-keymap)))
-      (define-key map (kbd "C-x k")
+      (define-key map (kbd "C-t k")
         (lambda () (interactive) (tmux-pane--windmove "up"  "tmux select-pane -U")))
-      (define-key map (kbd "C-x j")
+      (define-key map (kbd "C-t j")
         (lambda () (interactive) (tmux-pane--windmove "down"  "tmux select-pane -D")))
-      (define-key map (kbd "C-x h")
+      (define-key map (kbd "C-t h")
         (lambda () (interactive) (tmux-pane--windmove "left" "tmux select-pane -L")))
-      (define-key map (kbd "C-x l")
+      (define-key map (kbd "C-t l")
         (lambda () (interactive) (tmux-pane--windmove "right" "tmux select-pane -R")))
-      (define-key map (kbd "C-x C-k")
+      (define-key map (kbd "C-t C-k")
         (lambda () (interactive) (tmux-pane--windmove "up"  "tmux select-pane -U")))
-      (define-key map (kbd "C-x C-j")
+      (define-key map (kbd "C-t C-j")
         (lambda () (interactive) (tmux-pane--windmove "down"  "tmux select-pane -D")))
-      (define-key map (kbd "C-x C-h")
+      (define-key map (kbd "C-t C-h")
         (lambda () (interactive) (tmux-pane--windmove "left" "tmux select-pane -L")))
-      (define-key map (kbd "C-x C-l")
+      (define-key map (kbd "C-t C-l")
         (lambda () (interactive) (tmux-pane--windmove "right" "tmux select-pane -R")))
       map))
 

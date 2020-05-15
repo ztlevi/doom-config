@@ -26,6 +26,8 @@
  "M-n" #'+default/new-buffer
  "M-N" #'make-frame
  "C-M-f" #'toggle-frame-fullscreen
+ "M-t" #'transpose-words
+ :gn "C-t" nil
  ;; Restore OS undo, save, copy, & paste keys (without cua-mode, because
  ;; it imposes some other functionality and overhead we don't need)
  "M-z" #'undo
