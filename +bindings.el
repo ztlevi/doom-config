@@ -415,8 +415,9 @@
    "j" nil "k" nil "l" nil "h" nil
    "C-k" #'color-rg-jump-prev-keyword
    "C-j" #'color-rg-jump-next-keyword
-   :nv "gr" #'color-rg-rerun
-   ))
+   :nv "gr" #'color-rg-rerun)
+  (:map color-rg-mode-edit-map
+   "C-c C-k" #'color-rg-quit))
  (:after term
   (:map term-raw-map
    :i "M-v" #'term-paste)))
