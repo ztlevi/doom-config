@@ -271,8 +271,6 @@
   )
 
 
-(add-hook 'lsp-ui-mode-hook (λ!! #'lsp-ui-doc-mode -1))
-
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil
         lsp-ui-doc-include-signature t
