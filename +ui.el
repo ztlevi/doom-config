@@ -113,3 +113,6 @@
                                      ("Buffer"  15 t)
                                      ("TTY"     12 t)
                                      ("Command"  0 t)]))
+
+(after! centered-window
+  (setq cwm-centered-window-width 160))
