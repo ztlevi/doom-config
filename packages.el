@@ -28,6 +28,7 @@
 (package! counsel-etags)
 (package! imenu-list)
 (package! tmux-pane)
+(package! lsp-docker)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! color-rg :recipe (:host github :repo "manateelazycat/color-rg"))
 (package! snails :recipe (:host github :repo "manateelazycat/snails"))
