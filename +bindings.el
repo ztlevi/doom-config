@@ -277,6 +277,7 @@
   (:prefix ("i" . "Import")
    :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
    :desc "Isort buffer"    "s" #'python-isort-autosave-mode
+   :desc "Insert copied import" "p" #'+python/insert-temp-import
    :desc "Copy module import " "i" #'+python/yank-module-import)
   (:prefix ("v" . "ENV")
    "c" #'conda-env-activate
