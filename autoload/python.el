@@ -187,7 +187,7 @@ To terminate the loop early, throw 'break."
                                    (file-relative-name (or (file-name-sans-extension (buffer-file-name))
                                                            (bound-and-true-p list-buffers-directory))
                                                        (doom-project-root)))
-                                 "import" ,(which-function))
+                                 "import" ,(replace-regexp-in-string "\\..*" "" (which-function)))
                                " "))
       ;; (message (kill-new (abbreviate-file-name import)))
       (message (setq +python/python-temp-import import))
