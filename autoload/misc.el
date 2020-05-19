@@ -199,7 +199,7 @@ repository root."
 (defun +my/markdown-copy-fix ()
   (interactive)
   (let ((case-fold-search nil))
-    (dolist (pair '(("```python" . "```python")
+    (dolist (pair '(("<pre.*>" . "```python")
                     ("<\/pre>" . "```")
                     ("\\[<svg.*</svg>\\]([^)]*)" . "")
                     ("\\\\\\*" . "*")
