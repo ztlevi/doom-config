@@ -192,3 +192,14 @@ To terminate the loop early, throw 'break."
       ;; (message (kill-new (abbreviate-file-name import)))
       (message (setq +python/python-temp-import import))
     (error "Couldn't find filename in current buffer")))
+
+;;;###autoload
+(defun +python/copy-pytest-cmd ()
+  "Copy pytest cmd."
+  (interactive)
+  (message (kill-new
+            (concat "pytest "
+                    (file-relative-name (buffer-file-name) (doom-project-root))
+                    "::"
+                    (python-pytest--current-defun)
+                    ))))
