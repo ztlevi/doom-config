@@ -201,5 +201,5 @@ To terminate the loop early, throw 'break."
             (concat "pytest "
                     (file-relative-name (buffer-file-name) (doom-project-root))
                     "::"
-                    (python-pytest--current-defun)
+                    (which-function)
                     ))))
