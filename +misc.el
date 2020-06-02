@@ -188,6 +188,15 @@ mouse-3: Describe current input method")
   (setq dash-docs-use-workaround-for-emacs-bug nil)
   (setq dash-docs-browser-func 'browse-url-generic))
 
+
+(use-package! highlight-indent-guides
+  :init
+  (setq highlight-indent-guides-method 'character)
+  :config
+  (defun +indent-guides-init-faces-h ()
+    (when (display-graphic-p)
+      (highlight-indent-guides-auto-set-faces))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IVY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

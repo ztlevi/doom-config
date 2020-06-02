@@ -33,6 +33,7 @@
 (package! color-rg :recipe (:host github :repo "manateelazycat/color-rg"))
 (package! snails :recipe (:host github :repo "manateelazycat/snails"))
 (package! fuz :recipe (:host github :repo "rustify-emacs/fuz.el"))
+(package! highlight-indent-guides)
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))

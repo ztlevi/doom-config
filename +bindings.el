@@ -194,6 +194,7 @@
        "D" #'+my/realtime-elisp-doc
        "L" #'toggle-truncate-lines
        "S" #'size-indication-mode
+       "i" #'highlight-indent-guides-mode
        "I" #'ivy-rich-mode
        "v" #'visual-line-mode)
       (:prefix-map ("j" . "jump")
