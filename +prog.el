@@ -241,6 +241,9 @@
 ;; LSP & DAP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Use format-all by default
+(setq +format-with-lsp nil)
+
 (after! lsp-mode
   (setq lsp-use-native-json t
         lsp-print-io nil)
