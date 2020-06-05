@@ -230,11 +230,10 @@ mouse-3: Describe current input method")
 
 
 (after! counsel
+  ;; counsel-rg-base-command is configurable
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
         counsel-describe-function-function 'helpful-callable
-        counsel-describe-variable-function 'helpful-variable
-        counsel-rg-base-command "rg -zS --no-heading --line-number --max-columns 1000 --color never %s ."
-        counsel-grep-base-command counsel-rg-base-command))
+        counsel-describe-variable-function 'helpful-variable))
 
 
 (use-package! counsel-etags
