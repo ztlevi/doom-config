@@ -15,7 +15,7 @@
 (use-package! rime
   :defer t
   :custom
-  (rime-user-data-dir "~/.config/fcitx/rime")
+  (rime-user-data-dir (expand-file-name "~/.config/fcitx/rime"))
   (default-input-method "rime")
   (rime-show-candidate 'posframe)
   (rime-disable-predicates
@@ -67,8 +67,6 @@ mouse-3: Describe current input method")
                   'mouse-face 'mode-line-highlight
                   'local-map mode-line-input-method-map)))
   )
-
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
