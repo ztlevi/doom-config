@@ -14,6 +14,9 @@
 
 (use-package! rime
   :defer t
+  :init
+  (when IS-MAC
+    (setq rime-librime-root "~/.emacs.d/librime/dist"))
   :custom
   (rime-user-data-dir (expand-file-name "~/.config/fcitx/rime"))
   (default-input-method "rime")
