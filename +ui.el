@@ -24,8 +24,10 @@
           (height . 65))))
 
 (after! doom-modeline
-  (setq doom-modeline-buffer-file-name-style 'relative-to-project
-        doom-modeline-major-mode-icon t))
+  (setq doom-modeline-buffer-file-name-style 'relative-from-project
+        doom-modeline-major-mode-icon t
+        ;; My mac vsplit screen won't fit
+        doom-modeline-window-width-limit (- fill-column 10)))
 
 (setq +workspaces-on-switch-project-behavior t)
 
