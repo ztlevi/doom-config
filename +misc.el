@@ -14,9 +14,6 @@
 
 (use-package! rime
   :defer t
-  :init
-  (when IS-MAC
-    (setq rime-librime-root "~/.emacs.d/librime/dist"))
   :custom
   (rime-user-data-dir (expand-file-name "~/.config/fcitx/rime"))
   (default-input-method "rime")
@@ -31,10 +28,18 @@
   ;; C-` to toggle
   ;; , and . to page up and down
   (:map rime-mode-map
-    ;; open rime menu
-    ("C-`" . 'rime-send-keybinding))
+   ;; open rime menu
+   ("C-`" . 'rime-send-keybinding))
   (:map rime-active-mode-map
-    ("C-j" . 'rime-inline-ascii)))
+   ("C-j" . 'rime-inline-ascii))
+  :config
+  (when IS-MAC
+    (setq rime-librime-root "~/.emacs.d/librime/dist"))
+  ;; Set Nixos env
+  (when (and IS-LINUX (executable-find "nix"))
+    (setq rime-emacs-module-header-root (concat (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in with pkgs; lib.getLib emacs)'") "/include")
+          rime-librime-root (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in with pkgs; lib.getLib librime)'")
+          rime-share-data-dir (concat (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in with pkgs; lib.getLib brise)'") "/share/rime-data"))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -243,14 +248,14 @@
       'insert)
     (map!
      (:map snails-mode-map
-       :nvi "C-g" #'snails-quit
-       :nvi "ESC ESC ESC" #'snail-quit
-       :nvi "C-n" #'snails-select-next-item
-       :nvi "C-p" #'snails-select-prev-item
-       :nvi "C-v" #'snails-select-next-backend
-       :nvi "M-v" #'snails-select-prev-backend
-       :nvi "RET" #'snails-candidate-do
-       :nvi "C-RET" #'snails-candiate-alternate-do))
+      :nvi "C-g" #'snails-quit
+      :nvi "ESC ESC ESC" #'snail-quit
+      :nvi "C-n" #'snails-select-next-item
+      :nvi "C-p" #'snails-select-prev-item
+      :nvi "C-v" #'snails-select-next-backend
+      :nvi "M-v" #'snails-select-prev-backend
+      :nvi "RET" #'snails-candidate-do
+      :nvi "C-RET" #'snails-candiate-alternate-do))
     )
 
   (use-package! fuz
