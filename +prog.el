@@ -190,10 +190,6 @@
 
 
 (after! conda
-  (when IS-LINUX
-    ;; Ubuntu anaconda
-    (setq conda-anaconda-home (expand-file-name "~/anaconda3")))
-
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
     (advice-add func :after #'reset-flycheck)))
