@@ -210,7 +210,7 @@ To terminate the loop early, throw 'break."
   "Copy pytest cmd."
   (interactive)
   (message (kill-new
-            (concat "[ -f ~/.local/bin/pudb3] || pip3 install pudb;export LC_ALL='en_US.UTF-8';export LC_CTYPE='en_US.UTF-8';python3 -m pudb.run "
+            (concat "python3 -m pudb.run "
                     (file-relative-name (buffer-file-name) (doom-project-root))))))
 
 ;;;###autoload
@@ -218,7 +218,7 @@ To terminate the loop early, throw 'break."
   "Copy pytest cmd."
   (interactive)
   (message (kill-new
-            (concat "[ -f ~/.local/bin/pudb3] || pip3 install pudb;pytest --pdbcls pudb.debugger:Debugger --pdb --capture=no "
+            (concat "pytest --pdbcls pudb.debugger:Debugger --pdb --capture=no "
                     (file-relative-name (buffer-file-name) (doom-project-root))
                     "::"
                     (which-function)
