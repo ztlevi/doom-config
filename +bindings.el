@@ -276,6 +276,8 @@
   :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
   :desc "Copy pdb breakpoint" "B" #'+python/copy-pdb-breakpoint-of-current-line
   :desc "Copy pytest cmd" "ty" #'+python/copy-pytest-cmd
+  :desc "Copy pudb python cmd" "tp" #'+python/copy-pudb-python-cmd
+  :desc "Copy pudb pytest cmd" "tP" #'+python/copy-pudb-pytest-cmd
   (:prefix ("i" . "Import")
    :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
    :desc "Isort buffer"    "s" #'python-isort-autosave-mode

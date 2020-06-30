@@ -22,7 +22,7 @@
                      ((executable-find "pudb") "import pudb; pudb.set_trace()")
                      ;; ((executable-find "ipdb") "import ipdb; ipdb.set_trace()")
                      ;; ((executable-find "ipdb3") "import ipdb; ipdb.set_trace()")
-                     ((executable-find "pudb3") "import pudb; pudb.set_trace()")
+                     ((executable-find "pudb3") "import pudb; pu.db")
                      ;; ((executable-find "python3.7") "breakpoint()")
                      ;; ((executable-find "python3.8") "breakpoint()")
                      (t "import pdb; pdb.set_trace()")))
@@ -199,6 +199,26 @@ To terminate the loop early, throw 'break."
   (interactive)
   (message (kill-new
             (concat "pytest "
+                    (file-relative-name (buffer-file-name) (doom-project-root))
+                    "::"
+                    (which-function)
+                    ))))
+
+
+;;;###autoload
+(defun +python/copy-pudb-python-cmd ()
+  "Copy pytest cmd."
+  (interactive)
+  (message (kill-new
+            (concat "[ -f ~/.local/bin/pudb3] || pip3 install pudb;export LC_ALL='en_US.UTF-8';export LC_CTYPE='en_US.UTF-8';python3 -m pudb.run "
+                    (file-relative-name (buffer-file-name) (doom-project-root))))))
+
+;;;###autoload
+(defun +python/copy-pudb-pytest-cmd ()
+  "Copy pytest cmd."
+  (interactive)
+  (message (kill-new
+            (concat "[ -f ~/.local/bin/pudb3] || pip3 install pudb;pytest --pdbcls pudb.debugger:Debugger --pdb --capture=no "
                     (file-relative-name (buffer-file-name) (doom-project-root))
                     "::"
                     (which-function)
