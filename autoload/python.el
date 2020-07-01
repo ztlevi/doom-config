@@ -37,6 +37,21 @@
   (+python/annotate-pdb))
 
 ;;;###autoload
+(defun +python/toggle-default-breakpoint ()
+  "Add a break point, highlight it."
+  (interactive)
+  (let ((trace (cond (t "import pdb; pdb.set_trace()")))
+        (line (thing-at-point 'line)))
+    (if (and line (string-match trace line))
+        (kill-whole-line)
+      (progn
+        (back-to-indentation)
+        (insert trace)
+        (insert "\n")
+        (python-indent-line))))
+  (+python/annotate-pdb))
+
+;;;###autoload
 (defun +python/copy-pdb-breakpoint-of-current-line ()
   "Copy a pdb like breakpoint on the current line."
   (interactive)

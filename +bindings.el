@@ -274,7 +274,7 @@
   :localleader
   :map python-mode-map
   :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
-  :desc "Copy pdb breakpoint" "B" #'+python/copy-pdb-breakpoint-of-current-line
+  :desc "Insert default breakpoint" "B" #'+python/toggle-default-breakpoint
   :desc "Copy pytest cmd" "ty" #'+python/copy-pytest-cmd
   :desc "Copy pudb python cmd" "tp" #'+python/copy-pudb-python-cmd
   :desc "Copy pudb pytest cmd" "tP" #'+python/copy-pudb-pytest-cmd
