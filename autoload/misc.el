@@ -106,7 +106,7 @@ selected, then the current line."
   "personal repo root to scan git projects")
 
 ;;;###autoload
-(defvar +my/user-custom-repos '("/media/ztlevi/Disk2/data/argo"))
+(defvar +my/user-custom-repos '("/data"))
 
 ;;;###autoload
 (defun update-projectile-known-projects ()

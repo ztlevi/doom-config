@@ -28,10 +28,10 @@
   ;; C-` to toggle
   ;; , and . to page up and down
   (:map rime-mode-map
-   ;; open rime menu
-   ("C-`" . 'rime-send-keybinding))
+    ;; open rime menu
+    ("C-`" . 'rime-send-keybinding))
   (:map rime-active-mode-map
-   ("C-j" . 'rime-inline-ascii))
+    ("C-j" . 'rime-inline-ascii))
   :config
   (when IS-MAC
     (setq rime-librime-root "~/.emacs.d/librime/dist"))
@@ -45,9 +45,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SSH
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(make--ssh "argo-desktop" "ztlevi-5820")
-(make--shell "argo-desktop" "ztlevi-5820")
 
 (after! ssh-deploy
   (setq ssh-deploy-automatically-detect-remote-changes 1))
@@ -248,14 +245,14 @@
       'insert)
     (map!
      (:map snails-mode-map
-      :nvi "C-g" #'snails-quit
-      :nvi "ESC ESC ESC" #'snail-quit
-      :nvi "C-n" #'snails-select-next-item
-      :nvi "C-p" #'snails-select-prev-item
-      :nvi "C-v" #'snails-select-next-backend
-      :nvi "M-v" #'snails-select-prev-backend
-      :nvi "RET" #'snails-candidate-do
-      :nvi "C-RET" #'snails-candiate-alternate-do))
+       :nvi "C-g" #'snails-quit
+       :nvi "ESC ESC ESC" #'snail-quit
+       :nvi "C-n" #'snails-select-next-item
+       :nvi "C-p" #'snails-select-prev-item
+       :nvi "C-v" #'snails-select-next-backend
+       :nvi "M-v" #'snails-select-prev-backend
+       :nvi "RET" #'snails-candidate-do
+       :nvi "C-RET" #'snails-candiate-alternate-do))
     )
 
   (use-package! fuz
