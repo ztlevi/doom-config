@@ -117,6 +117,10 @@
        tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
 
+       :os
+       (:if IS-MAC macos)  ; improve compatibility with macOS
+       (tty +osc)          ; improve the terminal Emacs experience
+
        :lang
        ;;agda              ; types of types of types of types...
        ;;assembly          ; assembly for fun or debugging
@@ -182,9 +186,6 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        web               ; the tubes
        yaml              ; JSON, but readable
-
-       :os
-       macos             ; MacOS-specific commands
 
        :email
        ;;(mu4e +gmail)
