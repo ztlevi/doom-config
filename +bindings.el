@@ -36,7 +36,7 @@
  "M-v" #'yank-with-delete-region
  "M-s" #'evil-write-all
  ;; Buffer-local font scaling
- "M-0" (λ! (text-scale-set 0))
+ "M-0" (cmd! (text-scale-set 0))
  "M-=" #'text-scale-increase
  "M--" #'text-scale-decrease
  ;; Conventional text-editing keys & motions
@@ -75,8 +75,8 @@
  :v "DEL" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
  :v "<backspace>" (kbd "\"_d")
- :nmv "-" (λ! (better-jumper-jump-backward 1))
- :nmv "=" (λ! (better-jumper-jump-forward 1))
+ :nmv "-" (cmd! (better-jumper-jump-backward 1))
+ :nmv "=" (cmd! (better-jumper-jump-forward 1))
 
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
@@ -87,7 +87,7 @@
  (:prefix "C-x"
   :n "e"  #'pp-eval-last-sexp)
  (:prefix "C-c"
-  :desc "Text properties at point" :nmv "f" (λ! (message "%S" (text-properties-at (point))))))
+  :desc "Text properties at point" :nmv "f" (cmd! (message "%S" (text-properties-at (point))))))
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
@@ -321,10 +321,10 @@
   (:map evil-window-map
    :leader
    (:prefix "w"
-    :desc "evil-window-decrease-height" "-" (λ! (evil-window-decrease-height 10))
-    :desc "evil-window-increase-height" "+" (λ! (evil-window-increase-height 10))
-    :desc "evil-window-decrease-width" "<"  (λ! (evil-window-decrease-width 20))
-    :desc "evil-window-increase-width" ">"  (λ! (evil-window-increase-width 20)))))
+    :desc "evil-window-decrease-height" "-" (cmd! (evil-window-decrease-height 10))
+    :desc "evil-window-increase-height" "+" (cmd! (evil-window-increase-height 10))
+    :desc "evil-window-decrease-width" "<"  (cmd! (evil-window-decrease-width 20))
+    :desc "evil-window-increase-width" ">"  (cmd! (evil-window-increase-width 20)))))
  (:after iedit
   (:map iedit-mode-occurrence-keymap
    "M-D" nil))
@@ -339,8 +339,8 @@
    :i "C-d" nil)
   (:map markdown-mode-map
    :desc "Markdown Cycle" :nv [tab] #'markdown-cycle
-   :desc "Insert item below" :ni "<C-return>"   (λ! (+org/insert-item-below 1))
-   :desc "Insert item above" :ni "<S-C-return>" (λ! (+org/insert-item-above 1))
+   :desc "Insert item below" :ni "<C-return>"   (cmd! (+org/insert-item-below 1))
+   :desc "Insert item above" :ni "<S-C-return>" (cmd! (+org/insert-item-above 1))
    (:localleader
     (:when IS-MAC
      :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
@@ -410,7 +410,7 @@
  (:after adoc-mode
   (:map adoc-mode-map
    :localleader
-   :desc "adoc preview" "p" (λ! (browse-url buffer-file-name))))
+   :desc "adoc preview" "p" (cmd! (browse-url buffer-file-name))))
  (:after vterm
   (:map vterm-mode-map
    "M-e" nil
