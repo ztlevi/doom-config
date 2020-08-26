@@ -141,10 +141,8 @@
   )
 
 
-(after! lsp-python-ms
-  ;; (set-lsp-priority! 'mspyls 1)
-  (setq lsp-python-ms-python-executable-cmd "python3"))
-
+(after! lsp-pyright
+  (setq lsp-pyright-python-executable-cmd "python3"))
 
 (use-package! py-isort
   :defer t
