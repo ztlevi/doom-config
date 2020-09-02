@@ -28,10 +28,10 @@
   ;; C-` to toggle
   ;; , and . to page up and down
   (:map rime-mode-map
-    ;; open rime menu
-    ("C-`" . 'rime-send-keybinding))
+   ;; open rime menu
+   ("C-`" . 'rime-send-keybinding))
   (:map rime-active-mode-map
-    ("C-j" . 'rime-inline-ascii))
+   ("C-j" . 'rime-inline-ascii))
   :config
   (when IS-MAC
     (setq rime-librime-root "~/.emacs.d/librime/dist"))
@@ -245,14 +245,14 @@
       'insert)
     (map!
      (:map snails-mode-map
-       :nvi "C-g" #'snails-quit
-       :nvi "ESC ESC ESC" #'snail-quit
-       :nvi "C-n" #'snails-select-next-item
-       :nvi "C-p" #'snails-select-prev-item
-       :nvi "C-v" #'snails-select-next-backend
-       :nvi "M-v" #'snails-select-prev-backend
-       :nvi "RET" #'snails-candidate-do
-       :nvi "C-RET" #'snails-candiate-alternate-do))
+      :nvi "C-g" #'snails-quit
+      :nvi "ESC ESC ESC" #'snail-quit
+      :nvi "C-n" #'snails-select-next-item
+      :nvi "C-p" #'snails-select-prev-item
+      :nvi "C-v" #'snails-select-next-backend
+      :nvi "M-v" #'snails-select-prev-backend
+      :nvi "RET" #'snails-candidate-do
+      :nvi "C-RET" #'snails-candiate-alternate-do))
     )
 
   (use-package! fuz
@@ -297,6 +297,10 @@
 (after! git-link
   (setq git-link-open-in-browser t)
 
+  (add-to-list 'git-link-remote-alist
+               '("git\\.bst\\.ai" git-link-github-http))
+  (add-to-list 'git-link-commit-remote-alist
+               '("git\\.bst\\.ai" git-link-commit-github-http))
   (add-to-list 'git-link-remote-alist
                '("rnd-github-usa-g\\.huawei\\.com" git-link-github-http))
   (add-to-list 'git-link-commit-remote-alist
