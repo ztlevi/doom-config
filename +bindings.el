@@ -146,10 +146,6 @@
        :desc "Imenu list"            "i" #'imenu-list
        :desc "Open link"             "x" #'link-hint-open-link
        :desc "Open link at point"    "X" #'link-hint-open-link-at-point
-       :desc "Vterm"                 "s" #'+vterm/toggle
-       :desc "Project run Vterm"     "S" #'+vterm/here
-       :desc "Toggle eshell popup"   "e" #'+eshell/toggle
-       :desc "Project run Eshell"    "E" #'projectile-run-eshell
        :desc "Youdao dictionary"     "y" (if (display-graphic-p) #'youdao-dictionary-search-at-point-tooltip
                                            #'youdao-dictionary-search-at-point)
        :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
