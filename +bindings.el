@@ -272,6 +272,7 @@
   :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
   :desc "Insert default breakpoint" "B" #'+python/toggle-default-breakpoint
   :desc "Copy pytest cmd" "ty" #'+python/copy-pytest-cmd
+  :desc "Copy unittest cmd" "tu" #'+python/copy-unittest-cmd
   :desc "Copy pudb python cmd" "tp" #'+python/copy-pudb-python-cmd
   :desc "Copy pudb pytest cmd" "tP" #'+python/copy-pudb-pytest-cmd
   (:prefix ("i" . "Import")

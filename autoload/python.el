@@ -219,6 +219,16 @@ To terminate the loop early, throw 'break."
                     (which-function)
                     ))))
 
+;;;###autoload
+(defun +python/copy-unittest-cmd ()
+  "Copy pytest cmd."
+  (interactive)
+  (message (kill-new
+            (concat "python "
+                    (file-relative-name (buffer-file-name) (doom-project-root))
+                    " "
+                    (which-function)
+                    ))))
 
 ;;;###autoload
 (defun +python/copy-pudb-python-cmd ()
