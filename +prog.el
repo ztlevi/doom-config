@@ -136,7 +136,7 @@
 
   ;; ignore some linting info
   (if (featurep! :tools lsp)
-      (setq lsp-pyls-plugins-pycodestyle-ignore '("E501")
+      (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
             lsp-pyls-plugins-pylint-args [ "--errors-only" ]))
   )
 
@@ -233,8 +233,7 @@
 (setq +format-with-lsp nil)
 
 (after! lsp-mode
-  (setq lsp-use-native-json t
-        lsp-print-io nil)
+  (setq lsp-print-io nil)
   (dolist (dir '("[/\\\\]\\.ccls-cache$"
                  "[/\\\\]\\.mypy_cache$"
                  "[/\\\\]\\.pytest_cache$"
