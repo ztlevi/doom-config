@@ -24,7 +24,6 @@
 (package! atomic-chrome)
 (package! git-link)
 (package! wucuo)
-(package! vterm-toggle :recipe (:host github :repo "jixiuf/vterm-toggle"))
 (package! counsel-etags)
 (package! imenu-list)
 (package! tmux-pane)
