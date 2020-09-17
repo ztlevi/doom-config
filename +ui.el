@@ -83,6 +83,8 @@
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
+    `(mode-line :background ,(doom-lighten (doom-color 'blue) 0.8) :foreground ,(doom-color 'fg))
+    `(mode-line-inactive :background ,(doom-color 'base1) :foreground ,(doom-color 'fg))
     `(font-lock-comment-face :foreground ,(doom-color 'base6))
     `(font-lock-doc-face :foreground ,(doom-color 'base6))))
 
