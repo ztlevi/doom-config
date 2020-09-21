@@ -76,8 +76,8 @@
  :v "DEL" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
  :v "<backspace>" (kbd "\"_d")
- :nmv "-" (cmd! (better-jumper-jump-backward 1))
- :nmv "=" (cmd! (better-jumper-jump-forward 1))
+ :nmv "-" #'better-jumper-jump-backward
+ :nmv "=" #'better-jumper-jump-forward
 
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
