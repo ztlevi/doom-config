@@ -8,6 +8,13 @@
   (yank))
 
 ;;;###autoload
+(defun xterm-paste-with-delete-region ()
+  (interactive)
+  (when (evil-visual-state-p)
+    (delete-region (region-beginning) (region-end)))
+  (xterm-paste))
+
+;;;###autoload
 (defun doom/toggle-comment-region-or-line ()
   "Comments or uncomments the whole region or if no region is
 selected, then the current line."
