@@ -8,11 +8,11 @@
   (yank))
 
 ;;;###autoload
-(defun xterm-paste-with-delete-region ()
-  (interactive)
+(defun xterm-paste-with-delete-region (event)
+  (interactive "e")
   (when (evil-visual-state-p)
     (delete-region (region-beginning) (region-end)))
-  (xterm-paste))
+  (xterm-paste event))
 
 ;;;###autoload
 (defun doom/toggle-comment-region-or-line ()
