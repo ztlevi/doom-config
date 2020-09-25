@@ -118,7 +118,11 @@
        :desc "Cspell check buffer"    "c" #'cspell-check-buffer
        :desc "Cspell check directory" "C" #'cspell-check-HEAD)
       (:prefix "TAB"
-       :desc "Switch workspace" "TAB" #'+workspace/switch-to)
+       :desc "Switch workspace" "TAB" #'+workspace/switch-to
+       :desc "Load worksapce from file" "L" #'+workspace/load
+       :desc "Swap left"  "h" #'+workspace/swap-left
+       :desc "Swap right" "l" #'+workspace/swap-right
+       )
       (:prefix "f"                      ; file
        :desc "Yank relative filename" "Y" #'+default/yank-relative-buffer-filename
        :desc "Save all" "s" #'evil-write-all
