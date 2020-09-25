@@ -45,12 +45,10 @@ ln -Fs `sudo find /usr/local/Cellar/emacs-mac -name "Emacs.app"` /Applications/E
   #+END_QUOTE
 *** Linux
 #+BEGIN_SRC shell
-# Ubuntu emacs 26
+# Ubuntu emacs
 sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt-get update
-sudo apt install emacs26
-# Ubuntu emacs 27
-sudo snap install emacs --beta --classic
+sudo apt install emacs27
 # Arch
 sudo pacman -S emacs
 #+END_SRC
