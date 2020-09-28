@@ -7,12 +7,19 @@
     (delete-region (region-beginning) (region-end)))
   (yank))
 
+(if IS-MAC
 ;;;###autoload
-(defun xterm-paste-with-delete-region (event)
-  (interactive "e")
-  (when (evil-visual-state-p)
-    (delete-region (region-beginning) (region-end)))
-  (xterm-paste event))
+    (defun xterm-paste-with-delete-region (event)
+      (interactive "e")
+      (when (evil-visual-state-p)
+        (delete-region (region-beginning) (region-end)))
+      (xterm-paste event))
+;;;###autoload
+  (defun xterm-paste-with-delete-region ()
+    (interactive)
+    (when (evil-visual-state-p)
+      (delete-region (region-beginning) (region-end)))
+    (xterm-paste)))
 
 ;;;###autoload
 (defun doom/toggle-comment-region-or-line ()
