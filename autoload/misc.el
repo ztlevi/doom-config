@@ -7,7 +7,7 @@
     (delete-region (region-beginning) (region-end)))
   (yank))
 
-(if IS-MAC
+(if EMACS27+
 ;;;###autoload
     (defun xterm-paste-with-delete-region (event)
       (interactive "e")
