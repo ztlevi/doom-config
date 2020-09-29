@@ -120,7 +120,7 @@ selected, then the current line."
   "personal repo root to scan git projects")
 
 ;;;###autoload
-(defvar +my/user-custom-repos '("/data"))
+(defvar +my/user-custom-repos '("/CCN_Tools/work/bstnnx_release/regression_test/"))
 
 ;;;###autoload
 (defun update-projectile-known-projects ()
