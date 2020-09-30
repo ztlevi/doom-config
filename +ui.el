@@ -23,6 +23,14 @@
         '((width . 110)
           (height . 65))))
 
+;; Update window divider in terminal
+(unless (display-graphic-p)
+  (defun my-change-window-divider ()
+    (let ((display-table (or buffer-display-table standard-display-table)))
+      (set-display-table-slot display-table 5 ?│)
+      (set-window-display-table (selected-window) display-table)))
+  (add-hook 'window-configuration-change-hook #'my-change-window-divider))
+
 (after! doom-modeline
   (setq doom-modeline-buffer-file-name-style 'relative-from-project
         doom-modeline-major-mode-icon t
