@@ -63,6 +63,11 @@
  "M-m"    #'kmacro-call-macro
  "M-/"    #'doom/toggle-comment-region-or-line)
 
+(unless (display-graphic-p)
+  (map!
+   :g "<mouse-4>" #'evil-scroll-line-up
+   :g "<mouse-5>" #'evil-scroll-line-down))
+
 (map!
  ;; Unix text-editing keys & motions
  :gi "C-n" #'next-line
