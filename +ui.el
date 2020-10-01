@@ -5,13 +5,14 @@
 (when (display-graphic-p)
   (setq user-font
         (cond
+         ((find-font (font-spec :name  "CartographCF Nerd Font")) "CartographCF Nerd Font")
          ((find-font (font-spec :name  "OperatorMono Nerd Font")) "OperatorMono Nerd Font")
          ((find-font (font-spec :name  "Droid Sans Mono")) "Droid Sans Mono")
          ((find-font (font-spec :name  "Droid Sans Fallback")) "Droid Sans Fallback")))
   (cond (IS-MAC
-         (setq doom-font (font-spec :family user-font :size 17)
-               doom-big-font (font-spec :family user-font :size 22)
-               doom-modeline-height 32))
+         (setq doom-font (font-spec :family user-font :size 16)
+               doom-big-font (font-spec :family user-font :size 21)
+               doom-modeline-height 24))
         (IS-LINUX
          (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
          (setq doom-font (font-spec :family user-font :size (eval (round (* 18 resolution-factor))))
