@@ -10,7 +10,7 @@
          ((find-font (font-spec :name  "Droid Sans Mono")) "Droid Sans Mono")
          ((find-font (font-spec :name  "Droid Sans Fallback")) "Droid Sans Fallback")))
   (cond (IS-MAC
-         (setq doom-font (font-spec :family user-font :size 16)
+         (setq doom-font (font-spec :family user-font :size 15)
                doom-big-font (font-spec :family user-font :size 21)
                doom-modeline-height 24))
         (IS-LINUX
