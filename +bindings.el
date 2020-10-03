@@ -97,7 +97,6 @@
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
-      :desc "Snails" :nmv "RET" #'snails
       :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
 
@@ -119,9 +118,7 @@
        :desc "Treemacs symbols"       "i" #'lsp-treemacs-symbols
        :desc "Format-all buffer"      "F" #'format-all-buffer
        :desc "LSP organize imports"   "I" #'lsp-organize-imports
-       :desc "Treemacs references"    "D" #'lsp-treemacs-references
-       :desc "Cspell check buffer"    "c" #'cspell-check-buffer
-       :desc "Cspell check directory" "C" #'cspell-check-HEAD)
+       :desc "Treemacs references"    "D" #'lsp-treemacs-references)
       (:prefix "TAB"
        :desc "Switch workspace" "TAB" #'+workspace/switch-to
        :desc "Load worksapce from file" "L" #'+workspace/load
@@ -142,15 +139,6 @@
        :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
        "C" #'helpful-command)
-      (:prefix-map ("e" . "error")
-       :desc "Flymake next error"      "N" #'flymake-goto-next-error
-       :desc "Flymake previous error"  "P" #'flymake-goto-prev-error
-       :desc "Flymake list errors"     "L" #'flymake-show-diagnostics-buffer
-       :desc "Flycheck next error"     "n" #'flycheck-next-error
-       :desc "Flycheck previous error" "p" #'flycheck-previous-error
-       :desc "Flycheck explain error"  "e" #'flycheck-explain-error-at-point
-       :desc "Flycheck list errors"    "l" #'flycheck-list-errors
-       :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
       (:prefix "o"                      ; open
        :desc "Kill ring"             "k" #'helm-show-kill-ring
        :desc "Imenu list"            "i" #'imenu-list
@@ -211,8 +199,6 @@
       (:prefix "s"                      ; search
        :desc "Comments"  "c" #'counsel-imenu-comments
        :desc "Jump to bookmark" "m" #'helm-bookmarks
-       :desc "Search project"            "p" #'+my/search-project
-       :desc "Search project customly"   "P" #'color-rg-customized-search
        :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
@@ -276,32 +262,6 @@
   "j" #'lsp-ui-peek--select-next
   "k" #'lsp-ui-peek--select-prev
   "l" #'lsp-ui-peek--select-next-file)
- (:after python
-  :localleader
-  :map python-mode-map
-  :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
-  :desc "Insert default breakpoint" "B" #'+python/toggle-default-breakpoint
-  :desc "Copy pytest cmd" "ty" #'+python/copy-pytest-cmd
-  :desc "Copy unittest cmd" "tu" #'+python/copy-unittest-cmd
-  :desc "Copy pudb python cmd" "tp" #'+python/copy-pudb-python-cmd
-  :desc "Copy pudb pytest cmd" "tP" #'+python/copy-pudb-pytest-cmd
-  (:prefix ("i" . "Import")
-   :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
-   :desc "Isort buffer"    "s" #'python-isort-autosave-mode
-   :desc "Insert copied import" "p" #'+python/insert-temp-import
-   :desc "Copy module import " "i" #'+python/yank-module-import)
-  (:prefix ("v" . "ENV")
-   "c" #'conda-env-activate
-   "C" #'conda-env-deactivate
-   "w" #'pyvenv-workon
-   "v" #'pyvenv-activate
-   "V" #'pyvenv-deactivate
-   "p" #'pipenv-activate
-   "P" #'pipenv-deactivate))
- (:after pyenv-mode
-  (:map pyenv-mode-map
-   "C-c C-s" nil
-   "C-c C-u" nil))
  (:after js2-mode
   (:map js2-mode-map
    :localleader
@@ -422,14 +382,6 @@
   (:map vterm-mode-map
    "M-e" nil
    "M-w" #'+workspace/close-window-or-workspace))
- (:after color-rg
-  (:map color-rg-mode-map
-   "j" nil "k" nil "l" nil "h" nil
-   "C-k" #'color-rg-jump-prev-keyword
-   "C-j" #'color-rg-jump-next-keyword
-   :nv "gr" #'color-rg-rerun)
-  (:map color-rg-mode-edit-map
-   "C-c C-k" #'color-rg-quit))
  (:after term
   (:map term-raw-map
    :i "M-v" #'term-paste)))

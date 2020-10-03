@@ -61,13 +61,6 @@ selected, then the current line."
 
 
 ;;;###autoload
-(defun +my/search-project ()
-  (interactive)
-  (if current-prefix-arg
-      (color-rg-search-project)
-    (+default/search-project)))
-
-;;;###autoload
 (defun +ivy/project-search-with-hidden-files ()
   (interactive)
   (let ((counsel-rg-base-command "rg -zS --no-heading --line-number --color never --hidden %s . "))

@@ -213,6 +213,9 @@
        (default +bindings +snippets +smartparens)
 
        :private
+       ;; lazycat          ; snails, color-rg, fuz
+       my-python
+       my-checker
        )
 
 (setq custom-file (expand-file-name "custom.el" doom-local-dir))
