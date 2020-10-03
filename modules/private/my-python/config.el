@@ -98,9 +98,5 @@
     (advice-add func :after #'reset-flycheck)))
 
 
-(after! flycheck
-  (require 'flycheck-mypy))
-
-
 ;; For pytest-mode
 (set-evil-initial-state! '(comint-mode) 'normal)

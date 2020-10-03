@@ -3,4 +3,3 @@
 
 ;; (package! importmagic)
 (package! py-isort)
-(package! flycheck-mypy)
