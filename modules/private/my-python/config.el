@@ -6,10 +6,10 @@
   :map python-mode-map
   :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
   :desc "Insert default breakpoint" "B" #'+python/toggle-default-breakpoint
-  :desc "Copy pytest cmd" "ty" #'+python/copy-pytest-cmd
-  :desc "Copy unittest cmd" "tu" #'+python/copy-unittest-cmd
-  :desc "Copy pudb python cmd" "tp" #'+python/copy-pudb-python-cmd
-  :desc "Copy pudb pytest cmd" "tP" #'+python/copy-pudb-pytest-cmd
+  (:prefix "t"
+   :desc "Copy python cmd" "p" #'+python/copy-python-cmd
+   :desc "Copy pytest cmd" "y" #'+python/copy-pytest-cmd
+   :desc "Copy unittest cmd" "u" #'+python/copy-unittest-cmd)
   (:prefix ("i" . "Import")
    :desc "Remove unused impoorts" "r" #'+python/autoflake-remove-imports
    :desc "Isort buffer"    "s" #'python-isort-autosave-mode
