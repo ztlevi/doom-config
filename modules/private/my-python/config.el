@@ -58,6 +58,10 @@
 (use-package! py-isort
   :defer t
   :init
+  (defvar my-enable-isort-before-save t)
+  (defun my-python-isrot-before-save ()
+    (when my-enable-isort-before-save
+      (py-isort-before-save)))
   (define-minor-mode python-isort-autosave-mode
     "Isort autosave mode."
     :lighter " Isort"
@@ -65,8 +69,8 @@
     (when (not (derived-mode-p 'python-mode))
       (error "Isort only works with Python buffers"))
     (if python-isort-autosave-mode
-        (add-hook! 'before-save-hook :local #'py-isort-before-save)
-      (remove-hook! 'before-save-hook :local #'py-isort-before-save)))
+        (add-hook! 'before-save-hook :local #'my-python-isrot-before-save)
+      (remove-hook! 'before-save-hook :local #'my-python-isrot-before-save)))
 
   (add-hook! 'python-mode-hook #'python-isort-autosave-mode))
 
