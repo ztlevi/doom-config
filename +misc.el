@@ -268,7 +268,7 @@
 
 
 (after! magit
-  (setq magit-repository-directories '(("~/dev" . 2) ("~/Developer" . 2))
+  (setq magit-repository-directories '(("~/dev" . 2))
         magit-save-repository-buffers nil
         git-commit-style-convention-checks nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
@@ -276,9 +276,6 @@
   (magit-wip-after-apply-mode t)
   (magit-wip-before-change-mode t))
 
-
-;; TEMP: fix github-repository-id is void error
-(defalias 'github-repository-id 'ghub-repository-id)
 
 (after! forge
   (push '("github.argo.ai" "github.argo.ai/api/v3"
@@ -318,7 +315,8 @@
 
 
 (after! browse-at-remote
-  (add-to-list 'browse-at-remote-remote-type-domains '("github.argo.ai" . "github")))
+  (add-to-list 'browse-at-remote-remote-type-domains '("github.argo.ai" . "github"))
+  (add-to-list 'browse-at-remote-remote-type-domains '("git.bst.ai" . "gitlab")))
 
 
 (after! magit-todos
@@ -400,7 +398,7 @@
     :name "ML Gitbook Publish"
     :command "npm"
     :args '("run" "docs:publish")
-    :cwd "~/Developer/Github/Machine_Learning_Questions"
+    :cwd "~/dev/Machine_Learning_Questions"
     :tags '(npm gitbook)
     :kill-signal 'sigkill
     :kill-process-buffer-on-stop t)
@@ -409,7 +407,7 @@
     :name "ML Gitbook Start"
     :command "npm"
     :args '("start")
-    :cwd "~/Developer/Github/Machine_Learning_Questions"
+    :cwd "~/dev/Machine_Learning_Questions"
     :tags '(npm gitbook)
     :init (lambda () (browse-url "http://localhost:4000"))
     :kill-signal 'sigkill

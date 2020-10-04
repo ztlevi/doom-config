@@ -91,7 +91,7 @@
   :init
   ;; do your configuration here
   (setq blog-admin-backend-type 'hexo
-        blog-admin-backend-path "~/Developer/Github/hexo_blog"
+        blog-admin-backend-path "~/dev/hexo_blog"
         blog-admin-backend-new-post-in-drafts t
         blog-admin-backend-new-post-with-same-name-dir nil
         blog-admin-backend-hexo-config-file "_config.yml"))
