@@ -94,7 +94,7 @@
 
 ;; for terminal
 (unless (display-graphic-p)
-  (custom-set-faces!
+  (custom-theme-set-faces! 'doom-one-light
     `(vertical-border :background ,(doom-color 'bg-alt) :foreground ,(doom-color 'blue))
     `(mode-line :background ,(doom-lighten (doom-color 'blue) 0.8) :foreground ,(doom-color 'fg))
     `(mode-line-inactive :background ,(doom-color 'base2) :foreground ,(doom-color 'fg))
