@@ -28,6 +28,7 @@
  "M-N" #'make-frame
  "C-M-f" #'toggle-frame-fullscreen
  "M-t" #'transpose-words
+ "M-i" (cmd! (message (which-function)))
  :gn "C-t" nil
  ;; Restore OS undo, save, copy, & paste keys (without cua-mode, because
  ;; it imposes some other functionality and overhead we don't need)
@@ -123,8 +124,7 @@
        :desc "Switch workspace" "TAB" #'+workspace/switch-to
        :desc "Load worksapce from file" "L" #'+workspace/load
        :desc "Swap left"  "h" #'+workspace/swap-left
-       :desc "Swap right" "l" #'+workspace/swap-right
-       )
+       :desc "Swap right" "l" #'+workspace/swap-right)
       (:prefix "f"                      ; file
        :desc "Yank relative filename" "Y" #'+default/yank-relative-buffer-filename
        :desc "Save all" "s" #'evil-write-all
