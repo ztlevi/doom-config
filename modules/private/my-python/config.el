@@ -48,9 +48,8 @@
   ;; ignore some linting info
   (if (featurep! :tools lsp)
       (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
-            lsp-pyls-plugins-pylint-args [ "--errors-only" ]))
-  )
-
+            lsp-pyls-plugins-pylint-args [ "--errors-only" ])))
+(add-hook! 'python-mode-hook #'+python/annotate-pdb)
 
 (after! lsp-pyright
   (setq lsp-pyright-python-executable-cmd "python3"))
