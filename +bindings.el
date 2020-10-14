@@ -6,7 +6,7 @@
 ;; Distinguish C-i from TAB
 (when (display-graphic-p)
   (define-key input-decode-map "\C-i" [C-i])
-  (map! "<C-i>" #'better-jumper-jump-forward))
+  (map! "<C-i>" #'evil-jump-forward))
 
 (map!
  ;; overrides other minor mode keymaps (just for non-evil)
@@ -82,8 +82,8 @@
  :v "DEL" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
  :v "<backspace>" (kbd "\"_d")
- :nmv "-" #'better-jumper-jump-backward
- :nmv "=" #'better-jumper-jump-forward
+ :nmv "-" #'evil-jump-backward
+ :nmv "=" #'evil-jump-forward
 
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
