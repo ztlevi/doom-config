@@ -19,7 +19,6 @@
 (package! symbol-overlay)
 
 ;; misc
-(package! helm)
 (package! dired-narrow)
 (package! atomic-chrome)
 (package! git-link)

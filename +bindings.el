@@ -13,7 +13,7 @@
  (:map override ;; general-override-mode-map
   "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
   "M-p"   #'+ivy/projectile-find-file
-  "M-y"   #'helm-show-kill-ring
+  "M-y"   #'counsel-yank-pop
   "C-h m" #'describe-mode
   "C-]"   #'yas-expand
   "<xterm-paste>" #'xterm-paste-with-delete-region
@@ -140,7 +140,7 @@
       (:prefix "h"                      ; help
        "C" #'helpful-command)
       (:prefix "o"                      ; open
-       :desc "Kill ring"             "k" #'helm-show-kill-ring
+       :desc "Kill ring"             "k" #'counsel-yank-pop
        :desc "Imenu list"            "i" #'imenu-list
        :desc "Open link"             "x" #'link-hint-open-link
        :desc "Open link at point"    "X" #'link-hint-open-link-at-point
@@ -198,7 +198,7 @@
        "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
        :desc "Comments"  "c" #'counsel-imenu-comments
-       :desc "Jump to bookmark" "m" #'helm-bookmarks
+       :desc "Jump to bookmark" "m" #'list-bookmarks
        :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
 
 (map!
