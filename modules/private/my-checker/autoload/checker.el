@@ -1,6 +1,6 @@
 ;;; private/my-checker/autoload/checker.el -*- lexical-binding: t; -*-
 
-;;;autoload
+;;;###autoload
 (defun reset-flycheck (&rest _)
   (flycheck-mode -1)
   (flycheck-mode +1))
