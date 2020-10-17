@@ -33,7 +33,8 @@
         (back-to-indentation)
         (insert trace)
         (insert "\n")
-        (python-indent-line)))))
+        (python-indent-line))))
+  (+python/annotate-pdb))
 
 ;;;###autoload
 (defun +python/toggle-default-breakpoint ()
