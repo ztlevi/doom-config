@@ -17,6 +17,8 @@
   "C-h m" #'describe-mode
   "C-]"   #'yas-expand
   "<xterm-paste>" #'xterm-paste-with-delete-region
+  "C-S-j" #'evil-scroll-line-down
+  "C-S-k" #'evil-scroll-line-up
   "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
   "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  "M-`"   #'other-frame
