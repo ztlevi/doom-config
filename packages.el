@@ -19,6 +19,7 @@
 (package! symbol-overlay)
 
 ;; misc
+(package! all-the-icons-ibuffer)
 (package! dired-narrow)
 (package! atomic-chrome)
 (package! git-link)

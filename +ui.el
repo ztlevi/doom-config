@@ -125,6 +125,11 @@
                 (mode 16 16 :left :elide) " "
                 filename-and-process))))
 
+(use-package! all-the-icons-ibuffer
+  :after ibuffer
+  :init (all-the-icons-ibuffer-mode 1)
+  )
+
 (add-hook! 'process-menu-mode-hook
   (setq-local tabulated-list-format [("Process" 30 t)
                                      ("PID"      7 t)
