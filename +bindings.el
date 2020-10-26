@@ -30,7 +30,7 @@
  "M-N" #'make-frame
  "C-M-f" #'toggle-frame-fullscreen
  "M-t" #'transpose-words
- "M-i" (cmd! (message (which-function)))
+ "M-i" #'display-which-function
  :gn "C-t" nil
  ;; Restore OS undo, save, copy, & paste keys (without cua-mode, because
  ;; it imposes some other functionality and overhead we don't need)

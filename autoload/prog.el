@@ -116,3 +116,8 @@
   (cl-letf (((symbol-function 'yes-or-no-p) (lambda (&rest args) t))
             ((symbol-function 'y-or-n-p) (lambda (&rest args) t)))
     ad-do-it))
+
+;;;###autoload
+(defun display-which-function ()
+  (interactive)
+  (message (which-function)))
