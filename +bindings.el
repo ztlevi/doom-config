@@ -59,12 +59,16 @@
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
  "<f8>"    #'describe-mode
+ ;; Comment
+ "M-/" (cmd! (save-excursion (comment-line 1)))
+ :n "M-/" #'evilnc-comment-or-uncomment-lines
+ :v "M-/" #'evilnc-comment-operator
  ;; Others
  "M-P"    #'+ivy/project-search-specific-files
  "M-e"    #'+ivy/switch-workspace-buffer
  "C-M-\\" #'indent-region-or-buffer
  "M-m"    #'kmacro-call-macro
- "M-/"    #'doom/toggle-comment-region-or-line)
+ )
 
 (unless (display-graphic-p)
   (map!
@@ -117,7 +121,6 @@
        "R" #'reload-buffer-no-confirm
        "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
-       :desc "Toggle Comment"         "/" #'doom/toggle-comment-region-or-line
        :desc "Treemacs symbols"       "i" #'lsp-treemacs-symbols
        :desc "Format-all buffer"      "F" #'format-all-buffer
        :desc "LSP organize imports"   "I" #'lsp-organize-imports
