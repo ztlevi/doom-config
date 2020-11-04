@@ -345,6 +345,7 @@
 
 (use-package! atomic-chrome
   :defer 3
+  :when (display-graphic-p)
   :preface
   (defun +my/atomic-chrome-server-running-p ()
     (cond ((executable-find "lsof")
