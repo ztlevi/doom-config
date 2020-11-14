@@ -53,6 +53,7 @@
  ;; Swiper
  "M-f" #'swiper
  "C-s" #'swiper
+ "M-u" #'dap-hydra
  ;; Help
  "C-h h"   nil
  "C-h C-k" #'find-function-on-key
@@ -177,7 +178,8 @@
        "*" (+my/prefix-M-x "projectile-")
        :desc "Update projectile list" "u" #'update-projectile-known-projects)
       (:prefix ("d" . "debug")
-       :desc "Start dap debugger" "d" #'+my/dap-start
+       :desc "Start debugger" "d" #'+my/dap-start
+       :desc "Start last debugger" "D" #'dap-debug-last
        "b" #'dap-breakpoint-toggle
        "h" #'dap-hydra
        "l" #'dap-ui-locals

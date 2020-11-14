@@ -164,10 +164,14 @@
   (dap-mode 1)
   (call-interactively #'dap-debug))
 
-(add-hook! dap-mode-hook ((dap-tooltip-mode 1) (tooltip-mode 1)))
+;; (add-hook! dap-mode-hook ((tooltip-mode 1)))
 
 (after! dap-mode
-  (setq dap-python-executable "python3")
+  ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
+  (setq dap-python-executable "python3"
+        lsp-enable-dap-auto-configure nil)
 
-  (add-hook 'dap-stopped-hook
-            (lambda (arg) (call-interactively #'dap-hydra))))
+  ;; Toggle dap-hydra whenever breakpoint is triggered
+  ;; (add-hook 'dap-stopped-hook
+  ;;           (lambda (arg) (call-interactively #'dap-hydra)))
+  )

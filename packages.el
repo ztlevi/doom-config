@@ -3,6 +3,7 @@
 
 ;; disabled packages
 (disable-packages! solaire-mode
+                   realgud
                    anaconda-mode
                    company-anaconda
                    lsp-python-ms
