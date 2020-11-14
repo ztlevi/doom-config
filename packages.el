@@ -4,6 +4,7 @@
 ;; disabled packages
 (disable-packages! solaire-mode
                    realgud
+                   realgud-trepan-ni
                    anaconda-mode
                    company-anaconda
                    lsp-python-ms
