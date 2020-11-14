@@ -114,6 +114,7 @@
         lsp-ui-doc-max-width 100
         lsp-ui-doc-position 'at-point))
 
+(add-hook! 'lsp-mode-hook (lsp-headerline-breadcrumb-mode 1))
 
 (use-package lsp-docker
   :defer t
