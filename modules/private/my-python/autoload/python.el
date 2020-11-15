@@ -37,6 +37,29 @@
   (+python/annotate-pdb))
 
 ;;;###autoload
+(defun +python/toggle-debugpy-lines ()
+  "Add debugpy listen lines."
+  (interactive)
+  (progn
+    (beginning-of-buffer)
+    ;; 20,000 is roughly about 200 lines
+    (if (re-search-forward "import debugpy" 20000 t)
+        (progn
+          (beginning-of-buffer)
+          (let ((regexes '("import debugpy\n"
+                           "debugpy.listen((\"0.0.0.0\", 5678))\n"
+                           "debugpy.wait_for_client()\n"
+                           )))
+            (dolist (reg regexes)
+              (if (re-search-forward reg 20000 t)
+                  (replace-match "" nil nil)))))
+      (insert
+       "import debugpy
+debugpy.listen((\"0.0.0.0\", 5678))
+debugpy.wait_for_client()
+"))))
+
+;;;###autoload
 (defun +python/toggle-default-breakpoint ()
   "Add a break point, highlight it."
   (interactive)

@@ -6,6 +6,7 @@
   :map python-mode-map
   :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
   :desc "Insert default breakpoint" "B" #'+python/toggle-default-breakpoint
+  :desc "Toggle debugpy lines" "d" #'+python/toggle-debugpy-lines
   (:prefix "t"
    :desc "Copy python breakpoint" "b" #'+python/copy-pdb-breakpoint-of-current-line
    :desc "Copy python cmd" "p" #'+python/copy-python-cmd
