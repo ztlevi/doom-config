@@ -180,7 +180,8 @@
       (:prefix ("d" . "debug")
        :desc "Start debugger" "d" #'+my/dap-start
        :desc "Start last debugger" "D" #'dap-debug-last
-       "b" #'dap-breakpoint-toggle
+       "t" #'dap-breakpoint-toggle
+       "b" #'dap-ui-breakpoints
        "h" #'dap-hydra
        "l" #'dap-ui-locals
        "q" #'dap-disconnect
