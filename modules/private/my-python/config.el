@@ -48,9 +48,13 @@
   ;;       python-shell-interpreter-args "-i")
 
   ;; ignore some linting info
-  (if (featurep! :tools lsp)
-      (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
-            lsp-pyls-plugins-pylint-args [ "--errors-only" ])))
+  (when (featurep! :tools lsp)
+    ;; disable live-mode for mypy
+    (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.enabled" t))
+    (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.live_mode" nil))
+
+    (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
+          lsp-pyls-plugins-pylint-args [ "--errors-only" ])))
 (add-hook! 'python-mode-hook #'+python/annotate-pdb)
 
 (after! lsp-pyright
