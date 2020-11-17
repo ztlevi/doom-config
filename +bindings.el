@@ -183,7 +183,12 @@
        "t" #'dap-breakpoint-toggle
        "b" #'dap-ui-breakpoints
        "h" #'dap-hydra
+       "r" #'dap-debug-restart
        "l" #'dap-ui-locals
+       "e" #'dap-ui-expressions
+       "a" #'dap-ui-expressions-add
+       "R" #'dap-ui-expressions-remove
+       "f" #'dap-switch-stack-frame
        "q" #'dap-disconnect
        "s" #'dap-ui-sessions
        "k" #'dap-delete-session
