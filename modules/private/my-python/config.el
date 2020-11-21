@@ -46,16 +46,17 @@
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
   ;;       python-shell-interpreter-args "-i")
+  )
+(add-hook! 'python-mode-hook #'+python/annotate-pdb)
+
+(after! lsp-pyls
+  ;; disable live-mode for mypy
+  (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.enabled" t))
+  (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.live_mode" nil))
 
   ;; ignore some linting info
-  (when (featurep! :tools lsp)
-    ;; disable live-mode for mypy
-    (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.enabled" t))
-    (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.live_mode" nil))
-
-    (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
-          lsp-pyls-plugins-pylint-args [ "--errors-only" ])))
-(add-hook! 'python-mode-hook #'+python/annotate-pdb)
+  (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
+        lsp-pyls-plugins-pylint-args [ "--errors-only" ]))
 
 (after! lsp-pyright
   (setq lsp-pyright-python-executable-cmd "python3"))
