@@ -333,17 +333,14 @@
     (:prefix ("i" . "Insert")
      "r" #'markdown-table-insert-row
      "c" #'markdown-table-insert-column))))
- (:after grep
-  :map grep-mode-map
-  "SPC" nil)
  (:after wgrep
   :map wgrep-mode-map
+  "<backspace>" #'ivy-occur-delete-candidate
+  :nv "gr" #'ivy-occur-revert-buffer
   :n "RET" #'ivy-occur-press-and-switch)
  (:after ivy
   :map ivy-occur-grep-mode-map
-  "C-d" nil
-  "SPC" nil
-  "DEL" #'ivy-occur-delete-candidate
+  "<backspace>" #'ivy-occur-delete-candidate
   :nv "gr" #'ivy-occur-revert-buffer
   :map ivy-minibuffer-map
   "TAB" #'ivy-partial-or-done
@@ -368,9 +365,6 @@
  (:after magit-blame
   (:map magit-blame-mode-map
    :n "o" #'magit-blame--git-link-commit))
- (:after git-rebase
-  (:map git-rebase-mode-map
-   "SPC" nil))
  (:after evil-vars
   :map evil-ex-completion-map
   "C-b" nil
