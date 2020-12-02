@@ -14,6 +14,17 @@
       ;; font. This bugs me. Markdown #-marks for headlines are more elegant.
       org-bullets-bullet-list '("#"))
 
+(after! org-agenda
+  ;; https://old.reddit.com/r/emacs/comments/hnf3cw/my_orgmode_agenda_much_better_now_with_category/
+  (setq org-agenda-category-icon-alist
+        `(("work" ,(list (all-the-icons-material "work")) nil nil :ascent center)
+          ("chore" ,(list (all-the-icons-material "home")) nil nil :ascent center)
+          ("events" ,(list (all-the-icons-material "event")) nil nil :ascent center)
+          ("todo" ,(list (all-the-icons-material "check_box")) nil nil :ascent center)
+          ("solution" ,(list (all-the-icons-material "done")) nil nil :ascent center)
+          ("birthday" ,(list (all-the-icons-material "cake")) nil nil :ascent center)
+          ("anniversary" ,(list (all-the-icons-material "favorite")) nil nil :ascent center))))
+
 (after! org
   (setq org-capture-templates
         '(("t" "Personal todo" entry

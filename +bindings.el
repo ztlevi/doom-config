@@ -14,7 +14,6 @@
   "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
   "M-p"   #'+ivy/projectile-find-file
   "M-y"   #'counsel-yank-pop
-  "C-h m" #'describe-mode
   "C-]"   #'yas-expand
   "<xterm-paste>" #'xterm-paste-with-delete-region
   "C-S-j" #'evil-scroll-line-down
@@ -56,6 +55,7 @@
  "M-u" #'dap-hydra
  ;; Help
  "C-h h"   nil
+ "C-h m" #'describe-mode
  "C-h C-k" #'find-function-on-key
  "C-h C-f" #'find-function-at-point
  "C-h C-v" #'find-variable-at-point
