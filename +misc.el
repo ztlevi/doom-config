@@ -268,7 +268,7 @@
 
 
 (after! magit
-  (setq magit-repository-directories '(("~/dev" . 2))
+  (setq magit-repository-directories '(("~/dev" . 2) ("~/.config" . 1))
         magit-save-repository-buffers nil
         git-commit-style-convention-checks nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
