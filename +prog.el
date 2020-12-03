@@ -168,10 +168,14 @@
 
 (after! dap-mode
   ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
-  (setq dap-python-executable "python3"
-        lsp-enable-dap-auto-configure nil)
+  (setq lsp-enable-dap-auto-configure nil)
 
   ;; Toggle dap-hydra whenever breakpoint is triggered
   ;; (add-hook 'dap-stopped-hook
   ;;           (lambda (arg) (call-interactively #'dap-hydra)))
   )
+
+
+(after! dap-python
+  (setq dap-python-executable "python3"
+        dap-python-debugger 'debugpy))

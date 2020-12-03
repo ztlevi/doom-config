@@ -13,6 +13,7 @@ Javascript, Python, C++, Rust, and Go.
 - [[#configuration][Configuration]]
 - [[#appendix][Appendix]]
   - [[#ctags-reference][Ctags reference]]
+  - [[#use-meta-key-in-terminal][Use Meta key in terminal]]
   - [[#hacks][Hacks]]
 
 * Screenshot
@@ -125,9 +126,8 @@ sudo pacman --needed --noconfirm -S go
 *** Language Server Protocol: Install the [[https://langserver.org/][lsp]] for your languages. A few examples are listed below.
 #+BEGIN_SRC shell
 # python
-# for msplys M-x lsp-python-ms-update-server, and remove `lsp-python-ms` from `packages.el`->disable-packages!
-# for pyls, anaconda pip fails on Arch Linux. I need to use system pip (/usr/bin/pip3) instead
-pip3 install --user --upgrade 'python-language-server[all]' pyls-mypy pyls-isort
+npm i -g pyright
+python3 -m pip install --user debugpy
 
 # Bash
 npm i -g bash-language-server
