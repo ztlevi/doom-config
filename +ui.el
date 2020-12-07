@@ -75,7 +75,7 @@
   `(web-mode-jsx-depth-5-face :background ,(doom-lighten (doom-color 'teal) 0.5))
   `(flyspell-incorrect :underline ,(doom-color 'red))
   `(flyspell-duplicate :underline ,(doom-color 'orange))
-  '(flymake-warning :underline (:style wave :color ,(doom-color 'yellow)))
+  `(flymake-warning :underline (:style wave :color ,(doom-color 'yellow)))
   `(flycheck-warning :underline (:style wave :color ,(doom-color 'yellow)))
   `(flycheck-error :underline (:style wave :color ,(doom-color 'red)))
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
