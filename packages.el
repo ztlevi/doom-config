@@ -21,6 +21,7 @@
 (package! symbol-overlay)
 
 ;; misc
+(package! showkey)
 (package! all-the-icons-ibuffer)
 (package! dired-narrow)
 (package! atomic-chrome)
