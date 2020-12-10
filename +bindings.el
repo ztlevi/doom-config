@@ -199,7 +199,8 @@
        "C" #'centered-window-mode
        "d" #'toggle-debug-on-error
        "D" #'+my/realtime-elisp-doc
-       "L" #'toggle-truncate-lines
+       "L" #'interaction-log-mode
+       "T" #'toggle-truncate-lines
        "S" #'size-indication-mode
        "i" #'highlight-indent-guides-mode
        "I" #'ivy-rich-mode
