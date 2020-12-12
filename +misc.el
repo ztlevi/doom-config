@@ -41,9 +41,12 @@
     (setq rime-librime-root "~/.emacs.d/librime/dist"))
   ;; Set Nixos env
   (when (and IS-LINUX (executable-find "nix"))
-    (setq rime-emacs-module-header-root (concat (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in with pkgs; lib.getLib emacs)'") "/include")
-          rime-librime-root (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in with pkgs; lib.getLib librime)'")
-          rime-share-data-dir (concat (shell-command-to-string "nix eval --raw '(let pkgs = import <nixpkgs> {}; in with pkgs; lib.getLib brise)'") "/share/rime-data"))))
+    (setq rime-emacs-module-header-root
+          (concat (shell-command-to-string "nix eval --raw 'nixpkgs#emacs.outPath'") "/include")
+          rime-librime-root
+          (shell-command-to-string "nix eval --raw 'nixpkgs#librime.outPath'")
+          rime-share-data-dir
+          (concat (shell-command-to-string "nix eval --raw 'nixpkgs#brise.outPath'") "/share/rime-data"))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
