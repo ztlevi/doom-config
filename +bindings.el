@@ -336,7 +336,6 @@
      "c" #'markdown-table-insert-column))))
  (:after wgrep
   :map wgrep-mode-map
-  "<backspace>" #'ivy-occur-delete-candidate
   :nv "gr" #'ivy-occur-revert-buffer
   :n "RET" #'ivy-occur-press-and-switch)
  (:after ivy

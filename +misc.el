@@ -3,7 +3,8 @@
 ;; Use chrome to browse
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program
-      (cond (IS-MAC "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+      (cond (IS-MAC "/Applications/Firefox.app/Contents/MacOS/firefox")
+            ((executable-find "firefox") "firefox")
             ((executable-find "google-chrome-stable") "google-chrome-stable")
             ((executable-find "/opt/google/chrome/chrome") "/opt/google/chrome/chrome")
             ((executable-find "google-chrome") "google-chrome")))
