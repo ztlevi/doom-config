@@ -14,6 +14,9 @@
       ;; font. This bugs me. Markdown #-marks for headlines are more elegant.
       org-bullets-bullet-list '("#"))
 
+(after! org-roam
+  (make-directory (concat org-directory "/roam") 'parents))
+
 (after! org-agenda
   ;; https://old.reddit.com/r/emacs/comments/hnf3cw/my_orgmode_agenda_much_better_now_with_category/
   (setq org-agenda-category-icon-alist
