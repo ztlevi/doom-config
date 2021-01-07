@@ -25,6 +25,7 @@
                     ("^\\*Ibuffer\\*$" :size 0.35)
                     ("^\\*info.*" :size 80 :side right)
                     ("^\\*Man.*" :size 80 :side right)
+                    ("^\\*keycast.*" :size 50 :side right)
                     ("^\\*Customize" :actions display-buffer)
                     ("^\\*edit-indirect" :size 0.6)
                     ("^\\*YASnippet Tables\\*$" :size 0.35)
