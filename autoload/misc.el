@@ -264,32 +264,22 @@ With PREFIX, cd to project root."
 
 ;; https://github.com/syohex/emacs-browser-refresh/blob/master/browser-refresh.el
 ;;;###autoload
-(defun +my/browser-refresh--applescript ()
+(defun +my/browser-refresh--chrome-applescript ()
   (interactive)
   (do-applescript
-   (if (file-exists-p! "/Applications/Firefox.app")
-       "
-tell application \"Firefox\" to activate
-tell application \"System Events\"
-    keystroke \"r\" using {command down}
-end tell
-"
-     "
-tell application \"Google Chrome\"
+   (format
+    "
+  tell application \"Google Chrome\"
     set winref to a reference to (first window whose title does not start with \"Developer Tools - \")
     set winref's index to 1
     reload active tab of winref
-end tell
-")))
+  end tell
+" )))
 
 ;;;###autoload
-(defun +my/window-focus-browser ()
-  (let ((selected-browser (if (file-exists-p! "/Applications/Firefox.app") "Firefox" "Google Chrome")))
-    (cond (IS-MAC (shell-command
-                   (format "open -a \"/Applications/%s.app\"" selected-browser)))
-          (IS-LINUX (shell-command
-                     (format "wmctrl -a \"%s\"" selected-browser))))))
-
+(defun +my/window-focus-google-chrome ()
+  (cond (IS-MAC (shell-command "open -a \"/Applications/Google Chrome.app\""))
+        (IS-LINUX (shell-command "wmctrl -a \"Google Chrome\""))))
 
 ;;;###autoload
 (defun counsel-imenu-comments ()
