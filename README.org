@@ -15,6 +15,8 @@ Javascript, Python, C++, Rust, and Go.
   - [[#ctags-reference][Ctags reference]]
   - [[#use-meta-key-in-terminal][Use Meta key in terminal]]
   - [[#hacks][Hacks]]
+- [[#faq][FAQ]]
+  - [[#cannot-push-code-with-magit-using-github-password][Cannot push code with magit using github password?]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -170,3 +172,7 @@ I have to use ssh with tmux on server. And terminal emacs becomes my daily drive
 [[https://github.com/ztlevi/Dotfiles/blob/master/shell/alacritty/config/alacritty/keybinding.yml][Alacritty keybinding config]] to make you terminal compatible with Meta keys.
 ** Hacks
 + Include a list of ways this module changes default behavior
+
+* FAQ
+** Cannot push code with magit using github password?
+Create a personal access token with all repo permission and use that token as your password.
