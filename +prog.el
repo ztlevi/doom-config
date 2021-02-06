@@ -166,12 +166,8 @@
 
 ;; (add-hook! dap-mode-hook ((tooltip-mode 1)))
 
-;; Watch this thread on how to disable dap-ui-controls https://github.com/emacs-lsp/dap-mode/issues/409
 (after! lsp-mode
-  (setq lsp-headerline-breadcrumb-segments '(file symbols))
-
-  (when (not (display-graphic-p))
-    (advice-add 'dap-ui--update-controls :override #'ignore)))
+  (setq lsp-headerline-breadcrumb-segments '(file symbols)))
 
 (after! dap-mode
   ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
