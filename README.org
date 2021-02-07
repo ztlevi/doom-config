@@ -106,7 +106,7 @@ sudo apt install libvterm-dev libtool-bin
 
 **** npm
 #+BEGIN_SRC shell
-npm install -g cspell prettier import-js
+npm install -g cspell prettier
 #+END_SRC
 
 **** pip
