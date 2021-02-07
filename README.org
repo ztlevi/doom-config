@@ -141,7 +141,7 @@ rustup update
 rustup component add rls rust-analysis rust-src
 
 # Javascript
-npm i -g typescript
+npm i -g typescript typescript-language-server
 
 # Vue
 npm install vue-language-server -g
