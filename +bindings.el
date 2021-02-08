@@ -348,6 +348,7 @@
   "TAB" #'ivy-partial-or-done
   "<C-return>" #'ivy-immediate-done
   "C-b" nil
+  "C-r" #'ivy-reverse-i-search          ; similar to ivy-restrict-to-matches
   "C-j" #'ivy-call-and-recenter
   "C-k" #'ivy-kill-line
   "C-v" #'ivy-scroll-up-command

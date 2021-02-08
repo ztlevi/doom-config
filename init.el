@@ -29,7 +29,7 @@
        ;;ido                ; the other *other* search engine...
        (ivy               ; a search engine for love and life
         +icons
-        +prescient
+        ;; +prescient       ; disabled due to ! invert match not working
         +childframe)
 
        :ui
