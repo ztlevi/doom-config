@@ -36,7 +36,7 @@
                     ((lambda (buf _) (with-current-buffer buf (eq major-mode 'forge-topic-mode))) :size 0.35)
                     ))
 
-;; Load system profile for different machines
-(let ((local "~/.config/doom/local.el"))
-  (when (file-exists-p local)
-    (load-file local)))
+;; Load system profile for different machines and work config
+(dolist (config '("~/.config/doom/local.el" "~/.work/dots/local.el"))
+  (when (file-exists-p config)
+    (load-file config)))
