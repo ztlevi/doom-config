@@ -37,6 +37,6 @@
                     ))
 
 ;; Load system profile for different machines
-(let ((profile "~/.config/doom/profile.el"))
-  (when (file-exists-p profile)
-    (load-file profile)))
+(let ((local "~/.config/doom/local.el"))
+  (when (file-exists-p local)
+    (load-file local)))
