@@ -66,7 +66,8 @@
     (if (file-directory-p java_path)
         (setq lsp-java-configuration-runtimes `[(:name "JavaSE-11"
                                                  :path ,java_path
-                                                 :default t)])))
+                                                 :default t)]
+              lsp-java-java-path (concat java_path "/bin/java"))))
   )
 
 
