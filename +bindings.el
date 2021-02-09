@@ -266,6 +266,10 @@
    :n "C-M-s" #'lispy-splice
    :n "M-V"   #'lispy-convolute-sexp
    :n "TAB" #'lispyville-prettify))
+ (:after outline
+  :map outline-mode-map
+  :n "C-k" nil
+  :n "C-j" nil)
  (:after elisp-mode
   :map emacs-lisp-mode-map
   :n "gh" #'helpful-at-point)
