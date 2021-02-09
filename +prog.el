@@ -59,9 +59,16 @@
 ;; JAVA
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (setq lsp-java-configuration-runtimes '[(:name "JavaSE-11"
-;;                                          :path "/path/to/java11"
-;;                                          :default t)])
+(after! lsp-java
+  ;; eclipse.jdt.ls needs java 11
+  (dolist (java_path '("/usr/lib/jvm/java-11-amazon-corretto.x86_64"
+                       "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
+                       ))
+    (if (file-directory-p java_path)
+        (setq lsp-java-configuration-runtimes '[(:name "JavaSE-11"
+                                                 :path "/path/to/java11"
+                                                 :default t)])))
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

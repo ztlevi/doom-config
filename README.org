@@ -129,6 +129,10 @@ sudo pacman --needed --noconfirm -S go
 npm i -g pyright
 python3 -m pip install --user debugpy
 
+# Java
+# Java 11 is needed for latest eclipse.jdt.ls to function
+# M-x lsp-install-server -> jdtls
+
 # Bash
 npm i -g bash-language-server
 
