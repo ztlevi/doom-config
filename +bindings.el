@@ -181,8 +181,10 @@
       (:prefix ("d" . "debug")
        :desc "Start debugger" "d" #'+my/dap-start
        :desc "Start last debugger" "D" #'dap-debug-last
-       "t" #'dap-breakpoint-toggle
-       "b" #'dap-ui-breakpoints
+       (:prefix ("b" . "breakpoint")
+        "b" #'dap-breakpoint-toggle
+        "c" #'dap-breakpoint-condition)
+       "B" #'dap-ui-breakpoints
        "h" #'dap-hydra
        "r" #'dap-debug-restart
        "l" #'dap-ui-locals
