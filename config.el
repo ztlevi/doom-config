@@ -7,6 +7,9 @@
 (load! "+ui")
 (load! "+bindings")
 
+(setq user-full-name "Ting Zhou"
+      user-mail-address "ztlevi.work@gmail.com")
+
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
 
 (setq-default fill-column 120
