@@ -1,5 +1,8 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
+(setq doom-one-brighter-comments t
+      doom-city-lights-brighter-comments t)
+
 (load-theme 'doom-one-light t)
 
 (when (display-graphic-p)
