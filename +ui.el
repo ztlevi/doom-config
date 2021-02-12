@@ -61,6 +61,7 @@
   '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
   `(breakpoint-enabled :background ,(doom-color 'red) :foreground "white")
   `(dap-ui-pending-breakpoint-face :background ,(doom-color 'red) :foreground "white")
+  `(dap-ui-verified-breakpoint-face :background ,(doom-lighten (doom-color 'red) 0.8))
   `(lsp-ui-peek-highlight :foreground "white")
   `(ivy-posframe-border :background ,(doom-color 'blue))
   `(magit-diff-file-heading :background ,(doom-lighten (doom-color 'blue) 0.5))
@@ -98,7 +99,7 @@
 ;; for terminal
 (unless (display-graphic-p)
   (custom-theme-set-faces! 'doom-one-light
-    `(vertical-border :background ,(doom-color 'bg-alt) :foreground ,(doom-color 'blue))
+    `(vertical-border :background ,(doom-color 'bg) :foreground ,(doom-color 'blue))
     `(mode-line :background ,(doom-lighten (doom-color 'blue) 0.8) :foreground ,(doom-color 'fg))
     `(mode-line-inactive :background ,(doom-color 'base2) :foreground ,(doom-color 'fg))
     `(font-lock-comment-face :foreground ,(doom-color 'base6))
