@@ -51,6 +51,11 @@
 
 (defface breakpoint-enabled '((t)) "Breakpoint face.")
 
+;; Faces need to postpone renderring
+(custom-theme-set-faces! doom-theme
+  `(font-lock-comment-face :foreground ,(doom-color 'blue))
+  `(font-lock-doc-face :foreground ,(doom-color 'blue)))
+
 ;; my custom faces
 (custom-set-faces!
   '(variable-pitch :family nil)
@@ -58,58 +63,48 @@
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)
   '(font-lock-type-face :italic t)
-  `(show-paren-match :background ,(doom-lighten (doom-color 'teal) 0.4) :foreground ,(doom-color 'base1))
+  `(show-paren-match :background ,(doom-blend 'teal 'base0 0.6) :foreground ,(doom-color 'base1))
   '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
   `(breakpoint-enabled :background ,(doom-color 'red) :foreground "white")
   `(dap-ui-pending-breakpoint-face :background ,(doom-color 'red) :foreground "white")
-  `(dap-ui-verified-breakpoint-face :background ,(doom-lighten (doom-color 'red) 0.8))
+  `(dap-ui-verified-breakpoint-face :background ,(doom-blend 'red 'base0 0.2))
   `(lsp-ui-peek-highlight :foreground "white")
   `(ivy-posframe-border :background ,(doom-color 'blue))
-  `(magit-diff-file-heading :background ,(doom-lighten (doom-color 'blue) 0.5))
-  `(magit-diff-file-heading-highlight :background ,(doom-lighten (doom-color 'blue) 0.2))
+  `(magit-diff-file-heading :background ,(doom-blend 'blue 'base0 0.5))
+  `(magit-diff-file-heading-highlight :background ,(doom-blend 'blue 'base0 0.8))
   '(markdown-header-face-1 :inherit 'org-level-1)
   '(markdown-header-face-2 :inherit 'org-level-2)
   '(markdown-header-face-3 :inherit 'org-level-3)
-  `(web-mode-jsx-depth-1-face :background ,(doom-lighten (doom-color 'teal) 0.9))
-  `(web-mode-jsx-depth-2-face :background ,(doom-lighten (doom-color 'teal) 0.8))
-  `(web-mode-jsx-depth-3-face :background ,(doom-lighten (doom-color 'teal) 0.7))
-  `(web-mode-jsx-depth-4-face :background ,(doom-lighten (doom-color 'teal) 0.6))
-  `(web-mode-jsx-depth-5-face :background ,(doom-lighten (doom-color 'teal) 0.5))
+  `(web-mode-jsx-depth-1-face :background ,(doom-blend 'teal 'base0 0.1))
+  `(web-mode-jsx-depth-2-face :background ,(doom-blend 'teal 'base0 0.2))
+  `(web-mode-jsx-depth-3-face :background ,(doom-blend 'teal 'base0 0.3))
+  `(web-mode-jsx-depth-4-face :background ,(doom-blend 'teal 'base0 0.4))
+  `(web-mode-jsx-depth-5-face :background ,(doom-blend 'teal 'base0 0.5))
   `(flyspell-incorrect :underline ,(doom-color 'red))
   `(flyspell-duplicate :underline ,(doom-color 'orange))
   `(flymake-warning :underline (:style wave :color ,(doom-color 'yellow)))
   `(flycheck-warning :underline (:style wave :color ,(doom-color 'yellow)))
   `(flycheck-error :underline (:style wave :color ,(doom-color 'red)))
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
-  `(rime-default-face :background ,(doom-lighten (doom-color 'red) 0.85))
-  `(doom-modeline-debug-visual :background ,(doom-lighten (doom-color 'red) 0.85))
+  `(rime-default-face :background ,(doom-blend 'red 'base0 0.15))
+  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.15))
+  `(mode-line :background ,(doom-blend 'blue 'base0  0.3) :foreground ,(doom-color 'fg))
   `(mode-line-inactive :background ,(doom-color 'bg-alt) :foreground ,(doom-color 'fg))
-  `(ein:cell-input-area :background ,(doom-lighten (doom-color 'red) 0.85))
+  `(ein:cell-input-area :background ,(doom-blend 'red 'base0 0.15))
   `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
 
-(custom-theme-set-faces! 'doom-one-light
-  `(font-lock-comment-face :foreground ,(doom-color 'blue))
-  `(font-lock-doc-face :foreground ,(doom-color 'blue))
-  `(mode-line :background ,(doom-lighten (doom-color 'blue) 0.8) :foreground ,(doom-color 'fg)))
-
 (custom-theme-set-faces! 'doom-city-lights
-  `(font-lock-comment-face :foreground ,(doom-color 'blue))
-  `(font-lock-doc-face :foreground ,(doom-color 'blue))
-  `(mode-line :background ,(doom-darken (doom-color 'blue) 0.6) :foreground ,(doom-color 'fg))
-  `(hl-line :background ,(doom-color 'base0))
-  `(magit-diff-file-heading-highlight :foreground ,(doom-color 'base0))
-  `(magit-diff-file-heading :foreground ,(doom-color 'base4))
   ;; ediff
-  `(ediff-current-diff-A :foreground ,(doom-color 'red)   :background ,(doom-darken (doom-color 'red) 0.8))
-  `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-darken (doom-color 'green) 0.8))
-  `(ediff-current-diff-C :foreground ,(doom-color 'blue)  :background ,(doom-darken (doom-color 'blue) 0.8))
-  `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-darken (doom-color 'teal) 0.8))
-  `(markdown-code-face :background ,(doom-color 'base2)))
+  `(ediff-current-diff-A :foreground ,(doom-color 'red)   :background ,(doom-blend 'red 'base0 0.2))
+  `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-blend 'green 'base0 0.2))
+  `(ediff-current-diff-C :foreground ,(doom-color 'blue)  :background ,(doom-blend 'blue 'base0 0.2))
+  `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-blend 'teal 'base0 0.2))
+  )
 
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
-    `(vertical-border :background ,(doom-color 'bg) :foreground ,(doom-color 'blue))))
+    `(vertical-border :background ,(doom-color 'base0) :foreground ,(doom-color 'blue))))
 
 ;; (when IS-MAC
 ;;   ;; enable ligatures support
