@@ -1,7 +1,8 @@
 ;;; private/my/+ui.el -*- lexical-binding: t; -*-
 
-(setq doom-one-brighter-comments t
-      doom-city-lights-brighter-comments t)
+;; (setq doom-one-brighter-comments t
+;;       doom-city-lights-brighter-comments t
+;;       doom-one-light-brighter-comments t)
 
 (load-theme 'doom-one-light t)
 
@@ -82,10 +83,19 @@
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
   `(rime-default-face :background ,(doom-lighten (doom-color 'red) 0.85))
   `(doom-modeline-debug-visual :background ,(doom-lighten (doom-color 'red) 0.85))
+  `(mode-line-inactive :background ,(doom-color 'bg-alt) :foreground ,(doom-color 'fg))
   `(ein:cell-input-area :background ,(doom-lighten (doom-color 'red) 0.85))
   `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
 
+(custom-theme-set-faces! 'doom-one-light
+  `(font-lock-comment-face :foreground ,(doom-color 'blue))
+  `(font-lock-doc-face :foreground ,(doom-color 'blue))
+  `(mode-line :background ,(doom-lighten (doom-color 'blue) 0.8) :foreground ,(doom-color 'fg)))
+
 (custom-theme-set-faces! 'doom-city-lights
+  `(font-lock-comment-face :foreground ,(doom-color 'blue))
+  `(font-lock-doc-face :foreground ,(doom-color 'blue))
+  `(mode-line :background ,(doom-darken (doom-color 'blue) 0.6) :foreground ,(doom-color 'fg))
   `(hl-line :background ,(doom-color 'base0))
   `(magit-diff-file-heading-highlight :foreground ,(doom-color 'base0))
   `(magit-diff-file-heading :foreground ,(doom-color 'base4))
@@ -98,12 +108,8 @@
 
 ;; for terminal
 (unless (display-graphic-p)
-  (custom-theme-set-faces! 'doom-one-light
-    `(vertical-border :background ,(doom-color 'bg) :foreground ,(doom-color 'blue))
-    `(mode-line :background ,(doom-lighten (doom-color 'blue) 0.8) :foreground ,(doom-color 'fg))
-    `(mode-line-inactive :background ,(doom-color 'base2) :foreground ,(doom-color 'fg))
-    `(font-lock-comment-face :foreground ,(doom-color 'base6))
-    `(font-lock-doc-face :foreground ,(doom-color 'base6))))
+  (custom-set-faces!
+    `(vertical-border :background ,(doom-color 'bg) :foreground ,(doom-color 'blue))))
 
 ;; (when IS-MAC
 ;;   ;; enable ligatures support
