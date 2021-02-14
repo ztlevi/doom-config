@@ -104,7 +104,8 @@
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
-    `(vertical-border :background ,(doom-color 'base0) :foreground ,(doom-color 'blue))))
+    `(mode-line-inactive :background ,(doom-color 'black) :foreground ,(doom-color 'fg))
+    `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'blue))))
 
 ;; (when IS-MAC
 ;;   ;; enable ligatures support
