@@ -286,6 +286,12 @@
         git-commit-style-convention-checks nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
+  ;; Add git-credential-manager-core support
+  ;; TODO: remove functionp when magit is BUMPED
+  (when (functionp 'magit-process-git-credential-manager-core)
+    (add-hook 'magit-process-prompt-functions
+              'magit-process-git-credential-manager-core))
+
   (magit-wip-after-apply-mode t)
   (magit-wip-before-change-mode t))
 
