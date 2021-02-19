@@ -122,10 +122,12 @@ selected, then the current line."
   (let (magit-repos
         magit-abs-repos
         (home (expand-file-name "~")))
-    ;; append magit repos at root with depth 1
-    (dolist (root +my/repo-root-list)
-      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
-    (setq magit-abs-repos (append magit-abs-repos (magit-list-repos)))
+    ;; Sometimes the directory is not readable by the user, ignore the error
+    (ignore-errors
+      ;; append magit repos at root with depth 1
+      (dolist (root +my/repo-root-list)
+        (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
+      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos))))
 
     ;; convert abs path to relative path (HOME)
     (dolist (repo magit-abs-repos)
