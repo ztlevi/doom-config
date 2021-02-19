@@ -270,14 +270,9 @@
                '("rnd-github-usa-g\\.huawei\\.com" git-link-github-http))
   (add-to-list 'git-link-commit-remote-alist
                '("rnd-github-usa-g\\.huawei\\.com" git-link-commit-github-http))
-  (add-to-list 'git-link-remote-alist
-               '("git\\.amazon\\.com" git-link-amazon-code))
-  (add-to-list 'git-link-commit-remote-alist
-               '("git\\.amazon\\.com" git-link-commit-amazon-code))
 
   ;; OVERRIDE
-  (advice-add #'git-link--select-remote :override #'git-link--read-remote)
-  )
+  (advice-add #'git-link--select-remote :override #'git-link--read-remote))
 
 
 (after! magit

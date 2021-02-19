@@ -182,26 +182,6 @@ repository root."
           commit))
 
 ;;;###autoload
-(defun git-link-amazon-code (hostname dirname filename branch commit start end)
-  (format "https://code.amazon.com/packages/%s/blobs/%s/--/%s"
-          ;; hostname
-          (nth 1 (s-split "/" dirname))
-          (or branch commit)
-          (concat filename
-                  (when start
-                    (concat "#"
-                            (if end
-                                (format "L%s-L%s" start end)
-                              (format "L%s" start)))))))
-
-;;;###autoload
-(defun git-link-commit-amazon-code (hostname dirname commit)
-  (format "http://code.amazon.com/packages/%s/commits/%s#"
-          ;; hostname
-          (nth 1 (s-split "/" dirname))
-          commit))
-
-;;;###autoload
 (defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
   (interactive "P")
