@@ -87,7 +87,7 @@
   `(flycheck-error :underline (:style wave :color ,(doom-color 'red)))
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
   `(rime-default-face :background ,(doom-blend 'red 'base0 0.15))
-  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.15))
+  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.5))
   `(mode-line :background ,(doom-blend 'blue 'base0  0.3) :foreground ,(doom-color 'fg))
   `(mode-line-inactive :background ,(doom-color 'bg-alt) :foreground ,(doom-color 'fg))
   `(ein:cell-input-area :background ,(doom-blend 'red 'base0 0.15))
