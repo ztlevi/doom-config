@@ -283,12 +283,13 @@
 
   ;; Workplace folder has some permission error on macos
   (let ((workspace-dir "~/workplace/"))
-    (dolist (dir (directory-files workspace-dir t))
-      (when (and
-             (file-readable-p dir)
-             (not (string-equal ".." (substring dir -2)))
-             (not (string-equal "." (substring dir -1))))
-        (appendq! magit-repository-directories `((,dir . 2))))))
+    (when (file-directory-p workspace-dir)
+      (dolist (dir (directory-files workspace-dir t))
+        (when (and
+               (file-readable-p dir)
+               (not (string-equal ".." (substring dir -2)))
+               (not (string-equal "." (substring dir -1))))
+          (appendq! magit-repository-directories `((,dir . 2)))))))
 
   ;; Add git-credential-manager-core support
   ;; TODO: remove functionp when magit is BUMPED
