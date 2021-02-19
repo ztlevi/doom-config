@@ -109,7 +109,7 @@ selected, then the current line."
               :caller 'counsel-file-jump)))
 
 ;;;###autoload
-(defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src" "~/.cache")
+(defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src" "~/.cache" "~/.config")
   "personal repo root to scan git projects")
 
 ;;;###autoload
@@ -122,12 +122,10 @@ selected, then the current line."
   (let (magit-repos
         magit-abs-repos
         (home (expand-file-name "~")))
-    ;; Sometimes the directory is not readable by the user, ignore the error
-    (ignore-errors
-      ;; append magit repos at root with depth 1
-      (dolist (root +my/repo-root-list)
-        (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
-      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos))))
+    ;; append magit repos at root with depth 1
+    (dolist (root +my/repo-root-list)
+      (setq magit-abs-repos (append magit-abs-repos (magit-list-repos-1 root 1))))
+    (setq magit-abs-repos (append magit-abs-repos (magit-list-repos)))
 
     ;; convert abs path to relative path (HOME)
     (dolist (repo magit-abs-repos)
