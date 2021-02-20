@@ -4,7 +4,8 @@
 ;;       doom-city-lights-brighter-comments t
 ;;       doom-one-light-brighter-comments t)
 
-(load-theme 'doom-city-lights t)
+(setq doom-theme 'doom-one-light)
+;; (load-theme 'doom-one-light t)
 
 (when (display-graphic-p)
   (setq user-font
