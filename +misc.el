@@ -276,20 +276,9 @@
 
 
 (after! magit
-  (setq magit-repository-directories '(("~/dev" . 2))
-        magit-save-repository-buffers nil
+  (setq magit-save-repository-buffers nil
         git-commit-style-convention-checks nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-
-  ;; Workplace folder has some permission error on macos
-  (let ((workspace-dir "~/workplace/"))
-    (when (file-directory-p workspace-dir)
-      (dolist (dir (directory-files workspace-dir t))
-        (when (and
-               (file-readable-p dir)
-               (not (string-equal ".." (substring dir -2)))
-               (not (string-equal "." (substring dir -1))))
-          (appendq! magit-repository-directories `((,dir . 2)))))))
 
   ;; Add git-credential-manager-core support
   ;; TODO: remove functionp when magit is BUMPED

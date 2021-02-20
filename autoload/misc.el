@@ -119,6 +119,16 @@ selected, then the current line."
 (defun update-projectile-known-projects ()
   (interactive)
   (require 'magit)
+  (setq magit-repository-directories '(("~/dev" . 2)))
+  ;; Workplace folder has some permission error on macos
+  (let ((workspace-dir "~/workplace/"))
+    (when (file-directory-p workspace-dir)
+      (dolist (dir (directory-files workspace-dir t))
+        (when (and
+               (file-readable-p dir)
+               (not (string-equal ".." (substring dir -2)))
+               (not (string-equal "." (substring dir -1))))
+          (appendq! magit-repository-directories `((,dir . 2)))))))
   (let (magit-repos
         magit-abs-repos
         (home (expand-file-name "~")))
