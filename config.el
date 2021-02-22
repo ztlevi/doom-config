@@ -40,6 +40,8 @@
                     ))
 
 ;; Load system profile for different machines and work config
-(dolist (config '("~/.config/doom/local.el" "~/.work/dots/local.el"))
+(dolist (config '("~/.config/doom/local.el"
+                  "~/workplace/work/dots/local.el"
+                  "~/.work/dots/local.el"))
   (when (file-exists-p config)
     (load-file config)))
