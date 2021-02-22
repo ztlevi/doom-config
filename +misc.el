@@ -262,14 +262,11 @@
 (after! git-link
   (setq git-link-open-in-browser t)
 
-  (add-to-list 'git-link-remote-alist
-               '("git\\.bst\\.ai" git-link-github-http))
-  (add-to-list 'git-link-commit-remote-alist
-               '("git\\.bst\\.ai" git-link-commit-github-http))
-  (add-to-list 'git-link-remote-alist
-               '("rnd-github-usa-g\\.huawei\\.com" git-link-github-http))
-  (add-to-list 'git-link-commit-remote-alist
-               '("rnd-github-usa-g\\.huawei\\.com" git-link-commit-github-http))
+  ;; For some company still uses http git server
+  ;; (add-to-list 'git-link-remote-alist
+  ;;              '("git\\.dummy\\.com" git-link-github-http))
+  ;; (add-to-list 'git-link-commit-remote-alist
+  ;;              '("git\\.dummy\\.com" git-link-commit-github-http))
 
   ;; OVERRIDE
   (advice-add #'git-link--select-remote :override #'git-link--read-remote))
@@ -291,9 +288,8 @@
 
 
 (after! forge
-  (push '("github.argo.ai" "github.argo.ai/api/v3"
-          "github.argo.ai" forge-github-repository)
-        forge-alist)
+  ;; (push '("git.dummy.com" "git.dummy.com/api/v3" "git.dummy.com" forge-github-repository)
+  ;;       forge-alist)
 
   ;; TEMP
   ;; (setq ghub-use-workaround-for-emacs-bug 'force)
@@ -328,8 +324,8 @@
 
 
 (after! browse-at-remote
-  (add-to-list 'browse-at-remote-remote-type-domains '("github.argo.ai" . "github"))
-  (add-to-list 'browse-at-remote-remote-type-domains '("git.bst.ai" . "gitlab")))
+  ;; (add-to-list 'browse-at-remote-remote-type-domains '("git.dummy.com" . "gitlab"))
+  )
 
 
 (after! magit-todos
