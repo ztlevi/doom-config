@@ -36,7 +36,7 @@ brew tap railwaycat/emacsmacport
 rm -r /Applications/Emacs.app
 brew install emacs-mac --with-modules --with-natural-title-bar
 # create alias in /Applications
-ln -Fs `sudo find /usr/local/Cellar/emacs-mac -name "Emacs.app"` /Applications/Emacs.app
+ln -Fs `sudo find /usr/local/Cellar/emacs-* -name "Emacs.app"` /Applications/Emacs.app
   #+END_SRC
 
   #+BEGIN_QUOTE
