@@ -94,7 +94,8 @@
 (setq +format-with-lsp nil)
 
 (after! lsp-mode
-  (setq lsp-print-io nil)
+  (setq lsp-print-io nil
+        lsp-file-watch-threshold 3000)
   (dolist (dir '("[/\\\\]\\.ccls-cache$"
                  "[/\\\\]\\.mypy_cache$"
                  "[/\\\\]\\.pytest_cache$"
