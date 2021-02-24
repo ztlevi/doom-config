@@ -260,7 +260,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! git-link
-  (setq git-link-open-in-browser t)
+  (setq git-link-open-in-browser nil)
 
   ;; For some company still uses http git server
   ;; (add-to-list 'git-link-remote-alist
