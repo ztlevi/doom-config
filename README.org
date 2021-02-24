@@ -24,10 +24,12 @@ Javascript, Python, C++, Rust, and Go.
 * Installation
 ** Step1: Install Emacs
 *** MacOS
-- *Method 1*: Use brew cask(Recommended)
+- *Method 1*: Use brew cask(Recommended). Pick emacs-mac or emacs-plus.
   #+BEGIN_SRC shell
 brew tap railwaycat/emacsmacport
 brew install --cask emacs-mac
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@28 --with-native-comp
   #+END_SRC
 
 - *Method 2*: Just brew, need compiling. (more customization)
