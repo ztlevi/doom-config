@@ -68,7 +68,8 @@
                                                  :path ,java_path
                                                  :default t)]
               lsp-java-java-path (concat java_path "/bin/java"))))
-  )
+
+  (setq-hook! 'java-mode-hook c-basic-offset 4))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
