@@ -381,10 +381,11 @@ you're done. This can be called from an external shell script."
           (add-hook 'delete-frame-functions #'cleanup-scratch-frame))))))
 
 ;;;###autoload
-(defun +default/yank-relative-buffer-filename ()
-  "Copy the current buffer's path to the kill ring."
+(defun +default/yank-filename  ()
+  "Copy and show the file name of the current buffer."
   (interactive)
-  (if-let (filename (file-relative-name (or buffer-file-name (bound-and-true-p list-buffers-directory))
-                                        (doom-project-root)))
-      (message (kill-new (abbreviate-file-name filename)))
-    (error "Couldn't find filename in current buffer")))
+  (if-let (file-name (file-name-nondirectory (buffer-file-name)))
+      (progn
+        (kill-new file-name)
+        (message "%s" file-name))
+    (message "WARNING: Current buffer is not attached to a file!")))

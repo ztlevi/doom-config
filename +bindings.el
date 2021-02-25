@@ -133,7 +133,7 @@
        :desc "Swap left"  "h" #'+workspace/swap-left
        :desc "Swap right" "l" #'+workspace/swap-right)
       (:prefix "f"                      ; file
-       :desc "Yank relative filename" "Y" #'+default/yank-relative-buffer-filename
+       :desc "Yank filename" "n" #'+default/yank-filename
        :desc "Save all" "s" #'evil-write-all
        :desc "Deer"     "j" #'deer)
       (:prefix "g"                      ; git
