@@ -29,6 +29,8 @@
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . +cc-c-c++-objc-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
 
+(setq-default c-basic-offset 2)
+
 (after! cc-mode
   (c-add-style
    "my-cc" '("user"
@@ -40,9 +42,7 @@
                  (member-init-intro . +)
                  (topmost-intro . 0)
                  (arglist-cont-nonempty . +)))))
-  (setq c-default-style "my-cc")
-
-  (setq-default c-basic-offset 2))
+  (setq c-default-style "my-cc"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
