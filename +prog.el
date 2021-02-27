@@ -186,8 +186,3 @@
   ;; (add-hook 'dap-stopped-hook
   ;;           (lambda (arg) (call-interactively #'dap-hydra)))
   )
-
-
-(after! dap-python
-  (setq dap-python-executable "python3"
-        dap-python-debugger 'debugpy))
