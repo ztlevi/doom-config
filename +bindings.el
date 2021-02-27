@@ -301,6 +301,10 @@
   "C-j" #'tide-find-next-reference
   "n"   #'tide-find-next-reference
   "C-l" #'tide-goto-reference)
+ (:after cc-mode
+  (:map java-mode-map
+   :localleader
+   :desc "Add import" "i" #'lsp-java-add-import))
  (:after org
   (:map org-mode-map
    :localleader
