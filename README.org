@@ -113,7 +113,7 @@ npm install -g cspell prettier
 
 **** pip
 #+BEGIN_SRC shell
-python3 -m pip install --upgrade pylint gnureadline black grip cpplint
+pip3 install --upgrade pylint gnureadline black grip cpplint
 #+END_SRC
 
 **** go: This module requires a valid ~GOPATH~, and the following Go packages:
@@ -129,7 +129,7 @@ sudo pacman --needed --noconfirm -S go
 #+BEGIN_SRC shell
 # python
 npm i -g pyright
-python3 -m pip install --user debugpy
+pip3 install --user debugpy
 
 # Java
 # Java 11 is needed for latest eclipse.jdt.ls to function
