@@ -332,8 +332,8 @@
    :i "C-d" nil)
   (:map markdown-mode-map
    :desc "Markdown Cycle" :nv [tab] #'markdown-cycle
-   :desc "Insert item below" :ni "<C-return>"   (cmd! (+org/insert-item-below 1))
-   :desc "Insert item above" :ni "<S-C-return>" (cmd! (+org/insert-item-above 1))
+   :desc "Insert item below" :ni "<C-return>"  #'+org/insert-item-below
+   :desc "Insert item above" :ni "<S-C-return>" #'+org/insert-item-above
    (:localleader
     (:when IS-MAC
      :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
