@@ -28,26 +28,14 @@ Javascript, Python, C++, Rust, and Go.
   #+BEGIN_SRC shell
 brew tap railwaycat/emacsmacport
 brew install --cask emacs-mac
+
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-native-comp
-  #+END_SRC
 
-- *Method 2*: Just brew, need compiling. (more customization)
-  #+BEGIN_SRC shell
-brew tap railwaycat/emacsmacport
-rm -r /Applications/Emacs.app
-brew install emacs-mac --with-modules --with-natural-title-bar
-# create alias in /Applications
+# create alias in /Applications if needed
 ln -Fs `sudo find /usr/local/Cellar/emacs-* -name "Emacs.app"` /Applications/Emacs.app
   #+END_SRC
 
-  #+BEGIN_QUOTE
-  Notes: (just for method 2)
-  1. natural-title-bar usage [[https://github.com/railwaycat/homebrew-emacsmacport/wiki/Natural-Title-Bar][here]].
-  2. Solution to incoming network connection:
-     Codesign your Emacs.app. Instructions over [[http://apple.stackexchange.com/questions/3271/how-to-get-rid-of-firewall-accept-incoming-connections-dialog/170566][here]].
-     ~codesign --deep --force --verbose --sign ztlevi /usr/local/opt/emacs-mac/Emacs.app~
-  #+END_QUOTE
 *** Linux
 #+BEGIN_SRC shell
 # Ubuntu emacs
