@@ -59,6 +59,9 @@
 ;; JAVA
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+(set-formatter! 'google-java-format "google-java-format -" :modes '(java-mode))
+
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 11
   (dolist (java_path '("/usr/lib/jvm/java-11-amazon-corretto.x86_64"
