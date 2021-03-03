@@ -182,6 +182,10 @@
   ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
   (setq lsp-enable-dap-auto-configure nil)
 
+  ;; use M-u to exit dap-hydra
+  (after! dap-hydra
+    (defhydra+ dap-hydra () ("M-u" nil)))
+
   ;; Toggle dap-hydra whenever breakpoint is triggered
   ;; (add-hook 'dap-stopped-hook
   ;;           (lambda (arg) (call-interactively #'dap-hydra)))

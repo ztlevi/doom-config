@@ -52,6 +52,7 @@
  ;; Swiper
  "M-f" #'swiper
  "C-s" #'swiper
+ ;; Debug
  "M-u" #'dap-hydra
  ;; Help
  "C-h h"   nil
