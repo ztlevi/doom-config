@@ -71,7 +71,7 @@ brew install ripgrep grep exa zstd ctags fd
 # utils
 brew install sqlite hub gpg2 coreutils gnu-tar mplayer direnv libtool
 # language
-brew install shellcheck aspell languagetool clang-format
+brew install shellcheck aspell languagetool clang-format google-java-format
 #+END_SRC
 
 ***** Arch Linux
