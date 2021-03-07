@@ -155,6 +155,7 @@
        :desc "Youdao dictionary"     "y" (if (display-graphic-p) #'youdao-dictionary-search-at-point-tooltip
                                            #'youdao-dictionary-search-at-point)
        :desc "Youdao play voice"     "Y" #'youdao-dictionary-play-voice-at-point
+       :desc "Google Translate"      "g" #'go-translate
        :desc "Docker open apps"      ";" #'+docker/reveal-in-apps
        (:when IS-MAC
         :desc "Reveal in default program"  "f" #'+macos/open-in-default-program

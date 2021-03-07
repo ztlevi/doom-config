@@ -226,6 +226,20 @@
   :config
   (setq counsel-etags-update-interval 60))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Translate
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(use-package! go-translate
+  :defer t
+  :config
+  (setq go-translate-local-language "en")
+  (setq go-translate-target-language "zh-CN")
+  (setq go-translate-token-current (cons 430675 2721866130))
+  ;; For China user
+  (setq go-translate-base-url "https://translate.google.cn"))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; QUICKRUN
