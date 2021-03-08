@@ -71,9 +71,7 @@
 
 (setq evil-cross-lines t
       evil-split-window-below t
-      evil-vsplit-window-right t
-      evil-emacs-state-cursor `(box ,(doom-color 'violet)))
-
+      evil-vsplit-window-right t)
 
 (after! evil
   (evil-define-text-object evil-inner-buffer (count &optional beg end type)
