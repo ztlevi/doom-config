@@ -218,6 +218,7 @@
        "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
        :desc "M-x amazon-search-*" "a" (+my/prefix-M-x "amazon-search-")
+       :desc "Search Workspace" "w" #'+default/search-workspace
        :desc "Comments"  "c" #'counsel-imenu-comments
        :desc "Jump to bookmark" "m" #'list-bookmarks
        :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
