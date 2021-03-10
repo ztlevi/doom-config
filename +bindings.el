@@ -217,7 +217,7 @@
        "b" #'avy-pop-mark
        "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
-       :desc "M-x amazon-search-*" "a" (+my/prefix-M-x "amazon-search-")
+       :desc "M-x amazon-search-*" "a" (+my/prefix-M-x "amazon-search-wiki")
        :desc "Search Workspace" "w" #'+default/search-workspace
        :desc "Comments"  "c" #'counsel-imenu-comments
        :desc "Jump to bookmark" "m" #'list-bookmarks
