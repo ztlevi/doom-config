@@ -1,6 +1,8 @@
 ;;;  -*- lexical-binding: t; -*-
 
-(add-hook! 'text-mode-hook (setq-local truncate-lines nil))
+(setq-hook! 'text-mode-hook
+  truncate-lines nil
+  tab-width 2)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ORG
@@ -90,7 +92,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (remove-hook 'text-mode-hook #'auto-fill-mode)
-
 
 (use-package! edit-indirect :defer t)
 
