@@ -10,7 +10,8 @@
 (setq user-full-name "Ting Zhou"
       user-mail-address "ztlevi.work@gmail.com")
 
-(setq doom-scratch-buffer-major-mode 'emacs-lisp-mode)
+(setq doom-scratch-buffer-major-mode 'emacs-lisp-mode
+      confirm-kill-emacs nil)
 
 (setq-default fill-column 120
               delete-trailing-lines t)
