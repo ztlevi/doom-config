@@ -127,6 +127,7 @@
        :desc "Treemacs symbols"       "i" #'lsp-treemacs-symbols
        :desc "Format-all buffer"      "F" #'format-all-buffer
        :desc "LSP organize imports"   "I" #'lsp-organize-imports
+       :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
        :desc "Treemacs references"    "D" #'lsp-treemacs-references)
       (:prefix "TAB"
        :desc "Switch workspace" "TAB" #'+workspace/switch-to
