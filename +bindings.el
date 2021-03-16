@@ -67,7 +67,7 @@
  :v "M-/" #'evilnc-comment-operator
  ;; Others
  :m [tab] nil
- "M-P"    #'+ivy/project-search-specific-files
+ "C-M-p"    #'+ivy/project-search-specific-files
  "M-e"    #'+ivy/switch-workspace-buffer
  "C-M-\\" #'indent-region-or-buffer
  "M-m"    #'kmacro-call-macro
