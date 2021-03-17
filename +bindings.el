@@ -38,10 +38,10 @@
  "M-c" (if (featurep 'evil) #'evil-yank #'copy-region-as-kill)
  "M-v" #'yank-with-delete-region
  "M-s" #'evil-write-all
- ;; Buffer-local font scaling
- "M-0" (cmd! (text-scale-set 0))
- "M-=" #'text-scale-increase
- "M--" #'text-scale-decrease
+ ;; frame-local font scaling
+ "M-0" #'doom/reset-font-size
+ "M-=" #'doom/increase-font-size
+ "M--" #'doom/decrease-font-size
  ;; Conventional text-editing keys & motions
  "M-a" #'mark-whole-buffer
  :gni [M-RET]    #'+default/newline-below
