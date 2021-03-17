@@ -6,6 +6,8 @@
 
 (setq-hook! 'sh-mode-hook sh-basic-offset 2)
 
+(appendq! +format-on-save-enabled-modes '(json-mode))
+
 (use-package! which-func
   :defer t
   :commands which-function)
