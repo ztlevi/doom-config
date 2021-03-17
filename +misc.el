@@ -38,7 +38,7 @@
    ("C-j" . 'rime-inline-ascii))
   :config
   (when IS-MAC
-    (setq rime-librime-root "~/.emacs.d/librime/dist"))
+    (setq rime-librime-root "~/.config/emacs/librime/dist"))
   ;; Set Nixos env
   (when (and IS-LINUX (executable-find "nix"))
     (setq rime-emacs-module-header-root
