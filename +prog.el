@@ -66,6 +66,9 @@
 
 (set-formatter! 'google-java-format "google-java-format -" :modes '(java-mode))
 
+;; jdtls mirror in China
+;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/0.69.0/jdt-language-server-0.69.0-202102120513.tar.gz")
+
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 11
   (dolist (java_path '("/usr/lib/jvm/java-11-amazon-corretto.x86_64"
