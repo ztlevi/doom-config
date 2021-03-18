@@ -19,7 +19,7 @@
 (use-package! rime
   :defer t
   :custom
-  (rime-user-data-dir (expand-file-name "~/.config/fcitx/rime"))
+  (rime-user-data-dir (expand-file-name "~/.config/fcitx/emacs-rime"))
   (default-input-method "rime")
   (rime-show-candidate 'posframe)
   (rime-disable-predicates
@@ -38,7 +38,7 @@
    ("C-j" . 'rime-inline-ascii))
   :config
   (when IS-MAC
-    (setq rime-librime-root "~/.config/emacs/librime/dist"))
+    (setq rime-librime-root "~/.config/fcitx/librime/dist"))
   ;; Set Nixos env
   (when (and IS-LINUX (executable-find "nix"))
     (setq rime-emacs-module-header-root
