@@ -15,6 +15,7 @@
   "M-p"   #'+ivy/projectile-find-file
   "M-y"   #'counsel-yank-pop
   "C-]"   #'yas-expand
+  "C-;"   #'toggle-input-method
   "<xterm-paste>" #'xterm-paste-with-delete-region
   "C-S-j" #'evil-scroll-line-down
   "C-S-k" #'evil-scroll-line-up
