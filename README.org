@@ -17,6 +17,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#hacks][Hacks]]
 - [[#faq][FAQ]]
   - [[#cannot-push-code-with-magit-using-github-password][Cannot push code with magit using github password?]]
+  - [[#why-my-jdtls-java-fails-at-booting][Why my jdtls java fails at booting?]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -168,3 +169,5 @@ I have to use ssh with tmux on server. And terminal emacs becomes my daily drive
 * FAQ
 ** Cannot push code with magit using github password?
 Create a personal access token with all repo permission and use that token as your password.
+** Why my jdtls java fails at booting?
+Sometimes it caused by legacy cache under ~lsp-java-workspace-dir~. Delete that folder and restart lsp.
