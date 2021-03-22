@@ -202,6 +202,8 @@
        "k" #'dap-delete-session
        "K" #'dap-delete-all-sessions
        "S" #'realgud-short-key-mode)
+      (:prefix "e"                      ;error
+       "d" #'posframe-delete-all)
       (:prefix "t"                      ; toggle
        "c" #'rainbow-mode
        "C" #'centered-window-mode
