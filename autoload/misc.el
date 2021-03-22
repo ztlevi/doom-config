@@ -61,6 +61,14 @@ selected, then the current line."
 
 
 ;;;###autoload
+(defun +default/yank-project-name ()
+  "Copy the current buffer's path to the kill ring."
+  (interactive)
+  (require 'f)
+  (message "Copied project name to clipboard: %s"
+           (kill-new (f-filename (doom-project-root)))))
+
+;;;###autoload
 (defun +ivy/project-search-with-hidden-files ()
   (interactive)
   (let ((counsel-rg-base-command "rg -zS --no-heading --line-number --color never --hidden %s . "))
