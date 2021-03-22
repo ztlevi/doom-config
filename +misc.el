@@ -37,8 +37,12 @@
   (:map rime-active-mode-map
    ("C-j" . 'rime-inline-ascii))
   :config
+  (custom-set-faces!
+    `(rime-default-face :background ,(doom-blend 'blue 'base0 0.15)))
+
   (when IS-MAC
     (setq rime-librime-root "~/.config/fcitx/librime/dist"))
+
   ;; Set Nixos env
   (when (and IS-LINUX (executable-find "nix"))
     (setq rime-emacs-module-header-root
