@@ -63,7 +63,8 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       format            ; automated prettiness
+       (format           ; automated prettiness
+        +onsave)
        ;;god               ; run Emacs commands without modifier keys
        lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -89,7 +90,9 @@
        ;;vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax            ; tasing you for every semicolon you forget
+       (syntax           ; tasing you for every semicolon you forget
+        ;; +childframe
+        )
        (spell
         +aspell)         ; tasing you for misspelling mispelling
        grammar           ; tasing grammar mistake every you make

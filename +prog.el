@@ -4,9 +4,9 @@
 ;; MISC
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq-hook! 'sh-mode-hook sh-basic-offset 2)
+(setq +format-on-save-enabled-modes '(emacs-lisp-mode nix-mode))
 
-(appendq! +format-on-save-enabled-modes '(json-mode yaml-mode nxml-mode))
+(setq-hook! 'sh-mode-hook sh-basic-offset 2)
 
 (use-package! which-func
   :defer t
@@ -14,6 +14,7 @@
 
 ;; (after! company
 ;;   (setq company-idle-delay 0.2))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CC
