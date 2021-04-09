@@ -35,5 +35,7 @@
 (package! go-translate)
 
 ;; programming
+(unpin! company)
+(package! company :pin "f3aacd77d0135c09227400fef45c54b717d33f2e")
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! import-js)
