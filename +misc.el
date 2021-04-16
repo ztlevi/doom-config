@@ -12,6 +12,11 @@
 (when (file-exists-p (expand-file-name "~/.aspell.en.pws"))
   (setq ispell-personal-dictionary (expand-file-name "~/.aspell.en.pws")))
 
+(use-package hl-line+
+  :custom
+  (hl-line-when-idle-interval 0.3)
+  (toggle-hl-line-when-idle 1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; INPUT METHOD
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

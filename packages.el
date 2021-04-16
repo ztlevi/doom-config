@@ -33,6 +33,7 @@
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! highlight-indent-guides)
 (package! go-translate)
+(package! hl-line+)
 
 ;; programming
 (unpin! company)
