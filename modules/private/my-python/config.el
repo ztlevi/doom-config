@@ -21,10 +21,7 @@
    "c" #'conda-env-activate
    "C" #'conda-env-deactivate
    "w" #'pyvenv-workon
-   "v" #'pyvenv-activate
-   "V" #'pyvenv-deactivate
-   "p" #'pipenv-activate
-   "P" #'pipenv-deactivate))
+   "v" #'pyvenv-activate))
  (:after pyenv-mode
   (:map pyenv-mode-map
    "C-c C-s" nil

@@ -379,7 +379,7 @@
            (zerop (call-process-shell-command "netstat -aon | grep 64292")))))
   :hook
   (atomic-chrome-edit-mode . +my/atomic-chrome-mode-setup)
-  (atomic-chrome-edit-done . +my/window-focus-browser)
+  (atomic-chrome-edit-done . +my/window-focus-google-chrome)
   :config
   (progn
     (setq atomic-chrome-buffer-open-style 'full) ;; or frame, split
