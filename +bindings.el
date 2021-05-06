@@ -293,16 +293,6 @@
   "j" #'lsp-ui-peek--select-next
   "k" #'lsp-ui-peek--select-prev
   "l" #'lsp-ui-peek--select-next-file)
- (:after js2-mode
-  (:map js2-mode-map
-   :localleader
-   :desc "Import js"  "i" #'import-js-import
-   :desc "Import all" "f" #'import-js-fix))
- (:after rjsx-mode
-  (:map rjsx-mode-map
-   :localleader
-   :desc "Import js"  "i" #'import-js-import
-   :desc "Import all" "f" #'import-js-fix))
  (:after tide
   :map tide-references-mode-map
   "C-k" #'tide-find-previous-reference

@@ -36,4 +36,4 @@
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
-(package! import-js)
+(package! graphql-mode)
