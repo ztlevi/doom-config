@@ -16,8 +16,6 @@
 ;; INPUT METHOD
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(set-language-environment "UTF-8")
-
 (use-package! rime
   :defer t
   :custom

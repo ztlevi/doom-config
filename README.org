@@ -19,6 +19,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#cannot-push-code-with-magit-using-github-password][Cannot push code with magit using github password?]]
   - [[#why-my-jdtls-java-fails-at-booting][Why my jdtls java fails at booting?]]
   - [[#why-sometimes-the-floating-error-boxes-flycheck-posframe-do-not-disappear][Why sometimes the floating error boxes (flycheck posframe) do not disappear?]]
+  - [[#why-typing-chinese-in-org-mode-is-slow][Why typing Chinese in org-mode is slow?]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -174,3 +175,5 @@ Create a personal access token with all repo permission and use that token as yo
 Sometimes it caused by legacy cache under ~lsp-java-workspace-dir~. Delete that folder and restart lsp.
 ** Why sometimes the floating error boxes (flycheck posframe) do not disappear?
 Call ~posframe-delete-all~ to get rid of it.
+** Why typing Chinese in org-mode is slow?
+You might need to set ~(set-language-environment "UTF-8")~. Doom comes with this setup now so you should be good to go.
