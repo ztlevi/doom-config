@@ -12,7 +12,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Add executable: Clion -> Tools -> Create Command Line Launcher
-(defvar shell-apps '("code" "pycharm" "clion" "idea")
+(defvar shell-apps '("idea" "code" "pycharm" "clion")
   "Applications collection used for `+shell--open-with' method")
 (defun ivy--read-apps ()
   (ivy-read "Select Applications:" shell-apps))
