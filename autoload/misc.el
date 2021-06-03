@@ -224,6 +224,34 @@ repository root."
     (let ((git-link-open-in-browser (not arg)))
       (git-link-commit (git-link--read-remote)))))
 
+
+(defvar forge-show-all-issues-and-pullreqs t
+  "If nil, only show issues and pullreqs assigned to me.")
+
+;;;###autoload
+(defun +my/forge-toggle-all-issues-and-pullreqs ()
+  "Toggle the forge section which only shows the issues and pullreqs assigned to me."
+  (interactive)
+  (setq forge-insert-default '(forge-insert-pullreqs forge-insert-issues))
+  (setq forge-insert-assigned '(forge-insert-assigned-pullreqs forge-insert-assigned-issues))
+  (if forge-show-all-issues-and-pullreqs
+      (progn
+        (setq forge-show-all-issues-and-pullreqs nil)
+        (remove-hook! 'magit-status-sections-hook #'forge-insert-issues nil t)
+        (remove-hook! 'magit-status-sections-hook #'forge-insert-pullreqs nil t)
+        (magit-add-section-hook 'magit-status-sections-hook 'forge-insert-assigned-pullreqs nil t)
+        (magit-add-section-hook 'magit-status-sections-hook 'forge-insert-assigned-issues nil t))
+    (progn
+      (setq forge-show-all-issues-and-pullreqs t)
+      (remove-hook! 'magit-status-sections-hook #'forge-insert-assigned-issues nil t)
+      (remove-hook! 'magit-status-sections-hook #'forge-insert-assigned-pullreqs nil t)
+      (magit-add-section-hook 'magit-status-sections-hook 'forge-insert-pullreqs nil t)
+      (magit-add-section-hook 'magit-status-sections-hook 'forge-insert-issues nil t)))
+
+  ;; refresh magit-status buffer
+  (magit-refresh))
+
+
 ;;;###autoload
 (defun +my/evil-quick-replace (beg end )
   (interactive "r")

@@ -20,6 +20,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#why-my-jdtls-java-fails-at-booting][Why my jdtls java fails at booting?]]
   - [[#why-sometimes-the-floating-error-boxes-flycheck-posframe-do-not-disappear][Why sometimes the floating error boxes (flycheck posframe) do not disappear?]]
   - [[#why-typing-chinese-in-org-mode-is-slow][Why typing Chinese in org-mode is slow?]]
+  - [[#how-to-use-forge][How to use forge?]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -177,3 +178,6 @@ Sometimes it caused by legacy cache under ~lsp-java-workspace-dir~. Delete that 
 Call ~posframe-delete-all~ to get rid of it.
 ** Why typing Chinese in org-mode is slow?
 You might need to set ~(set-language-environment "UTF-8")~. Doom comes with this setup now so you should be good to go.
+** How to use forge?
+[[https://magit.vc/manual/ghub/Creating-and-Storing-a-Token.html#Creating-and-Storing-a-Token][Take a look at this manual]]. See how to create token for forge. Create the token with the full repo access.
+Then in the magit status buffer, use ~@~ to dispatch the forge menu.
