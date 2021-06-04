@@ -20,7 +20,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defvar cspell-base-program "cspell")
-(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/Dotfiles/misc/apps/.cspell.json") "'"))
+(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/.dotty/dev/node/.cspell.json") "'"))
 (defvar cspell-args (string-join `("--config" ,cspell-config-file-path) " "))
 (defun cspell-check-buffer ()
   (interactive)
