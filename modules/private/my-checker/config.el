@@ -56,6 +56,8 @@
                   json-jsonlist json-python-json
                   c/c++-clang c/c++-cppcheck c/c++-gcc c/c++-googlelint
                   python-mypy python-pylint python-pycompile
+                  ;; Disable Perl for Coral Config file
+                  perl
                   ))
 
   ;; customize flycheck temp file prefix
