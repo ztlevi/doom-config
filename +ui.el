@@ -66,7 +66,6 @@
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)
   '(font-lock-type-face :italic t)
-  `(hl-line :background ,(doom-color 'bg-alt))
   `(show-paren-match :background ,(doom-blend 'teal 'base0 0.6) :foreground ,(doom-color 'base1))
   '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
   `(breakpoint-enabled :background ,(doom-color 'red) :foreground "white")
