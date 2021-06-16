@@ -71,7 +71,7 @@
   `(breakpoint-enabled :background ,(doom-color 'red) :foreground "white")
   `(dap-ui-pending-breakpoint-face :background ,(doom-color 'red) :foreground "white")
   `(dap-ui-verified-breakpoint-face :background ,(doom-blend 'red 'base0 0.2))
-  `(lsp-ui-peek-highlight :foreground "white")
+  `(lsp-ui-peek-highlight :foreground ,(doom-color 'blue))
   `(ivy-posframe-border :background ,(doom-color 'blue))
   `(magit-diff-file-heading :background ,(doom-blend 'blue 'base0 0.2))
   `(magit-diff-file-heading-highlight :background ,(doom-blend 'blue 'base0 0.5))
