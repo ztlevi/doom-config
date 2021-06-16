@@ -111,7 +111,8 @@
         ;;+dictionary      ; enable word definition and thesaurus lookup functionality
         +devdocs         ; ...on devdocs.io online
         +docsets)        ; ...or in Dash docsets locally
-       lsp
+       (lsp
+        +peek)
        (magit            ; a git porcelain for Emacs
         +forge)
        make              ; run make tasks from Emacs

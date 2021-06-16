@@ -137,8 +137,7 @@
   (setq lsp-ui-sideline-enable nil
         lsp-ui-doc-include-signature t
         lsp-ui-doc-max-height 15
-        lsp-ui-doc-max-width 100
-        lsp-ui-doc-position 'at-point))
+        lsp-ui-doc-max-width 100))
 
 (add-hook! 'lsp-mode-hook (lsp-headerline-breadcrumb-mode 1))
 
