@@ -74,7 +74,7 @@
 (set-formatter! 'google-java-format "google-java-format -" :modes '(java-mode))
 
 ;; jdtls mirror in China
-;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/0.69.0/jdt-language-server-0.69.0-202102120513.tar.gz")
+;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/1.1.2/jdt-language-server-1.1.2-202105191944.tar.gz")
 
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 11
@@ -84,7 +84,8 @@
         (setq lsp-java-configuration-runtimes `[(:name "JavaSE-11"
                                                  :path ,java_path
                                                  :default t)]
-              lsp-java-java-path (concat java_path "/bin/java"))))
+              lsp-java-java-path (concat java_path "/bin/java")
+              dap-java-java-command (concat java_path "/bin/java"))))
 
   (setq-hook! 'java-mode-hook c-basic-offset 4))
 
