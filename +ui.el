@@ -64,6 +64,7 @@
   '(variable-pitch :family nil)
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
+  `(hl-line :background ,(doom-color 'bg-alt)) ; sometimes ranger doesn't show hl-line color
   '(font-lock-builtin-face :italic t)
   '(font-lock-type-face :italic t)
   `(show-paren-match :background ,(doom-blend 'teal 'base0 0.6) :foreground ,(doom-color 'base1))

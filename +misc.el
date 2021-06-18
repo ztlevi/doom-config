@@ -445,6 +445,7 @@
 ;; TERM
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; TODO: remove https://github.com/hlissner/doom-emacs/pull/5175
 (set-formatter! 'shfmt "shfmt -i=2")
 
 (after! eshell
