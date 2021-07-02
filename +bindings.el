@@ -180,6 +180,7 @@
        "o" #'symbol-overlay-put
        "q" #'symbol-overlay-remove-all)
       (:prefix "p"                      ; project
+       "t" #'ivy-magit-todos
        "y" #'+default/yank-project-name
        "*" (+my/prefix-M-x "projectile-")
        :desc "Update projectile list" "u" #'update-projectile-known-projects)
