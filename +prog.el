@@ -6,8 +6,6 @@
 
 (setq +format-on-save-enabled-modes '(emacs-lisp-mode nix-mode))
 
-(setq-hook! 'sh-mode-hook sh-basic-offset 2)
-
 (use-package! which-func
   :defer t
   :commands which-function)
