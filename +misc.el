@@ -367,6 +367,7 @@
             ;; jupyter notebook
             ("localhost\\:8888"    . python-mode)
             ("lintcode\\.com"      . python-mode)
+            ("leetcode-cn\\.com"   . python-mode)
             ("leetcode\\.com"      . python-mode)))
 
     (defun +my/atomic-chrome-mode-setup ()
