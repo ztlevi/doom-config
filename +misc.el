@@ -89,6 +89,11 @@
   (push 'prodigy-mode evil-snipe-disabled-modes))
 
 
+;; This package provides the g~ operator to transform CamelCase words into snake_case. You can customize the binding.
+;; Try using g~io
+(use-package! evil-string-inflection :after evil)
+
+
 (use-package! tmux-pane
   :unless (display-graphic-p)
   :defer t
