@@ -3,7 +3,7 @@
 (map! :leader
       (:prefix "c"
        :desc "Cspell check buffer"    "c" #'cspell-check-buffer
-       :desc "Cspell check directory" "C" #'cspell-check-HEAD)
+       :desc "Cspell check diffs in root" "C" #'cspell-check-diff-from-HEAD)
       (:prefix-map ("e" . "error")
        :desc "Flymake next error"      "N" #'flymake-goto-next-error
        :desc "Flymake previous error"  "P" #'flymake-goto-prev-error
@@ -20,7 +20,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defvar cspell-base-program "cspell")
-(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/.dotty/dev/node/.cspell.json") "'"))
+(defvar cspell-config-file-path (concat "'" (expand-file-name  "~/.config/cspell/cspell.json") "'"))
 (defvar cspell-args (string-join `("--config" ,cspell-config-file-path) " "))
 (defun cspell-check-buffer ()
   (interactive)
@@ -31,7 +31,7 @@
     (message "Cannot find cspell, please install with `npm install -g cspell`")
     ))
 
-(defun cspell-check-HEAD ()
+(defun cspell-check-diff-from-HEAD ()
   (interactive)
   (if cspell-base-program
       (let* ((project-root (doom-project-root))
