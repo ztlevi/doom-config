@@ -8,7 +8,7 @@
 ;; ORG
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq org-directory (expand-file-name "~/.work/notes")
+(setq org-directory (expand-file-name "~/work/notes")
       org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
       org-babel-python-command "python3"
