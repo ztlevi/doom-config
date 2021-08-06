@@ -71,7 +71,8 @@ Install dependencies including search tools, utils, and linters.
 ***** MacOS
 #+BEGIN_SRC sh :tangle (if (doom-system-os 'macos) "yes")
 # search tool
-brew install ripgrep grep exa zstd ctags fd
+brew install ripgrep grep exa zstd fd
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # utils
 brew install sqlite hub gpg2 coreutils gnu-tar mplayer direnv libtool
 # language

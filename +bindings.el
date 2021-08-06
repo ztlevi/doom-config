@@ -98,8 +98,6 @@
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
  :gnmvi "M-." #'+lookup/definition
- :nv "ge"  #'counsel-etags-find-tag-at-point
- :nv "gE"  #'counsel-etags-find-tag
 
  (:prefix "C-x"
   :n "e"  #'pp-eval-last-sexp)

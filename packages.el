@@ -27,7 +27,7 @@
 (package! dired-narrow)
 (package! atomic-chrome)
 (package! git-link)
-(package! counsel-etags)
+(package! citre)
 (package! imenu-list)
 (package! tmux-pane)
 (package! lsp-docker)
