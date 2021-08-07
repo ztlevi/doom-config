@@ -136,11 +136,6 @@
 (add-hook! 'better-jumper-post-jump-hook #'recenter)
 
 (after! nav-flash
-  ;; (defun nav-flash-show (&optional pos end-pos face delay)
-  ;; ...
-  ;; (let ((inhibit-point-motion-hooks t))
-  ;; (goto-char pos)
-  ;; (beginning-of-visual-line) ; work around args-out-of-range error when the target file is not opened
   (defun +advice/nav-flash-show (orig-fn &rest args)
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))

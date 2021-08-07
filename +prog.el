@@ -10,8 +10,10 @@
   :defer t
   :commands which-function)
 
-;; (after! company
-;;   (setq company-idle-delay 0.2))
+
+(after! company
+  ;; (setq company-idle-delay 0.2)
+  (setq company-format-margin-function #'company-detect-icons-margin))
 
 
 (use-package! graphql-mode
