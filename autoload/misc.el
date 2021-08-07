@@ -62,53 +62,12 @@ selected, then the current line."
            (kill-new (f-filename (doom-project-root)))))
 
 ;;;###autoload
-(defun +ivy/project-search-with-hidden-files ()
+(defun +default/search-project-with-hidden-files ()
   (interactive)
-  (let ((counsel-rg-base-command "rg -zS --no-heading --line-number --color never --hidden %s . "))
-    (+ivy/project-search)))
-
-;;;###autoload
-(defun +ivy--counsel-file-jump-use-fd-rg-specific-files (args)
-  "Change `counsel-file-jump' to use fd or ripgrep, if they are available."
-  (cl-destructuring-bind (find-program . args)
-      (cond ((executable-find doom-projectile-fd-binary)
-             (cons doom-projectile-fd-binary (list "-t" "f" "-E" ".git" "-e" "py" "-e" "java"
-                                                   "-e" "yaml" "-e" "md" "-e" "adoc")))
-            ((executable-find "rg")
-             (split-string (format counsel-rg-base-command "--files --no-messages") " " t))
-            ((cons find-program args)))
-    (unless (listp args)
-      (user-error "`counsel-file-jump-args' is a list now, please customize accordingly."))
-    (counsel--call
-     (cons find-program args)
-     (lambda ()
-       (goto-char (point-min))
-       (let ((offset (if (member find-program (list "rg" doom-projectile-fd-binary)) 0 2))
-             files)
-         (while (< (point) (point-max))
-           (push (buffer-substring
-                  (+ offset (line-beginning-position)) (line-end-position)) files)
-           (forward-line 1))
-         (nreverse files))))))
-
-;;;###autoload
-(defun +ivy/project-search-specific-files (&optional initial-input initial-directory)
-  "Similar to counsel-file-jump"
-  (interactive
-   (list nil
-         (when current-prefix-arg
-           (counsel-read-directory-name "From directory: "))))
-  (counsel-require-program find-program)
-  (let ((default-directory (doom-project-root)))
-    (ivy-read "Find file: "
-              (+ivy--counsel-file-jump-use-fd-rg-specific-files counsel-file-jump-args)
-              :matcher #'counsel--find-file-matcher
-              :initial-input initial-input
-              :action #'find-file
-              :preselect (counsel--preselect-file)
-              :require-match 'confirm-after-completion
-              :history 'file-name-history
-              :caller 'counsel-file-jump)))
+  (let ((counsel-rg-base-command "rg -zS --no-heading --line-number --color never --hidden %s . ")
+        (consult-ripgrep-command (concat  "rg --null --line-buffered --color=ansi --max-columns=1000 "
+                                          "--hidden --no-heading --line-number . -e ARG OPTS")))
+    (+default/search-project)))
 
 ;;;###autoload
 (defun +default/search-workspace (&optional arg)
@@ -120,9 +79,54 @@ If prefix ARG is set, prompt for a directory to search from."
               (read-directory-name "Search Workspace: ")
             (expand-file-name (concat (doom-project-root) "/..")))))
     (call-interactively
-     (cond ((featurep! :completion ivy)  #'+ivy/project-search-from-cwd)
+     (cond ((featurep! :completion vertico) #'+vertico/project-search-from-cwd)
+           ((featurep! :completion ivy)  #'+ivy/project-search-from-cwd)
            ((featurep! :completion helm) #'+helm/project-search-from-cwd)
            (#'rgrep)))))
+
+;; TODO: Search with specific file types
+;;;###autoload
+;; (defun +ivy--counsel-file-jump-use-fd-rg-specific-files (args)
+;;   "Change `counsel-file-jump' to use fd or ripgrep, if they are available."
+;;   (cl-destructuring-bind (find-program . args)
+;;       (cond ((executable-find doom-projectile-fd-binary)
+;;              (cons doom-projectile-fd-binary (list "-t" "f" "-E" ".git" "-e" "py" "-e" "java"
+;;                                                    "-e" "yaml" "-e" "md" "-e" "adoc")))
+;;             ((executable-find "rg")
+;;              (split-string (format counsel-rg-base-command "--files --no-messages") " " t))
+;;             ((cons find-program args)))
+;;     (unless (listp args)
+;;       (user-error "`counsel-file-jump-args' is a list now, please customize accordingly."))
+;;     (counsel--call
+;;      (cons find-program args)
+;;      (lambda ()
+;;        (goto-char (point-min))
+;;        (let ((offset (if (member find-program (list "rg" doom-projectile-fd-binary)) 0 2))
+;;              files)
+;;          (while (< (point) (point-max))
+;;            (push (buffer-substring
+;;                   (+ offset (line-beginning-position)) (line-end-position)) files)
+;;            (forward-line 1))
+;;          (nreverse files))))))
+
+;;;###autoload
+;; (defun +ivy/project-search-specific-files (&optional initial-input initial-directory)
+;;   "Similar to counsel-file-jump"
+;;   (interactive
+;;    (list nil
+;;          (when current-prefix-arg
+;;            (counsel-read-directory-name "From directory: "))))
+;;   (counsel-require-program find-program)
+;;   (let ((default-directory (doom-project-root)))
+;;     (ivy-read "Find file: "
+;;               (+ivy--counsel-file-jump-use-fd-rg-specific-files counsel-file-jump-args)
+;;               :matcher #'counsel--find-file-matcher
+;;               :initial-input initial-input
+;;               :action #'find-file
+;;               :preselect (counsel--preselect-file)
+;;               :require-match 'confirm-after-completion
+;;               :history 'file-name-history
+;;               :caller 'counsel-file-jump)))
 
 ;;;###autoload
 (defvar +my/repo-root-list '("~" "~/Dropbox" "~/go/src" "~/.cache" "~/.config")
@@ -161,22 +165,6 @@ If prefix ARG is set, prompt for a directory to search from."
     (dolist (repo +my/user-custom-repos)
       (if (file-directory-p repo)
           (push repo projectile-known-projects)))))
-
-;; PATCH counsel-esh-history
-;;;###autoload
-(defun +my/ivy-eshell-history ()
-  (interactive)
-  (require 'em-hist)
-  (let* ((start-pos (save-excursion (eshell-bol) (point)))
-         (end-pos (point))
-         (input (buffer-substring-no-properties start-pos end-pos))
-         (command (ivy-read "Command: "
-                            (delete-dups
-                             (when (> (ring-size eshell-history-ring) 0)
-                               (ring-elements eshell-history-ring)))
-                            :initial-input input)))
-    (setf (buffer-substring start-pos end-pos) command)
-    (end-of-line)))
 
 ;;;###autoload
 (defun +vc/git-browse-commit (arg)
@@ -336,12 +324,13 @@ With PREFIX, cd to project root."
         (IS-LINUX (shell-command "wmctrl -a \"Google Chrome\""))))
 
 ;;;###autoload
-(defun counsel-imenu-comments ()
+(defun imenu-comments ()
   "Imenu display comments."
   (interactive)
   (require 'evil-nerd-commenter)
   (let* ((imenu-create-index-function 'evilnc-imenu-create-index-function))
-    (counsel-imenu)))
+    (cond ((featurep! :completion vertico)   (consult-imenu))
+          ((featurep! :completion ivy)       (counsel-imenu)))))
 
 
 ;; if the first line is too long, enable fundamental by default
@@ -373,15 +362,7 @@ With PREFIX, cd to project root."
      ,@body
      (message "%.06f" (float-time (time-since time)))))
 
-;;;###autoload
-(defun +default/search-project-regex ()
-  "Search project with regex."
-  (interactive)
-  (let ((standard-search-fn #'ivy--regex-plus))
-    (+default/search-project)))
-;;
 ;;; Scratch frame
-
 (defvar +my--scratch-frame nil)
 
 (defun cleanup-scratch-frame (frame)

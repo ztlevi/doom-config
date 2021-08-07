@@ -12,10 +12,10 @@
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
   "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
-  "M-p"   #'+ivy/projectile-find-file
-  "M-y"   #'counsel-yank-pop
+  "M-p"   #'projectile-find-file
+  "M-y"   #'+default/yank-pop
   "C-]"   #'yas-expand
-  "C-;"   #'toggle-input-method
+  "C-'"   #'toggle-input-method
   "<xterm-paste>" #'xterm-paste-with-delete-region
   "C-S-j" #'evil-scroll-line-down
   "C-S-k" #'evil-scroll-line-up
@@ -50,9 +50,11 @@
  :gi  [M-backspace] #'backward-kill-word
  :gi  [M-left]      #'backward-word
  :gi  [M-right]     #'forward-word
- ;; Swiper
- "M-f" #'swiper
- "C-s" #'swiper
+ ;; Searching
+ "M-f" #'consult-line
+ "C-s" #'consult-line
+ "M-e"    #'persp-switch-to-buffer
+ ;; "C-M-p"  #'+ivy/project-search-specific-files
  ;; Debug
  "M-u" #'dap-hydra
  ;; Help
@@ -68,8 +70,6 @@
  :v "M-/" #'evilnc-comment-operator
  ;; Others
  :m [tab] nil
- "C-M-p"    #'+ivy/project-search-specific-files
- "M-e"    #'+ivy/switch-workspace-buffer
  "C-M-\\" #'indent-region-or-buffer
  "M-m"    #'kmacro-call-macro
  )
@@ -106,18 +106,14 @@
 
 ;; leader/localleader is not compatible with :gnvmi
 (map! :leader
-      :desc "counsel-M-x" :nmv "SPC" #'counsel-M-x
+      :desc "M-x" :nmv "SPC" #'execute-extended-command
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
-
       (:prefix-map ("a" . "app")
        "s" #'prodigy
        "b" #'blog-admin-start
        :desc "List process" "p" #'list-processes
-       :desc "Kill process" "P" #'counsel-list-processes
        "x" #'align-regexp)
       (:prefix "b"                      ; buffer
-       :desc "Switch buffer" "b" #'ivy-switch-buffer
-       :desc "Switch workspace buffer" "B" #'+ivy/switch-workspace-buffer
        "h" #'+doom-dashboard/open
        "r" #'revert-buffer-no-confirm
        "R" #'reload-buffer-no-confirm
@@ -148,7 +144,7 @@
       (:prefix "h"                      ; help
        "C" #'helpful-command)
       (:prefix "o"                      ; open
-       :desc "Kill ring"             "k" #'counsel-yank-pop
+       :desc "Kill ring"             "k" #'+default/yank-pop
        :desc "Imenu list"            "i" #'imenu-list
        :desc "Open link"             "x" #'link-hint-open-link
        :desc "Open link at point"    "X" #'link-hint-open-link-at-point
@@ -178,8 +174,7 @@
        "o" #'symbol-overlay-put
        "q" #'symbol-overlay-remove-all)
       (:prefix "p"                      ; project
-       "t" #'ivy-magit-todos
-       "y" #'+default/yank-project-name
+       "n" #'+default/yank-project-name
        "*" (+my/prefix-M-x "projectile-")
        :desc "Update projectile list" "u" #'update-projectile-known-projects)
       (:prefix ("d" . "debug")
@@ -213,7 +208,6 @@
        "T" #'toggle-truncate-lines
        "S" #'size-indication-mode
        "i" #'highlight-indent-guides-mode
-       "I" #'ivy-rich-mode
        "v" #'visual-line-mode)
       (:prefix-map ("j" . "jump")
        "j" #'avy-goto-char-timer
@@ -221,11 +215,10 @@
        "b" #'avy-pop-mark
        "t" #'yas-describe-tables)
       (:prefix "s"                      ; search
+       :desc "Comments" "c" #'imenu-comments
        :desc "M-x amazon-search-*" "a" (+my/prefix-M-x "amazon-search-wiki")
        :desc "Search Workspace" "w" #'+default/search-workspace
-       :desc "Comments"  "c" #'counsel-imenu-comments
-       :desc "Jump to bookmark" "m" #'list-bookmarks
-       :desc "Project (hidden)" "h" #'+ivy/project-search-with-hidden-files))
+       :desc "Search Project (hidden)" "h" #'+default/search-project-with-hidden-files))
 
 (map!
  (:map prog-mode-map
@@ -233,19 +226,10 @@
   :i "<backtab>" #'doom/dumb-dedent)
  (:after ranger
   (:map ranger-normal-mode-map
-   "M-1" nil
-   "M-2" nil
-   "M-3" nil
-   "M-4" nil
-   "M-5" nil
-   "M-6" nil
-   "M-7" nil
-   "M-8" nil
-   "M-9" nil
-   "M-0" nil
+   "M-1" nil "M-2" nil "M-3" nil "M-4" nil "M-5" nil "M-6" nil "M-7" nil "M-8" nil "M-9" nil "M-0" nil
    "g"   nil
    "q" #'ranger-close-and-kill-inactive-buffers
-   "f" #'counsel-find-file
+   "f" #'find-file
    "F" #'dired-narrow                 ; use `; g` to quit dired-narrow
    "M-g" #'ranger-go
    "yr" #'ranger-copy-relative-path
@@ -260,18 +244,14 @@
    :i "_" #'special-lispy-different
    :i [remap kill-line] #'lispy-kill
    :i [remap delete-backward-char] #'lispy-delete-backward
-   :n "M-r"   nil
-   :n "M-s"   nil
-   :n "M-v"   nil
+   :n "M-r" nil :n "M-s" nil :n "M-v" nil
    :n "M-<left>" #'lispy-forward-barf-sexp
    :n "M-<right>" #'lispy-forward-slurp-sexp
    :n "C-M-<left>" #'lispy-backward-slurp-sexp
    :n "C-M-<right>" #'lispy-backward-barf-sexp))
  (:after lispyville
   (:map lispyville-mode-map
-   :n "M-r"   nil
-   :n "M-s"   nil
-   :n "M-v"   nil
+   :n "M-r" nil :n "M-s" nil :n "M-v" nil
    :n "C-M-r" #'lispy-raise-sexp
    :n "C-M-s" #'lispy-splice
    :n "M-V"   #'lispy-convolute-sexp
@@ -321,10 +301,7 @@
    "M-D" nil))
  (:after evil-org
   (:map evil-org-mode-map
-   :i "C-d" nil
-   :i "C-t" nil
-   :i "C-h" nil
-   :i "C-k" nil))
+   :i "C-d" nil :i "C-t" nil :i "C-h" nil :i "C-k" nil))
  (:after markdown-mode
   (:map evil-markdown-mode-map
    :i "C-d" nil)
@@ -344,32 +321,23 @@
     (:prefix ("i" . "Insert")
      "r" #'markdown-table-insert-row
      "c" #'markdown-table-insert-column))))
- (:after wgrep
-  :map wgrep-mode-map
-  :nv "gr" #'ivy-occur-revert-buffer
-  :n "RET" #'ivy-occur-press-and-switch)
- (:after ivy
-  :map ivy-occur-grep-mode-map
-  "<backspace>" #'ivy-occur-delete-candidate
-  :nv "gr" #'ivy-occur-revert-buffer
-  :map ivy-minibuffer-map
-  "TAB" #'ivy-partial-or-done
-  "<C-return>" #'ivy-immediate-done
-  "C-b" nil
-  "C-r" #'ivy-reverse-i-search          ; similar to ivy-restrict-to-matches
-  "C-j" #'ivy-call-and-recenter
-  "C-k" #'ivy-kill-line
-  "C-v" #'ivy-scroll-up-command
-  "A-v" #'ivy-scroll-down-command
-  "M-v" #'yank)
+ (:when (featurep! :completion vertico)
+  (:after vertico
+   :map vertico-map
+   "C-j" nil "C-k" nil
+   "C-j" #'+vertico/embark-preview
+   "C-n"   #'vertico-next
+   "C-M-n" #'+vertico/next-candidate-preview
+   "C-S-n" #'vertico-next-group
+   "C-p"   #'vertico-previous
+   "C-M-p" #'+vertico/previous-candidate-preview
+   "C-S-p" #'vertico-previous-group))
  (:after minibuffer
   :map minibuffer-local-map
-  "C-k" 'kill-line)
+  "C-t" #'marginalia-cycle
+  "C-k" #'kill-line)
  (:after magit-mode
-  (:map magit-mode-map
-   "M-p" nil
-   "M-n" nil
-   "M-w" nil))
+  (:map magit-mode-map "M-p" nil "M-n" nil "M-w" nil))
  (:after magit-diff
   (:map magit-diff-mode-map            ; for magit diff/rev mode
    "C-o" #'magit-diff-visit-file-other-window))
@@ -387,11 +355,9 @@
   "?" #'Info-search-backward)
  (:after company
   (:map company-active-map
-   "TAB"       nil
-   [tab]       nil
-   [backtab]   nil
-   "C-j"   #'company-show-location
-   "C-i"   #'company-complete-selection))
+   "TAB" nil [tab] nil [backtab] nil
+   "C-j" #'company-show-location
+   "C-i" #'company-complete-selection))
  (:after adoc-mode
   (:map adoc-mode-map
    :localleader

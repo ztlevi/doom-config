@@ -11,11 +11,15 @@
 ;; MACOS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Add executable: Clion -> Tools -> Create Command Line Launcher
-(defvar shell-apps '("idea" "code" "pycharm" "clion")
-  "Applications collection used for `+shell--open-with' method")
-(defun ivy--read-apps ()
-  (ivy-read "Select Applications:" shell-apps))
+(defun +os/read-apps ()
+  "Applications collection used for `+shell--open-with' method.
+To add executable: Idea -> Tools -> Create Command Line Launcher"
+  (let ((shell-apps '"idea" "code" "pycharm" "clion"))
+    (cond ((featurep! :completion vertico)
+           (consult--read shell-apps :prompt "Select Applications:"))
+          ((featurep! :completion ivy)
+           (ivy-read "Select Applications:" shell-apps)))))
+
 (defun get-filename-with-line-number ()
   (concat (concat (buffer-file-name) ":")
           (number-to-string (line-number-at-pos))))
@@ -26,9 +30,9 @@
     (+macos--open-with reveal-project-in-finder "forklift"
                        (or (doom-project-root) default-directory)))
 
-  (+shell--open-with reveal-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-in-apps (+os/read-apps)
                      (string-join `("-g '" ,(get-filename-with-line-number) "'")))
-  (+shell--open-with reveal-project-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-project-in-apps (+os/read-apps)
                      (or (doom-project-root) default-directory))
 
   (+macos--open-with reveal-in-typora "typora" buffer-file-name))
@@ -62,9 +66,9 @@
   (+shell--open-with reveal-project-in-finder linux-finder
                      (or (doom-project-root) default-directory))
 
-  (+shell--open-with reveal-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-in-apps (+os/read-apps)
                      (string-join `("'" ,(buffer-file-name) "'")))
-  (+shell--open-with reveal-project-in-apps (ivy--read-apps)
+  (+shell--open-with reveal-project-in-apps (+os/read-apps)
                      (or (doom-project-root) default-directory))
 
   (+shell--open-with reveal-in-terminal linux-terminal (linux-terminal-args default-directory))
@@ -87,11 +91,16 @@
 (+docker--open-with reveal-in-docker-clion "/usr/local/clion/bin/clion.sh"
                     (get-docker-project-filename) "clion" "clion")
 
+;; TODO: find way to invoke after selection
 (defun +docker/reveal-in-apps ()
   (interactive)
-  (ivy-read "Select Docker apps"
-            '(+docker/reveal-in-docker-pycharm +docker/reveal-in-docker-clion)
-            :action #'counsel-M-x-action))
+  (let ((docker-cmds '(+docker/reveal-in-docker-pycharm +docker/reveal-in-docker-clion)))
+    (cond ((featurep! :completion vertico)
+           (consult--read docker-cmds :prompt "Select docker apps:"))
+          ((featurep! :completion ivy)
+           (ivy-read "Select docker apps:"
+                     docker-cmds
+                     :action #'counsel-M-x-action)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
