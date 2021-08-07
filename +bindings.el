@@ -119,7 +119,6 @@
        "R" #'reload-buffer-no-confirm
        "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
-       :desc "Treemacs symbols"       "i" #'lsp-treemacs-symbols
        :desc "Format-all buffer"      "F" #'format-all-buffer
        :desc "LSP organize imports"   "I" #'lsp-organize-imports
        :desc "LSP workspace restart"  "R" #'lsp-workspace-restart

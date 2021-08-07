@@ -5,13 +5,11 @@
        :desc "Cspell check buffer"    "c" #'cspell-check-buffer
        :desc "Cspell check diffs in root" "C" #'cspell-check-diff-from-HEAD)
       (:prefix-map ("e" . "error")
-       :desc "Flymake next error"      "N" #'flymake-goto-next-error
-       :desc "Flymake previous error"  "P" #'flymake-goto-prev-error
-       :desc "Flymake list errors"     "L" #'flymake-show-diagnostics-buffer
        :desc "Flycheck next error"     "n" #'flycheck-next-error
        :desc "Flycheck previous error" "p" #'flycheck-previous-error
        :desc "Flycheck explain error"  "e" #'flycheck-explain-error-at-point
        :desc "Flycheck list errors"    "l" #'flycheck-list-errors
+       :desc "Lsp list errors"         "L" #'consult-lsp-diagnostics
        :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
       )
 
