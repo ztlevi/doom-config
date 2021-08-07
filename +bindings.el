@@ -51,8 +51,12 @@
  :gi  [M-left]      #'backward-word
  :gi  [M-right]     #'forward-word
  ;; Searching
- "M-f" #'consult-line
- "C-s" #'consult-line
+ (:when (featurep! :completion vertico)
+  "M-f" #'consult-line
+  "C-s" #'consult-line)
+ (:when (featurep! :completion ivy)
+  "M-f" #'swiper
+  "C-s" #'swiper)
  "M-e"    #'persp-switch-to-buffer
  ;; "C-M-p"  #'+ivy/project-search-specific-files
  ;; Debug
