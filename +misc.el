@@ -133,6 +133,8 @@
   (set-popup-rules! '(("^\\*Ilist\\*" :side right :size 40 :select t))))
 
 
+(add-hook! 'better-jumper-post-jump-hook #'recenter)
+
 (after! nav-flash
   ;; (defun nav-flash-show (&optional pos end-pos face delay)
   ;; ...
@@ -247,6 +249,8 @@
     :desc "Citre update tags file" "t" #'citre-update-this-tags-file
     :desc "Citre edit tags file" "T" #'citre-edit-tags-file-recipe))
   :config
+  (remove-hook! 'citre-after-jump-hook #'citre-recenter-and-blink)
+  (add-hook 'citre-after-jump-hook #'+nav-flash-blink-cursor-maybe-h)
   (setq
    ;; Set this if you use project management plugin like projectile.  It's
    ;; used for things like displaying paths relatively, see its docstring.
