@@ -116,21 +116,18 @@
 ;;   (ignore-errors
 ;;     (mac-auto-operator-composition-mode)))
 
-(after! ibuffer
-  ;; set ibuffer name column width
-  (define-ibuffer-column size-h
-    (:name "Size" :inline t)
-    (cond
-     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
-     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
-     (t (format "%8d" (buffer-size)))))
 
-  (setq ibuffer-formats
-        '((mark modified read-only " "
-                (name 50 50 :left :nil) " "
-                (size-h 9 -1 :right) " "
-                (mode 16 16 :left :elide) " "
-                filename-and-process))))
+(setq-hook! 'ibuffer-hook ibuffer-formats
+            '((mark modified read-only locked " "
+                    (name 50 18 :left :elide)
+                    " "
+                    (size 9 -1 :right)
+                    " "
+                    (mode 16 16 :left :elide)
+                    " " filename-and-process)
+              (mark " "
+                    (name 16 -1)
+                    " " filename)))
 
 (use-package! all-the-icons-ibuffer
   :after ibuffer
