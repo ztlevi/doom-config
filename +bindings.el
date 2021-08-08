@@ -96,8 +96,8 @@
  :v "DEL" (kbd "\"_d")
  :v "<del>" (kbd "\"_d")
  :v "<backspace>" (kbd "\"_d")
- :nmv "-" #'evil-jump-backward
- :nmv "=" #'evil-jump-forward
+ :nmv "-" #'better-jumper-jump-backward
+ :nmv "=" #'better-jumper-jump-forward
 
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
@@ -275,6 +275,7 @@
   "j" #'lsp-ui-peek--select-next
   "k" #'lsp-ui-peek--select-prev
   "l" #'lsp-ui-peek--select-next-file)
+ :nv "gb" #'lsp-ui-peek-jump-backward
  (:after tide
   :map tide-references-mode-map
   "C-k" #'tide-find-previous-reference
