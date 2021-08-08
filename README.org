@@ -163,7 +163,7 @@ An in-depth list of features, how to use them, and their dependencies.
 How to configure this module, including common problems and how to address them.
 
 * Appendix
-** [[https://gist.github.com/redguardtoo/b12ddae3b8010a276e9b][Ctags reference]]
+** [[https://github.com/ztlevi/dotty-config/blob/main/editor/emacs/.ctags.d/][Ctags reference]]
 ** Use Meta key in terminal
 I have to use ssh with tmux on server. And terminal emacs becomes my daily driver. Checkout
 [[https://github.com/ztlevi/dotty/blob/master/shell/alacritty/config/alacritty/keybinding.yml][Alacritty keybinding config]] to make you terminal compatible with Meta keys.

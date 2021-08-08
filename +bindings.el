@@ -207,7 +207,7 @@
        "d" #'toggle-debug-on-error
        "D" #'+my/realtime-elisp-doc
        "l" #'toggle-display-line-numbers-type
-       "L" #'interaction-log-mode
+       "k" #'keycast-log-mode
        "T" #'toggle-truncate-lines
        "S" #'size-indication-mode
        "i" #'highlight-indent-guides-mode
