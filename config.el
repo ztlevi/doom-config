@@ -41,6 +41,9 @@
                     ))
 
 ;; Manually edit .local/custom.el will break doom updates
+(when (file-directory-p custom-file)
+  (message (concat "Please delete " custom-file ". And customization in config.el and +ui.el.")))
+
 (custom-set-variables
  '(warning-suppress-types '((iedit) (iedit))))
 
