@@ -40,6 +40,10 @@
                     ((lambda (buf _) (with-current-buffer buf (eq major-mode 'forge-topic-mode))) :size 0.35)
                     ))
 
+;; Manually edit .local/custom.el will break doom updates
+(custom-set-variables
+ '(warning-suppress-types '((iedit) (iedit))))
+
 ;; Load system profile for different machines and work config
 (dolist (config '("~/.config/doom/local.el"
                   "~/work/dots/local.el"))
