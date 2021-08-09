@@ -299,6 +299,9 @@
   (add-hook 'magit-process-prompt-functions
             'magit-process-git-credential-manager-core)
 
+  ;; fix magit prompt for midway auth
+  (appendq! magit-process-password-prompt-regexps '("Kerberos authentication failed.  Password:"))
+
   (magit-wip-after-apply-mode t)
   (magit-wip-before-change-mode t))
 
