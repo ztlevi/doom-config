@@ -28,7 +28,7 @@ To add executable: Idea -> Tools -> Create Command Line Launcher"
                        (or (doom-project-root) default-directory)))
 
   (+shell--open-with reveal-in-apps (+os/read-apps)
-                     (string-join `("-g '" ,(get-filename-with-line-number) "'")))
+                     (string-join `("'" ,(get-filename-with-line-number) "'")))
   (+shell--open-with reveal-project-in-apps (+os/read-apps)
                      (or (doom-project-root) default-directory))
 
