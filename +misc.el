@@ -454,7 +454,7 @@
   (set-formatter! 'shfmt
     '("shfmt" "-ci"
       ("-i" "%d" 2)
-      ("-ln" "%s" (pcase sh-shell (`bash "bash") (`mksh "mksh") (_ "posix"))))))
+      ("-ln" "%s" (pcase sh-shell (`bash "bash") (`zsh "bash") (`mksh "mksh") (_ "posix"))))))
 
 (setq-hook! 'sh-mode-hook sh-basic-offset 2
             tab-width 2)
