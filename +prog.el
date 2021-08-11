@@ -106,7 +106,8 @@
 
 (after! lsp-mode
   (setq lsp-print-io nil
-        lsp-file-watch-threshold 3000)
+        lsp-file-watch-threshold 3000
+        lsp-headerline-breadcrumb-enable t)
   (dolist (dir '("[/\\\\]\\.ccls-cache$"
                  "[/\\\\]\\.mypy_cache$"
                  "[/\\\\]\\.pytest_cache$"
@@ -131,8 +132,6 @@
         lsp-ui-doc-include-signature t
         lsp-ui-doc-max-height 15
         lsp-ui-doc-max-width 100))
-
-(add-hook! 'lsp-mode-hook (lsp-headerline-breadcrumb-mode 1))
 
 (use-package lsp-docker
   :defer t
