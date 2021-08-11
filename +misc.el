@@ -212,7 +212,9 @@
     :desc "Citre update tags file" "t" #'citre-update-this-tags-file
     :desc "Citre edit tags file" "T" #'citre-edit-tags-file-recipe))
   :config
-  ;; (add-hook 'citre-after-jump-hook #'better-jumper-set-jump)
+  ;; better jump set marker
+  (advice-add #'citre-jump :around #'doom-set-jump-a)
+
   (remove-hook! 'citre-after-jump-hook #'citre-recenter-and-blink)
   (add-hook 'citre-after-jump-hook #'+nav-flash-blink-cursor-maybe-h)
   (setq
