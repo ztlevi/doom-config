@@ -50,5 +50,6 @@
 ;; Load system profile for different machines and work config
 (dolist (config '("~/.config/doom/local.el"
                   "~/work/dots/local.el"))
-  (when (file-exists-p config)
-    (load-file config)))
+  (let ((config-file (file-truename config)))
+    (when (file-exists-p config-file)
+      (load-file config-file))))
