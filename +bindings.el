@@ -336,6 +336,24 @@
    "C-p"   #'vertico-previous
    "C-M-p" #'+vertico/previous-candidate-preview
    "C-S-p" #'vertico-previous-group))
+ (:when (featurep! :completion ivy)
+  (:after wgrep
+   :map wgrep-mode-map
+   :nv "gr" #'ivy-occur-revert-buffer
+   :n "RET" #'ivy-occur-press-and-switch)
+  (:after ivy
+   :map ivy-occur-grep-mode-map
+   "<backspace>" #'ivy-occur-delete-candidate
+   :nv "gr" #'ivy-occur-revert-buffer
+   :map ivy-minibuffer-map
+   "TAB" #'ivy-partial-or-done
+   "<M-return>" #'ivy-immediate-done
+   "C-b" nil
+   "C-r" #'ivy-reverse-i-search      ; similar to ivy-restrict-to-matches
+   "C-j" #'ivy-call-and-recenter
+   "C-k" #'ivy-kill-line
+   "C-v" #'ivy-scroll-up-command
+   "A-v" #'ivy-scroll-down-command))
  (:after minibuffer
   :map minibuffer-local-map
   "C-t" #'marginalia-cycle

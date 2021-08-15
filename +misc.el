@@ -233,7 +233,7 @@
    ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Translate
+;; TRANSLATE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -273,6 +273,42 @@
   (after! magit
     (update-projectile-known-projects))
   )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; COMPLETION
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(when (featurep! :completion ivy)
+  (after! (:and ivy ivy-prescient)
+    (setq ivy-prescient-retain-classic-highlighting t))
+
+  (after! ivy-posframe
+    (setq ivy-posframe-border-width 5)
+
+    ;; Use minibuffer to display ivy functions
+    (dolist (fn '(+ivy/switch-workspace-buffer
+                  ivy-switch-buffer))
+      (setf (alist-get fn ivy-posframe-display-functions-alist) #'ivy-display-function-fallback)))
+
+  (after! ivy-rich
+    (plist-put! ivy-rich-display-transformers-list
+                'ivy-switch-buffer
+                '(:columns
+                  ((ivy-switch-buffer-transformer (:width 60))
+                   (ivy-rich-switch-buffer-size (:width 7))
+                   (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+                   (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+                   (ivy-rich-switch-buffer-project (:width 15 :face success))
+                   (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+                  :predicate
+                  (lambda (cand) (get-buffer cand)))))
+
+  (after! counsel
+    ;; counsel-rg-base-command is configurable
+    (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"
+          counsel-describe-function-function 'helpful-callable
+          counsel-describe-variable-function 'helpful-variable)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
