@@ -104,8 +104,10 @@
 ;; Use format-all by default
 (setq +format-with-lsp nil)
 
+(setq +lsp-prompt-to-install-server 'quiet)
+
 (after! lsp-mode
-  (setq lsp-print-io nil
+  (setq lsp-log-io nil
         lsp-file-watch-threshold 3000
         lsp-headerline-breadcrumb-enable t)
   (dolist (dir '("[/\\\\]\\.ccls-cache$"
@@ -123,12 +125,12 @@
                  "[/\\\\]third_party$"
                  "[/\\\\]third-party$"
                  ))
-    (push dir lsp-file-watch-ignored))
+    (push dir lsp-file-watch-ignored-directories))
   )
 
-
 (after! lsp-ui
-  (setq lsp-ui-sideline-enable nil
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-sideline-enable nil
         lsp-ui-doc-include-signature t
         lsp-ui-doc-max-height 15
         lsp-ui-doc-max-width 100))
