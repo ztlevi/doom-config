@@ -181,6 +181,7 @@
        (python
         ;; +pyenv
         ;; +conda
+        +poetry
         +pyright
         +lsp)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever

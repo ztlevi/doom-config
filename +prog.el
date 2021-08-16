@@ -200,3 +200,14 @@
   ;; (add-hook 'dap-stopped-hook
   ;;           (lambda (arg) (call-interactively #'dap-hydra)))
   )
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LANGUAGE CUSTOMIZATION
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-generic-mode sxhkd-mode
+  '(?#)
+  '("alt" "Escape" "super" "bspc" "ctrl" "space" "shift") nil
+  '("sxhkdrc") nil
+  "Simple mode for sxhkdrc files.")
