@@ -75,7 +75,10 @@
 
 (setq evil-cross-lines t
       evil-split-window-below t
-      evil-vsplit-window-right t)
+      evil-vsplit-window-right t
+      ;; Implicit /g flag on evil ex substitution, because I less often want the
+      ;; default behavior.
+      evil-ex-substitute-global t)
 
 (after! evil
   (evil-define-text-object evil-inner-buffer (count &optional beg end type)
