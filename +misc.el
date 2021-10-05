@@ -153,7 +153,7 @@
     (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " ")))
   )
 
-(after! (:and ranger dired)
+(after! ranger
   (setq ranger-hide-cursor t
         ranger-show-hidden 'format
         ranger-deer-show-details nil)
