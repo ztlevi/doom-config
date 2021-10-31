@@ -136,6 +136,8 @@
        :desc "Yank filename" "n" #'+default/yank-filename
        :desc "Save all" "s" #'evil-write-all
        :desc "Deer"     "j" #'deer)
+      (:prefix "n"                      ; notes
+       :desc "Take screenshot" "p" #'screenshot)
       (:prefix "g"                      ; git
        "s" nil
        (:after smerge-mode

@@ -14,6 +14,9 @@
 (when (file-exists-p (expand-file-name "~/.aspell.en.pws"))
   (setq ispell-personal-dictionary (expand-file-name "~/.aspell.en.pws")))
 
+(use-package! screenshot
+  :defer t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; INPUT METHOD
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
