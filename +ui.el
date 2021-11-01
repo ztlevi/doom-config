@@ -56,16 +56,15 @@
 (defface breakpoint-enabled '((t)) "Breakpoint face.")
 
 ;; Faces need to postpone renderring
+;; custom-set-faces! doesn't work properly when you switch doom themes
 (custom-theme-set-faces! doom-theme
-  `(font-lock-comment-face :foreground ,(doom-color 'blue))
-  `(font-lock-doc-face :foreground ,(doom-color 'blue)))
-
-;; my custom faces
-(custom-set-faces!
-  '(variable-pitch :family nil)
+  `(hl-line :background ,(doom-color 'bg-alt)) ; sometimes ranger doesn't show hl-line color
+  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
+  `(mode-line :background ,(doom-blend 'dark-blue 'base0  0.2))
+  `(mode-line-inactive :background ,(doom-color 'bg-alt))
+    '(variable-pitch :family nil)
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
-  `(hl-line :background ,(doom-color 'bg-alt)) ; sometimes ranger doesn't show hl-line color
   '(font-lock-builtin-face :italic t)
   '(font-lock-type-face :italic t)
   `(show-paren-match :background ,(doom-blend 'teal 'base0 0.6) :foreground ,(doom-color 'base1))
@@ -91,11 +90,10 @@
   `(flycheck-warning :underline (:style wave :color ,(doom-color 'yellow)))
   `(flycheck-error :underline (:style wave :color ,(doom-color 'red)))
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
-  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
-  `(mode-line :background ,(doom-blend 'dark-blue 'base0  0.2))
-  `(mode-line-inactive :background ,(doom-color 'bg-alt))
   `(ein:cell-input-area :background ,(doom-blend 'red 'base0 0.15))
-  `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t))
+  `(ein:cell-input-prompt :background ,(doom-color 'red) :foreground ,(doom-color 'base0) :bold t)
+  `(font-lock-comment-face :foreground ,(doom-color 'blue))
+  `(font-lock-doc-face :foreground ,(doom-color 'blue)))
 
 (custom-theme-set-faces! 'doom-city-lights
   ;; ediff
