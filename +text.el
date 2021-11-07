@@ -73,18 +73,16 @@
   (advice-add #'org-schedule :around #'advise-org-default-time))
 
 
-;; (use-package! org-wild-notifier
-;;   :defer t
-;;   :init
-;;   (add-hook 'doom-after-init-modules-hook #'org-wild-notifier-mode t)
-;;   :config
-;;   (setq org-wild-notifier-alert-time 5
-;;         alert-default-style (if IS-MAC 'osx-notifier 'libnotify)))
-
-
 (after! ox-pandoc
   (setq org-pandoc-options-for-revealjs '((variable . "highlight-theme=github")
                                           (variable . "theme=white"))))
+
+(use-package! pomm
+  :defer t
+  :commands (pomm)
+  :config
+  (setq alert-default-style (if IS-MAC 'osx-notifier 'libnotify))
+  (pomm-mode-line-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

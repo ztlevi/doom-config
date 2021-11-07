@@ -11,7 +11,6 @@
                    pyimport)
 
 ;; text
-;; (package! org-wild-notifier)
 (package! adoc-mode)
 (package! tldr)
 (package! edit-indirect)
@@ -19,6 +18,7 @@
 (package! youdao-dictionary)
 (package! link-hint)
 (package! symbol-overlay)
+(package! pomm :recipe (:host github :repo "SqrtMinusOne/pomm.el"))
 
 ;; misc
 (package! keycast)

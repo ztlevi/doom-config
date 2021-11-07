@@ -172,8 +172,8 @@
         +dragndrop       ; drag & drop files/images into org buffers
         ;;+hugo            ; use Emacs for hugo blogging
         ;;+jupyter         ; ipython/jupyter support for babel
+        ;; +pomodoro        ; be fruitful with the tomato technique
         +pandoc          ; export-with-pandoc support
-        +pomodoro        ; be fruitful with the tomato technique
         +present)        ; using org-mode for presentations
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more

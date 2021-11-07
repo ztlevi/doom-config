@@ -205,6 +205,7 @@
       (:prefix "e"                      ;error
        "d" #'posframe-delete-all)
       (:prefix "t"                      ; toggle
+       :desc "Pomodoro timer" "t" #'pomm
        "c" #'rainbow-mode
        "C" #'centered-window-mode
        "d" #'toggle-debug-on-error
