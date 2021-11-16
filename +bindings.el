@@ -124,6 +124,8 @@
        "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
        :desc "Format-all buffer"      "F" #'format-all-buffer
+       :desc "Check grammar"          "g" #'langtool-check-buffer
+       :desc "Done Check grammar"     "G" #'langtool-check-done
        :desc "LSP organize imports"   "I" #'lsp-organize-imports
        :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
        :desc "Treemacs references"    "D" #'lsp-treemacs-references)
