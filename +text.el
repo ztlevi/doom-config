@@ -89,6 +89,8 @@
 ;; MARKDOWN
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(setq markdown-fontify-code-blocks-natively t)
+
 (remove-hook 'text-mode-hook #'auto-fill-mode)
 
 (use-package! edit-indirect :defer t)
