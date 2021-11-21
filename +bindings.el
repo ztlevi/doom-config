@@ -142,7 +142,6 @@
        :desc "Take screenshot" "p" #'screenshot)
       (:prefix "g"                      ; git
        "s" nil
-       :desc "VC message" "m" #'vc-msg-show
        (:after smerge-mode
         :desc "Smerge" "s" smerge-basic-map)
        :desc "Browse file or region" "oo" #'git-link
