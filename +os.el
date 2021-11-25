@@ -14,7 +14,7 @@
 (defun +os/read-apps ()
   "Applications collection used for `+shell--open-with' method.
 To add executable: Idea -> Tools -> Create Command Line Launcher"
-  (let ((shell-apps '("idea" "code" "pycharm" "clion")))
+  (let ((shell-apps '("idea" "code -g" "pycharm" "clion")))
     (completing-read "Select Applications:" shell-apps)))
 
 (defun get-filename-with-line-number ()
