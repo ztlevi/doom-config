@@ -16,7 +16,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#use-meta-key-in-terminal][Use Meta key in terminal]]
   - [[#hacks][Hacks]]
 - [[#faq][FAQ]]
-  - [[#cannot-push-code-with-magit-using-github-password][Cannot push code with magit using github password?]]
+  - [[#how-to-use-magit-forge][How to use Magit Forge?]]
   - [[#why-my-jdtls-java-fails-at-booting][Why my jdtls java fails at booting?]]
   - [[#why-sometimes-the-floating-error-boxes-flycheck-posframe-do-not-disappear][Why sometimes the floating error boxes (flycheck posframe) do not disappear?]]
   - [[#how-to-use-forge][How to use forge?]]
@@ -170,8 +170,15 @@ I have to use ssh with tmux on server. And terminal emacs becomes my daily drive
 + Include a list of ways this module changes default behavior
 
 * FAQ
-** Cannot push code with magit using github password?
-Create a personal access token with all repo permission and use that token as your password.
+** How to use Magit Forge?
+- Create a token on Github https://github.com/settings/tokens with repo, user and admin:org permissions.
+- Put the following credential in ~/.authinfo.gpg~ (This location is configured by ~auth-sources~).
+    #+begin_src
+    machine api.github.com login yourlogin^forge password MYTOKENGOESHERE
+    machine api.github.com login yourlogin^code-review password MYTOKENGOESHERE
+    #+end_src
+See https://magit.vc/manual/ghub/Creating-a-Token.html#Creating-a-Token and
+https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
 ** Why my jdtls java fails at booting?
 Sometimes it caused by legacy cache under ~lsp-java-workspace-dir~. Delete that folder and restart lsp.
 ** Why sometimes the floating error boxes (flycheck posframe) do not disappear?

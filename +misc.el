@@ -373,6 +373,9 @@
   ;; (+my/forge-toggle-all-issues-and-pullreqs)
   )
 
+(use-package! code-review
+  :after magit)
+
 (after! browse-at-remote
   ;; (add-to-list 'browse-at-remote-remote-type-domains '("git.dummy.com" . "gitlab"))
   )

@@ -364,7 +364,8 @@
   "C-t" #'marginalia-cycle
   "C-k" #'kill-line)
  (:after magit-mode
-  (:map magit-mode-map "M-p" nil "M-n" nil "M-w" nil))
+  (:map magit-mode-map "M-p" nil "M-n" nil "M-w" nil
+   "C-c r" #'code-review-forge-pr-at-point))
  (:after magit-diff
   (:map magit-diff-mode-map            ; for magit diff/rev mode
    "C-o" #'magit-diff-visit-file-other-window))

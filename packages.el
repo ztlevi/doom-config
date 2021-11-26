@@ -36,6 +36,7 @@
 (package! go-translate)
 ;; https://github.com/tecosaur/screenshot/issues/11
 (package! screenshot :recipe (:host github :repo "tecosaur/screenshot") :pin "f8204e82dc0c1158c401735d36a143e6f6d24cf5")
+(package! code-review)
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
