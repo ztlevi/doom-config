@@ -414,3 +414,10 @@ you're done. This can be called from an external shell script."
         (kill-new file-name)
         (message "%s" file-name))
     (message "WARNING: Current buffer is not attached to a file!")))
+
+;;;###autoload
+(defun remove-nth-element (nth list)
+  (if (zerop nth) (cdr list)
+    (let ((last (nthcdr (1- nth) list)))
+      (setcdr last (cddr last))
+      list)))

@@ -81,7 +81,17 @@
   :defer t
   :commands (pomm)
   :config
-  (setq alert-default-style (if IS-MAC 'osx-notifier 'libnotify))
+  (setq dotty-asset-dir (expand-file-name "~/.config/dotty/assets/"))
+  (when (file-exists-p! dotty-asset-dir)
+    ;; Use custom audio files and remove tick audio
+    (setq pomm-audio-files
+          `((work . ,(concat dotty-asset-dir "sounds/Glass.wav"))
+            (short-break . ,(concat dotty-asset-dir "sounds/Glass.wav"))
+            (long-break . ,(concat dotty-asset-dir "sounds/Glass.wav"))
+            (stop . ,(concat dotty-asset-dir "sounds/Blow.wav")))))
+
+  (setq alert-default-style (if IS-MAC 'osx-notifier 'libnotify)
+        pomm-audio-enabled t)
   (pomm-mode-line-mode))
 
 
