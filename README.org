@@ -172,6 +172,7 @@ I have to use ssh with tmux on server. And terminal emacs becomes my daily drive
 * FAQ
 ** How to use Magit Forge?
 - Create a token on Github https://github.com/settings/tokens with repo, user and admin:org permissions.
+  If using GitHub enterprise / for business you also need the ~write:discussion~, ~read:discussion~ scope.
 - Put the following credential in ~/.authinfo.gpg~ (This location is configured by ~auth-sources~).
     #+begin_src
     machine api.github.com login yourlogin^forge password MYTOKENGOESHERE
