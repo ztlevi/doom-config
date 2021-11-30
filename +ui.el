@@ -106,7 +106,7 @@
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
-    `(mode-line-inactive :background ,(doom-color 'black) :foreground ,(doom-color 'fg))
+    `(mode-line-inactive :background ,(doom-darken (doom-color 'bg-alt) 0.05) :foreground ,(doom-color 'fg))
     `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'blue))))
 
 ;; (when IS-MAC
