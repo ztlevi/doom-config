@@ -20,8 +20,9 @@
   (:prefix ("v" . "ENV")
    "c" #'conda-env-activate
    "C" #'conda-env-deactivate
-   "w" #'pyvenv-workon
-   "v" #'pyvenv-activate))
+   "v" #'poetry-venv-toggle
+   "P" #'pyvenv-workon
+   "p" #'pyvenv-activate))
  (:after pyenv-mode
   (:map pyenv-mode-map
    "C-c C-s" nil
@@ -104,6 +105,8 @@
   (dolist (func '(conda-env-activate conda-env-deactivate))
     (advice-add func :after #'reset-flycheck)))
 
+(after! poetry
+  (remove-hook 'python-mode-hook #'poetry-tracking-mode))
 
 ;; For pytest-mode
 (set-evil-initial-state! '(comint-mode) 'normal)
