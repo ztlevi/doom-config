@@ -334,11 +334,13 @@
   (:after vertico
    :map vertico-map
    "C-j" nil "C-k" nil
-   "C-j" #'+vertico/embark-preview
+   "C-j"   #'+vertico/embark-preview
    "C-n"   #'vertico-next
    "C-M-n" #'+vertico/next-candidate-preview
    "C-S-n" #'vertico-next-group
    "C-p"   #'vertico-previous
+   "A-v"   #'vertico-scroll-down
+   "C-v"   #'vertico-scroll-up
    "C-M-p" #'+vertico/previous-candidate-preview
    "C-S-p" #'vertico-previous-group))
  (:when (featurep! :completion ivy)
