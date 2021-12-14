@@ -42,3 +42,4 @@
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! graphql-mode)
 (package! protobuf-mode)
+(package! gn-mode)
