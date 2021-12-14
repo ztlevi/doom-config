@@ -114,20 +114,21 @@
   (setq lsp-log-io nil
         lsp-file-watch-threshold 3000
         lsp-headerline-breadcrumb-enable t)
-  (dolist (dir '("[/\\\\]\\.ccls-cache$"
-                 "[/\\\\]\\.mypy_cache$"
-                 "[/\\\\]\\.pytest_cache$"
-                 "[/\\\\]\\.cache$"
-                 "[/\\\\]\\.clwb$"
-                 "[/\\\\]_build$"
-                 "[/\\\\]__pycache__$"
-                 "[/\\\\]bazel-bin$"
-                 "[/\\\\]bazel-code$"
-                 "[/\\\\]bazel-genfiles$"
-                 "[/\\\\]bazel-out$"
-                 "[/\\\\]bazel-testlogs$"
-                 "[/\\\\]third_party$"
-                 "[/\\\\]third-party$"
+  (dolist (dir '("[/\\\\]\\.ccls-cache\\"
+                 "[/\\\\]\\.mypy_cache\\"
+                 "[/\\\\]\\.pytest_cache\\"
+                 "[/\\\\]\\.cache\\"
+                 "[/\\\\]\\.clwb\\"
+                 "[/\\\\]_build\\"
+                 "[/\\\\]__pycache__\\"
+                 "[/\\\\]bazel-bin\\"
+                 "[/\\\\]bazel-code\\"
+                 "[/\\\\]bazel-genfiles\\"
+                 "[/\\\\]bazel-out\\"
+                 "[/\\\\]bazel-testlogs\\"
+                 "[/\\\\]third_party\\"
+                 "[/\\\\]third-party\\"
+                 "[/\\\\]buildtools\\"
                  ))
     (push dir lsp-file-watch-ignored-directories))
   )
