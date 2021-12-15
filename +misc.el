@@ -208,7 +208,7 @@
   (require 'citre-config)
   ;; `doom-large-file-size-alist' controls when controls when Doom activates so-long-minor-mode
   ;; to cut down on features in large files
-  (setq large-file-warning-threshold nil)
+  ;; (setq large-file-warning-threshold nil)
   (map!
    :nv "gE"  #'citre-peek
    :nv "ge"  #'citre-jump
