@@ -118,29 +118,30 @@
 
 (after! lsp-mode
   (setq lsp-log-io nil
-        lsp-file-watch-threshold 3000
+        lsp-file-watch-threshold 4000
         lsp-headerline-breadcrumb-enable t)
-  (dolist (dir '("[/\\\\]\\.ccls-cache\\"
-                 "[/\\\\]\\.mypy_cache\\"
-                 "[/\\\\]\\.pytest_cache\\"
-                 "[/\\\\]\\.cache\\"
-                 "[/\\\\]\\.clwb\\"
-                 "[/\\\\]_build\\"
-                 "[/\\\\]__pycache__\\"
-                 "[/\\\\]bazel-bin\\"
-                 "[/\\\\]bazel-code\\"
-                 "[/\\\\]bazel-genfiles\\"
-                 "[/\\\\]bazel-out\\"
-                 "[/\\\\]bazel-testlogs\\"
-                 "[/\\\\]third_party\\"
-                 "[/\\\\]third-party\\"
-                 "[/\\\\]buildtools\\"
+  (dolist (dir '("[/\\\\]\\.ccls-cache\\'"
+                 "[/\\\\]\\.mypy_cache\\'"
+                 "[/\\\\]\\.pytest_cache\\'"
+                 "[/\\\\]\\.cache\\'"
+                 "[/\\\\]\\.clwb\\'"
+                 "[/\\\\]__pycache__\\'"
+                 "[/\\\\]bazel-bin\\'"
+                 "[/\\\\]bazel-code\\'"
+                 "[/\\\\]bazel-genfiles\\'"
+                 "[/\\\\]bazel-out\\'"
+                 "[/\\\\]bazel-testlogs\\'"
+                 "[/\\\\]third_party\\'"
+                 "[/\\\\]third-party\\'"
+                 "[/\\\\]buildtools\\'"
+                 "[/\\\\]out\\'"
                  ))
     (push dir lsp-file-watch-ignored-directories))
   )
 
 (after! lsp-ui
   (setq lsp-ui-doc-enable nil
+        lsp-lens-enable nil
         lsp-ui-sideline-enable nil
         lsp-ui-doc-include-signature t
         lsp-ui-doc-max-height 15
