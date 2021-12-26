@@ -20,6 +20,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#why-my-jdtls-java-fails-at-booting][Why my jdtls java fails at booting?]]
   - [[#why-sometimes-the-floating-error-boxes-flycheck-posframe-do-not-disappear][Why sometimes the floating error boxes (flycheck posframe) do not disappear?]]
   - [[#how-to-use-forge][How to use forge?]]
+  - [[#how-to-use-emacs-everywhere][How to use emacs-everywhere?]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -187,3 +188,5 @@ Call ~posframe-delete-all~ to get rid of it.
 ** How to use forge?
 [[https://magit.vc/manual/ghub/Creating-and-Storing-a-Token.html#Creating-and-Storing-a-Token][Take a look at this manual]]. See how to create token for forge. Create the token with the full repo access.
 Then in the magit status buffer, use ~@~ to dispatch the forge menu.
+** How to use emacs-everywhere?
+Create a Automator workflow like this https://imgur.com/Xq4xe82. And bind it to some key in Settings->Keyboard->Shortcuts->Services. You need to add Emacs to the Settings->Security&Privacy->Accessibility. Then select some text and press the key. Unfortunately, I didn't find a way to automate pasting. You'll need to press the key Cmd-v to paste it after editing.
