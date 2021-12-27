@@ -118,6 +118,7 @@
        :desc "List process" "p" #'list-processes
        "x" #'align-regexp)
       (:prefix "b"                      ; buffer
+       "m" #'list-bookmarks
        "h" #'+doom-dashboard/open
        "r" #'revert-buffer-no-confirm
        "R" #'reload-buffer-no-confirm
