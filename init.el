@@ -226,6 +226,7 @@
        ;; lazycat          ; snails, color-rg, fuz
        my-python
        my-checker
+       ;; nano-theme
        )
 
 (setq custom-file (expand-file-name "custom.el" doom-local-dir))
