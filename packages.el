@@ -5,6 +5,7 @@
 (disable-packages! solaire-mode
                    realgud
                    realgud-trepan-ni
+                   ccls
                    anaconda-mode
                    company-anaconda
                    lsp-python-ms
