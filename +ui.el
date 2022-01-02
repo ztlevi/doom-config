@@ -21,8 +21,22 @@
   (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
   (setq doom-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
         doom-big-font (font-spec :family user-font :size (eval (round (* 18 resolution-factor))))
+        doom-variable-pitch-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
         doom-modeline-height (eval (round (* 14 resolution-factor))))
   (setq doom-font-increment 1)
+
+  (setq user-cjk-font
+        (cond
+         ((find-font (font-spec :name  "Hiragino Sans GB")) "Hiragino Sans GB")))
+
+  ;; Set font for chinese characters
+  ;; Font should be twice the width of asci chars so that org tables align
+  ;; This will break if run in terminal mode, so use conditional to only run for GUI.
+  (if (display-graphic-p)
+      (dolist (charset '(kana han cjk-misc bopomofo))
+        (set-fontset-font (frame-parameter nil 'font)
+                          charset (font-spec :family user-cjk-font
+                                             :size (eval (round (* 15 resolution-factor)))))))
 
   ;; set initl screen size
   (setq initial-frame-alist
@@ -62,7 +76,6 @@
   `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
   `(mode-line :background ,(doom-blend 'dark-blue 'base0  0.2))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
-  '(variable-pitch :family nil)
   `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'bg-alt))
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
