@@ -189,14 +189,7 @@
   (setq dash-docs-browser-func 'browse-url-generic))
 
 
-(use-package! highlight-indent-guides
-  :init
-  (setq highlight-indent-guides-method 'character)
-  :config
-  (defun +indent-guides-init-faces-h ()
-    (when (display-graphic-p)
-      (highlight-indent-guides-auto-set-faces))))
-
+(remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook) #'highlight-indent-guides-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CITRE

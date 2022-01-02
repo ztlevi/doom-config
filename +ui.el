@@ -63,7 +63,7 @@
   `(mode-line :background ,(doom-blend 'dark-blue 'base0  0.2))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
   '(variable-pitch :family nil)
-  `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'bg))
+  `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'bg-alt))
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)
