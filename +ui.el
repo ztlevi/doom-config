@@ -62,7 +62,8 @@
   `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
   `(mode-line :background ,(doom-blend 'dark-blue 'base0  0.2))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
-    '(variable-pitch :family nil)
+  '(variable-pitch :family nil)
+  `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'bg))
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)
@@ -106,8 +107,7 @@
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
-    `(mode-line-inactive :background ,(doom-darken (doom-color 'bg-alt) 0.05) :foreground ,(doom-color 'fg))
-    `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'blue))))
+    `(mode-line-inactive :background ,(doom-darken (doom-color 'bg-alt) 0.05) :foreground ,(doom-color 'fg))))
 
 ;; (when IS-MAC
 ;;   ;; enable ligatures support
