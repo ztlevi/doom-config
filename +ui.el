@@ -12,10 +12,10 @@
 (when (display-graphic-p)
   (setq user-font
         (cond
-         ((find-font (font-spec :name  "CartographCF Nerd Font")) "CartographCF Nerd Font")
-         ((find-font (font-spec :name  "OperatorMono Nerd Font")) "OperatorMono Nerd Font")
-         ((find-font (font-spec :name  "Droid Sans Mono")) "Droid Sans Mono")
-         ((find-font (font-spec :name  "Droid Sans Fallback")) "Droid Sans Fallback")))
+         ((find-font (font-spec :name "CartographCF Nerd Font")) "CartographCF Nerd Font")
+         ((find-font (font-spec :name "OperatorMono Nerd Font")) "OperatorMono Nerd Font")
+         ((find-font (font-spec :name "Droid Sans Mono")) "Droid Sans Mono")
+         ((find-font (font-spec :name "Droid Sans Fallback")) "Droid Sans Fallback")))
 
   ;; calculate the font size based on display-pixel-height
   (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
@@ -27,7 +27,9 @@
 
   (setq user-cjk-font
         (cond
-         ((find-font (font-spec :name  "Hiragino Sans GB")) "Hiragino Sans GB")))
+         ((find-font (font-spec :name "Hiragino Sans GB")) "Hiragino Sans GB") ; for macos
+         ((find-font (font-spec :name "Noto Sans CJK SC")) "Noto Sans CJK SC") ; for linux
+         ))
 
   ;; Set font for chinese characters
   ;; Font should be twice the width of asci chars so that org tables align
