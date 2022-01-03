@@ -195,5 +195,5 @@ Create a Automator workflow like this https://imgur.com/Xq4xe82. And bind it to 
 ** When you get too many open files issue on MacOS
 Use ~ulimit -n 10240~ to increase the limit. See post here https://discussions.apple.com/thread/251000125.
 ** How to start debugging cpp apps?
-Run `M-x dap-cpptools-setup` to download the `vscode-cpptools` debug adapter.
+Run ~M-x dap-cpptools-setup~ to download the ~vscode-cpptools~ debug adapter. On linux, you need to install [[https://www.mono-project.com/][mono]].
 You can refer the debug template here https://github.com/ztlevi/gtest-cpp-demo/blob/main/.vscode/launch.json
