@@ -100,6 +100,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 brew install cmake
 sudo apt install libvterm-dev libtool-bin
 #+END_SRC
+***** Install CJK fonts for your linux machines if you use them. https://github.com/googlefonts/noto-cjk
 
 **** npm
 #+BEGIN_SRC shell
