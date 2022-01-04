@@ -211,6 +211,10 @@
   (dap-mode 1)
   (call-interactively #'dap-debug))
 
+(defun +my/dap-delete-output-and-stderr-buffers ()
+  (doom/kill-matching-buffers " stderr*" (buffer-list))
+  (doom/kill-matching-buffers " out*" (buffer-list)))
+
 ;; (add-hook! dap-mode-hook ((tooltip-mode 1)))
 
 (after! lsp-mode

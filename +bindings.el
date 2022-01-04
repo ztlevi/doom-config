@@ -188,6 +188,7 @@
       (:prefix ("d" . "debug")
        :desc "Start debugger" "d" #'+my/dap-start
        :desc "Start last debugger" "D" #'dap-debug-last
+       :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
        (:prefix ("b" . "breakpoint")
         "b" #'dap-breakpoint-toggle
         "c" #'dap-breakpoint-condition)
@@ -290,12 +291,12 @@
   "n"   #'tide-find-next-reference
   "C-l" #'tide-goto-reference)
  (:after cc-mode
-   (:map java-mode-map
-     :localleader
-     :desc "Add import" "i" #'lsp-java-add-import)
-   (:map c++-mode-map
-     :localleader :prefix ("t" "toggle")
-     :desc "Copy lldb breakpoint" "b" #'+cc/copy-lldb-breakpoint-of-current-line))
+  (:map java-mode-map
+   :localleader
+   :desc "Add import" "i" #'lsp-java-add-import)
+  (:map c++-mode-map
+   :localleader :prefix ("t" "toggle")
+   :desc "Copy lldb breakpoint" "b" #'+cc/copy-lldb-breakpoint-of-current-line))
  (:after org
   (:map org-mode-map
    :localleader
