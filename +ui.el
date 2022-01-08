@@ -25,25 +25,26 @@
         doom-modeline-height (eval (round (* 14 resolution-factor))))
   (setq doom-font-increment 1)
 
-  (setq user-cjk-font
-        (cond
-         ((find-font (font-spec :name "Hiragino Sans GB")) "Hiragino Sans GB") ; for macos
-         ((find-font (font-spec :name "Noto Sans CJK SC")) "Noto Sans CJK SC") ; for linux
-         ))
-
-  ;; Set font for chinese characters
-  ;; Font should be twice the width of asci chars so that org tables align
-  ;; This will break if run in terminal mode, so use conditional to only run for GUI.
-  (if (display-graphic-p)
-      (dolist (charset '(kana han cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font)
-                          charset (font-spec :family user-cjk-font
-                                             :size (eval (round (* 15 resolution-factor)))))))
-
   ;; set initl screen size
   (setq initial-frame-alist
         '((width . 110)
           (height . 65))))
+
+(add-hook! 'doom-first-buffer-hook
+  (defun +my/change-cjk-font ()
+    "change the cjk font and its size to align the org/markdown tables when have
+cjk characters. Font should be twice the width of asci chars so that org tables align.
+This will break if run in terminal mode, so use conditional to only run for GUI."
+    (when (display-graphic-p)
+      (setq user-cjk-font
+            (cond
+             ((find-font (font-spec :name "Hiragino Sans GB")) "Hiragino Sans GB") ; for macos
+             ((find-font (font-spec :name "Noto Sans CJK SC")) "Noto Sans CJK SC") ; for linux
+             ))
+      (dolist (charset '(kana han cjk-misc bopomofo))
+        (set-fontset-font (frame-parameter nil 'font)
+                          charset (font-spec :family user-cjk-font
+                                             :size (eval (round (* 15 resolution-factor)))))))))
 
 ;; Update window divider in terminal
 ;; https://www.reddit.com/r/emacs/comments/3u0d0u/how_do_i_make_the_vertical_window_divider_more/
