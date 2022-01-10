@@ -21,7 +21,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#why-sometimes-the-floating-error-boxes-flycheck-posframe-do-not-disappear][Why sometimes the floating error boxes (flycheck posframe) do not disappear?]]
   - [[#how-to-use-forge][How to use forge?]]
   - [[#how-to-use-emacs-everywhere][How to use emacs-everywhere?]]
-  - [[#when-you-get-too-many-open-files-issue-on-macos][When you get too many open files issue on MacOS]]
+  - [[#when-you-do-doom-upgrade-and-get-too-many-open-files-issue-on-macos][When you do `doom upgrade` and get too many open files issue on MacOS.]]
   - [[#how-to-start-debugging-cpp-apps][How to start debugging cpp apps?]]
 
 * Screenshot
@@ -193,7 +193,7 @@ Call ~posframe-delete-all~ to get rid of it.
 Then in the magit status buffer, use ~@~ to dispatch the forge menu.
 ** How to use emacs-everywhere?
 Create a Automator workflow like this https://imgur.com/Xq4xe82. And bind it to some key in Settings->Keyboard->Shortcuts->Services. You need to add Emacs to the Settings->Security&Privacy->Accessibility. Then select some text and press the key. Unfortunately, I didn't find a way to automate pasting. You'll need to press the key Cmd-v to paste it after editing.
-** When you get too many open files issue on MacOS
+** When you do `doom upgrade` and get too many open files issue on MacOS.
 Use ~ulimit -n 10240~ to increase the limit. See post here https://discussions.apple.com/thread/251000125.
 ** How to start debugging cpp apps?
 Run ~M-x dap-cpptools-setup~ to download the ~vscode-cpptools~ debug adapter. On linux, you need to install [[https://www.mono-project.com/][mono]].
