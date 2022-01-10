@@ -1,8 +1,7 @@
 ;;;  -*- lexical-binding: t; -*-
 
-(setq-hook! 'text-mode-hook
-  truncate-lines nil
-  tab-width 2)
+(after! text-mode
+  (setq-hook! 'text-mode-hook truncate-lines nil tab-width 2))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ORG

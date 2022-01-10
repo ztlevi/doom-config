@@ -507,8 +507,8 @@
       ("-i" "%d" 2)
       ("-ln" "%s" (pcase sh-shell (`bash "bash") (`zsh "bash") (`mksh "mksh") (_ "posix"))))))
 
-(setq-hook! 'sh-mode-hook sh-basic-offset 2
-            tab-width 2)
+(after! sh-mode
+  (setq-hook! 'sh-mode-hook sh-basic-offset 2 tab-width 2))
 
 (after! eshell
   ;; eshell-mode imenu index

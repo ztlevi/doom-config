@@ -50,20 +50,8 @@
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . +cc-c-c++-objc-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
 
-(setq-default c-basic-offset 2)
-
 (after! cc-mode
-  (c-add-style
-   "my-cc" '("user"
-             (c-basic-offset . 2)
-             (c-offsets-alist
-              . ((innamespace . 0)
-                 (access-label . -)
-                 (case-label . 0)
-                 (member-init-intro . +)
-                 (topmost-intro . 0)
-                 (arglist-cont-nonempty . +)))))
-  (setq c-default-style "my-cc"))
+  (setq-hook! 'cc-mode-hook tab-width 2 c-basic-offset 2))
 
 (defun +cc/copy-lldb-breakpoint-of-current-line ()
   "Copy a pdb like breakpoint on the current line."
@@ -72,13 +60,13 @@
    (concat "b " (file-name-nondirectory (buffer-file-name))
            " : " (number-to-string (line-number-at-pos)))))
 
-(setq lsp-clients-clangd-args '("-j=3"
-                                "--background-index"
-                                "--clang-tidy"
-                                "--completion-style=detailed"
-                                "--header-insertion=never"
-                                "--header-insertion-decorators=0"))
 (after! lsp-clangd
+  (setq lsp-clients-clangd-args '("-j=3"
+                                  "--background-index"
+                                  "--clang-tidy"
+                                  "--completion-style=detailed"
+                                  "--header-insertion=never"
+                                  "--header-insertion-decorators=0"))
   (set-lsp-priority! 'clangd 2)
   (require 'dap-cpptools))
 
@@ -102,6 +90,9 @@
 ;; jdtls mirror in China
 ;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/1.1.2/jdt-language-server-1.1.2-202105191944.tar.gz")
 
+(after! java-mode
+  (setq-hook! 'java-mode-hook c-basic-offset 4))
+
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 11
   (dolist (java_path '("/usr/lib/jvm/java-11-amazon-corretto.x86_64"
@@ -111,9 +102,7 @@
                                                  :path ,java_path
                                                  :default t)]
               lsp-java-java-path (concat java_path "/bin/java")
-              dap-java-java-command (concat java_path "/bin/java"))))
-
-  (setq-hook! 'java-mode-hook c-basic-offset 4))
+              dap-java-java-command (concat java_path "/bin/java")))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

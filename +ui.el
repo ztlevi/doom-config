@@ -132,17 +132,18 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 ;;     (mac-auto-operator-composition-mode)))
 
 
-(setq-hook! 'ibuffer-hook ibuffer-formats
-            '((mark modified read-only locked " "
-                    (name 50 18 :left :elide)
-                    " "
-                    (size 9 -1 :right)
-                    " "
-                    (mode 16 16 :left :elide)
-                    " " filename-and-process)
-              (mark " "
-                    (name 16 -1)
-                    " " filename)))
+(after! ibuffer
+  (setq-hook! 'ibuffer-hook ibuffer-formats
+              '((mark modified read-only locked " "
+                      (name 50 18 :left :elide)
+                      " "
+                      (size 9 -1 :right)
+                      " "
+                      (mode 16 16 :left :elide)
+                      " " filename-and-process)
+                (mark " "
+                      (name 16 -1)
+                      " " filename))))
 
 (use-package! all-the-icons-ibuffer
   :after ibuffer
