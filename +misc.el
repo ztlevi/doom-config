@@ -507,9 +507,6 @@
       ("-i" "%d" 2)
       ("-ln" "%s" (pcase sh-shell (`bash "bash") (`zsh "bash") (`mksh "mksh") (_ "posix"))))))
 
-(after! sh-mode
-  (setq-hook! 'sh-mode-hook sh-basic-offset 2 tab-width 2))
-
 (after! eshell
   ;; eshell-mode imenu index
   (add-hook! 'eshell-mode-hook (setq-local imenu-generic-expression '(("Prompt" " λ \\(.*\\)" 1))))

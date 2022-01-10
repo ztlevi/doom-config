@@ -50,9 +50,6 @@
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . +cc-c-c++-objc-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
 
-(after! cc-mode
-  (setq-hook! 'cc-mode-hook tab-width 2 c-basic-offset 2))
-
 (defun +cc/copy-lldb-breakpoint-of-current-line ()
   "Copy a pdb like breakpoint on the current line."
   (interactive)
@@ -89,9 +86,6 @@
 
 ;; jdtls mirror in China
 ;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/1.1.2/jdt-language-server-1.1.2-202105191944.tar.gz")
-
-(after! java-mode
-  (setq-hook! 'java-mode-hook c-basic-offset 4))
 
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 11

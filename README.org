@@ -16,6 +16,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#use-meta-key-in-terminal][Use Meta key in terminal]]
   - [[#hacks][Hacks]]
 - [[#faq][FAQ]]
+  - [[#how-to-manage-tab-width-or-indent][How to manage tab-width or indent?]]
   - [[#how-to-use-magit-forge][How to use Magit Forge?]]
   - [[#why-my-jdtls-java-fails-at-booting][Why my jdtls java fails at booting?]]
   - [[#why-sometimes-the-floating-error-boxes-flycheck-posframe-do-not-disappear][Why sometimes the floating error boxes (flycheck posframe) do not disappear?]]
@@ -174,6 +175,14 @@ I have to use ssh with tmux on server. And terminal emacs becomes my daily drive
 + Include a list of ways this module changes default behavior
 
 * FAQ
+** How to manage tab-width or indent?
+You can use `setq-hook!` to set the tab-width explicitly.
+#+begin_src emacs-lisp
+(after! cc-mode
+  (setq-hook! 'cc-mode-hook tab-width 2 c-basic-offset 2))
+#+end_src
+I prefer to use a global `.editorconfig`, it can be override by a project local `.editorconfig`. Checkout [[https://github.com/ztlevi/dotty-config/blob/main/editor/editorconfig/.editorconfig][mine]].
+`setq-hook!` wii be overrided by editorconfig since editorconfig gains the highest priority.
 ** How to use Magit Forge?
 - Create a token on Github https://github.com/settings/tokens with repo, user and admin:org permissions.
   If using GitHub enterprise / for business you also need the ~write:discussion~, ~read:discussion~ scope.
