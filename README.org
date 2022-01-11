@@ -181,7 +181,7 @@ You can use `setq-hook!` to set the tab-width explicitly.
 (after! cc-mode
   (setq-hook! 'cc-mode-hook tab-width 2 c-basic-offset 2))
 #+end_src
-I prefer to use a global `.editorconfig`, it can be override by a project local `.editorconfig`. Checkout [[https://github.com/ztlevi/dotty-config/blob/main/editor/editorconfig/.editorconfig][mine]].
+I prefer to use a global `~/.editorconfig`, it can be override by a project local `.editorconfig`. Checkout [[https://github.com/ztlevi/dotty-config/blob/main/editor/editorconfig/.editorconfig][mine]].
 `setq-hook!` wii be overrided by editorconfig since editorconfig gains the highest priority.
 ** How to use Magit Forge?
 - Create a token on Github https://github.com/settings/tokens with repo, user and admin:org permissions.
