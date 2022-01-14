@@ -272,8 +272,8 @@
   ;; . -> Build
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
                                     :configure "cmake %s"
-                                    :compile "cmake --build Debug"
-                                    :test "ctest")
+                                    :compile "cmake --build build --config Debug --target all -j 14 --"
+                                    :test "ctest -j14 -C Debug -T test --output-on-failure")
 
   ;; set projectile-known-projects after magit
   (after! magit
