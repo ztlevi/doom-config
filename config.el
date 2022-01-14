@@ -22,6 +22,8 @@
 ;; disable risky local variables warning
 (advice-add 'risky-local-variable-p :override #'ignore)
 
+(add-hook! 'find-file-hook #'+my/find-file-check-make-large-file-read-only-hook)
+
 ;; check minified-file
 (add-to-list 'magic-mode-alist (cons #'+my/check-minified-file 'fundamental-mode))
 

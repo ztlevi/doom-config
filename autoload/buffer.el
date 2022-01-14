@@ -70,3 +70,27 @@
     (when (looking-back ";")
       (backward-char)
       (delete-char 1))))
+
+;;;###autoload
+(defun +my/check-large-buffer ()
+  "Check if the buffer is large."
+  (when (> (buffer-size) 1048576)       ; 1MB
+    t))
+
+;;;###autoload
+(defun +my/find-file-check-make-large-file-read-only-hook ()
+  "If a file is over a given size, make the buffer read only."
+  (when (+my/check-large-buffer)
+    (setq-local buffer-read-only t)
+    (buffer-disable-undo)
+    (fundamental-mode)))
+
+;;;###autodef
+(defun lsp! ()
+  "Dispatch to call the currently used lsp client entrypoint"
+  (interactive)
+  (if (featurep! :tools lsp +eglot)
+      (eglot-ensure)
+    (unless (bound-and-true-p lsp-mode)
+      (unless (+my/check-large-buffer)
+        (lsp-deferred)))))
