@@ -57,7 +57,7 @@ sudo pacman -S emacs
 #+BEGIN_SRC shell
 # Clone Doom Eemacs
 rm -r ~/.emacs.d
-git clone https://github.com/hlissner/doom-emacs -b develop ~/.config/emacs
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs
 
 # Clone my config
 git clone https://github.com/ztlevi/doom-config ~/.config/doom
