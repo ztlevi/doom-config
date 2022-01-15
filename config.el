@@ -47,7 +47,8 @@
   (message (concat "Please delete " custom-file ". And customization in config.el and +ui.el.")))
 
 (custom-set-variables
- '(warning-suppress-types '((iedit) (iedit))))
+ '(warning-suppress-log-types '((lsp-mode) (iedit)))
+ '(warning-suppress-types '((iedit))))
 
 ;; Load system profile for different machines and work config
 (dolist (config '("~/.config/doom/local.el"
