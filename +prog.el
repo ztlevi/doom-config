@@ -118,7 +118,7 @@
 (after! lsp-mode
   (setq lsp-log-io nil
         lsp-file-watch-threshold 4000
-        lsp-headerline-breadcrumb-enable t)
+        lsp-headerline-breadcrumb-enable nil)
   (dolist (dir '("[/\\\\]\\.ccls-cache\\'"
                  "[/\\\\]\\.mypy_cache\\'"
                  "[/\\\\]\\.pytest_cache\\'"
