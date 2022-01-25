@@ -24,6 +24,7 @@ Javascript, Python, C++, Rust, and Go.
   - [[#how-to-use-emacs-everywhere][How to use emacs-everywhere?]]
   - [[#when-you-do-doom-upgrade-and-get-too-many-open-files-issue-on-macos][When you do `doom upgrade` and get too many open files issue on MacOS.]]
   - [[#how-to-start-debugging-cpp-apps][How to start debugging cpp apps?]]
+  - [[#when-open-in-ssh-tty-clipetty-emit-opening-output-file-permission-denied-devpts3][When open in ssh tty, clipetty emit: `Opening output file: Permission denied, /dev/pts/3`.]]
 
 * Screenshot
 #+HTML: <img src="./screenshots/screenshot1.jpg" alt="" title="screenshot" width="100%" </img>
@@ -207,3 +208,5 @@ Use ~ulimit -n 10240~ to increase the limit. See post here https://discussions.a
 ** How to start debugging cpp apps?
 Run ~M-x dap-cpptools-setup~ to download the ~vscode-cpptools~ debug adapter. On linux, you need to install [[https://www.mono-project.com/][mono]].
 You can refer the debug template here https://github.com/ztlevi/gtest-cpp-demo/blob/main/.vscode/launch.json
+** When open in ssh tty, clipetty emit: `Opening output file: Permission denied, /dev/pts/3`.
+See discussion here https://github.com/spudlyo/clipetty/issues/20. Try `unset SSH_TTY` and then restart your emacs.
