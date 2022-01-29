@@ -503,13 +503,6 @@
 ;; TERM
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; TODO: remove https://github.com/hlissner/doom-emacs/pull/5175
-(after! sh-script
-  (set-formatter! 'shfmt
-    '("shfmt" "-ci"
-      ("-i" "%d" 2)
-      ("-ln" "%s" (pcase sh-shell (`bash "bash") (`zsh "bash") (`mksh "mksh") (_ "posix"))))))
-
 (after! eshell
   ;; eshell-mode imenu index
   (add-hook! 'eshell-mode-hook (setq-local imenu-generic-expression '(("Prompt" " λ \\(.*\\)" 1))))
