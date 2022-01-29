@@ -379,19 +379,22 @@
 
 
 ;; magit-todos uses hl-todo-keywords
+(custom-theme-set-faces! doom-theme
+  `(hl-todo :foreground ,(doom-color 'bg)))
 (after! hl-todo
-  (setq hl-todo-keyword-faces
-        `(("TODO"  . ,(face-foreground 'warning))
-          ("HACK"  . ,(face-foreground 'warning))
-          ("TEMP"  . ,(face-foreground 'warning))
-          ("DONE"  . ,(face-foreground 'success))
-          ("NOTE"  . ,(face-foreground 'success))
-          ("DONT"  . ,(face-foreground 'error))
-          ("DEBUG"  . ,(face-foreground 'error))
-          ("FAIL"  . ,(face-foreground 'error))
-          ("FIXME" . ,(face-foreground 'error))
-          ("XXX"   . ,(face-foreground 'error))
-          ("XXXX"  . ,(face-foreground 'error)))))
+  (setq hl-todo-color-background t
+        hl-todo-keyword-faces
+        `(("TODO"  . ,(doom-color 'orange))
+          ("HACK"  . ,(doom-color 'orange))
+          ("TEMP"  . ,(doom-color 'orange))
+          ("DONE"  . ,(doom-color 'green))
+          ("NOTE"  . ,(doom-color 'green))
+          ("DONT"  . ,(doom-color 'red))
+          ("DEBUG"  . ,(doom-color 'red))
+          ("FAIL"  . ,(doom-color 'red))
+          ("FIXME" . ,(doom-color 'red))
+          ("XXX"   . ,(doom-color 'blue))
+          ("XXXX"  . ,(doom-color 'blue)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
