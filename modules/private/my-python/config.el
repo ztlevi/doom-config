@@ -76,7 +76,8 @@
         (add-hook! 'before-save-hook :local #'my-python-isrot-before-save)
       (remove-hook! 'before-save-hook :local #'my-python-isrot-before-save)))
 
-  (add-hook! 'python-mode-hook #'python-isort-autosave-mode))
+  ;; (add-hook! 'python-mode-hook #'python-isort-autosave-mode)
+  )
 
 
 ;; (use-package! importmagic
