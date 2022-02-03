@@ -57,7 +57,7 @@
                                   "--header-insertion=never"
                                   "--header-insertion-decorators=0"))
   (set-lsp-priority! 'clangd 2)
-  (require 'dap-cpptools))
+  (require 'dap-codelldb))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; JS, WEB
