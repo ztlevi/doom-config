@@ -3,6 +3,7 @@
 
 ;; disabled packages
 (disable-packages! solaire-mode
+                   osx-trash
                    realgud
                    realgud-trepan-ni
                    ccls

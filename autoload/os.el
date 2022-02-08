@@ -1,5 +1,6 @@
 ;;; ~/.doom.d/autoload/os.el -*- lexical-binding: t; -*-
 
+;; Copied from https://github.com/emacsorphanage/osx-trash/blob/master/osx-trash.el
 (defconst os--trash-pkg-file
   (expand-file-name (if load-in-progress load-file-name (buffer-file-name)))
   "The absolute path to this file.")
