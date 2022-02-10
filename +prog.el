@@ -110,7 +110,8 @@
 (after! lsp-mode
   (setq lsp-log-io nil
         lsp-file-watch-threshold 4000
-        lsp-headerline-breadcrumb-enable nil)
+        lsp-headerline-breadcrumb-enable t
+        lsp-headerline-breadcrumb-segments '(file symbols))
   (dolist (dir '("[/\\\\]\\.ccls-cache\\'"
                  "[/\\\\]\\.mypy_cache\\'"
                  "[/\\\\]\\.pytest_cache\\'"
@@ -191,9 +192,6 @@
   (doom/kill-matching-buffers " out*" (buffer-list)))
 
 ;; (add-hook! dap-mode-hook ((tooltip-mode 1)))
-
-(after! lsp-mode
-  (setq lsp-headerline-breadcrumb-segments '(file symbols)))
 
 (after! dap-mode
   ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
