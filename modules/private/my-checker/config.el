@@ -2,8 +2,8 @@
 
 (map! :leader
       (:prefix "c"
-       :desc "Cspell check buffer"    "c" #'cspell-check-buffer
-       :desc "Cspell check diffs in root" "C" #'cspell-check-diff-from-HEAD)
+       :desc "Cspell check all changed files" "c" #'cspell-check-diff-from-HEAD
+       :desc "Cspell check buffer"    "C" #'cspell-check-buffer)
       (:prefix-map ("e" . "error")
        :desc "Flycheck next error"     "n" #'flycheck-next-error
        :desc "Flycheck previous error" "p" #'flycheck-previous-error
@@ -32,11 +32,7 @@
 (defun cspell-check-diff-from-HEAD ()
   (interactive)
   (if cspell-base-program
-      (let* ((project-root (doom-project-root))
-             (default-directory
-               (if (string-match-p "av/detection" project-root)
-                   (expand-file-name "~/av")
-                 project-root))
+      (let* ((default-directory (doom-project-root))
              (command (string-join `("git diff --name-only HEAD | xargs -I{}" ,cspell-base-program ,cspell-args "'{}'") " ")))
         (compilation-start command 'grep-mode))
     (message "Cannot find cspell, please install with `npm install -g cspell`")))

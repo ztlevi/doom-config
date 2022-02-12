@@ -56,7 +56,7 @@ sudo pacman -S emacs
 
 ** Step2: Install Doom Emacs
 #+BEGIN_SRC shell
-# Clone Doom Eemacs
+# Clone Doom Emacs
 rm -r ~/.emacs.d
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs
 
