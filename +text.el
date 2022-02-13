@@ -10,6 +10,7 @@
 (setq org-directory (expand-file-name "~/work/notes")
       org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
+      org-hide-emphasis-markers t
       org-babel-python-command "python3"
       ;; The standard unicode characters are usually misaligned depending on the
       ;; font. This bugs me. Markdown #-marks for headlines are more elegant.
@@ -92,6 +93,14 @@
   (setq alert-default-style (if IS-MAC 'osx-notifier 'libnotify)
         pomm-audio-enabled t)
   (pomm-mode-line-mode))
+
+(use-package! org-appear
+  :defer t
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autolinks t
+        org-appear-autosubmarkers t
+        org-appear-delay 0.3))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

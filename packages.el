@@ -21,6 +21,7 @@
 (package! link-hint)
 (package! symbol-overlay)
 (package! pomm :recipe (:host github :repo "SqrtMinusOne/pomm.el"))
+(package! org-appear)
 
 ;; misc
 (package! keycast)
