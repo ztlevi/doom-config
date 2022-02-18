@@ -329,6 +329,11 @@
 (after! git-link
   (setq git-link-open-in-browser nil)
 
+  (add-to-list 'git-link-remote-alist
+               '("amazonaws\\.com" git-link-aws-codecommit))
+  (add-to-list 'git-link-commit-remote-alist
+               '("amazonaws\\.com" git-link-commit-aws-codecommit))
+
   ;; For some company still uses http git server
   ;; (add-to-list 'git-link-remote-alist
   ;;              '("git\\.dummy\\.com" git-link-github-http))

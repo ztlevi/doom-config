@@ -196,6 +196,25 @@ repository root."
           commit))
 
 ;;;###autoload
+(defun git-link-aws-codecommit (hostname dirname filename branch commit start end)
+  (require 's)
+  (format "https://console.aws.amazon.com/codesuite/codecommit/repositories/%s/browse/refs/heads/%s/--/%s?region=%s&lines=%s-%s"
+          (nth 2 (s-split "\\/" dirname))
+          (or branch commit)
+          filename
+          (nth 1 (s-split "\\." hostname))
+          (or start "")
+          (or end start "")))
+
+;;;###autoload
+(defun git-link-commit-aws-codecommit (hostname dirname commit)
+  (require 'magit-git)
+  (format "https://console.aws.amazon.com/codesuite/codecommit/repositories/%s/commit/%s?region=%s"
+          (nth 2 (s-split "\\/" dirname))
+          (magit-rev-parse commit)
+          (nth 1 (s-split "\\." hostname))))
+
+;;;###autoload
 (defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
   (interactive "P")
