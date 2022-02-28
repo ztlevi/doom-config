@@ -371,6 +371,14 @@
   ;; (+my/forge-toggle-all-issues-and-pullreqs)
   )
 
+(use-package! magit-delta
+  :after magit
+  :init
+  (when (executable-find "delta")
+    (add-hook! magit-mode #'magit-delta-mode))
+  :config
+  (setq magit-delta-default-light-theme "OneHalfLight"))
+
 (after! magit-todos
   (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
 

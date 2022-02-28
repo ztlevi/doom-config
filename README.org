@@ -78,14 +78,14 @@ Install dependencies including search tools, utils, and linters.
 brew install ripgrep grep exa zstd fd
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # utils
-brew install sqlite hub gpg2 coreutils gnu-tar mplayer direnv libtool
+brew install sqlite hub gpg2 coreutils gnu-tar mplayer direnv libtool git-delta
 # language
 brew install shellcheck aspell languagetool clang-format google-java-format
 #+END_SRC
 
 ***** Arch Linux
 #+BEGIN_SRC sh :dir /sudo:: :tangle (if (doom-system-os 'arch) "yes")
-sudo pacman --needed --noconfirm -S sqlite ripgrep fd wmctrl exa languagetool zstd ctags
+sudo pacman --needed --noconfirm -S sqlite ripgrep fd wmctrl exa languagetool zstd ctags git-delta
 #+END_SRC
 
 Note: for windows users, [[http://aspell.net/win32/][aspell]] is used instead. ripgrep can be installed via [[https://chocolatey.org/][choco]]

@@ -30,6 +30,7 @@
 (package! dired-narrow)
 (package! atomic-chrome)
 (package! git-link)
+(package! magit-delta)
 (package! citre)
 (package! imenu-list)
 (package! tmux-pane)
