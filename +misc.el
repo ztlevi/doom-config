@@ -327,7 +327,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! git-link
-  (setq git-link-open-in-browser nil)
+  (setq git-link-open-in-browser nil
+        git-link-use-commit t)
 
   (add-to-list 'git-link-remote-alist
                '("amazonaws\\.com" git-link-aws-codecommit))
