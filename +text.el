@@ -8,6 +8,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq org-directory (expand-file-name "~/work/notes")
+      org-roam-directory (expand-file-name "roam" org-directory)
       org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
       org-hide-emphasis-markers t
@@ -18,6 +19,39 @@
 
 (after! org-roam
   (make-directory (concat org-directory "/roam") 'parents))
+
+(use-package! md-roam
+  :after org-roam
+  :init
+  (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+  :config
+  (md-roam-mode 1)
+  (setq md-roam-file-extension "md")    ; default "md". Specify an extension such as "markdown"
+  (setq org-roam-capture-templates
+        '(("m" "Markdown" plain "" :target
+           (file+head "${title}.md"
+                      "---\ntitle: ${title}\nid: %<%Y-%m-%dT%H%M%S>\ncategory: \n---\n")
+           :unnarrowed t)
+          ("d" "default" plain "%?" :target
+           (file+head "${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t))
+        )
+  )
+
+(use-package! websocket
+  :after org-roam)
+
+(use-package! org-roam-ui
+  :after org-roam ;; or :after org
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+   :hook (org-roam-mode . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 (after! org-agenda
   ;; https://old.reddit.com/r/emacs/comments/hnf3cw/my_orgmode_agenda_much_better_now_with_category/
