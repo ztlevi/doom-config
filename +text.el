@@ -32,9 +32,10 @@
            (file+head "${title}.md"
                       "---\ntitle: ${title}\nid: %<%Y-%m-%dT%H%M%S>\ncategory: \n---\n")
            :unnarrowed t)
-          ("d" "default" plain "%?" :target
-           (file+head "${slug}.org" "#+title: ${title}\n")
-           :unnarrowed t))
+          ;; ("d" "default" plain "%?" :target
+          ;;  (file+head "${slug}.org" "#+title: ${title}\n")
+          ;;  :unnarrowed t)
+          )
         )
   )
 
