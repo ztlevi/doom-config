@@ -327,6 +327,7 @@
    :desc "Insert item below" :ni "<C-return>"  #'+org/insert-item-below
    :desc "Insert item above" :ni "<S-C-return>" #'+org/insert-item-above
    (:localleader
+    :desc "highlight" "ih" #'+my/markdown-highlight
     (:when IS-MAC
      :desc "Reveal in Typora" "o" #'+macos/reveal-in-typora)
     (:when IS-LINUX
