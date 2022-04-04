@@ -140,7 +140,10 @@
        :desc "Save all" "s" #'evil-write-all
        :desc "Deer"     "j" #'deer)
       (:prefix "n"                      ; notes
-       :desc "Take screenshot" "p" #'screenshot)
+       :desc "Take screenshot" "p" #'screenshot
+       (:prefix "r"
+        :desc "show graph" "g" #'org-roam-ui-open
+        ))
       (:prefix "g"                      ; git
        "s" nil
        (:after smerge-mode

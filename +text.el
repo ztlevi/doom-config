@@ -20,25 +20,6 @@
 (after! org-roam
   (make-directory (concat org-directory "/roam") 'parents))
 
-(use-package! md-roam
-  :after org-roam
-  :init
-  (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
-  :config
-  (md-roam-mode 1)
-  (setq md-roam-file-extension "md")    ; default "md". Specify an extension such as "markdown"
-  (setq org-roam-capture-templates
-        '(("m" "Markdown" plain "" :target
-           (file+head "${title}.md"
-                      "---\ntitle: ${title}\nid: %<%Y-%m-%dT%H%M%S>\ncategory: \n---\n")
-           :unnarrowed t)
-          ;; ("d" "default" plain "%?" :target
-          ;;  (file+head "${slug}.org" "#+title: ${title}\n")
-          ;;  :unnarrowed t)
-          )
-        )
-  )
-
 (use-package! websocket
   :after org-roam)
 
@@ -47,7 +28,7 @@
   ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
   ;;         a hookable mode anymore, you're advised to pick something yourself
   ;;         if you don't care about startup time, use
-   :hook (org-roam-mode . org-roam-ui-mode)
+  ;; :hook (after-init . org-roam-ui-mode)
   :config
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
@@ -147,6 +128,34 @@
 (remove-hook 'text-mode-hook #'auto-fill-mode)
 
 (use-package! edit-indirect :defer t)
+
+(after! markdown-mode
+  (advice-add #'markdown-follow-thing-at-point :around #'doom-set-jump-a))
+
+(use-package! md-roam
+  :after org-roam
+  :init
+  (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+  :config
+  (md-roam-mode 1)
+  (setq md-roam-file-extension "md")    ; default "md". Specify an extension such as "markdown"
+  ;; remove @ citation
+  (setq md-roam-regex-in-text-citation-2
+        "\\(?:[^[:alnum:]]\\|^\\)\\([-a-zA-Z0-9_+:]+\\)"
+
+        )
+  (setq org-roam-capture-templates
+        '(("m" "Markdown" plain "" :target
+           (file+head "${title}.md"
+                      "---\ntitle: ${title}\nid: %<%Y-%m-%dT%H%M%S>\ncategory: \n---\n")
+           :unnarrowed t)
+          ;; ("d" "default" plain "%?" :target
+          ;;  (file+head "${slug}.org" "#+title: ${title}\n")
+          ;;  :unnarrowed t)
+          )
+        )
+  )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OTHERS
