@@ -7,7 +7,7 @@
 ;; ORG
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq org-directory (expand-file-name "~/work/notes")
+(setq org-directory (expand-file-name "~/dev/work/notes")
       org-roam-directory (expand-file-name "roam" org-directory)
       org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
