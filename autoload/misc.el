@@ -139,7 +139,7 @@ If prefix ARG is set, prompt for a directory to search from."
 (defun update-projectile-known-projects ()
   (interactive)
   (require 'magit)
-  (setq magit-repository-directories '(("~/dev" . 2) ("~/dev-remote" . 2)))
+  (setq magit-repository-directories '(("~/dev" . 2) ("~/dev-local" . 2)))
   ;; Workplace folder has some permission error on macos
   (let ((workspace-dir "~/workplace/"))
     (when (file-directory-p workspace-dir)
