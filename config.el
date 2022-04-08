@@ -1,6 +1,7 @@
 ;;; private/my/config.el -*- lexical-binding: t; -*-
 
 (load! "+os")
+(load! "+git")
 (load! "+misc")
 (load! "+text")
 (load! "+prog")
