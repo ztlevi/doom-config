@@ -23,7 +23,6 @@ Javascript, Python, C++, Rust, and Go.
   - [[#how-to-use-forge][How to use forge?]]
   - [[#how-to-use-emacs-everywhere][How to use emacs-everywhere?]]
   - [[#when-you-do-doom-upgrade-and-get-too-many-open-files-issue-on-macos][When you do `doom upgrade` and get too many open files issue on MacOS.]]
-  - [[#how-to-start-debugging-cpp-apps][How to start debugging cpp apps?]]
   - [[#when-open-in-ssh-tty-clipetty-emit-opening-output-file-permission-denied-devpts3][When open in ssh tty, clipetty emit: `Opening output file: Permission denied, /dev/pts/3`.]]
 
 * Screenshot
@@ -139,6 +138,8 @@ npm i -g bash-language-server
 
 # C++ use clangd
 brew install llvm
+# Run ~M-x dap-codelldb-setup~ to download the ~codelldb~ vscode extension.
+# You can refer the debug template here https://github.com/ztlevi/gtest-cpp-demo/blob/main/.vscode/launch.json
 
 # Rust
 rustup update
@@ -151,7 +152,8 @@ npm i -g typescript typescript-language-server
 npm install vue-language-server -g
 
 # gopls
-go get -u golang.org/x/tools/gopls
+go install golang.org/x/tools/gopls@latest
+# Run ~M-x dap-go-setup~ to download the vscode debug extension.
 #+END_SRC
 
 *** For MacOS, according to the discussion [[https://emacs-china.org/t/topic/6453/6][here]], the following codes will speed up Emacs GUI startup time.
@@ -205,8 +207,5 @@ Then in the magit status buffer, use ~@~ to dispatch the forge menu.
 Create a Automator workflow like this https://imgur.com/Xq4xe82. And bind it to some key in Settings->Keyboard->Shortcuts->Services. You need to add Emacs to the Settings->Security&Privacy->Accessibility. Then select some text and press the key. Unfortunately, I didn't find a way to automate pasting. You'll need to press the key Cmd-v to paste it after editing.
 ** When you do `doom upgrade` and get too many open files issue on MacOS.
 Use ~ulimit -n 10240~ to increase the limit. See post here https://discussions.apple.com/thread/251000125.
-** How to start debugging cpp apps?
-Run ~M-x dap-codelldb-setup~ to download the ~codelldb~ vscode extension.
-You can refer the debug template here https://github.com/ztlevi/gtest-cpp-demo/blob/main/.vscode/launch.json
 ** When open in ssh tty, clipetty emit: `Opening output file: Permission denied, /dev/pts/3`.
 See discussion here https://github.com/spudlyo/clipetty/issues/20. Try `unset SSH_TTY` and then restart your emacs.
