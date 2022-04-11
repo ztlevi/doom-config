@@ -378,25 +378,6 @@
     :name 'jekyll
     :env '(("LANG" "en_US.UTF-8")
            ("LC_ALL" "en_US.UTF-8")))
-  ;; define service
-  (prodigy-define-service
-    :name "ML Gitbook Publish"
-    :command "npm"
-    :args '("run" "docs:publish")
-    :cwd "~/dev/Machine_Learning_Questions"
-    :tags '(npm gitbook)
-    :kill-signal 'sigkill
-    :kill-process-buffer-on-stop t)
-
-  (prodigy-define-service
-    :name "ML Gitbook Start"
-    :command "npm"
-    :args '("start")
-    :cwd "~/dev/Machine_Learning_Questions"
-    :tags '(npm gitbook)
-    :init (lambda () (browse-url "http://localhost:4000"))
-    :kill-signal 'sigkill
-    :kill-process-buffer-on-stop t)
 
   (prodigy-define-service
     :name "Hexo Blog Server"
