@@ -113,8 +113,7 @@
         +docsets)        ; ...or in Dash docsets locally
        (lsp
         +peek)
-       (magit            ; a git porcelain for Emacs
-        +forge)
+       magit            ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        ;; pdf               ; pdf enhancements
