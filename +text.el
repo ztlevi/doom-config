@@ -140,10 +140,7 @@
   (md-roam-mode 1)
   (setq md-roam-file-extension "md")    ; default "md". Specify an extension such as "markdown"
   ;; remove @ citation
-  (setq md-roam-regex-in-text-citation-2
-        "\\(?:[^[:alnum:]]\\|^\\)\\([-a-zA-Z0-9_+:]+\\)"
-
-        )
+  (setq md-roam-regex-in-text-citation-2 "\\(?:[^[:alnum:]]\\|^\\)\\([-a-zA-Z0-9_+:]+\\)")
   (setq org-roam-capture-templates
         '(("m" "Markdown" plain "" :target
            (file+head "${title}.md"
