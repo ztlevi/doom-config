@@ -98,6 +98,8 @@
  :v "<backspace>" (kbd "\"_d")
  :nmv "-" #'better-jumper-jump-backward
  :nmv "=" #'better-jumper-jump-forward
+ "M-[" #'better-jumper-jump-backward
+ "M-]" #'better-jumper-jump-forward
 
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
