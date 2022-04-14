@@ -12,7 +12,7 @@
  ;; overrides other minor mode keymaps (just for non-evil)
  (:map override ;; general-override-mode-map
   "M-q"   (if (daemonp) #'delete-frame #'save-buffers-kill-terminal)
-  "M-p"   #'projectile-find-file
+  "M-p"   (λ! (progn (projectile-invalidate-cache nil) (projectile-find-file)))
   "M-y"   #'+default/yank-pop
   "C-]"   #'yas-expand
   "C-'"   #'toggle-input-method
