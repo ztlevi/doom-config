@@ -4,6 +4,7 @@
 (defun +my/markdown-highlight ()
   "Surround each line of the current REGION with a start/end tag."
   (interactive)
+  (require 'web-mode)
   (when mark-active
     (let (beg end line-beg line-end pos tag tag-start tag-end)
       (save-excursion
