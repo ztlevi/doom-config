@@ -1,7 +1,13 @@
 ;;; autoload/text.el -*- lexical-binding: t; -*-
 
-;;;###autoload
 (defun +my/markdown-highlight ()
+  "Surround each line of the current REGION with a start/end tag."
+  (interactive)
+  (let ((delim "=="))
+    (markdown--insert-common delim delim markdown-regex-bold 2 4 'markdown-bold-face t)))
+
+;;;###autoload
+(defun +my/markdown-highlight-using-html-mark ()
   "Surround each line of the current REGION with a start/end tag."
   (interactive)
   (require 'web-mode)
@@ -34,8 +40,8 @@
               (when (> beg (point))
                 (goto-char beg))
               (insert tag-start))
-            ) ;while
+            )                           ;while
           (deactivate-mark)
-          ) ;combine-after-change-calls
-        ) ;save-excursion
+          )                             ;combine-after-change-calls
+        )                               ;save-excursion
       )))
