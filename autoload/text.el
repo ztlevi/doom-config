@@ -1,5 +1,6 @@
 ;;; autoload/text.el -*- lexical-binding: t; -*-
 
+;;;###autoload
 (defun +my/markdown-highlight ()
   "Surround each line of the current REGION with a start/end tag."
   (interactive)
