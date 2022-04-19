@@ -111,7 +111,10 @@
   (setq lsp-log-io nil
         lsp-file-watch-threshold 4000
         lsp-headerline-breadcrumb-enable t
-        lsp-headerline-breadcrumb-segments '(file symbols))
+        lsp-headerline-breadcrumb-segments '(file symbols)
+        lsp-imenu-index-symbol-kinds '(File Module Namespace Package Class Method Enum Interface
+                                            Function Variable Constant Struct Event Operator TypeParameter)
+        )
   (dolist (dir '("[/\\\\]\\.ccls-cache\\'"
                  "[/\\\\]\\.mypy_cache\\'"
                  "[/\\\\]\\.pytest_cache\\'"
