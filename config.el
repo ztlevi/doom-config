@@ -6,7 +6,7 @@
 (load! "+text")
 (load! "+prog")
 (load! "+ui")
-(load! "+bindings")
+(load! "+keys")
 
 (setq user-full-name "Ting Zhou"
       user-mail-address "ztlevi.work@gmail.com")
