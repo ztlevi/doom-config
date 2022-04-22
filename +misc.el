@@ -22,6 +22,9 @@
   (async-shell-command "/opt/cisco/anyconnect/bin/vpn connect 'Automatic Selection (Route53)'")
   )
 
+(after! centaur-tabs
+  (centaur-tabs-group-by-projectile-project))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; INPUT METHOD
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
