@@ -133,6 +133,7 @@
        :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
        :desc "Treemacs references"    "D" #'lsp-treemacs-references)
       (:prefix "TAB"
+       :desc "Pin tab" "p" (λ! (dotimes (n 50) (centaur-tabs-move-current-tab-to-left) nil))
        :desc "Switch workspace" "TAB" #'+workspace/switch-to
        :desc "Load worksapce from file" "L" #'+workspace/load
        :desc "Swap left"  "h" #'+workspace/swap-left
