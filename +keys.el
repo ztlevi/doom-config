@@ -78,13 +78,14 @@
  "M-m"    #'kmacro-call-macro
  )
 
-(unless (display-graphic-p)
+(if (display-graphic-p)
+    (map!
+     ;; M-[ does not work in terminal
+     "M-[" #'better-jumper-jump-backward
+     "M-]" #'better-jumper-jump-forward)
   (map!
    :g "<mouse-4>" #'evil-scroll-line-up
    :g "<mouse-5>" #'evil-scroll-line-down
-   ;; M-[ does not work in terminal
-   "M-[" #'better-jumper-jump-backward
-   "M-]" #'better-jumper-jump-forward
    ))
 
 (map!
