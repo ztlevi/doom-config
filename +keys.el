@@ -81,7 +81,11 @@
 (unless (display-graphic-p)
   (map!
    :g "<mouse-4>" #'evil-scroll-line-up
-   :g "<mouse-5>" #'evil-scroll-line-down))
+   :g "<mouse-5>" #'evil-scroll-line-down
+   ;; M-[ does not work in terminal
+   "M-[" #'better-jumper-jump-backward
+   "M-]" #'better-jumper-jump-forward
+   ))
 
 (map!
  ;; Unix text-editing keys & motions
@@ -98,9 +102,6 @@
  :v "<backspace>" (kbd "\"_d")
  :nmv "-" #'better-jumper-jump-backward
  :nmv "=" #'better-jumper-jump-forward
- (when (display-graphic-p) ;; M-[ does not work in terminal
-   "M-[" #'better-jumper-jump-backward
-   "M-]" #'better-jumper-jump-forward)
  :gnmvi "C-e" #'doom/forward-to-last-non-comment-or-eol
  :gnmvi "C-a" #'doom/backward-to-bol-or-indent
  :gnmvi "M-." #'+lookup/definition
