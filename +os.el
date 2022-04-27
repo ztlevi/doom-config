@@ -22,10 +22,9 @@ To add executable: Idea -> Tools -> Create Command Line Launcher"
           (number-to-string (line-number-at-pos))))
 
 (when IS-MAC
-  (when (file-directory-p "/Applications/ForkLift.app")
-    (+macos--open-with reveal-in-finder "forklift" default-directory)
-    (+macos--open-with reveal-project-in-finder "forklift"
-                       (or (doom-project-root) default-directory)))
+  (+macos--open-with reveal-in-finder nil default-directory)
+  (+macos--open-with reveal-project-in-finder nil
+                     (or (doom-project-root) default-directory))
 
   (+shell--open-with reveal-in-apps (+os/read-apps)
                      (string-join `("'" ,(get-filename-with-line-number) "'")))
