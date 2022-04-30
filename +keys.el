@@ -19,6 +19,7 @@
   "<xterm-paste>" #'xterm-paste-with-delete-region
   "C-S-j" #'evil-scroll-line-down
   "C-S-k" #'evil-scroll-line-up
+  "C-S-n" #'dap-next
   "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
   "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  "M-`"   #'other-frame
@@ -135,7 +136,6 @@
        :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
        :desc "Treemacs references"    "D" #'lsp-treemacs-references)
       (:prefix "TAB"
-       :desc "Pin tab" "p" (λ! (dotimes (n 50) (centaur-tabs-move-current-tab-to-left) nil))
        :desc "Switch workspace" "TAB" #'+workspace/switch-to
        :desc "Load worksapce from file" "L" #'+workspace/load
        :desc "Swap left"  "h" #'+workspace/swap-left
@@ -159,6 +159,8 @@
        :desc "M-x magit-*" "*" (+my/prefix-M-x "magit-"))
       (:prefix "h"                      ; help
        "C" #'helpful-command)
+      (:prefix "w"
+       :desc "Pin tab" "p" (λ! (dotimes (n 50) (centaur-tabs-move-current-tab-to-left) nil)))
       (:prefix "o"                      ; open
        :desc "Kill ring"             "k" #'+default/yank-pop
        :desc "Imenu list"            "i" #'imenu-list
