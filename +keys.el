@@ -380,6 +380,8 @@
    "A-v" #'ivy-scroll-down-command))
  (:after minibuffer
   :map minibuffer-local-map
+  (:when (featurep! :completion vertico)
+   "M-RET" #'vertico-exit-input)
   "C-t" #'marginalia-cycle
   "C-k" #'kill-line)
  (:after magit-mode
