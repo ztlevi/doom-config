@@ -36,10 +36,11 @@
   (setq python-indent-offset 4
         python-shell-interpreter "python3"
         pippel-python-command "python3"
-        conda-env-home-directory (expand-file-name "~/.conda")
         importmagic-python-interpreter "python3"
         flycheck-python-pylint-executable "pylint"
         flycheck-python-flake8-executable "flake8")
+  (when (file-exists-p! "~/.conda")
+    (setq conda-env-home-directory (expand-file-name "~/.conda")))
 
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
