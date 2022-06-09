@@ -60,7 +60,8 @@
   (when (executable-find "delta")
     (add-hook! magit-mode #'magit-delta-mode))
   :config
-  (setq magit-delta-default-light-theme "OneHalfLight"))
+  (appendq! magit-delta-delta-args '("--light"))
+  (setq magit-delta-default-light-theme "Github"))
 
 (after! magit-todos
   (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
