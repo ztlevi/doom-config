@@ -57,7 +57,11 @@
                                   "--header-insertion=never"
                                   "--header-insertion-decorators=0"))
   (set-lsp-priority! 'clangd 2)
-  (require 'dap-codelldb))
+  (after! dap-mode
+    (require 'dap-codelldb)))
+
+(after! eglot
+  (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; JS, WEB
