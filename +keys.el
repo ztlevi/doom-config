@@ -132,9 +132,12 @@
        :desc "Format-all buffer"      "F" #'format-all-buffer
        :desc "Check grammar"          "g" #'langtool-check-buffer
        :desc "Done Check grammar"     "G" #'langtool-check-done
-       :desc "LSP organize imports"   "I" #'lsp-organize-imports
-       :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
-       :desc "Treemacs references"    "D" #'lsp-treemacs-references)
+       (:when (featurep! :tools lsp +eglot)
+        :desc "Eglot workspace restart"  "R" #'eglot-reconnect)
+       (:when (not (featurep! :tools lsp +eglot))
+        :desc "LSP organize imports"   "I" #'lsp-organize-imports
+        :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
+        :desc "Treemacs references"    "D" #'lsp-treemacs-references))
       (:prefix "TAB"
        :desc "Switch workspace" "TAB" #'+workspace/switch-to
        :desc "Load worksapce from file" "L" #'+workspace/load

@@ -1,17 +1,27 @@
 ;;; private/my-checker/config.el -*- lexical-binding: t; -*-
 
+(if (featurep! :checkers syntax)
+    (map! :leader
+          (:prefix-map ("e" . "error")
+           :desc "Next error"      "n" #'flycheck-next-error
+           :desc "Previous error"  "p" #'flycheck-previous-error
+           :desc "Explain error"   "e" #'flycheck-explain-error-at-point
+           :desc "List errors"     "l" #'flycheck-list-errors
+           :desc "Lsp list errors" "L" #'consult-lsp-diagnostics
+           :desc "Verify setup"    "v" #'flycheck-verify-setup))
+  (map! :leader
+        (:prefix-map ("e" . "error")
+         :desc "Next error"      "n" #'flymake-goto-next-error
+         :desc "Previous error"  "p" #'flymake-goto-prev-error
+         :desc "Explain error"   "e" #'flymake-show-diagnostic
+         :desc "List errors"     "l" #'flymake-show-diagnostics-buffer
+         :desc "Lsp list errors" "L" #'consult-flymake
+         :desc "List project error" "P" #'flymake-show-project-diagnostics
+         :desc "Verify setup"    "v" #'flymake-running-backends)))
 (map! :leader
       (:prefix "c"
        :desc "Cspell check all changed files" "c" #'cspell-check-diff-from-HEAD
-       :desc "Cspell check buffer"    "C" #'cspell-check-buffer)
-      (:prefix-map ("e" . "error")
-       :desc "Flycheck next error"     "n" #'flycheck-next-error
-       :desc "Flycheck previous error" "p" #'flycheck-previous-error
-       :desc "Flycheck explain error"  "e" #'flycheck-explain-error-at-point
-       :desc "Flycheck list errors"    "l" #'flycheck-list-errors
-       :desc "Lsp list errors"         "L" #'consult-lsp-diagnostics
-       :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)
-      )
+       :desc "Cspell check buffer"    "C" #'cspell-check-buffer))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FLYCHECK
