@@ -22,6 +22,8 @@
   "C-S-n" #'dap-next
   "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
   "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
+ ;; Conflict with vertico
+ :g "C-SPC" nil :g "C-@" nil
  "M-`"   #'other-frame
  "C-M-o" #'other-frame
  ;; fix OS window/frame navigation/manipulation keys
