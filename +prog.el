@@ -147,8 +147,8 @@
         lsp-ui-doc-max-height 15
         lsp-ui-doc-max-width 100))
 
-(when (not (featurep! :tools lsp +eglot))
-  (use-package lsp-docker
+(use-package lsp-docker
+  :when (not (featurep! :tools lsp +eglot))
   :defer t
   :commands lsp-docker-init-clients
   :config
@@ -172,8 +172,7 @@
   ;;  ;; :docker-image-id "my-lsp-docker-container:1.0"
   ;;  :client-packages '(lsp-pyls)
   ;;  :client-configs lsp-docker-client-configs)
-  ))
-
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DEBUG & RUN
