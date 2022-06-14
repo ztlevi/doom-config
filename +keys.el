@@ -155,8 +155,7 @@
       (:prefix "n"                      ; notes
        :desc "Take screenshot" "p" #'screenshot
        (:prefix "r"
-        :desc "show graph" "g" #'org-roam-ui-open
-        ))
+        :desc "show graph" "g" #'org-roam-ui-open))
       (:prefix "g"                      ; git
        "s" nil
        (:after smerge-mode
@@ -204,26 +203,6 @@
        :desc "Switch projects" "p" (λ! (update-projectile-known-projects) (projectile-switch-project))
        "*" (+my/prefix-M-x "projectile-")
        :desc "Update projectile list" "u" #'update-projectile-known-projects)
-      (:prefix ("d" . "debug")
-       :desc "Start debugger" "d" #'+my/dap-start
-       :desc "Start last debugger" "D" #'dap-debug-last
-       :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
-       (:prefix ("b" . "breakpoint")
-        "b" #'dap-breakpoint-toggle
-        "c" #'dap-breakpoint-condition)
-       "B" #'dap-ui-breakpoints
-       "h" #'dap-hydra
-       "r" #'dap-debug-restart
-       "l" #'dap-ui-locals
-       "e" #'dap-ui-expressions
-       "a" #'dap-ui-expressions-add
-       "R" #'dap-ui-expressions-remove
-       "f" #'dap-switch-stack-frame
-       "q" #'dap-disconnect
-       "s" #'dap-ui-sessions
-       "k" #'dap-delete-session
-       "K" #'dap-delete-all-sessions
-       "S" #'realgud-short-key-mode)
       (:prefix "e"                      ;error
        "d" #'posframe-delete-all)
       (:prefix "t"                      ; toggle
