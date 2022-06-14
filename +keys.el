@@ -135,7 +135,10 @@
        :desc "Check grammar"          "g" #'langtool-check-buffer
        :desc "Done Check grammar"     "G" #'langtool-check-done
        (:when (featurep! :tools lsp +eglot)
-        :desc "Eglot workspace restart"  "R" #'eglot-reconnect)
+        :desc "Eglot workspace restart"  "R" #'eglot-reconnect
+        :desc "Eglot organize imports"   "I" #'eglot-code-action-organize-imports
+        :desc "Eglot quickfix" "q" #'eglot-code-action-quickfix
+        )
        (:when (not (featurep! :tools lsp +eglot))
         :desc "LSP organize imports"   "I" #'lsp-organize-imports
         :desc "LSP workspace restart"  "R" #'lsp-workspace-restart

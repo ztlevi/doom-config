@@ -99,16 +99,27 @@
 
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(pipenv-activate pipenv-deactivate))
-    (advice-add func :after #'reset-flycheck)))
+    (progn
+      (when (featurep! :checkers syntax)
+        (advice-add func :after #'reset-flycheck))
+      (advice-add func :after #'+lsp/restart))))
 
 
 (after! conda
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
-    (advice-add func :after #'reset-flycheck)))
+    (progn
+      (when (featurep! :checkers syntax)
+        (advice-add func :after #'reset-flycheck))
+      (advice-add func :after #'+lsp/restart))))
 
 (after! poetry
-  (remove-hook 'python-mode-hook #'poetry-tracking-mode))
+  (remove-hook 'python-mode-hook #'poetry-tracking-mode)
+  (dolist (func '(poetry-venv-workon poetry-venv-deactivate))
+    (progn
+      (when (featurep! :checkers syntax)
+        (advice-add func :after #'reset-flycheck))
+      (advice-add func :after #'+lsp/restart))))
 
 ;; For pytest-mode
 (set-evil-initial-state! '(comint-mode) 'normal)
