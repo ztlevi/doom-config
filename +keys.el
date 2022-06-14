@@ -302,13 +302,6 @@
   "k" #'lsp-ui-peek--select-prev
   "l" #'lsp-ui-peek--select-next-file)
  :nv "gb" #'lsp-ui-peek-jump-backward
- (:after tide
-  :map tide-references-mode-map
-  "C-k" #'tide-find-previous-reference
-  "p"   #'tide-find-previous-reference
-  "C-j" #'tide-find-next-reference
-  "n"   #'tide-find-next-reference
-  "C-l" #'tide-goto-reference)
  (:after cc-mode
   (:map java-mode-map
    :localleader
