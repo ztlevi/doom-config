@@ -32,6 +32,29 @@ non-nil value to enable trashing for file operations."
     (defalias 'system-move-file-to-trash
       'os--trash-move-file-to-trash)))
 
+;;;###autoload
+(defun +macos-open-with (&optional app-name path)
+  "Send PATH to APP-NAME on OSX."
+  (interactive)
+  (let* ((path (expand-file-name
+                (replace-regexp-in-string
+                 "'" "\\'"
+                 (or path (if (derived-mode-p 'dired-mode)
+                              (dired-get-file-for-visit)
+                            (buffer-file-name)))
+                 nil t)))
+         (command (format "open %s"
+                          (if app-name
+                              (format "-a %s '%s'" (shell-quote-argument app-name) path)
+                            (format "'%s'" path)))))
+    (message "Running: %s" command)
+    (shell-command command)))
+
+;;;###autoload
+(defmacro +macos--open-with (id &optional app dir)
+  `(defun ,(intern (format "+macos/%s" id)) ()
+     (interactive)
+     (+macos-open-with ,app ,dir)))
 
 ;;;###autoload
 (defun +shell-open-with (&optional app-name args container app-window-name)

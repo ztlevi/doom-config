@@ -60,7 +60,6 @@
   (when (executable-find "delta")
     (add-hook! magit-mode #'magit-delta-mode))
   :config
-  (appendq! magit-delta-delta-args '("--light"))
   (setq magit-delta-default-light-theme "GitHub")
   )
 
