@@ -29,6 +29,7 @@
 (package! org-appear)
 
 ;; misc
+(package! format-all)
 (package! keycast)
 (package! evil-string-inflection)
 (package! all-the-icons-ibuffer)
