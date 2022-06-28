@@ -131,7 +131,7 @@
        "R" #'reload-buffer-no-confirm
        "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
-       :desc "Format-all buffer"      "F" #'format-all-buffer
+       :desc "Format-all buffer"      "f" #'format-all-buffer
        :desc "Check grammar"          "g" #'langtool-check-buffer
        :desc "Done Check grammar"     "G" #'langtool-check-done
        (:when (featurep! :tools lsp +eglot)
