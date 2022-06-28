@@ -70,6 +70,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-hook! '(web-mode-hook html-mode-hook) (setq-local format-all-formatters '(("HTML" prettier))))
+(add-hook! 'typescript-mode-hook (setq-local format-all-formatters '(("TypeScript" prettier))))
+(add-hook! 'rjsx-mode-hook (setq-local format-all-formatters '(("JavaScript" prettier))))
 
 (after! web-mode
   (web-mode-toggle-current-element-highlight)
