@@ -68,12 +68,7 @@
   (setq-default flycheck-temp-prefix ".flycheck")
 
   ;; ======================== JS & TS ========================
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
-  (after! tide
-    (flycheck-add-next-checker 'javascript-eslint '(t . javascript-tide) 'append)
-    (flycheck-add-next-checker 'javascript-eslint '(t . jsx-tide) 'append)
-    (flycheck-add-next-checker 'typescript-tslint '(t .  typescript-tide) 'append)
-    (flycheck-add-next-checker 'javascript-eslint '(t . tsx-tide) 'append))
+  ;; https://github.com/hlissner/doom-emacs/blob/c2f8476c8641fcc9a1371d873ed3b5924952a059/modules/lang/javascript/config.el#L109
 
   ;; ======================== CC ========================
   (require 'flycheck-google-cpplint)
@@ -88,6 +83,6 @@
           flycheck-clang-language-standard "c++11"))
   )
 
-(defun disable-flycheck-mode ()
-  (flycheck-mode -1))
+;; (defun disable-flycheck-mode ()
+;;   (flycheck-mode -1))
 ;; (add-hook! (emacs-lisp-mode) 'disable-flycheck-mode)

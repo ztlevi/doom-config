@@ -11,7 +11,6 @@
                    swiper
                    forge
                    code-review
-                   flycheck
                    anaconda-mode
                    company-anaconda
                    lsp-python-ms
