@@ -56,7 +56,7 @@
 (after! flycheck
   (setq-default flycheck-disabled-checkers
                 '(
-                  javascript-jshint handlebars
+                  typescript-tslint javascript-jshint handlebars
                   json-jsonlist json-python-json
                   c/c++-clang c/c++-cppcheck c/c++-gcc c/c++-googlelint
                   python-mypy python-pylint python-pycompile
