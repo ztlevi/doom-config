@@ -57,7 +57,7 @@
   (setq-default flycheck-disabled-checkers
                 '(
                   typescript-tslint javascript-jshint handlebars
-                  json-jsonlist json-python-json
+                  eglot json-jsonlist json-python-json
                   c/c++-clang c/c++-cppcheck c/c++-gcc c/c++-googlelint
                   python-mypy python-pylint python-pycompile
                   ;; Disable Perl for Coral Config file
