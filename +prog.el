@@ -77,6 +77,9 @@
   (web-mode-toggle-current-element-highlight)
   (web-mode-dom-errors-show))
 
+(setq lsp-clients-typescript-init-opts
+      '(:importModuleSpecifierPreference "relative"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; JAVA
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
