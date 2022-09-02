@@ -288,12 +288,12 @@
 ;; COMPLETION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(when (featurep! :completion vertico)
+(when (modulep! :completion vertico)
   ;; Fix jump issue for vertico, https://github.com/hlissner/doom-emacs/issues/5386
   (dolist (func '(+default/search-project))
     (advice-add func :around #'doom-set-jump-a)))
 
-(when (featurep! :completion ivy)
+(when (modulep! :completion ivy)
   (after! (:and ivy ivy-prescient)
     (setq ivy-prescient-retain-classic-highlighting t))
 

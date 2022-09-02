@@ -1,6 +1,6 @@
 ;;; private/my-checker/config.el -*- lexical-binding: t; -*-
 
-(if (featurep! :checkers syntax)
+(if (modulep! :checkers syntax)
     (map! :leader
           (:prefix-map ("e" . "error")
            :desc "Next error"      "n" #'flycheck-next-error

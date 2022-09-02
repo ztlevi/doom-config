@@ -90,7 +90,7 @@
   "Dispatch to call the currently used lsp client entrypoint"
   (interactive)
   (unless (+my/check-large-buffer)
-    (if (featurep! :tools lsp +eglot)
+    (if (modulep! :tools lsp +eglot)
         (eglot-ensure)
       (unless (bound-and-true-p lsp-mode)
         (lsp-deferred)))))
@@ -98,6 +98,6 @@
 ;;;###autodef
 (defun +lsp/restart ()
   (interactive)
-  (if (featurep! :tools lsp +eglot)
+  (if (modulep! :tools lsp +eglot)
       (call-interactively 'eglot-reconnect)
     (call-interactively 'lsp-workspace-restart)))

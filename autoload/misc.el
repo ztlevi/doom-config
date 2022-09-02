@@ -79,9 +79,9 @@ If prefix ARG is set, prompt for a directory to search from."
               (read-directory-name "Search Workspace: ")
             (expand-file-name (concat (doom-project-root) "/..")))))
     (call-interactively
-     (cond ((featurep! :completion vertico) #'+vertico/project-search-from-cwd)
-           ((featurep! :completion ivy)  #'+ivy/project-search-from-cwd)
-           ((featurep! :completion helm) #'+helm/project-search-from-cwd)
+     (cond ((modulep! :completion vertico) #'+vertico/project-search-from-cwd)
+           ((modulep! :completion ivy)  #'+ivy/project-search-from-cwd)
+           ((modulep! :completion helm) #'+helm/project-search-from-cwd)
            (#'rgrep)))))
 
 ;; TODO: Search with specific file types
@@ -261,8 +261,8 @@ With PREFIX, cd to project root."
   (interactive)
   (require 'evil-nerd-commenter)
   (let* ((imenu-create-index-function 'evilnc-imenu-create-index-function))
-    (cond ((featurep! :completion vertico)   (consult-imenu))
-          ((featurep! :completion ivy)       (counsel-imenu)))))
+    (cond ((modulep! :completion vertico)   (consult-imenu))
+          ((modulep! :completion ivy)       (counsel-imenu)))))
 
 
 ;; if the first line is too long, enable fundamental by default

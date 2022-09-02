@@ -155,7 +155,7 @@
         lsp-ui-doc-max-width 100))
 
 (use-package lsp-docker
-  :when (not (featurep! :tools lsp +eglot))
+  :when (not (modulep! :tools lsp +eglot))
   :defer t
   :commands lsp-docker-init-clients
   :config
@@ -197,7 +197,7 @@
 (after! realgud (advice-remove #'realgud:terminate #'+debugger--cleanup-after-realgud-a))
 
 
-(when (featurep! :tools debugger)
+(when (modulep! :tools debugger)
   (defun +my/dap-start ()
     (interactive)
     (dap-mode 1)

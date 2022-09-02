@@ -54,10 +54,10 @@
  :gi  [M-left]      #'backward-word
  :gi  [M-right]     #'forward-word
  ;; Searching
- (:when (featurep! :completion vertico)
+ (:when (modulep! :completion vertico)
   "M-f" #'consult-line
   "C-s" #'consult-line)
- (:when (featurep! :completion ivy)
+ (:when (modulep! :completion ivy)
   "M-f" #'swiper
   "C-s" #'swiper)
  "M-e"    #'persp-switch-to-buffer
@@ -134,12 +134,12 @@
        :desc "Format-all buffer"      "f" #'format-all-buffer
        :desc "Check grammar"          "g" #'langtool-check-buffer
        :desc "Done Check grammar"     "G" #'langtool-check-done
-       (:when (featurep! :tools lsp +eglot)
+       (:when (modulep! :tools lsp +eglot)
         :desc "Eglot workspace restart"  "R" #'eglot-reconnect
         :desc "Eglot organize imports"   "I" #'eglot-code-action-organize-imports
         :desc "Eglot quickfix" "q" #'eglot-code-action-quickfix
         )
-       (:when (not (featurep! :tools lsp +eglot))
+       (:when (not (modulep! :tools lsp +eglot))
         :desc "LSP organize imports"   "I" #'lsp-organize-imports
         :desc "LSP workspace restart"  "R" #'lsp-workspace-restart
         :desc "Treemacs references"    "D" #'lsp-treemacs-references))
@@ -327,7 +327,7 @@
     (:prefix ("i" . "Insert")
      "r" #'markdown-table-insert-row
      "c" #'markdown-table-insert-column))))
- (:when (featurep! :completion vertico)
+ (:when (modulep! :completion vertico)
   (:after vertico
    :map vertico-map
    "C-j" nil "C-k" nil
@@ -340,7 +340,7 @@
    "C-v"   #'vertico-scroll-up
    "C-M-p" #'+vertico/previous-candidate-preview
    "C-S-p" #'vertico-previous-group))
- (:when (featurep! :completion ivy)
+ (:when (modulep! :completion ivy)
   (:after wgrep
    :map wgrep-mode-map
    :nv "gr" #'ivy-occur-revert-buffer
@@ -360,7 +360,7 @@
    "A-v" #'ivy-scroll-down-command))
  (:after minibuffer
   :map minibuffer-local-map
-  (:when (featurep! :completion vertico)
+  (:when (modulep! :completion vertico)
    "M-RET" #'vertico-exit-input)
   "C-t" #'marginalia-cycle
   "C-k" #'kill-line)

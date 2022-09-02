@@ -100,7 +100,7 @@
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(pipenv-activate pipenv-deactivate))
     (progn
-      (when (featurep! :checkers syntax)
+      (when (modulep! :checkers syntax)
         (advice-add func :after #'reset-flycheck))
       (advice-add func :after #'+lsp/restart))))
 
@@ -109,7 +109,7 @@
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
     (progn
-      (when (featurep! :checkers syntax)
+      (when (modulep! :checkers syntax)
         (advice-add func :after #'reset-flycheck))
       (advice-add func :after #'+lsp/restart))))
 
@@ -117,7 +117,7 @@
   (remove-hook 'python-mode-hook #'poetry-tracking-mode)
   (dolist (func '(poetry-venv-workon poetry-venv-deactivate))
     (progn
-      (when (featurep! :checkers syntax)
+      (when (modulep! :checkers syntax)
         (advice-add func :after #'reset-flycheck))
       (advice-add func :after #'+lsp/restart))))
 

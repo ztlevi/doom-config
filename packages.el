@@ -39,7 +39,7 @@
 (package! citre)
 (package! imenu-list)
 (package! tmux-pane)
-(when (not (featurep! :tools lsp +eglot))
+(when (not (modulep! :tools lsp +eglot))
   (package! lsp-docker))
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! go-translate)
