@@ -366,6 +366,7 @@
   "C-k" #'kill-line)
  (:after magit-mode
   (:map magit-mode-map "M-p" nil "M-n" nil "M-w" nil
+   :nv "$" #'magit-process-buffer
    "C-c r" #'code-review-forge-pr-at-point))
  (:after magit-diff
   (:map magit-diff-mode-map            ; for magit diff/rev mode
