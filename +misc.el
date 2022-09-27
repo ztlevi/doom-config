@@ -45,10 +45,10 @@
   ;; C-` to toggle
   ;; , and . to page up and down
   (:map rime-mode-map
-   ;; open rime menu
-   ("C-`" . 'rime-send-keybinding))
+        ;; open rime menu
+        ("C-`" . 'rime-send-keybinding))
   (:map rime-active-mode-map
-   ("C-j" . 'rime-inline-ascii))
+        ("C-j" . 'rime-inline-ascii))
   :config
   (custom-set-faces!
     `(rime-default-face :background ,(doom-blend 'blue 'base0 0.15)))
@@ -210,12 +210,12 @@
    :nv "ge"  #'citre-jump
    :nv "gp"  #'citre-jump-back
    (:after citre-peek
-    (:map citre-peek-keymap
-     "M-j" #'citre-peek-next-definition
-     "M-k" #'citre-peek-prev-definition
-     "M-S-j" #'citre-peek-next-line
-     "M-S-k" #'citre-peek-prev-line
-     "M-l" #'citre-peek-jump))
+           (:map citre-peek-keymap
+                 "M-j" #'citre-peek-next-definition
+                 "M-k" #'citre-peek-prev-definition
+                 "M-S-j" #'citre-peek-next-line
+                 "M-S-k" #'citre-peek-prev-line
+                 "M-l" #'citre-peek-jump))
    :leader
    (:prefix "c"
     :desc "Citre update tags file" "t" #'citre-update-this-tags-file
@@ -340,12 +340,13 @@
            (zerop (call-process-shell-command "netstat -aon | grep 64292")))))
   :hook
   (atomic-chrome-edit-mode . +my/atomic-chrome-mode-setup)
-  (atomic-chrome-edit-done . +my/window-focus-google-chrome)
+  (atomic-chrome-edit-done . +my/window-focus-default-browser)
   :config
   (progn
     (setq atomic-chrome-buffer-open-style 'full) ;; or frame, split
     (setq atomic-chrome-url-major-mode-alist
           '(("github\\.com"        . gfm-mode)
+            ("swagger"             . yaml-mode)
             ("emacs-china\\.org"   . gfm-mode)
             ("stackexchange\\.com" . gfm-mode)
             ("stackoverflow\\.com" . gfm-mode)
