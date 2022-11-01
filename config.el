@@ -25,6 +25,8 @@
 
 (add-hook! 'find-file-hook #'+my/find-file-check-make-large-file-read-only-hook)
 
+(setq clipetty-tmux-ssh-tty "tmux show-environment -g SSH_TTY")
+
 ;; check minified-file
 (add-to-list 'magic-mode-alist (cons #'+my/check-minified-file 'fundamental-mode))
 
