@@ -142,6 +142,7 @@
                  "[/\\\\]third-party\\'"
                  "[/\\\\]buildtools\\'"
                  "[/\\\\]out\\'"
+                 "[/\\\\]build\\'"
                  ))
     (push dir lsp-file-watch-ignored-directories))
   )
