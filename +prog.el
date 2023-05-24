@@ -8,6 +8,14 @@
   :defer t)
 
 
+(use-package! breadcrumb
+  :defer t
+  :when (modulep! :tools lsp +eglot)
+  ;; :hook (eglot-managed-mode . breadcrumb-mode)
+  :init (breadcrumb-mode)
+  )
+
+
 (use-package! which-func
   :defer t
   :commands which-function)

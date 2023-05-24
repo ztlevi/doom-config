@@ -112,7 +112,7 @@
         +devdocs         ; ...on devdocs.io online
         +docsets)        ; ...or in Dash docsets locally
        (lsp
-        ;; +eglot
+        +eglot
         ;; +peek
         )
        magit            ; a git porcelain for Emacs

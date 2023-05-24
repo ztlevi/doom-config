@@ -39,12 +39,12 @@
 (package! citre)
 (package! imenu-list)
 (package! tmux-pane)
+(when (modulep! :tools lsp +eglot)
+  (package! breadcrumb :recipe (:host github :repo "joaotavora/breadcrumb")))
 (when (not (modulep! :tools lsp +eglot))
   (package! lsp-docker))
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! go-translate)
-;; https://github.com/tecosaur/screenshot/issues/11
-(package! screenshot :recipe (:host github :repo "tecosaur/screenshot"))
 ;; (package! org-roam-ui)
 ;; (package! md-roam :recipe (:host github :repo "nobiot/md-roam"))
 
