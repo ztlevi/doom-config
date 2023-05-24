@@ -249,11 +249,15 @@
 (use-package! go-translate
   :defer t
   :config
-  (setq go-translate-local-language "en")
-  (setq go-translate-target-language "zh-CN")
-  (setq go-translate-token-current (cons 430675 2721866130))
+  (setq gts-translate-list '(("en" "zh-CN")))
+  (setq gts-default-translator
+        (gts-translator
+         :picker (gts-prompt-picker)
+         :engines (list (gts-google-engine) (gts-google-rpc-engine))
+         :render (gts-buffer-render)))
   ;; For China user
-  (setq go-translate-base-url "https://translate.google.cn"))
+  ;; (setq go-translate-base-url "https://translate.google.cn")
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
