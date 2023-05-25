@@ -11,8 +11,9 @@
 (use-package! breadcrumb
   :defer t
   :when (modulep! :tools lsp +eglot)
-  ;; :hook (eglot-managed-mode . breadcrumb-mode)
-  :init (breadcrumb-mode)
+  :hook
+  (prog-mode . breadcrumb-local-mode)
+  (text-mode . breadcrumb-local-mode)
   )
 
 
