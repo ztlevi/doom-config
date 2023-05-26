@@ -97,7 +97,8 @@
   :defer t
   :commands (pomm pomm-third-time)
   :config
-  (setq pomm-long-break-period 55
+  (setq pomm-work-period 55
+        pomm-long-break-period 25
         pomm-short-break-period 5
         dotty-asset-dir (expand-file-name "~/.config/dotty/assets/"))
   (when (file-exists-p! dotty-asset-dir)
