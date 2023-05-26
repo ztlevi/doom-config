@@ -97,7 +97,9 @@
   :defer t
   :commands (pomm pomm-third-time)
   :config
-  (setq dotty-asset-dir (expand-file-name "~/.config/dotty/assets/"))
+  (setq pomm-long-break-period 55
+        pomm-short-break-period 5
+        dotty-asset-dir (expand-file-name "~/.config/dotty/assets/"))
   (when (file-exists-p! dotty-asset-dir)
     ;; Use custom audio files and remove tick audio
     (setq pomm-audio-files
