@@ -24,7 +24,7 @@
 (package! youdao-dictionary)
 (package! link-hint)
 (package! symbol-overlay)
-(package! pomm :recipe (:host github :repo "SqrtMinusOne/pomm.el"))
+(package! pomm)
 (package! org-appear)
 
 ;; misc
@@ -39,10 +39,6 @@
 (package! citre)
 (package! imenu-list)
 (package! tmux-pane)
-(when (modulep! :tools lsp +eglot)
-  (package! breadcrumb :recipe (:host github :repo "joaotavora/breadcrumb")))
-(when (not (modulep! :tools lsp +eglot))
-  (package! lsp-docker))
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! go-translate)
 ;; (package! org-roam-ui)
@@ -53,3 +49,7 @@
 (package! graphql-mode)
 (package! protobuf-mode)
 (package! gn-mode)
+(when (modulep! :tools lsp +eglot)
+  (package! breadcrumb :recipe (:host github :repo "joaotavora/breadcrumb")))
+(when (not (modulep! :tools lsp +eglot))
+  (package! lsp-docker))

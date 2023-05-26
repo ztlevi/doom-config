@@ -95,7 +95,7 @@
 
 (use-package! pomm
   :defer t
-  :commands (pomm)
+  :commands (pomm pomm-third-time)
   :config
   (setq dotty-asset-dir (expand-file-name "~/.config/dotty/assets/"))
   (when (file-exists-p! dotty-asset-dir)
