@@ -22,6 +22,8 @@
        "C-S-n" #'dap-next
        "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
        "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
+ :nv "gD" #'xref-find-definitions-other-window
+ :nv "gr" #'+lookup/references
  ;; Conflict with vertico
  :g "C-SPC" nil :g "C-@" nil
  "M-`"   #'other-frame
