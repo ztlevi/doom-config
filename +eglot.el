@@ -1,5 +1,7 @@
 ;;; +eglot.el -*- lexical-binding: t; -*-
 
+(add-hook 'java-mode-local-vars-hook #'lsp! 'append)
+
 (use-package! breadcrumb
   :defer t
   :when (modulep! :tools lsp +eglot)
