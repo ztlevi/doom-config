@@ -7,6 +7,9 @@
 (load! "+prog")
 (load! "+ui")
 (load! "+keys")
+(cond
+  ((modulep! :tools lsp +eglot) (load! "+eglot"))
+  ((modulep! :tools lsp) (load! "+lsp")))
 
 (setq user-full-name "Ting Zhou"
       user-mail-address "ztlevi.work@gmail.com")
