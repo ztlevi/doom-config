@@ -90,6 +90,17 @@
 (setq lsp-clients-typescript-init-opts
       '(:importModuleSpecifierPreference "relative"))
 
+(after! eglot
+  ;; https://www.reddit.com/r/emacs/comments/11bqzvk/emacs29_and_eglot_inlay_hints/
+  ;; https://github.com/microsoft/TypeScript/blob/main/src/server/protocol.ts#L3410-L3539
+  (set-eglot-client! '(typescript-mode js-mode js-ts-mode tsx-ts-mode typescript-ts-mode)
+                     '("typescript-language-server" "--stdio" :initializationOptions
+                       (:preferences (:importModuleSpecifierPreference "relative"
+                                      :allowRenameOfImportPath t
+                                      ))))
+  )
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; JAVA
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -135,7 +146,7 @@
         lsp-headerline-breadcrumb-icons-enable nil
         lsp-headerline-breadcrumb-segments '(file symbols)
         lsp-imenu-index-symbol-kinds '(File Module Namespace Package Class Method Enum Interface
-                                            Function Variable Constant Struct Event Operator TypeParameter)
+                                       Function Variable Constant Struct Event Operator TypeParameter)
         )
   (dolist (dir '("[/\\\\]\\.ccls-cache\\'"
                  "[/\\\\]\\.mypy_cache\\'"
@@ -172,7 +183,7 @@
   :config
   (defvar lsp-docker-client-packages
     '(lsp-css lsp-clients lsp-bash lsp-go lsp-pyls lsp-html lsp-typescript
-              lsp-terraform lsp-cpp))
+      lsp-terraform lsp-cpp))
 
   (defvar lsp-docker-client-configs
     (list
@@ -239,8 +250,8 @@
          :desc "Start last debugger" "D" #'dap-debug-last
          :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
          (:prefix ("b" . "breakpoint")
-          "b" #'dap-breakpoint-toggle
-          "c" #'dap-breakpoint-condition)
+                  "b" #'dap-breakpoint-toggle
+                  "c" #'dap-breakpoint-condition)
          "B" #'dap-ui-breakpoints
          "h" #'dap-hydra
          "r" #'dap-debug-restart
