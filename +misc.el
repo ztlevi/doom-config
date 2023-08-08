@@ -110,37 +110,37 @@
 (use-package! evil-string-inflection :after evil)
 
 
-(use-package! tmux-pane
-  :unless (display-graphic-p)
-  :defer t
-  :config
-  (defvar my-tmux-pane-mode-map
-    (let ((map (make-sparse-keymap)))
-      (define-key map (kbd "C-t k")
-        (lambda () (interactive) (tmux-pane--windmove "up"  "-U")))
-      (define-key map (kbd "C-t j")
-        (lambda () (interactive) (tmux-pane--windmove "down"  "-D")))
-      (define-key map (kbd "C-t h")
-        (lambda () (interactive) (tmux-pane--windmove "left" "-L")))
-      (define-key map (kbd "C-t l")
-        (lambda () (interactive) (tmux-pane--windmove "right" "-R")))
-      (define-key map (kbd "C-t C-k")
-        (lambda () (interactive) (tmux-pane--windmove "up"  "-U")))
-      (define-key map (kbd "C-t C-j")
-        (lambda () (interactive) (tmux-pane--windmove "down"  "-D")))
-      (define-key map (kbd "C-t C-h")
-        (lambda () (interactive) (tmux-pane--windmove "left" "-L")))
-      (define-key map (kbd "C-t C-l")
-        (lambda () (interactive) (tmux-pane--windmove "right" "-R")))
-      map))
-
-  (define-minor-mode my-tmux-pane-mode
-    "Seamlessly navigate between tmux pane and emacs window"
-    :init-value nil
-    :global t
-    :keymap 'my-tmux-pane-mode-map)
-
-  :hook (after-init . my-tmux-pane-mode))
+;; (use-package! tmux-pane
+;;   :unless (display-graphic-p)
+;;   :defer t
+;;   :config
+;;   (defvar my-tmux-pane-mode-map
+;;     (let ((map (make-sparse-keymap)))
+;;       (define-key map (kbd "C-t k")
+;;         (lambda () (interactive) (tmux-pane--windmove "up"  "-U")))
+;;       (define-key map (kbd "C-t j")
+;;         (lambda () (interactive) (tmux-pane--windmove "down"  "-D")))
+;;       (define-key map (kbd "C-t h")
+;;         (lambda () (interactive) (tmux-pane--windmove "left" "-L")))
+;;       (define-key map (kbd "C-t l")
+;;         (lambda () (interactive) (tmux-pane--windmove "right" "-R")))
+;;       (define-key map (kbd "C-t C-k")
+;;         (lambda () (interactive) (tmux-pane--windmove "up"  "-U")))
+;;       (define-key map (kbd "C-t C-j")
+;;         (lambda () (interactive) (tmux-pane--windmove "down"  "-D")))
+;;       (define-key map (kbd "C-t C-h")
+;;         (lambda () (interactive) (tmux-pane--windmove "left" "-L")))
+;;       (define-key map (kbd "C-t C-l")
+;;         (lambda () (interactive) (tmux-pane--windmove "right" "-R")))
+;;       map))
+;; 
+;;   (define-minor-mode my-tmux-pane-mode
+;;     "Seamlessly navigate between tmux pane and emacs window"
+;;     :init-value nil
+;;     :global t
+;;     :keymap 'my-tmux-pane-mode-map)
+;; 
+;;   :hook (after-init . my-tmux-pane-mode))
 
 
 (use-package! imenu-list
