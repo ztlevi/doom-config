@@ -50,8 +50,8 @@
 
 (after! lsp-pyls
   ;; disable live-mode for mypy
-  (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.enabled" t))
-  (add-to-list 'lsp-client-settings '("pyls.plugins.pyls_mypy.live_mode" nil))
+  (lsp-register-custom-settings `(("pyls.plugins.pyls_mypy.enabled" t)))
+  (lsp-register-custom-settings `(("pyls.plugins.pyls_mypy.live_mode" t)))
 
   ;; ignore some linting info
   (setq lsp-pyls-plugins-pycodestyle-ignore  [ "E501" ]
