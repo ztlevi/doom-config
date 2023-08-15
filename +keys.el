@@ -101,6 +101,8 @@
  :gi "C-f" #'forward-char
  :gi "C-k" #'kill-line
  :gi "C-d" #'delete-forward-char
+ ;; For terminal specific keys
+ :gnmvi "<deletechar>" (kbd "C-d")
 
  :v "C-r"   #'+my/evil-quick-replace
  :v "DEL" (kbd "\"_d")
