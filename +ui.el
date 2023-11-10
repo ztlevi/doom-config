@@ -80,7 +80,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
   `(mode-line :background ,(doom-blend 'dark-blue 'base0  0.6))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
-  `(vertical-border :background ,(doom-color 'black) :foreground ,(doom-color 'bg-alt))
+  `(vertical-border :foreground ,(doom-color 'bg-alt))
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)
