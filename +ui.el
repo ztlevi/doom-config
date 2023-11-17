@@ -16,12 +16,14 @@
          ((find-font (font-spec :name "OperatorMono Nerd Font")) "OperatorMono Nerd Font")
          ((find-font (font-spec :name "Droid Sans Mono")) "Droid Sans Mono")
          ((find-font (font-spec :name "Droid Sans Fallback")) "Droid Sans Fallback")))
+  ;; CartographCF nerd font uses Light font as regular, not sure why. Only use medium weight for this font.
+  (setq user-font-weight (if (string= user-font "CartographCF Nerd Font") 'medium 'normal))
 
   ;; calculate the font size based on display-pixel-height
   (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
-  (setq doom-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
-        doom-big-font (font-spec :family user-font :size (eval (round (* 18 resolution-factor))))
-        doom-variable-pitch-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
+  (setq doom-font (font-spec :family user-font :weight user-font-weight :size (eval (round (* 13 resolution-factor))))
+        doom-big-font (font-spec :family user-font :weight user-font-weight :size (eval (round (* 18 resolution-factor))))
+        doom-variable-pitch-font (font-spec :family user-font :weight user-font-weight :size (eval (round (* 13 resolution-factor))))
         doom-modeline-height (eval (round (* 14 resolution-factor))))
   (setq doom-font-increment 1)
 
