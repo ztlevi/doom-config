@@ -35,7 +35,7 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
-(after! org-agenda
+(after! (:and org-agenda all-the-icons)
   ;; https://old.reddit.com/r/emacs/comments/hnf3cw/my_orgmode_agenda_much_better_now_with_category/
   (setq org-agenda-category-icon-alist
         `(("work" ,(list (all-the-icons-material "work")) nil nil :ascent center)
