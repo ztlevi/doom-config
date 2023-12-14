@@ -308,6 +308,8 @@
  (:after iedit
          (:map iedit-mode-occurrence-keymap
                "M-D" nil))
+ (:after edebug
+         (:map edebug-mode-map "c" #'edebug-go-mode))
  (:after evil-org
          (:map evil-org-mode-map
           :i "C-d" nil :i "C-t" nil :i "C-h" nil :i "C-k" nil))
