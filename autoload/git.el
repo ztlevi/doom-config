@@ -71,13 +71,17 @@ repository root."
           dirname
           commit))
 
+(defun magit-blame-get-hash ()
+  "Code copied from magit-blame-copy-hash"
+  (oref (magit-current-blame-chunk) orig-rev))
+
 ;;;###autoload
 (defun magit-blame--git-link-commit (arg)
   "Git link commit go to current line's magit blame's hash"
   (interactive "P")
   (require 'git-link)
   (cl-letf (((symbol-function 'word-at-point)
-             (symbol-function 'magit-blame-copy-hash)))
+             (symbol-function 'magit-blame-get-hash)))
     (let ((git-link-open-in-browser (not arg)))
       (git-link-commit (git-link--read-remote)))))
 
