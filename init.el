@@ -29,7 +29,9 @@
        ;;  +prescient       ; disabled due to ! invert match not working
        ;;  +childframe)
        (vertico           ; the search engine of the future
-        +icons)
+         +icons
+         ;; +childframe
+         )
 
        :ui
        ;;deft              ; notational velocity for Emacs
