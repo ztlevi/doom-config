@@ -355,3 +355,10 @@ you're done. This can be called from an external shell script."
     (let ((last (nthcdr (1- nth) list)))
       (setcdr last (cddr last))
       list)))
+
+;;;###autoload
+(defun get-random-element (list)
+  "Returns a random element of LIST."
+  (if (not (and (list) (listp list)))
+      (nth (random (1- (1+ (length list)))) list)
+    (error "Argument to get-random-element not a list or the list is empty")))
