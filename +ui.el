@@ -124,6 +124,10 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-blend 'teal 'fg 0.2))
   )
 
+(custom-theme-set-faces! 'doom-acario-light
+  `(markdown-code-face :background ,(doom-color 'bg-alt))
+  )
+
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
