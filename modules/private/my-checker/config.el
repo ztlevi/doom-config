@@ -24,7 +24,6 @@
        :desc "Cspell check buffer"    "C" #'cspell-check-buffer))
 
 (use-package flymake-cspell
-  :ensure
   :when (executable-find "cspell")
   :hook (prog-mode . flymake-cspell-setup))
 
