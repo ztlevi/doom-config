@@ -131,8 +131,9 @@
       (:prefix "b"                      ; buffer
                "m" #'list-bookmarks
                "h" #'+doom-dashboard/open
-               "r" #'revert-buffer-no-confirm
-               "R" #'reload-buffer-no-confirm
+               :desc "Revert buffer" "r" #'revert-buffer-no-confirm
+               :desc "Reload buffer" "R" #'reload-buffer-no-confirm
+               :desc "Fix too many open files" "K" #'file-notify-rm-all-watches
                "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
        :desc "Format-all buffer"      "f" #'format-all-buffer
