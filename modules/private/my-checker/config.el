@@ -14,7 +14,7 @@
          :desc "Next error"      "n" #'flymake-goto-next-error
          :desc "Previous error"  "p" #'flymake-goto-prev-error
          :desc "Explain error"   "e" #'flymake-show-diagnostic
-         :desc "List errors"     "l" #'flymake-show-diagnostics-buffer
+         :desc "List errors"     "l" #'flymake-show-buffer-diagnostics
          :desc "Lsp list errors" "L" #'consult-flymake
          :desc "List project error" "P" #'flymake-show-project-diagnostics
          :desc "Verify setup"    "v" #'flymake-running-backends)))
