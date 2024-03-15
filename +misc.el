@@ -194,52 +194,6 @@
 
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook) #'highlight-indent-guides-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; CITRE
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package! citre
-  :defer t
-  :init
-  (require 'citre-config)
-  ;; `doom-large-file-size-alist' controls when controls when Doom activates so-long-minor-mode
-  ;; to cut down on features in large files
-  ;; (setq large-file-warning-threshold nil)
-  (map!
-   :nv "gE"  #'citre-peek
-   :nv "ge"  #'citre-jump
-   :nv "gp"  #'citre-jump-back
-   (:after citre-peek
-           (:map citre-peek-keymap
-                 "M-j" #'citre-peek-next-definition
-                 "M-k" #'citre-peek-prev-definition
-                 "M-S-j" #'citre-peek-next-line
-                 "M-S-k" #'citre-peek-prev-line
-                 "M-l" #'citre-peek-jump))
-   :leader
-   (:prefix "c"
-    :desc "Citre update tags file" "t" #'citre-update-this-tags-file
-    :desc "Citre edit tags file" "T" #'citre-edit-tags-file-recipe))
-  :config
-  ;; better jump set marker
-  (advice-add #'citre-jump :around #'doom-set-jump-a)
-
-  (remove-hook! 'citre-after-jump-hook #'citre-recenter-and-blink)
-  (add-hook 'citre-after-jump-hook #'+nav-flash-blink-cursor-maybe-h)
-  (setq
-   ;; Set this if you use project management plugin like projectile.  It's
-   ;; used for things like displaying paths relatively, see its docstring.
-   citre-project-root-function #'projectile-project-root
-   ;; Set this if you want to always use one location to create a tags file.
-   citre-default-create-tags-file-location 'package-cache
-   ;; See the "Create tags file" section above to know these options
-   citre-use-project-root-when-creating-tags t
-   citre-prompt-language-for-ctags-command t
-   ;; By default, when you open any file, and a tags file can be found for it,
-   ;; `citre-mode' is automatically enabled.  If you only want this to work for
-   ;; certain modes (like `prog-mode'), set it like this.
-   ;; citre-auto-enable-citre-mode-modes '(prog-mode)
-   ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TRANSLATE

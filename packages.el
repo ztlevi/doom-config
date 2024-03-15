@@ -36,7 +36,6 @@
 (package! atomic-chrome)
 (package! git-link)
 (package! magit-delta)
-(package! citre)
 (package! imenu-list)
 ;; (package! tmux-pane)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
