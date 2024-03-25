@@ -20,16 +20,18 @@
 ;; jdtls mirror in China
 ;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/1.1.2/jdt-language-server-1.1.2-202105191944.tar.gz")
 
+;; current VSCode defaults
+(setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx2G" "-Xms100m"))
 (after! lsp-java
-  ;; eclipse.jdt.ls needs java 11
-  (dolist (java_path '("/usr/lib/jvm/java-11-amazon-corretto.x86_64"
-                       "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"))
+  ;; eclipse.jdt.ls needs java 17+
+  (dolist (java_path `(,(string-trim (shell-command-to-string "brew --prefix openjdk@21"))))
     (if (file-directory-p java_path)
-        (setq lsp-java-configuration-runtimes `[(:name "JavaSE-11"
+        (setq lsp-java-configuration-runtimes `[(:name "JavaSE-21"
                                                  :path ,java_path
                                                  :default t)]
               lsp-java-java-path (concat java_path "/bin/java")
-              dap-java-java-command (concat java_path "/bin/java")))))
+              dap-java-java-command (concat java_path "/bin/java"))))
+  )
 
 
 ;; Use format-all by default
