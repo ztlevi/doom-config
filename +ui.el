@@ -5,7 +5,7 @@
 ;;       doom-one-light-brighter-comments t)
 
 ;; (load-theme 'doom-one-light t)
-(load-theme (get-random-element '(doom-acario-light doom-one-light doom-nord-light)) t)
+(load-theme (get-random-element '(doom-acario-light doom-one-light)) t)
 
 
 (setq evil-emacs-state-cursor `(box ,(doom-color 'violet)))
