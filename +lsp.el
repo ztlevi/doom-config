@@ -15,7 +15,6 @@
 (setq lsp-clients-typescript-init-opts
       '(:importModuleSpecifierPreference "relative"))
 
-
 ;; Java
 ;; jdtls mirror in China
 ;; (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/milestones/1.1.2/jdt-language-server-1.1.2-202105191944.tar.gz")
@@ -40,6 +39,8 @@
 (setq +lsp-prompt-to-install-server 'quiet)
 
 (after! lsp-mode
+  (add-hook! 'lsp-help-mode-hook (visual-line-mode 1))
+
   (setq lsp-log-io nil
         lsp-file-watch-threshold 4000
         lsp-headerline-breadcrumb-enable t
