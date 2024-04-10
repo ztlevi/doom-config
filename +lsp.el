@@ -23,9 +23,9 @@
 (setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx2G" "-Xms100m"))
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 17+
-  (dolist (java_path `(,(string-trim (shell-command-to-string "brew --prefix openjdk@21"))))
+  (dolist (java_path `(,(string-trim (shell-command-to-string "brew --prefix openjdk@17"))))
     (if (file-directory-p java_path)
-        (setq lsp-java-configuration-runtimes `[(:name "JavaSE-21"
+        (setq lsp-java-configuration-runtimes `[(:name "JavaSE-17"
                                                  :path ,java_path
                                                  :default t)]
               lsp-java-java-path (concat java_path "/bin/java")
