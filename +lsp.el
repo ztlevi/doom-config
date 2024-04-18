@@ -23,7 +23,12 @@
 (setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx2G" "-Xms100m"))
 (after! lsp-java
   ;; eclipse.jdt.ls needs java 17+
-  (dolist (java_path `(,(string-trim (shell-command-to-string "brew --prefix openjdk@17"))))
+  ;; Not sure why brew openjdk cannot be recognized by lsp-java, use linux version instead.
+  ;; Install with `sudo yum install java-17-amazon-corretto-devel`
+  (dolist (java_path `(
+                       "/usr/lib/jvm/java-17-amazon-corretto.x86_64/"
+                       ,(string-trim (shell-command-to-string "brew --prefix openjdk@17"))
+                       ))
     (if (file-directory-p java_path)
         (setq lsp-java-configuration-runtimes `[(:name "JavaSE-17"
                                                  :path ,java_path
