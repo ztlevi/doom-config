@@ -319,8 +319,7 @@
           :i "C-d" nil)
          (:map markdown-mode-map
           :desc "Markdown Cycle" :nv [tab] #'markdown-cycle
-          :desc "Insert item below" :ni "<C-return>"  #'+org/insert-item-below
-          :desc "Insert item above" :ni "<S-C-return>" #'+org/insert-item-above
+          :desc "Insert item below" :ni "<C-return>"  #'markdown-insert-list-item
           (:localleader
            :desc "highlight" "ih" #'+my/markdown-highlight
            (:when IS-MAC
