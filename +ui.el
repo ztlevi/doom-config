@@ -14,11 +14,13 @@
 (when (display-graphic-p)
   (setq user-font
         (cond
+         ((find-font (font-spec :name "Mononoki Nerd Font Mono")) "Mononoki Nerd Font Mono")
          ((find-font (font-spec :name "CartographCF Nerd Font")) "CartographCF Nerd Font")
          ((find-font (font-spec :name "OperatorMono Nerd Font")) "OperatorMono Nerd Font")
          ((find-font (font-spec :name "Droid Sans Mono")) "Droid Sans Mono")
          ((find-font (font-spec :name "Droid Sans Fallback")) "Droid Sans Fallback")))
-  ;; CartographCF nerd font uses Light font as regular, not sure why. Only use medium weight for this font.
+  ;; Some font uses Light font as regular, not sure why. Only use medium weight for this font.
+  (setq user-font-weight (if (string= user-font "Mononoki Nerd Font Mono") 'medium 'normal))
   (setq user-font-weight (if (string= user-font "CartographCF Nerd Font") 'medium 'normal))
 
   ;; calculate the font size based on display-pixel-height
