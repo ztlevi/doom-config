@@ -20,8 +20,12 @@
          ((find-font (font-spec :name "Droid Sans Mono")) "Droid Sans Mono")
          ((find-font (font-spec :name "Droid Sans Fallback")) "Droid Sans Fallback")))
   ;; Some font uses Light font as regular, not sure why. Only use medium weight for this font.
-  (setq user-font-weight (if (string= user-font "Mononoki Nerd Font Mono") 'medium 'normal))
-  (setq user-font-weight (if (string= user-font "CartographCF Nerd Font") 'medium 'normal))
+  (setq user-font-weight
+    (cond
+      ((string= user-font "CartographCF Nerd Font") 'medium)
+      ((string= user-font "Mononoki Nerd Font Mono") 'medium)
+      (t 'normal))
+    )
 
   ;; calculate the font size based on display-pixel-height
   (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
