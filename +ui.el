@@ -138,6 +138,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
+    `(flymake-warning :underline nil :bold t)
     `(mode-line-inactive :background ,(doom-darken (doom-color 'bg-alt) 0.05) :foreground ,(doom-color 'fg))))
 
 ;; (when IS-MAC
