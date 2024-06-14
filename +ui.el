@@ -114,8 +114,8 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(web-mode-jsx-depth-5-face :background ,(doom-blend 'teal 'fg 0.5))
   `(flyspell-incorrect :underline ,(doom-color 'red))
   `(flyspell-duplicate :underline ,(doom-color 'orange))
-  `(flymake-warning :underline (:style wave :color ,(doom-color 'grey)))
-  `(flycheck-warning :underline (:style wave :color ,(doom-color 'grey)))
+  `(flymake-warning :underline nil :bold t)
+  `(flycheck-warning :underline nil :bold t)
   `(flycheck-error :underline (:style wave :color ,(doom-color 'red)))
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
   `(ein:cell-input-area :background ,(doom-blend 'red 'fg 0.15))
@@ -138,7 +138,6 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 ;; for terminal
 (unless (display-graphic-p)
   (custom-set-faces!
-    `(flymake-warning :underline nil :bold t)
     `(mode-line-inactive :background ,(doom-darken (doom-color 'bg-alt) 0.05) :foreground ,(doom-color 'fg))))
 
 ;; (when IS-MAC

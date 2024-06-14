@@ -1,5 +1,8 @@
 ;;; private/my-checker/config.el -*- lexical-binding: t; -*-
 
+;; Disable warning left fringe indicator
+(setq flymake-warning-bitmap nil)
+
 (if (modulep! :checkers syntax)
     (map! :leader
           (:prefix-map ("e" . "error")
