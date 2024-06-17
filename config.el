@@ -45,7 +45,7 @@
                     ("^\\*pytest\\*" :size 0.35)
                     ("^\\*Anaconda\\*$" :size 0.35)
                     ("\\*.*server log\\*$" :side top :size 0.20 :select nil)
-                    ("^\\*amazon-cr\\*$" :size 0.3 side bottom-only)
+                    ("^\\*amazon-cr\\*$" :size 0.2 side bottom-only)
                     ((lambda (buf _) (with-current-buffer buf (eq major-mode 'forge-topic-mode))) :size 0.35)
                     ))
 
