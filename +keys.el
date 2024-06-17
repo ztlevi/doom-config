@@ -128,6 +128,8 @@
        "b" #'blog-admin-start
        :desc "List process" "p" #'list-processes
        "x" #'align-regexp)
+      (:prefix "k"
+        "c" #'amazon-cr)
       (:prefix "b"                      ; buffer
                "m" #'list-bookmarks
                "h" #'+doom-dashboard/open
@@ -364,6 +366,12 @@
     "C-k" #'ivy-kill-line
     "C-v" #'ivy-scroll-up-command
     "A-v" #'ivy-scroll-down-command))
+  (:after transient
+    :map transient-map
+    "C-p" #'transient-history-prev
+    "C-n" #'transient-history-next
+    "C-k" #'transient-history-prev
+    "C-j" #'transient-history-next)
  (:after minibuffer
   :map minibuffer-local-map
   (:when (modulep! :completion vertico)

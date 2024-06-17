@@ -228,6 +228,7 @@
        ;; lazycat          ; snails, color-rg, fuz
        my-python
        my-checker
+       my-transient
        ;; nano-theme
        )
 
