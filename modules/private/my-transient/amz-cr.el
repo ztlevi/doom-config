@@ -1,13 +1,14 @@
 ;;; private/my-transient/amz-cr.el -*- lexical-binding: t; -*-
 
 (defun transient-read-amz-workspace-projects (prompt initial-input history)
+  (require 'magit-base)
   (magit-completing-read-multiple
    prompt
    (mapcar (lambda (line)
              (save-excursion
                (list line)))
            (directory-files
-            (file-name-directory (directory-file-name (cdr (project-current))))
+            (file-name-directory (directory-file-name (doom-project-root)))
             nil "^[^.]"))
    nil nil initial-input history))
 
@@ -25,28 +26,30 @@
   :key "-r"
   :argument "--update-review=")
 
-
 ;;;###autoload
-(defun amz-cr-create-cr ()
+(defun amz-cr--create-cr ()
   "Amazon CR create CR."
   (interactive)
-  (let ((buffer (get-buffer-create "*amz-cr*"))
-        (cmd '("cr")))
-    (with-current-buffer buffer
-      (erase-buffer)
-      ;; args like '(("--include=" "p1" "p2") "--all")
-      (dolist (args (transient-args 'amz-cr))
-        (if (listp args)
-            (progn
-              (setq arg (car args))
-              (setq args (cdr args))
-              (dolist (element args)
-                (appendq! cmd (list (concat arg element)))))
-          (appendq! cmd (list args))
-          ))
-      (insert (string-join cmd " ")) (insert "\n")
-      (insert (shell-command-to-string (string-join cmd " "))))
-    (switch-to-buffer buffer)))
+  (let ((cmd '("cr")))
+    (dolist (args
+              ;; Testing args
+             ;; '(("--include=" "p1" "p2") "--yes" "--all")
+             (transient-args 'amz-cr)
+             )
+      (if (listp args)
+          (progn
+            (setq arg (car args))
+            (setq args (cdr args))
+            (dolist (element args)
+              (appendq! cmd (list (concat arg element)))))
+        (if (string= args "--yes")
+            (pushnew! cmd "yes | ")
+          (appendq! cmd (list args))))
+      )
+    (let* ((default-directory (doom-project-root)))
+      (compilation-start (string-join cmd " ") 'comint-mode)
+      )))
+
 
 ;; Reference magit-log.el https://github.com/magit/magit/blob/main/lisp/magit-log.el
 ;;;###autoload (autoload 'amz-cr "amz-cr" nil t)
@@ -56,9 +59,10 @@
    (amz-cr:-i)
    (amz-cr:-r)
    ("-A" "Include all modified packages" (nil "--all"))
-   ("-N" "New package" (nil "--new-review"))
+   ("-N" "New review" (nil "--new-review"))
+   ("-y" "Yes" (nil "--yes"))
    ]
   [["Amazon CR"
-    ("c" "Create CR" amz-cr-create-cr)
+    ("c" "Create CR" amz-cr--create-cr)
     ]]
   )
