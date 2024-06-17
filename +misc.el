@@ -133,13 +133,13 @@
 ;;       (define-key map (kbd "C-t C-l")
 ;;         (lambda () (interactive) (tmux-pane--windmove "right" "-R")))
 ;;       map))
-;; 
+;;
 ;;   (define-minor-mode my-tmux-pane-mode
 ;;     "Seamlessly navigate between tmux pane and emacs window"
 ;;     :init-value nil
 ;;     :global t
 ;;     :keymap 'my-tmux-pane-mode-map)
-;; 
+;;
 ;;   :hook (after-init . my-tmux-pane-mode))
 
 

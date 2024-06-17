@@ -129,7 +129,8 @@
        :desc "List process" "p" #'list-processes
        "x" #'align-regexp)
       (:prefix "k"
-        "c" #'amazon-cr)
+        "c" #'amz-cr
+        "b" #'amz-brief)
       (:prefix "b"                      ; buffer
                "m" #'list-bookmarks
                "h" #'+doom-dashboard/open

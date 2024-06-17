@@ -2,4 +2,4 @@
 
 (use-package! transient)
 
-(load! "amazon-cr")
+(load! "amz-cr")
