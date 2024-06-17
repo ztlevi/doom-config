@@ -5,7 +5,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package! format-all
-  :hook (emacs-lisp-mode . format-all-mode)
+  ;; :hook (emacs-lisp-mode . format-all-mode)
   :defer t)
 
 
