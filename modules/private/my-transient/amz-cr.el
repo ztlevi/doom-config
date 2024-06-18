@@ -47,7 +47,7 @@
           (appendq! cmd (list args))))
       )
     (let* ((default-directory (doom-project-root)))
-      (compilation-start (string-join cmd " ") 'comint-mode)
+      (async-shell-command (string-join cmd " "))
       )))
 
 
