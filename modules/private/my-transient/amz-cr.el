@@ -1,7 +1,9 @@
 ;;; private/my-transient/amz-cr.el -*- lexical-binding: t; -*-
 
+(require 'transient)
+(require 'magit-base)
+
 (defun transient-read-amz-workspace-projects (prompt initial-input history)
-  (require 'magit-base)
   (magit-completing-read-multiple
    prompt
    (mapcar (lambda (line)
@@ -26,13 +28,12 @@
   :key "-r"
   :argument "--update-review=")
 
-;;;###autoload
 (defun amz-cr--create-cr ()
   "Amazon CR create CR."
   (interactive)
   (let ((cmd '("cr")))
     (dolist (args
-              ;; Testing args
+             ;; Testing args
              ;; '(("--include=" "p1" "p2") "--yes" "--all")
              (transient-args 'amz-cr)
              )
@@ -52,7 +53,6 @@
 
 
 ;; Reference magit-log.el https://github.com/magit/magit/blob/main/lisp/magit-log.el
-;;;###autoload (autoload 'amz-cr "amz-cr" nil t)
 (transient-define-prefix amz-cr ()
   "Create Amazon CR."
   ["Arguments"
@@ -66,3 +66,5 @@
     ("c" "Create CR" amz-cr--create-cr)
     ]]
   )
+
+(provide 'amz-cr)
