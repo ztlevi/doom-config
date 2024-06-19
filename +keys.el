@@ -301,7 +301,7 @@
           :localleader
           (:prefix "t"
            "y" #'+go/copy-go-test-cmd
-           "b" #'+go/copy-go-breakpoint
+           "b" #'+go/insert-go-breakpoint
            (:prefix ("B" . "bench")
                     "s" #'+go/bench-single
                     "a" #'+go/bench-all))))

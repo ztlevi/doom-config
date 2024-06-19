@@ -131,10 +131,10 @@
       (save-excursion
         (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
         (let ((cmd (concat "dlv test --init=breakpoints.dlv "
-                     "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                     " -- -test.run "
-                     "\"^" (match-string 1) "$\""
-                     )))
+                           "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
+                           " -- -test.run "
+                           "\"^" (match-string 1) "$\""
+                           )))
           (message cmd)
           (kill-new cmd)))
     (error "Must be in a _test.go file"))
@@ -142,9 +142,26 @@
 
 ;;;###autoload
 (defun +go/copy-go-breakpoint ()
-  "Copy go test cmd."
+  "Copy go breakpoint."
   (interactive)
   (let ((cmd (concat "b " (file-relative-name (buffer-file-name) (doom-project-root))
                      ":" (number-to-string (line-number-at-pos)))))
     (message cmd)
     (kill-new cmd)))
+
+;;;###autoload
+(defun +go/insert-go-breakpoint ()
+  "Insert go breakpoint to breakpoints.dlv."
+  (interactive)
+  (let ((breakpoint-file (concat (doom-project-root) "breakpoints.dlv"))
+        (cmd (concat "b " (file-relative-name (buffer-file-name) (doom-project-root))
+                     ":" (number-to-string (line-number-at-pos)) "\n")))
+    (with-temp-buffer
+      (unless (file-exists-p breakpoint-file)
+        (insert "continue")
+        (write-file breakpoint-file))
+      (find-file breakpoint-file)
+      (goto-char (point-min))
+      (insert cmd)
+      (save-buffer)
+      (kill-buffer))))
