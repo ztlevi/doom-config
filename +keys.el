@@ -129,15 +129,15 @@
        :desc "List process" "p" #'list-processes
        "x" #'align-regexp)
       (:prefix "k"
-        "c" #'amz-cr
-        "b" #'amz-brief)
+               "c" #'amz-cr
+               "b" #'amz-brief)
       (:prefix "b"                      ; buffer
-               "m" #'list-bookmarks
-               "h" #'+doom-dashboard/open
-               :desc "Revert buffer" "r" #'revert-buffer-no-confirm
-               :desc "Reload buffer" "R" #'reload-buffer-no-confirm
-               :desc "Fix too many open files" "K" #'file-notify-rm-all-watches
-               "U" #'+my/untabify-buffer)
+       "m" #'list-bookmarks
+       "h" #'+doom-dashboard/open
+       :desc "Revert buffer" "r" #'revert-buffer-no-confirm
+       :desc "Reload buffer" "R" #'reload-buffer-no-confirm
+       :desc "Fix too many open files" "K" #'file-notify-rm-all-watches
+       "U" #'+my/untabify-buffer)
       (:prefix "c"                      ; code
        :desc "Format-all buffer"      "f" #'format-all-buffer
        :desc "Check grammar"          "g" #'langtool-check-buffer
@@ -296,6 +296,12 @@
          (:map c++-mode-map
           :localleader :prefix ("t" "toggle")
           :desc "Copy lldb breakpoint" "b" #'+cc/copy-lldb-breakpoint-of-current-line))
+ (:after go-mode
+         (:map go-mode-map
+          :localleader
+          (:prefix "t"
+           :desc "Copy go test cmd" "y" #'+go/copy-go-test-cmd
+           :desc "Copy go breakpoint" "b" #'+go/copy-go-breakpoint)))
  (:after org
          (:map org-mode-map
           :localleader
@@ -367,12 +373,12 @@
     "C-k" #'ivy-kill-line
     "C-v" #'ivy-scroll-up-command
     "A-v" #'ivy-scroll-down-command))
-  (:after transient
-    :map transient-map
-    "C-p" #'transient-history-prev
-    "C-n" #'transient-history-next
-    "C-k" #'transient-history-prev
-    "C-j" #'transient-history-next)
+ (:after transient
+  :map transient-map
+  "C-p" #'transient-history-prev
+  "C-n" #'transient-history-next
+  "C-k" #'transient-history-prev
+  "C-j" #'transient-history-next)
  (:after minibuffer
   :map minibuffer-local-map
   (:when (modulep! :completion vertico)
