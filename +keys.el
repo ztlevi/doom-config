@@ -300,7 +300,8 @@
          (:map go-mode-map
           :localleader
           (:prefix "t"
-           :desc "Copy go test cmd" "y" #'+go/copy-go-test-cmd
+           :desc "Copy go test cmd" "t" #'+go/copy-go-test-cmd
+           :desc "Copy go test cmd" "r"  #'+go/copy-go-test-run-cmd
            :desc "Copy go breakpoint" "b" #'+go/copy-go-breakpoint)))
  (:after org
          (:map org-mode-map

@@ -134,10 +134,22 @@
 (defun +go/copy-go-test-cmd ()
   "Copy go test cmd."
   (interactive)
-  (let ((cmd (concat "dlv test --init=breakpoints.dlv  "
+  (let ((cmd (concat "dlv test --init=breakpoints.dlv "
                      "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                     "-- -test.run "
-                     "^" (+go/current-function-name) "$"
+                     " -- -test.run "
+                     "\"^" (+go/current-function-name) "$\""
+                     )))
+    (message cmd)
+    (kill-new cmd)))
+
+;;;###autoload
+(defun +go/copy-go-test-run-cmd ()
+  "Copy go test cmd."
+  (interactive)
+  (let ((cmd (concat "go test "
+                     "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
+                     " -run "
+                     "\"^" (+go/current-function-name) "$\""
                      )))
     (message cmd)
     (kill-new cmd)))
@@ -146,7 +158,7 @@
 (defun +go/copy-go-breakpoint ()
   "Copy go test cmd."
   (interactive)
-  (let ((cmd (concat "break " (file-relative-name (buffer-file-name) (doom-project-root))
+  (let ((cmd (concat "b " (file-relative-name (buffer-file-name) (doom-project-root))
                      ":" (number-to-string (line-number-at-pos)))))
     (message cmd)
     (kill-new cmd)))
