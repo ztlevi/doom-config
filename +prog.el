@@ -36,6 +36,8 @@
   :init
   (add-to-list 'auto-mode-alist '("\\.gni?\\'" . gn-mode)))
 
+(add-hook! 'go-mode-hook (setq-local format-all-formatters '(("Go" gofmt))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CC
