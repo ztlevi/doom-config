@@ -122,37 +122,23 @@
   (interactive)
   (message (which-function)))
 
-;;;###autoload
-(defun +go/current-function-name ()
-  "Get the name of the current Go function."
-  (interactive)
-  (save-excursion
-    (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)" nil t)
-    (match-string 1)))
 
 ;;;###autoload
 (defun +go/copy-go-test-cmd ()
   "Copy go test cmd."
   (interactive)
-  (let ((cmd (concat "dlv test --init=breakpoints.dlv "
+  (if (string-match "_test\\.go" buffer-file-name)
+      (save-excursion
+        (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
+        (let ((cmd (concat "dlv test --init=breakpoints.dlv "
                      "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
                      " -- -test.run "
-                     "\"^" (+go/current-function-name) "$\""
+                     "\"^" (match-string 1) "$\""
                      )))
-    (message cmd)
-    (kill-new cmd)))
-
-;;;###autoload
-(defun +go/copy-go-test-run-cmd ()
-  "Copy go test cmd."
-  (interactive)
-  (let ((cmd (concat "go test "
-                     "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                     " -run "
-                     "\"^" (+go/current-function-name) "$\""
-                     )))
-    (message cmd)
-    (kill-new cmd)))
+          (message cmd)
+          (kill-new cmd)))
+    (error "Must be in a _test.go file"))
+  )
 
 ;;;###autoload
 (defun +go/copy-go-breakpoint ()
