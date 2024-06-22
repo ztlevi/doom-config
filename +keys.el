@@ -123,6 +123,7 @@
 (map! :leader
       :desc "M-x" :nmv "SPC" #'execute-extended-command
       :desc "lispyville" :n "L" (+my/prefix-M-x "lispyville ")
+      :desc "Switch to last buffer" :n "l" #'evil-switch-to-windows-last-buffer
       (:prefix-map ("a" . "app")
        "s" #'prodigy
        "b" #'blog-admin-start
@@ -160,7 +161,6 @@
        :desc "Yank filename" "n" #'+default/yank-filename
        :desc "Save all" "s" #'evil-write-all
        :desc "Deer"     "j" #'deer)
-      :desc "Switch to last buffer" :n "l" #'evil-switch-to-windows-last-buffer
       (:prefix "n"                      ; notes
        :desc "Take screenshot" "p" #'screenshot
        (:prefix "r"
