@@ -122,23 +122,35 @@
   (interactive)
   (message (which-function)))
 
-
 ;;;###autoload
-(defun +go/copy-go-test-cmd ()
-  "Copy go test cmd."
+(defun +go/copy-go-test-run-cmd ()
+  "Run single test at point."
   (interactive)
   (if (string-match "_test\\.go" buffer-file-name)
       (save-excursion
-        (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
-        (let ((cmd (concat "dlv test --init=breakpoints.dlv "
-                           "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                           " -- -test.run "
-                           "\"^" (match-string 1) "$\""
-                           )))
+        (re-search-backward "^func[ ]+\\(([[:alnum:]]*?[ ]?[*]?[[:alnum:]]+)[ ]+\\)?\\(Test[[:alnum:]_]+\\)(.*)")
+        (let ((cmd (concat "go test "
+                     "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
+                     " -test.v " "-run" "='^\\Q" (match-string-no-properties 2) "\\E$'")))
           (message cmd)
           (kill-new cmd)))
-    (error "Must be in a _test.go file"))
-  )
+    (error "Must be in a _test.go file")))
+
+;;;###autoload
+(defun +go/copy-go-test-dlv-cmd ()
+  "Copy go test cmd."
+  (interactive)
+  (if (string-match "_test\\.go" buffer-file-name)
+    (save-excursion
+      (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
+      (let ((cmd (concat "dlv test --init=breakpoints.dlv "
+                   "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
+                   " -- -test.run "
+                   "\"^" (match-string 1) "$\""
+                   )))
+        (message cmd)
+        (kill-new cmd)))
+    (error "Must be in a _test.go file")))
 
 ;;;###autoload
 (defun +go/copy-go-breakpoint ()

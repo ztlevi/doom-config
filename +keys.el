@@ -301,7 +301,8 @@
          (:map go-mode-map
           :localleader
           (:prefix "t"
-           "y" #'+go/copy-go-test-cmd
+           "y" #'+go/copy-go-test-dlv-cmd
+           "Y" #'+go/copy-go-test-run-cmd
            "b" "Insert breakpoint" #'+go/insert-go-breakpoint
            (:prefix ("B" . "bench")
                     "s" #'+go/bench-single
