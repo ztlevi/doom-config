@@ -7,6 +7,9 @@
 ;; (load-theme 'doom-one-light t)
 (load-theme (get-random-element '(doom-acario-light doom-one-light)) t)
 
+;; no title bar https://github.com/d12frosted/homebrew-emacs-plus?tab=readme-ov-file#emacs-29-and-emacs-30
+(add-to-list 'default-frame-alist '(undecorated-round . t))
+
 (setq fancy-splash-image (concat doom-private-dir "assets/GNUEmacs.png"))
 
 (setq evil-emacs-state-cursor `(box ,(doom-color 'violet)))
