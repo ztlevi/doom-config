@@ -110,6 +110,8 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   '(markdown-header-face-1 :inherit 'org-level-1)
   '(markdown-header-face-2 :inherit 'org-level-2)
   '(markdown-header-face-3 :inherit 'org-level-3)
+  `(smerge-upper :background ,(doom-blend 'red 'bg 0.2))
+  `(smerge-lower :background ,(doom-blend 'green 'bg 0.2))
   `(web-mode-jsx-depth-1-face :background ,(doom-blend 'teal 'fg 0.1))
   `(web-mode-jsx-depth-2-face :background ,(doom-blend 'teal 'fg 0.2))
   `(web-mode-jsx-depth-3-face :background ,(doom-blend 'teal 'fg 0.3))
