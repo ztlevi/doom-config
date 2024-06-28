@@ -145,7 +145,7 @@
       (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
       (let ((cmd (concat "dlv test --init=breakpoints.dlv "
                    "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                   " -- -test.run "
+                   " -- -test.v -test.run "
                    "\"^" (match-string 1) "$\""
                    )))
         (message cmd)
