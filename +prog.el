@@ -122,9 +122,11 @@
          :desc "Start debugger" "d" #'+my/dap-start
          :desc "Start last debugger" "D" #'dap-debug-last
          :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
-         (:prefix ("b" . "breakpoint")
-                  "b" #'dap-breakpoint-toggle
-                  "c" #'dap-breakpoint-condition)
+         :desc "dap breakpoint toggle" "b" #'dap-breakpoint-toggle
+         :desc "dap breakpoint toggle" "C" #'dap-breakpoint-delete-all
+         :desc "dap breakpoint condition" "c" #'dap-breakpoint-condition
+         :desc "dap breakpoint hit count" "h" #'dap-breakpoint-hit-condition
+         :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message
          "B" #'dap-ui-breakpoints
          "h" #'dap-hydra
          "r" #'dap-debug-restart
@@ -138,6 +140,8 @@
          "k" #'dap-delete-session
          "K" #'dap-delete-all-sessions
          "S" #'realgud-short-key-mode)))
+
+(add-hook! 'dap-breakpoints-changed-hook #'+go/write-project-breakpoints)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LANGUAGE CUSTOMIZATION

@@ -130,8 +130,8 @@
       (save-excursion
         (re-search-backward "^func[ ]+\\(([[:alnum:]]*?[ ]?[*]?[[:alnum:]]+)[ ]+\\)?\\(Test[[:alnum:]_]+\\)(.*)")
         (let ((cmd (concat "go test "
-                     "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                     " -test.v " "-run" "='^\\Q" (match-string-no-properties 2) "\\E$'")))
+                           "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
+                           " -test.v " "-run" "='^\\Q" (match-string-no-properties 2) "\\E$'")))
           (message cmd)
           (kill-new cmd)))
     (error "Must be in a _test.go file")))
@@ -141,15 +141,15 @@
   "Copy go test cmd."
   (interactive)
   (if (string-match "_test\\.go" buffer-file-name)
-    (save-excursion
-      (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
-      (let ((cmd (concat "dlv test --init=breakpoints.dlv "
-                   "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
-                   " -- -test.v -test.run "
-                   "\"^" (match-string 1) "$\""
-                   )))
-        (message cmd)
-        (kill-new cmd)))
+      (save-excursion
+        (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)")
+        (let ((cmd (concat "dlv test --init=breakpoints.dlv "
+                           "./" (file-relative-name (file-name-directory (buffer-file-name)) (doom-project-root))
+                           " -- -test.v -test.run "
+                           "\"^" (match-string 1) "$\""
+                           )))
+          (message cmd)
+          (kill-new cmd)))
     (error "Must be in a _test.go file")))
 
 ;;;###autoload
@@ -177,3 +177,40 @@
       (insert cmd)
       (save-buffer)
       (kill-buffer))))
+
+;; Modified from `dap-ui--breakpoints-entries'
+;; Use dap breakpoints to write go breakpoints
+;;;###autoload
+(defun +go/write-project-breakpoints ()
+  "Get breakpoints entries."
+  (interactive)
+  (when (eq major-mode 'go-mode)
+    (let ((id 0)
+          (project-root (doom-project-root))
+          (breakpoint-file (concat (doom-project-root) "breakpoints.dlv"))
+          (result ""))
+      (apply 'append
+             (maphash
+              (lambda (file-name breakpoints)
+                (let ((session-breakpoints (-some->> (dap--cur-session)
+                                             dap--debug-session-breakpoints
+                                             (gethash file-name))))
+                  (with-temp-buffer
+                    (insert-file-contents file-name)
+                    (mapc
+                     (-lambda (((&plist :point :condition :hit-condition :log-message) . remote-bp))
+                       (when (string-prefix-p project-root file-name)
+                         (setq result (concat result "b "
+                                              (file-relative-name file-name project-root)
+                                              ":"
+                                              (number-to-string (line-number-at-pos point))
+                                              (if condition (concat " if " condition) "")
+                                              " " hit-condition
+                                              " " log-message
+                                              "\n"))))
+                     (-zip-fill nil breakpoints session-breakpoints)))))
+              (dap--get-breakpoints)))
+      (with-temp-buffer
+        (insert result)
+        (insert "continue")
+        (write-file breakpoint-file)))))
