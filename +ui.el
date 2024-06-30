@@ -24,11 +24,11 @@
          ((find-font (font-spec :name "Droid Sans Fallback")) "Droid Sans Fallback")))
   ;; Some font uses Light font as regular, not sure why. Only use medium weight for this font.
   (setq user-font-weight
-    (cond
-      ((string= user-font "CartographCF Nerd Font") 'medium)
-      ((string= user-font "Mononoki Nerd Font Mono") 'medium)
-      (t 'normal))
-    )
+        (cond
+         ((string= user-font "CartographCF Nerd Font") 'medium)
+         ((string= user-font "Mononoki Nerd Font Mono") 'medium)
+         (t 'normal))
+        )
 
   ;; calculate the font size based on display-pixel-height
   (setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
@@ -142,6 +142,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-blend 'green 'bg 0.2))
   `(ediff-current-diff-C :foreground ,(doom-color 'blue)  :background ,(doom-blend 'blue 'bg 0.2))
   `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-blend 'teal 'bg 0.2))
+  `(wgrep-face :background ,(doom-blend 'grey 'bg 0.2))
   )
 
 (custom-theme-set-faces! 'doom-acario-light
@@ -163,12 +164,12 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 (after! ibuffer
   (setq-hook! 'ibuffer-hook ibuffer-formats
               '((mark modified read-only locked " "
-                      (name 50 18 :left :elide)
-                      " "
-                      (size 9 -1 :right)
-                      " "
-                      (mode 16 16 :left :elide)
-                      " " filename-and-process)
+                 (name 50 18 :left :elide)
+                 " "
+                 (size 9 -1 :right)
+                 " "
+                 (mode 16 16 :left :elide)
+                 " " filename-and-process)
                 (mark " "
                       (name 16 -1)
                       " " filename))))
