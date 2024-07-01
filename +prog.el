@@ -117,12 +117,16 @@
     ;;           (lambda (arg) (call-interactively #'dap-hydra)))
     )
 
+  (defun +my/dap-breakpoint-toggle ()
+    (interactive)
+    (dap-breakpoint-toggle)
+    (+go/write-project-breakpoints))
   (map! :leader
         (:prefix ("d" . "debug")
          :desc "Start debugger" "d" #'+my/dap-start
          :desc "Start last debugger" "D" #'dap-debug-last
          :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
-         :desc "dap breakpoint toggle" "b" #'dap-breakpoint-toggle
+         :desc "dap breakpoint toggle" "b" #'+my/dap-breakpoint-toggle
          :desc "dap breakpoint toggle" "C" #'dap-breakpoint-delete-all
          :desc "dap breakpoint condition" "c" #'dap-breakpoint-condition
          :desc "dap breakpoint hit count" "h" #'dap-breakpoint-hit-condition
@@ -140,8 +144,6 @@
          "k" #'dap-delete-session
          "K" #'dap-delete-all-sessions
          "S" #'realgud-short-key-mode)))
-
-(add-hook! 'dap-breakpoints-changed-hook #'+go/write-project-breakpoints)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LANGUAGE CUSTOMIZATION
