@@ -102,7 +102,9 @@
     (doom/kill-matching-buffers " stderr*" (buffer-list))
     (doom/kill-matching-buffers " out*" (buffer-list)))
 
-  ;; (add-hook! dap-mode-hook ((tooltip-mode 1)))
+  ;; Tooltip doesn't work well in terminal
+  (unless (display-graphic-p)
+    (remove-hook! 'dap-mode-hook #'dap-tooltip-mode))
 
   (after! dap-mode
     ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
