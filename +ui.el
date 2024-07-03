@@ -26,7 +26,6 @@
   (setq user-font-weight
         (cond
          ((string= user-font "CartographCF Nerd Font") 'medium)
-         ((string= user-font "Mononoki Nerd Font Mono") 'medium)
          (t 'normal))
         )
 
