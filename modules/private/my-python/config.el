@@ -20,13 +20,9 @@
   (:prefix ("v" . "ENV")
    "c" #'conda-env-activate
    "C" #'conda-env-deactivate
-   "v" #'poetry-venv-toggle
-   "P" #'pyvenv-workon
-   "p" #'pyvenv-activate))
- (:after pyenv-mode
-  (:map pyenv-mode-map
-   "C-c C-s" nil
-   "C-c C-u" nil)))
+   :desc "Activate .venv" "p" (λ! (pyvenv-activate (concat (doom-project-root) ".venv")))
+   ;; deactivate not work well. Just try activate again.
+   "P" #'pyvenv-deactivate)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PYTHON
@@ -108,6 +104,14 @@
 (after! conda
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
+    (progn
+      (when (modulep! :checkers syntax)
+        (advice-add func :after #'reset-flycheck))
+      (advice-add func :after #'+lsp/restart))))
+
+(after! pyvenv
+  ;; restart flycheck-mode after env activate and deactivate
+  (dolist (func '(pyvenv-activate pyvenv-deactivate))
     (progn
       (when (modulep! :checkers syntax)
         (advice-add func :after #'reset-flycheck))
