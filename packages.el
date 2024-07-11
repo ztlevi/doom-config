@@ -37,7 +37,7 @@
 (package! git-link)
 (package! magit-delta)
 (package! imenu-list)
-;; (package! tmux-pane)
+(package! tmux-pane)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! go-translate)
 ;; (package! org-roam-ui)
