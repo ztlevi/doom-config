@@ -44,7 +44,7 @@
 ;; (package! md-roam :recipe (:host github :repo "nobiot/md-roam"))
 
 ;; programming
-(package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
+(package! bazel)
 (package! graphql-mode)
 (package! protobuf-mode)
 (package! gn-mode)
