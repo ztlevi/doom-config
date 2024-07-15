@@ -44,6 +44,8 @@
   )
 (add-hook! 'python-mode-hook #'+python/annotate-pdb)
 
+(add-hook! 'python-mode-hook (setq-local format-all-formatters '(("Python" ruff))))
+
 (after! lsp-pyls
   ;; disable live-mode for mypy
   (lsp-register-custom-settings `(("pyls.plugins.pyls_mypy.enabled" t)))
