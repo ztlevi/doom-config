@@ -29,9 +29,9 @@
        ;;  +prescient       ; disabled due to ! invert match not working
        ;;  +childframe)
        (vertico           ; the search engine of the future
-         +icons
-         ;; +childframe
-         )
+        +icons
+        ;; +childframe
+        )
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -168,6 +168,7 @@
        ;;lean
        ;;ledger            ; an accounting system in Emacs
        ;; lua               ; one-based indices? one-based indices
+       (graphql +lsp)    ; Give queries a REST
        markdown         ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        nix               ; I hereby declare "nix geht mehr!"

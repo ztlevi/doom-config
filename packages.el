@@ -19,10 +19,8 @@
 ;; text
 (package! adoc-mode)
 (package! tldr)
-(package! edit-indirect)
 (package! blog-admin :recipe (:host github :repo "codefalling/blog-admin"))
 ;; (package! youdao-dictionary)
-(package! link-hint)
 (package! symbol-overlay)
 (package! pomm)
 (package! org-appear)
@@ -45,12 +43,11 @@
 
 ;; programming
 (package! bazel)
-(package! graphql-mode)
 (package! protobuf-mode)
 (package! gn-mode)
-(when (modulep! :tools lsp +eglot)
-  (package! breadcrumb :recipe (:host github :repo "joaotavora/breadcrumb"))
-  (package! eglot-java)
-  )
-(when (not (modulep! :tools lsp +eglot))
-  (package! lsp-docker))
+(if (modulep! :tools lsp +eglot)
+    (progn
+      (package! breadcrumb :recipe (:host github :repo "joaotavora/breadcrumb"))
+      (package! eglot-java))
+  (progn
+    (package! lsp-docker)))
