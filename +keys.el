@@ -301,12 +301,12 @@
          (:map go-mode-map
           :localleader
           (:prefix "t"
-           "y" #'+go/copy-go-test-dlv-cmd
-           "Y" #'+go/copy-go-test-run-cmd
-           ;; :desc "Insert breakpoint" "b" #'+go/insert-go-breakpoint
-           (:prefix ("B" . "bench")
-                    "s" #'+go/bench-single
-                    "a" #'+go/bench-all))))
+                   "y" #'+go/copy-go-test-dlv-cmd
+                   "Y" #'+go/copy-go-test-run-cmd
+                   ;; :desc "Insert breakpoint" "b" #'+go/insert-go-breakpoint
+                   (:prefix ("B" . "bench")
+                            "s" #'+go/bench-single
+                            "a" #'+go/bench-all))))
  (:after org
          (:map org-mode-map
           :localleader
@@ -400,6 +400,9 @@
  (:after magit-blame
          (:map magit-blame-mode-map
           :n "o" #'magit-blame--git-link-commit))
+ (:after git-timemachine
+         (:map git-timemachine-mode-map
+          :n "o" #'git-timemachine-show-commit))
  (:after evil-vars
   :map evil-ex-completion-map
   "C-b" nil
