@@ -20,6 +20,9 @@
 (setq-default fill-column 120
               delete-trailing-lines t)
 
+;; Disable indent guides
+(setq +indent-guides-inhibit-functions t)
+
 ;; Delete the selection when pasting
 (delete-selection-mode 1)
 
