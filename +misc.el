@@ -164,27 +164,17 @@
     (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " ")))
   )
 
-(after! ranger
-  (setq ranger-hide-cursor t
-        ranger-show-hidden 'format
-        ranger-deer-show-details nil)
 
-  (defun ranger-copy-relative-path ()
-    "Copy the current file path relative to `default-directory path."
-    (interactive)
-    (let ((current-prefix-arg 1))
-      (call-interactively 'dired-copy-filename-as-kill)))
-
-  (defun ranger-close-and-kill-inactive-buffers ()
-    "ranger close current buffer and kill inactive ranger buffers"
-    (interactive)
-    (ranger-close)
-    (ranger-kill-buffers-without-window))
-  ;; do not kill buffer if exists in windows
-  (defun ranger-disable ()
-    "Interactively disable ranger-mode."
-    (interactive)
-    (ranger-revert)))
+(after! dirvish
+  (defun dirvish-copy-file-relative-path (&optional multi-line)
+    "Copy filepath of marked files.
+If MULTI-LINE, make every path occupy a new line."
+    (interactive "P")
+    (let* ((files (mapcar (lambda (file)
+                            (file-relative-name (file-local-name file)))
+                          (dired-get-marked-files)))
+           (names (mapconcat #'concat files (if multi-line "\n" " "))))
+      (dirvish--kill-and-echo (if multi-line (concat "\n" names) names)))))
 
 
 (after! dash-docs

@@ -160,7 +160,7 @@
       (:prefix "f"                      ; file
        :desc "Yank filename" "n" #'+default/yank-filename
        :desc "Save all" "s" #'evil-write-all
-       :desc "Deer"     "j" #'deer)
+       :desc "Dirvish"     "j" #'dirvish-dwim)
       (:prefix "n"                      ; notes
        :desc "Take screenshot" "p" #'screenshot
        (:prefix "r"
@@ -224,7 +224,6 @@
        "k" #'keycast-log-mode
        "T" #'toggle-truncate-lines
        "S" #'size-indication-mode
-       "i" #'highlight-indent-guides-mode
        "v" #'visual-line-mode)
       (:prefix-map ("j" . "jump")
                    "j" #'avy-goto-char-timer
@@ -241,21 +240,9 @@
  (:map prog-mode-map
   :i "TAB" #'doom/dumb-indent
   :i "<backtab>" #'doom/dumb-dedent)
- (:after ranger
-         (:map ranger-normal-mode-map
-               "M-1" nil "M-2" nil "M-3" nil "M-4" nil "M-5" nil "M-6" nil "M-7" nil "M-8" nil "M-9" nil "M-0" nil
-               "g"   nil
-               "q" #'ranger-close-and-kill-inactive-buffers
-               "f" #'find-file
-               "F" #'dired-narrow                 ; use `; g` to quit dired-narrow
-               "M-g" #'ranger-go
-               "yr" #'ranger-copy-relative-path
-               "C-TAB" #'ranger-next-tab
-               "C-S-TAB" #'ranger-prev-tab
-               "U" #'dired-unmark-all-files
-               "u" #'dired-unmark
-               "(" #'dired-hide-details-mode
-               "+" #'dired-create-directory))
+ (:after dirvish
+         (:map dirvish-mode-map
+          :n "yr" #'dirvish-copy-file-relative-path))
  (:after lispy
          (:map lispy-mode-map
           :i "_" #'special-lispy-different
