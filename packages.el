@@ -30,7 +30,6 @@
 (package! keycast)
 (package! evil-string-inflection)
 (package! all-the-icons-ibuffer)
-(package! dired-narrow)
 (package! atomic-chrome)
 (package! git-link)
 (package! magit-delta)

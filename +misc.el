@@ -156,16 +156,23 @@
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
-;; Use ) key to toggle it
-(after! dired
-  ;; Rust version ls
-  (when-let (exa (executable-find "exa"))
-    (setq insert-directory-program exa)
-    (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " ")))
-  )
-
-
 (after! dirvish
+  (setq dirvish-attributes
+        '(vc-state file-size nerd-icons collapse subtree-state file-time))
+
+  (setq dirvish-hide-details '(dired dirvish dirvish-side)
+        dirvish-hide-cursor '(dired dirvish dirvish-side))
+
+  (when (executable-find "eza")
+    (dirvish-define-preview eza (file)
+      "Use `eza' to generate directory preview."
+      :require ("eza")                  ; tell Dirvish to check if we have the executable
+      (when (file-directory-p file)     ; we only interest in directories here
+        `(shell . ("eza" "-al" "--color=always" "--icons"
+                   "--group-directories-first" ,file))))
+
+    (add-to-list 'dirvish-preview-dispatchers 'eza))
+
   (defun dirvish-copy-file-relative-path (&optional multi-line)
     "Copy filepath of marked files.
 If MULTI-LINE, make every path occupy a new line."
