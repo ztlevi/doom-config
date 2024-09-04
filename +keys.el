@@ -242,6 +242,8 @@
   :i "<backtab>" #'doom/dumb-dedent)
  (:after dirvish
          (:map dirvish-mode-map
+          :n "f" #'find-file
+          :n "F" #'dirvish-file-info-menu
           :n "yr" #'dirvish-copy-file-relative-path))
  (:after lispy
          (:map lispy-mode-map
