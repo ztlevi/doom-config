@@ -82,9 +82,10 @@
   ;; https://github.com/hlissner/doom-emacs/blob/c2f8476c8641fcc9a1371d873ed3b5924952a059/modules/lang/javascript/config.el#L109
 
   ;; ======================== CC ========================
-  (require 'flycheck-google-cpplint)
-  (setq flycheck-c/c++-googlelint-executable "cpplint")
-  (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
+  (when (modulep! :checkers syntax)
+    (require 'flycheck-google-cpplint)
+    (setq flycheck-c/c++-googlelint-executable "cpplint")
+    (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint)))
 
   (setq flycheck-c/c++-gcc-executable "gcc-7"
         flycheck-gcc-include-path '("/usr/local/inclue"))
