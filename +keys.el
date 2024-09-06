@@ -244,7 +244,8 @@
          (:map dirvish-mode-map
           :n "f" #'find-file
           :n "F" #'dirvish-file-info-menu
-          :n "yr" #'dirvish-copy-file-relative-path))
+          :n "yr" #'dirvish-copy-file-relative-path
+          :n "yy" #'dired-copy-filename-as-kill))
  (:after lispy
          (:map lispy-mode-map
           :i "_" #'special-lispy-different
