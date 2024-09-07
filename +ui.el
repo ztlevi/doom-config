@@ -4,9 +4,14 @@
 ;;       doom-city-lights-brighter-comments t
 ;;       doom-one-light-brighter-comments t)
 
-(if (string= (getenv "DOTTY_THEME") "dark")
-    (load-theme 'doom-city-lights t)
-  (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
+(defun my/apply-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ('light (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
+    ('dark (load-theme 'doom-city-lights t))))
+
+(add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 
 ;; no title bar https://github.com/d12frosted/homebrew-emacs-plus?tab=readme-ov-file#emacs-29-and-emacs-30
 (add-to-list 'default-frame-alist '(undecorated-round . t))
