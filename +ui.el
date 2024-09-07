@@ -4,8 +4,9 @@
 ;;       doom-city-lights-brighter-comments t
 ;;       doom-one-light-brighter-comments t)
 
-;; (load-theme 'doom-one-light t)
-(load-theme (get-random-element '(doom-acario-light doom-one-light)) t)
+(if (eq (getenv "DOTTY_THEME") "dark")
+    (load-theme 'doom-city-lights t)
+  (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
 
 ;; no title bar https://github.com/d12frosted/homebrew-emacs-plus?tab=readme-ov-file#emacs-29-and-emacs-30
 (add-to-list 'default-frame-alist '(undecorated-round . t))
@@ -128,6 +129,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(font-lock-doc-face :foreground ,(doom-color 'blue)))
 
 (custom-theme-set-faces! 'doom-city-lights
+  `(mode-line :background ,(doom-blend 'dark-blue 'bg 0.2))
   ;; ediff
   `(ediff-current-diff-A :foreground ,(doom-color 'red)   :background ,(doom-blend 'red 'fg 0.2))
   `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-blend 'green 'fg 0.2))
