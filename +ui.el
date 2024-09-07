@@ -4,7 +4,7 @@
 ;;       doom-city-lights-brighter-comments t
 ;;       doom-one-light-brighter-comments t)
 
-(if (eq (getenv "DOTTY_THEME") "dark")
+(if (string= (getenv "DOTTY_THEME") "dark")
     (load-theme 'doom-city-lights t)
   (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
 
