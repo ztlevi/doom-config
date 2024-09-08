@@ -159,6 +159,16 @@
 (after! dirvish
   (setq dirvish-attributes
         '(vc-state file-size nerd-icons collapse subtree-state file-time))
+  (setq dirvish-quick-access-entries
+        `(("h" "~/" "Home")
+          ("c" "~/.config" "config")
+          ("d" "~/dev" "dev")
+          ("l" "~/dev-local" "dev-local")
+          ("w" "~/dev/work" "Downloads")
+          ("D" "~/Downloads" "Downloads")
+          ("e" ,doom-user-dir "Doom directory")
+          ("E" ,doom-emacs-dir "Emacs directory")
+          ))
 
   (setq dirvish-hide-details '(dired dirvish dirvish-side)
         dirvish-hide-cursor '(dired dirvish dirvish-side))
