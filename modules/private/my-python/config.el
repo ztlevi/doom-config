@@ -35,8 +35,6 @@
         importmagic-python-interpreter "python3"
         flycheck-python-pylint-executable "pylint"
         flycheck-python-flake8-executable "flake8")
-  (when (file-exists-p! "~/.conda")
-    (setq conda-env-home-directory (expand-file-name "~/.conda")))
 
   ;; if you use pyton2, then you could comment the following 2 lines
   ;; (setq python-shell-interpreter "python2"
@@ -104,6 +102,10 @@
 
 
 (after! conda
+  (setq conda-anaconda-home (cond ((file-directory-p "~/.miniconda") "~/.miniconda")
+                                  ((file-directory-p "~/.anaconda") "~/.anaconda")))
+  (when (file-exists-p! "~/.conda")
+    (setq conda-env-home-directory (expand-file-name "~/.conda")))
   ;; restart flycheck-mode after env activate and deactivate
   (dolist (func '(conda-env-activate conda-env-deactivate))
     (progn
