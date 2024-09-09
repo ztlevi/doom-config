@@ -3,24 +3,25 @@
 ;; Disable warning left fringe indicator
 (setq flymake-warning-bitmap nil)
 
-(if (modulep! :checkers syntax)
+(when (modulep! :checkers syntax))
+(if (featurep! :checkers syntax +flymake)
     (map! :leader
           (:prefix-map ("e" . "error")
-           :desc "Next error"      "n" #'flycheck-next-error
-           :desc "Previous error"  "p" #'flycheck-previous-error
-           :desc "Explain error"   "e" #'flycheck-explain-error-at-point
-           :desc "List errors"     "l" #'flycheck-list-errors
-           :desc "Lsp list errors" "L" #'consult-lsp-diagnostics
-           :desc "Verify setup"    "v" #'flycheck-verify-setup))
+           :desc "Next error"      "n" #'flymake-goto-next-error
+           :desc "Previous error"  "p" #'flymake-goto-prev-error
+           :desc "Explain error"   "e" #'flymake-show-diagnostic
+           :desc "List errors"     "l" #'flymake-show-buffer-diagnostics
+           :desc "Lsp list errors" "L" #'consult-flymake
+           :desc "List project error" "P" #'flymake-show-project-diagnostics
+           :desc "Verify setup"    "v" #'flymake-running-backends))
   (map! :leader
         (:prefix-map ("e" . "error")
-         :desc "Next error"      "n" #'flymake-goto-next-error
-         :desc "Previous error"  "p" #'flymake-goto-prev-error
-         :desc "Explain error"   "e" #'flymake-show-diagnostic
-         :desc "List errors"     "l" #'flymake-show-buffer-diagnostics
-         :desc "Lsp list errors" "L" #'consult-flymake
-         :desc "List project error" "P" #'flymake-show-project-diagnostics
-         :desc "Verify setup"    "v" #'flymake-running-backends)))
+         :desc "Next error"      "n" #'flycheck-next-error
+         :desc "Previous error"  "p" #'flycheck-previous-error
+         :desc "Explain error"   "e" #'flycheck-explain-error-at-point
+         :desc "List errors"     "l" #'flycheck-list-errors
+         :desc "Lsp list errors" "L" #'consult-lsp-diagnostics
+         :desc "Verify setup"    "v" #'flycheck-verify-setup)))
 (map! :leader
       (:prefix "c"
        :desc "Cspell check all changed files" "c" #'cspell-check-diff-from-HEAD
