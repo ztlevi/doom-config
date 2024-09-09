@@ -103,7 +103,6 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)
   '(font-lock-type-face :italic t)
-  `(show-paren-match :background ,(doom-blend 'teal 'bg 0.8) :foreground ,(doom-color 'bg))
   '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
   `(breakpoint-enabled :background ,(doom-blend 'red 'bg 0.15))
   `(dap-ui-pending-breakpoint-face :background ,(doom-blend 'red 'bg 0.15))
