@@ -11,6 +11,7 @@
                    swiper
                    forge
                    code-review
+                   writegood-mode
                    anaconda-mode
                    company-anaconda
                    lsp-python-ms
