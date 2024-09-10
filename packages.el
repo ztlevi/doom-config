@@ -12,6 +12,7 @@
                    forge
                    code-review
                    writegood-mode
+                   flymake-popon
                    anaconda-mode
                    company-anaconda
                    lsp-python-ms
