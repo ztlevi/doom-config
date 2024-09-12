@@ -44,6 +44,7 @@
 
 ;; programming
 (package! bazel)
+(package! jinja2-mode)
 (package! protobuf-mode)
 (package! gn-mode)
 (if (modulep! :tools lsp +eglot)

@@ -30,6 +30,10 @@
 (use-package! protobuf-mode
   :defer t)
 
+(use-package! jinja2-mode
+  :mode "steps\\.txt\\'"
+  :mode "preflight_steps\\.txt\\'"
+  :defer t)
 
 (use-package! gn-mode
   :defer t
