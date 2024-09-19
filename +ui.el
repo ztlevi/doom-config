@@ -11,7 +11,12 @@
     ('light (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
     ('dark (load-theme 'doom-city-lights t))))
 
-(add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
+(if (display-graphic-p)
+    (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
+  (progn
+    (if (string= (getenv "DOTTY_THEME") "dark")
+        (load-theme 'doom-city-lights t)
+      (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))))
 
 ;; no title bar https://github.com/d12frosted/homebrew-emacs-plus?tab=readme-ov-file#emacs-29-and-emacs-30
 (add-to-list 'default-frame-alist '(undecorated-round . t))
