@@ -28,7 +28,12 @@
 
 (add-hook! 'find-file-hook #'+my/find-file-check-make-large-file-read-only-hook)
 
-(setq clipetty-tmux-ssh-tty "tmux show-environment -g SSH_TTY")
+;; Use xclip if not in SSH
+(let ((env (getenv "SSH_TTY")))
+  (if (or (null env) (string-empty-p env))
+      (progn (require 'xclip nil t)
+             (with-demoted-errors "%s" (xclip-mode +1)))
+    (setq clipetty-tmux-ssh-tty "tmux show-environment -g SSH_TTY")))
 
 ;; check minified-file
 (add-to-list 'magic-mode-alist (cons #'+my/check-minified-file 'fundamental-mode))

@@ -39,6 +39,7 @@
 (package! tmux-pane)
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! go-translate)
+(package! xclip)
 ;; (package! org-roam-ui)
 ;; (package! md-roam :recipe (:host github :repo "nobiot/md-roam"))
 
