@@ -72,7 +72,6 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 ;; Update window divider in terminal
 ;; https://www.reddit.com/r/emacs/comments/3u0d0u/how_do_i_make_the_vertical_window_divider_more/
 (unless (display-graphic-p)
-  (setq evil-insert-state-cursor 'box)
   (defun my-change-window-divider ()
     (ignore-errors
       (let ((display-table (or buffer-display-table standard-display-table)))
