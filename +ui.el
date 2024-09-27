@@ -139,12 +139,12 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 (custom-theme-set-faces! 'doom-city-lights
   `(mode-line :background ,(doom-blend 'dark-blue 'bg 0.2))
   `(hl-todo :foreground ,(doom-lighten 'fg 0.7))
+  `(region :background ,(doom-color 'base5))
   ;; ediff
   `(ediff-current-diff-A :foreground ,(doom-color 'red)   :background ,(doom-blend 'red 'fg 0.2))
   `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-blend 'green 'fg 0.2))
   `(ediff-current-diff-C :foreground ,(doom-color 'blue)  :background ,(doom-blend 'blue 'fg 0.2))
   `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-blend 'teal 'fg 0.2))
-  `(markdown-code-face :background ,(doom-color 'bg-alt) :extend t)
   )
 
 (custom-theme-set-faces! 'doom-acario-light
