@@ -144,6 +144,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-blend 'green 'fg 0.2))
   `(ediff-current-diff-C :foreground ,(doom-color 'blue)  :background ,(doom-blend 'blue 'fg 0.2))
   `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-blend 'teal 'fg 0.2))
+  `(markdown-code-face :background ,(doom-color 'bg-alt) :extend t)
   )
 
 (custom-theme-set-faces! 'doom-acario-light
