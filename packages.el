@@ -12,6 +12,7 @@
                    forge
                    code-review
                    writegood-mode
+                   dired-x
                    flymake-popon
                    anaconda-mode
                    company-anaconda
