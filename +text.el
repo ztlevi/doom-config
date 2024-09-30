@@ -132,6 +132,8 @@
 
 (use-package! edit-indirect :defer t)
 
+(add-hook! 'markdown-mode-hook (setq-local format-all-formatters '(("Markdown" prettier))))
+
 (after! markdown-mode
   (advice-add #'markdown-follow-thing-at-point :around #'doom-set-jump-a))
 
