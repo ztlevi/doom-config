@@ -111,3 +111,9 @@ repository root."
 
   ;; refresh magit-status buffer
   (magit-refresh))
+
+;;;###autoload
+(defun git-safe-pull ()
+  "Safe pull git repo by stash and pop."
+  (interactive)
+  (async-shell-command "git-safe-pull"))

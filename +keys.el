@@ -167,6 +167,7 @@
         :desc "show graph" "g" #'org-roam-ui-open))
       (:prefix "g"                      ; git
                "s" nil
+               "p" #'git-safe-pull
                (:after smerge-mode
                 :desc "Smerge" "s" smerge-basic-map)
                :desc "Browse file or region" "oo" #'git-link
