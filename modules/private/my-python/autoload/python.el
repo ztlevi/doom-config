@@ -1,4 +1,4 @@
-;;; ~/.doom.d/autoload/python.el -*- lexical-binding: t; -*-
+;;; private/my-python/autoload/python.el -*- lexical-binding: t; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;               Debugger              ;

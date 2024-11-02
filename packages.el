@@ -1,5 +1,5 @@
 ;; -*- no-byte-compile: t; -*-
-;;; private/my/packages.el
+;;; packages.el
 
 ;; disabled packages
 (disable-packages! solaire-mode

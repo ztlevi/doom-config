@@ -1,4 +1,4 @@
-;;;  -*- lexical-binding: t; -*-
+;;; +text.el -*- lexical-binding: t; -*-
 
 (after! text-mode
   (setq-hook! 'text-mode-hook truncate-lines nil tab-width 2))

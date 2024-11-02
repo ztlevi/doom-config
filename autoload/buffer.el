@@ -1,4 +1,4 @@
-;;; ~/.doom.d/autoload/buffer.el -*- lexical-binding: t; -*-
+;;; autoload/buffer.el -*- lexical-binding: t; -*-
 
 ;; Do this when you encounter "Too many open files" issue
 ;;;###autoload

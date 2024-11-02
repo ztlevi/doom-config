@@ -1,4 +1,4 @@
-;;; private/my/config.el -*- lexical-binding: t; -*-
+;;; config.el -*- lexical-binding: t; -*-
 
 (load! "+os")
 (load! "+git")

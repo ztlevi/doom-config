@@ -1,4 +1,4 @@
-;;; private/my/autoload/misc.el -*- lexical-binding: t; -*-
+;;; autoload/misc.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
 (defun yank-with-delete-region ()

@@ -1,4 +1,4 @@
-;;; ~/.doom.d/+misc.el -*- lexical-binding: t; -*-
+;;; +misc.el -*- lexical-binding: t; -*-
 
 ;; Use chrome to browse
 (setq browse-url-browser-function 'browse-url-generic

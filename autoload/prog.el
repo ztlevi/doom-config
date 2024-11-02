@@ -1,4 +1,4 @@
-;;; ~/.doom.d/autoload/prog.el -*- lexical-binding: t; -*-
+;;; autoload/prog.el -*- lexical-binding: t; -*-
 
 (defun my/realgud-eval-nth-name-forward (n)
   (interactive "p")

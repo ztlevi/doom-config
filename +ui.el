@@ -1,4 +1,4 @@
-;;; private/my/+ui.el -*- lexical-binding: t; -*-
+;;; +ui.el -*- lexical-binding: t; -*-
 
 ;; (setq doom-one-brighter-comments t
 ;;       doom-city-lights-brighter-comments t

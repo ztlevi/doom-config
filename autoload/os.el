@@ -1,4 +1,4 @@
-;;; ~/.doom.d/autoload/os.el -*- lexical-binding: t; -*-
+;;; autoload/os.el -*- lexical-binding: t; -*-
 
 ;; Copied from https://github.com/emacsorphanage/osx-trash/blob/master/osx-trash.el
 (defconst os--trash-pkg-file
