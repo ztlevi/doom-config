@@ -136,13 +136,13 @@
         (:prefix ("d" . "debug")
          :desc "Start debugger" "d" #'+my/dap-start
          :desc "Start last debugger" "D" #'dap-debug-last
+         :desc "dap list breakpoints" "B" #'dap-ui-breakpoints-list
          :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
          :desc "dap breakpoint toggle" "b" #'+my/dap-breakpoint-toggle
          :desc "dap breakpoint delete all" "C" #'+my/dap-breakpoint-delete-all
          :desc "dap breakpoint condition" "c" #'dap-breakpoint-condition
          :desc "dap breakpoint hit count" "h" #'dap-breakpoint-hit-condition
          :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message
-         "B" #'dap-ui-breakpoints
          "h" #'dap-hydra
          "r" #'dap-debug-restart
          "l" #'dap-ui-locals
