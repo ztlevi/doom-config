@@ -42,6 +42,7 @@
 
 (add-hook! 'go-mode-hook (setq-local format-all-formatters '(("Go" gofmt))))
 
+(add-hook! 'json-mode-hook (setq-local format-all-formatters '(("JSON" prettier))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CC
