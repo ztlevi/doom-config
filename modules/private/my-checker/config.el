@@ -4,7 +4,7 @@
 (setq flymake-warning-bitmap nil)
 
 (when (modulep! :checkers syntax))
-(if (featurep! :checkers syntax +flymake)
+(if (modulep! :checkers syntax +flymake)
     (map! :leader
           (:prefix-map ("e" . "error")
            :desc "Next error"      "n" #'flymake-goto-next-error
