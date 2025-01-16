@@ -8,15 +8,15 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
-    ('dark (load-theme 'doom-city-lights t))))
+    ('light (setq doom-theme (get-random-element '(doom-acario-light doom-one-light))))
+    ('dark (setq doom-theme 'doom-city-lights))))
 
 (if (display-graphic-p)
     (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
   (progn
     (if (string= (getenv "DOTTY_THEME") "dark")
-        (load-theme 'doom-city-lights t)
-      (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))))
+        (setq doom-theme 'doom-city-lights)
+      (setq doom-theme (get-random-element '(doom-acario-light doom-one-light))))))
 
 ;; no title bar https://github.com/d12frosted/homebrew-emacs-plus?tab=readme-ov-file#emacs-29-and-emacs-30
 (add-to-list 'default-frame-alist '(undecorated-round . t))
