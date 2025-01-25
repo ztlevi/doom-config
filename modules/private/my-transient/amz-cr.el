@@ -1,10 +1,16 @@
 ;;; private/my-transient/amz-cr.el -*- lexical-binding: t; -*-
 
 (require 'transient)
-(require 'magit-base)
+
+;; Revert transient-display-buffer-action due to transient is popping another buffer
+(setq transient-display-buffer-action
+      '(display-buffer-in-side-window
+        (side . bottom)
+        (dedicated . t)
+        (inhibit-same-window . t)))
 
 (defun transient-read-amz-workspace-projects (prompt initial-input history)
-  (magit-completing-read-multiple
+  (completing-read-multiple
    prompt
    (mapcar (lambda (line)
              (save-excursion
