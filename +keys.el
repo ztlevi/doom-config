@@ -210,6 +210,7 @@
                "q" #'symbol-overlay-remove-all)
       (:prefix "p"                      ; project
        "n" #'+default/yank-project-name
+       "t" #'consult-todo-project
        :desc "Switch projects" "p" (λ! (update-projectile-known-projects) (projectile-switch-project))
        "*" (+my/prefix-M-x "projectile-")
        :desc "Update projectile list" "u" #'update-projectile-known-projects)
