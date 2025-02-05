@@ -47,6 +47,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(set-evil-initial-state!
+  '(comint-mode)
+  'insert)
+
+(add-hook! 'comint-mode-hook #'visual-line-mode)
+
 (use-package! aider
   :defer t
   :config
@@ -61,9 +68,6 @@
   ;; Or use your personal config file
   ;; (setq aider-args `("--config" ,(expand-file-name "~/.aider.conf.yml")))
   ;; ;;
-  (set-evil-initial-state!
-    '(comint-mode)
-    'insert)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
