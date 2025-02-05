@@ -45,6 +45,28 @@
 (add-hook! 'json-mode-hook (setq-local format-all-formatters '(("JSON" prettier))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; AI
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package! aider
+  :defer t
+  :config
+  ;; Use claude-3-5-sonnet cause it is best in aider benchmark
+  ;; (setq aider-args '("--model" "anthropic/claude-3-5-sonnet-20241022"))
+  ;; (setenv "ANTHROPIC_API_KEY" anthropic-api-key)
+  ;; Or use chatgpt model since it is most well known
+  ;; (setq aider-args '("--model" "o3-mini"))
+  ;; (setenv "OPENAI_API_KEY" <your-openai-api-key>)
+  ;; Or use gemini v2 model since it is very good and free
+  (setq aider-args '("--model" "gemini/gemini-2.0-flash-exp"))
+  ;; Or use your personal config file
+  ;; (setq aider-args `("--config" ,(expand-file-name "~/.aider.conf.yml")))
+  ;; ;;
+  (set-evil-initial-state!
+    '(comint-mode)
+    'insert)
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CC
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

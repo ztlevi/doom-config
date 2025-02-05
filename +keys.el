@@ -66,6 +66,7 @@
  ;; "C-M-p"  #'+ivy/project-search-specific-files
  ;; Debug
  "M-u" #'dap-hydra
+ "M-o" #'aider-transient-menu
  ;; Help
  "C-h h"   nil
  "C-h m" #'describe-mode
