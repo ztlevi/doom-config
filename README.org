@@ -37,7 +37,7 @@ brew tap railwaycat/emacsmacport
 brew install --cask emacs-mac
 
 brew tap d12frosted/emacs-plus
-brew install emacs-plus --with-native-comp
+brew install emacs-plus
 
 # create alias in /Applications if needed
 ln -Fs `sudo find /usr/local/Cellar/emacs-* -name "Emacs.app"` /Applications/Emacs.app
