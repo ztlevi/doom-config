@@ -19,7 +19,7 @@
       (setq doom-theme (get-random-element '(doom-acario-light doom-one-light))))))
 
 ;; no title bar https://github.com/d12frosted/homebrew-emacs-plus?tab=readme-ov-file#emacs-29-and-emacs-30
-(add-to-list 'default-frame-alist '(undecorated-round . t))
+;; (add-to-list 'default-frame-alist '(undecorated-round . t))
 
 (setq fancy-splash-image (concat doom-private-dir "assets/GNUEmacs.png"))
 
@@ -97,10 +97,10 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 
 ;; Faces need to postpone renderring
 ;; custom-set-faces! doesn't work properly when you switch doom themes
-(custom-theme-set-faces! doom-theme
+(custom-theme-set-faces! '(doom-acario-light doom-one-light doom-city-lights)
   `(hl-line :background ,(doom-color 'bg-alt)) ; sometimes ranger doesn't show hl-line color
   `(doom-modeline-debug-visual :background ,(doom-blend 'red 'bg 0.3))
-  `(mode-line :background ,(doom-blend 'dark-blue 'bg 0.6))
+  `(mode-line :background ,(doom-blend 'blue 'bg 0.3))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
   `(vertical-border :foreground ,(doom-color 'bg-alt))
   '(font-lock-doc-face :italic t)
@@ -153,7 +153,9 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(ediff-current-diff-B :foreground ,(doom-color 'green) :background ,(doom-blend 'green 'bg 0.2))
   `(ediff-current-diff-C :foreground ,(doom-color 'blue)  :background ,(doom-blend 'blue 'bg 0.2))
   `(ediff-current-diff-Ancestor :foreground ,(doom-color 'teal)  :background ,(doom-blend 'teal 'bg 0.2))
+  `(mode-line :background ,(doom-blend 'teal 'bg 0.2))
   `(lazy-highlight :foreground ,(doom-color 'base0) :background ,(doom-color 'teal))
+  `(internal-border :background nil)
   `(lsp-face-highlight-textual :foreground ,(doom-color 'fg) :background ,(doom-color 'bg-alt))
   `(wgrep-face :background ,(doom-blend 'grey 'bg 0.2))
   `(markdown-code-face :background ,(doom-color 'bg-alt))
