@@ -178,15 +178,14 @@
   (setq dirvish-hide-details '(dired dirvish dirvish-side)
         dirvish-hide-cursor '(dired dirvish dirvish-side))
 
-  (when (executable-find "eza")
-    (dirvish-define-preview eza (file)
-      "Use `eza' to generate directory preview."
-      :require ("eza")                  ; tell Dirvish to check if we have the executable
+  (when (executable-find "lla")
+    (dirvish-define-preview lla (file)
+      "Use `lla' to generate directory preview."
+      :require ("lla")                  ; tell Dirvish to check if we have the executable
       (when (file-directory-p file)     ; we only interest in directories here
-        `(shell . ("eza" "-al" "--color=always" "--icons"
-                   "--group-directories-first" ,file))))
+        `(shell . ("lla" "-l" "--icons" ,file))))
 
-    (add-to-list 'dirvish-preview-dispatchers 'eza))
+    (add-to-list 'dirvish-preview-dispatchers 'lla))
 
   (defun dirvish-copy-file-relative-path (&optional multi-line)
     "Copy filepath of marked files.
