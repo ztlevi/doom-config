@@ -20,7 +20,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;; company           ; the ultimate code completion backend
+       ;; (company +childframe)           ; the ultimate code completion backend
        (corfu +orderless +icons)  ; complete with cap(f), cape and a flying feather!
        ;;(helm              ; the *other* search engine for love and life
        ;;+fuzzy)            ; enable fuzzy search backend for helm
@@ -93,7 +93,8 @@
 
        :checkers
        (syntax           ; tasing you for every semicolon you forget
-         +flymake)
+        +childframe
+        +flymake)
        (spell
         +aspell)         ; tasing you for misspelling mispelling
        grammar           ; tasing grammar mistake every you make
@@ -155,17 +156,17 @@
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
        (go
-         +lsp
-         +tree-sitter)         ; the hipster dialect
+        +lsp
+        +tree-sitter)         ; the hipster dialect
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        (json +tree-sitter)              ; At least it ain't XML
        (java +lsp +tree-sitter)       ; the poster child for carpal tunnel syndrome
        (javascript                    ; all(hope(abandon(ye(who(enter(here))))))
-         +lsp
-         +tree-sitter
-         )
+        +lsp
+        +tree-sitter
+        )
        ;;julia             ; a better, faster MATLAB
        ;; kotlin            ; a better, slicker Java(Script)
        latex             ; writing papers in Emacs has never been so fun
