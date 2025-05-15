@@ -104,6 +104,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(mode-line :background ,(doom-blend 'blue 'bg 0.3))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
   `(vertical-border :foreground ,(doom-color 'bg-alt))
+  `(vertico-posframe-border :background ,(doom-color 'blue))
   '(font-lock-doc-face :italic t)
   '(font-lock-comment-face :italic t)
   '(font-lock-builtin-face :italic t)

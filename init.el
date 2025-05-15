@@ -31,7 +31,7 @@
        ;;  +childframe)
        (vertico           ; the search engine of the future
         +icons
-        ;; +childframe
+        +childframe
         )
 
        :ui
