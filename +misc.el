@@ -256,7 +256,7 @@ If MULTI-LINE, make every path occupy a new line."
 
 
 (when (modulep! :completion vertico)
-  (setq vertico-posframe-border-width 5)
+  (setq vertico-posframe-border-width 3)
 
   ;; Fix jump issue for vertico, https://github.com/hlissner/doom-emacs/issues/5386
   (dolist (func '(+default/search-project))
@@ -267,7 +267,7 @@ If MULTI-LINE, make every path occupy a new line."
     (setq ivy-prescient-retain-classic-highlighting t))
 
   (after! ivy-posframe
-    (setq ivy-posframe-border-width 5)
+    (setq ivy-posframe-border-width 3)
 
     ;; Use minibuffer to display ivy functions
     (dolist (fn '(+ivy/switch-workspace-buffer
