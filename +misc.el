@@ -257,6 +257,7 @@ If MULTI-LINE, make every path occupy a new line."
 
 (when (modulep! :completion vertico)
   (setq vertico-posframe-border-width 3)
+  (setq vertico-posframe-poshandler #'posframe-poshandler-frame-bottom-center)
 
   ;; Fix jump issue for vertico, https://github.com/hlissner/doom-emacs/issues/5386
   (dolist (func '(+default/search-project))
