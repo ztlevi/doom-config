@@ -254,6 +254,9 @@ If MULTI-LINE, make every path occupy a new line."
 ;; COMPLETION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(after! corfu
+  (setq +corfu-want-ret-to-confirm "both")
+  )
 
 (when (modulep! :completion vertico)
   (setq vertico-posframe-border-width 3)
