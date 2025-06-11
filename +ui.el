@@ -8,7 +8,7 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
+    ('light (load-theme (get-random-element '(doom-acario-light doom-one-light doom-winter-is-coming-light)) t))
     ('dark (load-theme 'doom-city-lights t))))
 
 (if (display-graphic-p)
@@ -161,7 +161,11 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(internal-border :background nil)
   `(lsp-face-highlight-textual :foreground ,(doom-color 'fg) :background ,(doom-color 'bg-alt))
   `(wgrep-face :background ,(doom-blend 'grey 'bg 0.2))
-  `(markdown-code-face :background ,(doom-color 'bg-alt))
+  `(markdown-code-face :background ,(doom-color 'bg-alt) :extend t)
+  )
+
+(custom-theme-set-faces! 'doom-winter-is-coming-light
+  `(markdown-code-face :background ,(doom-color 'bg-alt) :extend t)
   )
 
 ;; for terminal
