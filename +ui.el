@@ -173,11 +173,11 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   (custom-set-faces!
     `(mode-line-inactive :background ,(doom-darken (doom-color 'bg-alt) 0.05) :foreground ,(doom-color 'fg))))
 
-;; (when IS-MAC
-;;   ;; enable ligatures support
-;;   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-;;   (ignore-errors
-;;     (mac-auto-operator-composition-mode)))
+(when (and IS-MAC (display-graphic-p))
+  ;; enable ligatures support
+  ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
+  (ignore-errors
+    (mac-auto-operator-composition-mode)))
 
 
 (after! ibuffer
