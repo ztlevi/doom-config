@@ -129,7 +129,7 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   `(web-mode-jsx-depth-5-face :background ,(doom-blend 'teal 'fg 0.5))
   `(flyspell-incorrect :underline ,(doom-color 'red))
   `(flyspell-duplicate :underline ,(doom-color 'orange))
-  `(flymake-warning :underline nil :bold t)
+  `(flymake-warning :underline (:style wave :color ,(doom-color 'yellow)) :bold t)
   `(flycheck-warning :underline nil :bold t)
   `(flycheck-error :underline (:style wave :color ,(doom-color 'red)))
   `(flycheck-info :underline (:style wave :color ,(doom-color 'green)))
