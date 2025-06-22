@@ -24,6 +24,8 @@
        "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  :nv "gD" #'xref-find-definitions-other-window
  :nv "gr" #'+lookup/references
+  ;; unmap quoted insert since it causes insert issue in terminal
+ "C-q" nil
  ;; Conflict with vertico
  :g "C-SPC" nil :g "C-@" nil
  "M-`"   #'other-frame
