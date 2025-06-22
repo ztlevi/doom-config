@@ -1,7 +1,9 @@
 ;;; private/my-checker/config.el -*- lexical-binding: t; -*-
 
 ;; Disable warning and note left fringe indicator
-(setq flymake-margin-indicators-string '((error "!" compilation-error)))
+(setq flymake-margin-indicators-string '((error "!" compilation-error)
+                                          (warning "" compilation-warning)
+                                          (note "" compilation-info)))
 
 (when (modulep! :checkers syntax))
 (if (modulep! :checkers syntax +flymake)
