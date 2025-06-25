@@ -219,15 +219,17 @@
 (defun +ai/copy-current-line ()
   "Copy the context of current line."
   (interactive)
-  (kill-new
-   (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
-           "` line " (number-to-string (line-number-at-pos)) " as context.\n")))
+  (let ((cmd (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
+               "` line " (number-to-string (line-number-at-pos)) " as context.\n")))
+    (message cmd)
+    (kill-new cmd)))
 
 ;;;###autoload
 (defun +ai/copy-current-function ()
   "Copy the context of current function."
   (interactive)
-  (kill-new
-   (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
-           "` line " (number-to-string
-                (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
+  (let ((cmd (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
+               "` line " (number-to-string
+                           (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
+    (message cmd)
+    (kill-new cmd)))
