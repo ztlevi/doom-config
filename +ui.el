@@ -28,7 +28,7 @@
 (when (display-graphic-p)
   (setq user-font
         (cond
-         ((find-font (font-spec :name "Maple Mono Normal NF")) "Maple Mono Normal NF")
+         ((find-font (font-spec :name "Maple Mono NF")) "Maple Mono NF")
          ((find-font (font-spec :name "Mononoki Nerd Font Mono")) "Mononoki Nerd Font Mono")
          ((find-font (font-spec :name "CartographCF Nerd Font")) "CartographCF Nerd Font")
          ((find-font (font-spec :name "OperatorMono Nerd Font")) "OperatorMono Nerd Font")
