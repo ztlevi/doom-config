@@ -32,6 +32,7 @@
  "C-M-o" #'other-frame
  ;; fix OS window/frame navigation/manipulation keys
  "M-w" #'delete-window
+ "A-w" #'delete-window
  "M-W" #'delete-frame
  "M-n" #'+default/new-buffer
  "M-N" #'make-frame
