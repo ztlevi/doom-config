@@ -148,7 +148,7 @@ If prefix ARG is set, prompt for a directory to search from."
                (file-readable-p dir)
                (not (string-equal ".." (substring dir -2)))
                (not (string-equal "." (substring dir -1))))
-          (appendq! magit-repository-directories `((,dir . 2)))))))
+          (cl-callf2 append `((,dir . 2)) magit-repository-directories)))))
   (let (magit-repos
         magit-abs-repos
         (home (expand-file-name "~")))

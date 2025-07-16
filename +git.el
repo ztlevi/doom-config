@@ -37,7 +37,8 @@
             'magit-process-git-credential-manager-core)
 
   ;; fix magit prompt for midway auth
-  (appendq! magit-process-password-prompt-regexps '("Kerberos authentication failed.  Password:"))
+  (cl-callf2 append '("Kerberos authentication failed.  Password:")
+    magit-process-password-prompt-regexps)
 
   (magit-wip-after-apply-mode t)
   (magit-wip-before-change-mode t))
