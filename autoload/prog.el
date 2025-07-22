@@ -186,38 +186,26 @@
       (save-buffer)
       (kill-buffer))))
 
-;; Modified from `dap-ui--breakpoints-entries'
-;; Use dap breakpoints to write go breakpoints
+;; modified from `dape-breakpoint-save'
 ;;;###autoload
 (defun +go/write-project-breakpoints ()
-  "Get breakpoints entries."
+  "Write dape breakpoints to breakpoints.dlv file in project root."
   (interactive)
   (when (eq major-mode 'go-mode)
-    (let ((id 0)
-          (project-root (doom-project-root))
+    (let ((project-root (doom-project-root))
           (breakpoint-file (concat (doom-project-root) "breakpoints.dlv"))
           (result ""))
-      (apply 'append
-             (maphash
-              (lambda (file-name breakpoints)
-                (let ((session-breakpoints (-some->> (dap--cur-session)
-                                             dap--debug-session-breakpoints
-                                             (gethash file-name))))
-                  (with-temp-buffer
-                    (insert-file-contents file-name)
-                    (mapc
-                     (-lambda (((&plist :point :condition :hit-condition :log-message) . remote-bp))
-                       (when (string-prefix-p project-root file-name)
-                         (setq result (concat result "b "
-                                              (file-relative-name file-name project-root)
-                                              ":"
-                                              (number-to-string (line-number-at-pos point))
-                                              (if condition (concat " if " condition) "")
-                                              " " hit-condition
-                                              " " log-message
-                                              "\n"))))
-                     (-zip-fill nil breakpoints session-breakpoints)))))
-              (dap--get-breakpoints)))
+      (cl-loop for breakpoint in dape--breakpoints
+               for path = (dape--breakpoint-path breakpoint)
+               for line = (dape--breakpoint-line breakpoint)
+               for condition = (dape--breakpoint-value breakpoint)
+               when (and path (string-prefix-p project-root path))
+               do (setq result (concat result "b "
+                                       (file-relative-name path project-root)
+                                       ":"
+                                       (number-to-string line)
+                                       (if condition (concat " " condition) "")
+                                       "\n")))
       (with-temp-buffer
         (insert result)
         (insert "continue")

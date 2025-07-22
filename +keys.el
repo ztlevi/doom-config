@@ -302,7 +302,6 @@
           (:prefix "t"
                    "y" #'+go/copy-go-test-dlv-cmd
                    "Y" #'+go/copy-go-test-run-cmd
-                   ;; :desc "Insert breakpoint" "b" #'+go/insert-go-breakpoint
                    (:prefix ("B" . "bench")
                             "s" #'+go/bench-single
                             "a" #'+go/bench-all))))
