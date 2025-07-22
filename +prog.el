@@ -119,68 +119,45 @@
       (:remove  . ("%e")))
     :default "c++"))
 
-
-(after! realgud (advice-remove #'realgud:terminate #'+debugger--cleanup-after-realgud-a))
-
-
 (when (modulep! :tools debugger)
-  (defun +my/dap-start ()
+  (defun +my/dape-breakpoint-toggle ()
     (interactive)
-    (dap-mode 1)
-    (call-interactively #'dap-debug))
-
-  (defun +my/dap-delete-output-and-stderr-buffers ()
-    (doom/kill-matching-buffers " stderr*" (buffer-list))
-    (doom/kill-matching-buffers " out*" (buffer-list)))
-
-  ;; Tooltip doesn't work well in terminal
-  (unless (display-graphic-p)
-    (remove-hook! 'dap-mode-hook #'dap-tooltip-mode))
-
-  (after! dap-mode
-    ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
-    (setq lsp-enable-dap-auto-configure nil)
-
-    ;; use M-u to exit dap-hydra
-    (after! dap-hydra
-      (defhydra+ dap-hydra () ("M-u" nil)))
-
-    ;; Toggle dap-hydra whenever breakpoint is triggered
-    ;; (add-hook 'dap-stopped-hook
-    ;;           (lambda (arg) (call-interactively #'dap-hydra)))
-    )
-
-  (defun +my/dap-breakpoint-toggle ()
-    (interactive)
-    (dap-breakpoint-toggle)
-    (+go/write-project-breakpoints))
-  (defun +my/dap-breakpoint-delete-all ()
-    (interactive)
-    (dap-breakpoint-delete-all)
-    (+go/write-project-breakpoints))
+    (require 'dape)
+    (dape-breakpoint-toggle))
 
   (map! :leader
         (:prefix ("d" . "debug")
-         :desc "Start debugger" "d" #'+my/dap-start
-         :desc "Start last debugger" "D" #'dap-debug-last
-         :desc "dap list breakpoints" "l" #'dap-ui-breakpoints-list
-         :desc "Remove DAP outpput buffers" "K" #'+my/dap-delete-output-and-stderr-buffers
-         :desc "dap breakpoint toggle" "b" #'+my/dap-breakpoint-toggle
-         :desc "dap breakpoint delete all" "C" #'+my/dap-breakpoint-delete-all
-         :desc "dap breakpoint condition" "c" #'dap-breakpoint-condition
-         :desc "dap breakpoint hit count" "h" #'dap-breakpoint-hit-condition
-         "h" #'dap-hydra
-         "r" #'dap-debug-restart
-         "L" #'dap-ui-locals
-         "e" #'dap-ui-expressions
-         "a" #'dap-ui-expressions-add
-         "R" #'dap-ui-expressions-remove
-         "f" #'dap-switch-stack-frame
-         "q" #'dap-disconnect
-         "s" #'dap-ui-sessions
-         "k" #'dap-delete-session
-         "K" #'dap-delete-all-sessions
-         "S" #'realgud-short-key-mode)))
+         :desc "dape breakpoint toggle" "b" #'+my/dape-breakpoint-toggle
+         ))
+
+  (after! dape
+    (setq dape-configs (assq-delete-all 'dlv dape-configs))
+    (add-to-list 'dape-configs
+                 `(delve
+                   modes (go-mode go-ts-mode)
+                   ensure dape-ensure-command
+                   fn (dape-config-autoport dape-config-tramp)
+                   command "dlv"
+                   command-args ("dap" "--listen" "127.0.0.1::autoport")
+                   command-insert-stderr t
+                   command-cwd (lambda()(if (string-suffix-p "_test.go" (buffer-name))
+                                            default-directory (dape-cwd)))
+                   port :autoport
+                   :type "debug"
+                   :request "launch"
+                   :mode (lambda() (if (string-suffix-p "_test.go" (buffer-name)) "test" "debug"))
+                   :program "."
+                   :cwd "."
+                   :args (lambda()
+                           (if (string-suffix-p "_test.go" (buffer-name))
+                               (save-excursion
+                                 (when (re-search-backward "^func[ \t]+\\(\\(\\w\\|\\s_\\)+\\)" nil t)
+                                   (let* ((test-name (match-string 1))
+                                          (test-regexp (concat "^" test-name "$")))
+                                     `["-test.run" ,test-regexp])))
+                             []))))
+    ))
+
 
 (add-hook! 'go-mode-hook (add-hook! 'after-save-hook :local #'+go/write-project-breakpoints))
 

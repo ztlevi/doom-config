@@ -19,7 +19,7 @@
        "<xterm-paste>" #'xterm-paste-with-delete-region
        "C-S-j" #'evil-scroll-line-down
        "C-S-k" #'evil-scroll-line-up
-       "C-S-n" #'dap-next
+       "C-S-n" #'dape-next
        "M-;"   #'+my/insert-semicolon-at-the-end-of-this-line
        "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  :nv "gD" #'xref-find-definitions-other-window
@@ -68,7 +68,6 @@
  "M-e"    #'persp-switch-to-buffer
  ;; "C-M-p"  #'+ivy/project-search-specific-files
  ;; Debug
- "M-u" #'dap-hydra
  "M-o" #'aider-transient-menu
  ;; Help
  "C-h h"   nil
