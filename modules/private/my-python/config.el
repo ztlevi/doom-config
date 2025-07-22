@@ -132,8 +132,3 @@
 ;; For pytest-mode
 (set-evil-initial-state! '(comint-mode) 'normal)
 (set-evil-initial-state! '(shell-mode) 'normal)
-
-
-(after! dap-python
-  (setq dap-python-executable "python3"
-        dap-python-debugger 'debugpy))

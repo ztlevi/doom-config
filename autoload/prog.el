@@ -123,6 +123,14 @@
   (message (which-function)))
 
 ;;;###autoload
+(defun +cc/copy-lldb-breakpoint-of-current-line ()
+  "Copy a pdb like breakpoint on the current line."
+  (interactive)
+  (kill-new
+   (concat "b " (file-name-nondirectory (buffer-file-name))
+           " : " (number-to-string (line-number-at-pos)))))
+
+;;;###autoload
 (defun +go/copy-go-test-run-cmd ()
   "Run single test at point."
   (interactive)
@@ -220,7 +228,7 @@
   "Copy the context of current line."
   (interactive)
   (let ((cmd (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
-               "` line " (number-to-string (line-number-at-pos)) " as context.\n")))
+                     "` line " (number-to-string (line-number-at-pos)) " as context.\n")))
     (message cmd)
     (kill-new cmd)))
 
@@ -229,7 +237,7 @@
   "Copy the context of current function."
   (interactive)
   (let ((cmd (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
-               "` line " (number-to-string
-                           (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
+                     "` line " (number-to-string
+                                (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
     (message cmd)
     (kill-new cmd)))

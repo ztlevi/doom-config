@@ -80,13 +80,6 @@
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . +cc-c-c++-objc-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
 
-(defun +cc/copy-lldb-breakpoint-of-current-line ()
-  "Copy a pdb like breakpoint on the current line."
-  (interactive)
-  (kill-new
-   (concat "b " (file-name-nondirectory (buffer-file-name))
-           " : " (number-to-string (line-number-at-pos)))))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; JS, WEB
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

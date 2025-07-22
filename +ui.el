@@ -111,8 +111,6 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
   '(font-lock-type-face :italic t)
   '(tide-hl-identifier-face :inherit 'lsp-face-highlight-read)
   `(breakpoint-enabled :background ,(doom-blend 'red 'bg 0.15))
-  `(dap-ui-pending-breakpoint-face :background ,(doom-blend 'red 'bg 0.30))
-  `(dap-ui-verified-breakpoint-face :background ,(doom-blend 'red 'bg 0.30))
   `(lsp-ui-peek-highlight :foreground ,(doom-color 'blue))
   `(ivy-posframe-border :background ,(doom-color 'blue))
   `(magit-diff-file-heading :background ,(doom-blend 'blue 'bg 0.2))

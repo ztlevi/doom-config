@@ -7,9 +7,7 @@
                                   "--completion-style=detailed"
                                   "--header-insertion=never"
                                   "--header-insertion-decorators=0"))
-  (set-lsp-priority! 'clangd 2)
-  (after! dap-mode
-    (require 'dap-codelldb)))
+  (set-lsp-priority! 'clangd 2))
 
 ;; Typescript
 (setq lsp-clients-typescript-init-opts
@@ -33,8 +31,7 @@
         (setq lsp-java-configuration-runtimes `[(:name "JavaSE-17"
                                                  :path ,java_path
                                                  :default t)]
-              lsp-java-java-path (concat java_path "/bin/java")
-              dap-java-java-command (concat java_path "/bin/java"))))
+              lsp-java-java-path (concat java_path "/bin/java"))))
   )
 
 
