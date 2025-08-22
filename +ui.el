@@ -8,7 +8,7 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme (get-random-element '(doom-acario-light doom-one-light doom-winter-is-coming-light)) t))
+    ('light (load-theme (get-random-element '(doom-acario-light doom-one-light)) t))
     ('dark (load-theme 'doom-city-lights t))))
 
 (if (display-graphic-p)
