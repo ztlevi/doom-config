@@ -116,11 +116,19 @@
   (defun +my/dape-breakpoint-toggle ()
     (interactive)
     (require 'dape)
-    (dape-breakpoint-toggle))
+    (dape-breakpoint-toggle)
+    (+go/write-project-breakpoints))
+
+  (defun +my/dape-breakpoint-remove-all ()
+    (interactive)
+    (require 'dape)
+    (dape-breakpoint-remove-all)
+    (+go/write-project-breakpoints))
 
   (map! :leader
         (:prefix ("d" . "debug")
          :desc "dape breakpoint toggle" "b" #'+my/dape-breakpoint-toggle
+         :desc "dape breakpoint remove all" "B" #'+my/dape-breakpoint-remove-all
          ))
 
   (after! dape
