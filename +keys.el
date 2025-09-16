@@ -24,7 +24,7 @@
        "C-M-;" #'+my/delete-semicolon-at-the-end-of-this-line)
  :nv "gD" #'xref-find-definitions-other-window
  :nv "gr" #'+lookup/references
-  ;; unmap quoted insert since it causes insert issue in terminal
+ ;; unmap quoted insert since it causes insert issue in terminal
  "C-q" nil
  ;; Conflict with vertico
  :g "C-SPC" nil :g "C-@" nil
@@ -296,8 +296,8 @@
          (:map c++-mode-map
           :localleader :prefix ("t" "toggle")
           :desc "Copy lldb breakpoint" "b" #'+cc/copy-lldb-breakpoint-of-current-line))
- (:after go-mode
-         (:map go-mode-map
+ (:after go-ts-mode
+         (:map go-ts-mode-map
           :localleader
           (:prefix "t"
                    "y" #'+go/copy-go-test-dlv-cmd
