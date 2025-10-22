@@ -40,9 +40,9 @@
   :init
   (add-to-list 'auto-mode-alist '("\\.gni?\\'" . gn-mode)))
 
-(add-hook! 'go-mode-hook (setq-local format-all-formatters '(("Go" gofmt))))
+(add-hook! 'go-ts-mode-hook (setq-local format-all-formatters '(("Go" gofmt))))
 
-(add-hook! 'json-mode-hook (setq-local format-all-formatters '(("JSON" prettier))))
+(add-hook! 'json-ts-mode-hook (setq-local format-all-formatters '(("JSON" prettier))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AI
@@ -160,7 +160,7 @@
     ))
 
 
-(add-hook! 'go-mode-hook (add-hook! 'after-save-hook :local #'+go/write-project-breakpoints))
+(add-hook! 'go-ts-mode-hook (add-hook! 'after-save-hook :local #'+go/write-project-breakpoints))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LANGUAGE CUSTOMIZATION

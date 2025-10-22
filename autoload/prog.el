@@ -191,7 +191,7 @@
 (defun +go/write-project-breakpoints ()
   "Write dape breakpoints to breakpoints.dlv file in project root."
   (interactive)
-  (when (eq major-mode 'go-mode)
+  (when (eq major-mode 'go-ts-mode)
     (let ((project-root (doom-project-root))
           (breakpoint-file (concat (doom-project-root) "breakpoints.dlv"))
           (result ""))

@@ -290,10 +290,10 @@
   "l" #'lsp-ui-peek--select-next-file)
  :nv "gb" #'lsp-ui-peek-jump-backward
  (:after cc-mode
-         (:map java-mode-map
+         (:map java-ts-mode-map
           :localleader
           :desc "Add import" "i" #'lsp-java-add-import)
-         (:map c++-mode-map
+         (:map c++-ts-mode-map
           :localleader :prefix ("t" "toggle")
           :desc "Copy lldb breakpoint" "b" #'+cc/copy-lldb-breakpoint-of-current-line))
  (:after go-ts-mode

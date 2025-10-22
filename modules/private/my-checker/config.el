@@ -61,11 +61,6 @@
 ;; FLYCHECK
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (use-package! wucuo
-;;   :defer t
-;;   :init
-;;   (add-hook! (js2-mode rjsx-mode go-mode c-mode c++-mode) #'wucuo-start))
-
 
 (after! flycheck
   (setq-default flycheck-disabled-checkers
@@ -93,7 +88,7 @@
   (setq flycheck-c/c++-gcc-executable "gcc-7"
         flycheck-gcc-include-path '("/usr/local/inclue"))
 
-  (add-hook! c++-mode-hook
+  (add-hook! c++-ts-mode-hook
     (setq flycheck-gcc-language-standard "c++11"
           flycheck-clang-language-standard "c++11"))
   )

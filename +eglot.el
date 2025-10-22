@@ -26,5 +26,5 @@
 ;; TODO: fix loading in doom https://discourse.doomemacs.org/t/error-when-loading-eglot-java/3923
 (use-package! eglot-java
   :defer t
-  :hook (java-mode . eglot-java-mode)
+  :hook (java-ts-mode . eglot-java-mode)
   )

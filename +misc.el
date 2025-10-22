@@ -1,5 +1,9 @@
 ;;; +misc.el -*- lexical-binding: t; -*-
 
+(unless (fboundp 'x-hide-tip)
+  (defun x-hide-tip ()))
+
+
 ;; Use chrome to browse
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program
