@@ -229,3 +229,25 @@
                                 (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
     (message cmd)
     (kill-new cmd)))
+
+;;;###autoload
+(defun +java/copy-java-class-path ()
+  "Copy the fully qualified Java class name to clipboard."
+  (interactive)
+  (unless (or (eq major-mode 'java-mode)
+              (eq major-mode 'java-ts-mode))
+    (user-error "Not in a Java buffer"))
+  (let* ((package (save-excursion
+                    (goto-char (point-min))
+                    (when (re-search-forward "^package \\([^;]+\\);" nil t)
+                      (match-string 1))))
+         (class (save-excursion
+                  (goto-char (point-min))
+                  (when (re-search-forward "^public \\(?:class\\|interface\\|enum\\) \\([A-Za-z0-9_]+\\)" nil t)
+                    (match-string 1))))
+         (fqn (if (and package class)
+                  (concat package "." class)
+                class)))
+    (when fqn
+      (kill-new fqn)
+      (message "Copied: %s" fqn))))

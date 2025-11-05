@@ -292,6 +292,8 @@
  (:after cc-mode
          (:map java-ts-mode-map
           :localleader
+          (:prefix ("c" . "Class")
+           :desc "copy java class path" "y" #'+java/copy-java-class-path)
           :desc "Add import" "i" #'lsp-java-add-import)
          (:map c++-ts-mode-map
           :localleader :prefix ("t" "toggle")

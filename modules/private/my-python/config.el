@@ -6,7 +6,7 @@
       :desc "Insert breakpoint" "b" #'+python/toggle-breakpoint
       :desc "Insert default breakpoint" "B" #'+python/toggle-default-breakpoint
       :desc "Toggle debugpy lines" "d" #'+python/toggle-debugpy-lines
-      (:prefix "t"
+      (:prefix ("t" . "Test")
        :desc "Copy python breakpoint" "b" #'+python/copy-pdb-breakpoint-of-current-line
        :desc "Copy python cmd" "p" #'+python/copy-python-cmd
        :desc "Copy pytest cmd" "y" #'+python/copy-pytest-cmd

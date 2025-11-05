@@ -58,8 +58,9 @@ selected, then the current line."
   "Copy the current buffer's path to the kill ring."
   (interactive)
   (require 'f)
-  (message "Copied project name to clipboard: %s"
-           (kill-new (f-filename (doom-project-root)))))
+  (let ((pn (f-filename (doom-project-root))))
+    (kill-new pn)
+    (message "Copied project name to clipboard: %s" pn)))
 
 ;;;###autoload
 (defun +default/search-project-with-hidden-files ()
@@ -75,9 +76,9 @@ selected, then the current line."
 If prefix ARG is set, prompt for a directory to search from."
   (interactive "P")
   (let ((default-directory
-          (if arg
-              (read-directory-name "Search Workspace: ")
-            (expand-file-name (concat (doom-project-root) "/..")))))
+         (if arg
+             (read-directory-name "Search Workspace: ")
+           (expand-file-name (concat (doom-project-root) "/..")))))
     (call-interactively
      (cond ((modulep! :completion vertico) #'+vertico/project-search-from-cwd)
            ((modulep! :completion ivy)  #'+ivy/project-search-from-cwd)
