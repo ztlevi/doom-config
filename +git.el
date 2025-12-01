@@ -55,6 +55,8 @@
   ;; (+my/forge-toggle-all-issues-and-pullreqs)
   )
 
+;; delta uses bat for output. Making magit clean by changing the BAT style to minimal
+(setenv "BAT_STYLE" "changes")
 (use-package! magit-delta
   :after magit
   :init
