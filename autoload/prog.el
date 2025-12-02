@@ -196,7 +196,7 @@
           (breakpoint-file (concat (doom-project-root) "breakpoints.dlv"))
           (result ""))
       (cl-loop for breakpoint in dape--breakpoints
-               for path = (dape--breakpoint-path breakpoint)
+               for path = (dape--breakpoint-file-name breakpoint)
                for line = (dape--breakpoint-line breakpoint)
                for condition = (dape--breakpoint-value breakpoint)
                when (and path (string-prefix-p project-root path))
