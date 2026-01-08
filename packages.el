@@ -41,6 +41,7 @@
 (package! rime :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! xclip)
 (package! consult-todo)
+(package! jj-mode :recipe (:host github :repo "bolivier/jj-mode.el"))
 ;; (package! org-roam-ui)
 ;; (package! md-roam :recipe (:host github :repo "nobiot/md-roam"))
 
