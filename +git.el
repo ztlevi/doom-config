@@ -40,8 +40,7 @@
   (cl-callf2 append '("Kerberos authentication failed.  Password:")
     magit-process-password-prompt-regexps)
 
-  (magit-wip-after-apply-mode t)
-  (magit-wip-before-change-mode t))
+  (magit-wip-mode t))
 
 
 (after! forge
