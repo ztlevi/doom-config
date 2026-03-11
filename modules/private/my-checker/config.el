@@ -26,8 +26,7 @@
          :desc "Verify setup"    "v" #'flycheck-verify-setup)))
 (map! :leader
       (:prefix "c"
-       :desc "Cspell check all changed files" "c" #'cspell-check-diff-from-HEAD
-       :desc "Cspell check buffer"    "C" #'cspell-check-buffer))
+       :desc "Cspell check all changed files" "C" #'cspell-check-diff-from-HEAD))
 
 (use-package flymake-cspell
   :when (executable-find "cspell")

@@ -38,7 +38,7 @@
 
   ;; fix magit prompt for midway auth
   (cl-callf2 append '("Kerberos authentication failed.  Password:")
-    magit-process-password-prompt-regexps)
+             magit-process-password-prompt-regexps)
 
   (magit-wip-mode t))
 
@@ -87,3 +87,18 @@
           ("FIXME" . ,(doom-color 'red))
           ("XXX"   . ,(doom-color 'blue))
           ("XXXX"  . ,(doom-color 'blue)))))
+
+(defun +git/kiro-commit ()
+  "Use kiro-cli to generate a commit message from staged changes and commit."
+  (interactive)
+  (let ((default-directory (magit-toplevel)))
+    (unless default-directory
+      (user-error "Not in a git repository"))
+    (async-shell-command
+     (concat "echo 'create commit message based on git staged changes. "
+             "Do not put Assist by AI at the end. "
+             "DO NOT touch unstaged changes. "
+             "Then create a git commit with that commit message with `git commit -m`. "
+             "Then exit.' | kiro-cli chat --agent kiro_default --trust-tools shell --model claude-sonnet-4.6-1m")
+     "*kiro-commit*")
+    (pop-to-buffer "*kiro-commit*")))

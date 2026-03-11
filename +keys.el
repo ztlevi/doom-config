@@ -145,6 +145,7 @@
       (:prefix "c"                      ; code
        :desc "Format-all buffer"      "f" #'format-all-buffer
        :desc "Check grammar"          "g" #'langtool-check-buffer
+       :desc "Git kiro commit"        "c" #'+git/kiro-commit
        :desc "Done Check grammar"     "G" #'langtool-check-done
        :desc "AI copy current function context" "y" #'+ai/copy-current-function
        :desc "AI copy current line context" "Y" #'+ai/copy-current-line
