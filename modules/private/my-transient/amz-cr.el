@@ -12,12 +12,9 @@
 (defun transient-read-amz-workspace-projects (prompt initial-input history)
   (completing-read-multiple
    prompt
-   (mapcar (lambda (line)
-             (save-excursion
-               (list line)))
-           (directory-files
-            (file-name-directory (directory-file-name (doom-project-root)))
-            nil "^[^.]"))
+   (directory-files
+    (file-name-directory (directory-file-name (doom-project-root)))
+    nil "^[^.]")
    nil nil initial-input history))
 
 (transient-define-argument amz-cr:-i ()
@@ -37,25 +34,18 @@
 (defun amz-cr--create-cr ()
   "Amazon CR create CR."
   (interactive)
-  (let ((cmd '("cr")))
-    (dolist (args
-             ;; Testing args
-             ;; '(("--include=" "p1" "p2") "--yes" "--all")
-             (transient-args 'amz-cr)
-             )
+  (let ((cmd (list "cr")))
+    (dolist (args (transient-args 'amz-cr))
       (if (listp args)
-          (progn
-            (setq arg (car args))
-            (setq args (cdr args))
-            (dolist (element args)
-              (cl-callf2 append cmd (list (concat arg element)))))
+          (let ((arg (car args)))
+            (dolist (element (cdr args))
+              (setq cmd (append cmd (list (concat arg element))))))
         (if (string= args "--yes")
-            (cl-pushnew "yes | " cmd :test #'equal)
-          (cl-callf2 append cmd (list args))))
-      )
-    (let* ((default-directory (doom-project-root)))
-      (async-shell-command (string-join cmd " "))
-      )))
+            (unless (member "yes | " cmd)
+              (push "yes | " cmd))
+          (setq cmd (append cmd (list args))))))
+    (let ((default-directory (doom-project-root)))
+      (async-shell-command (string-join cmd " ")))))
 
 
 ;; Reference magit-log.el https://github.com/magit/magit/blob/main/lisp/magit-log.el
@@ -64,9 +54,9 @@
   ["Arguments"
    (amz-cr:-i)
    (amz-cr:-r)
-   ("-A" "Include all modified packages" (nil "--all"))
-   ("-N" "New review" (nil "--new-review"))
-   ("-y" "Yes" (nil "--yes"))
+   ("-A" "Include all modified packages" "--all")
+   ("-N" "New review" "--new-review")
+   ("-y" "Yes" "--yes")
    ]
   [["Amazon CR"
     ("c" "Create CR" amz-cr--create-cr)
