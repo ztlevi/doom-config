@@ -99,6 +99,6 @@
              "Do not put Assist by AI at the end. "
              "DO NOT touch unstaged changes. "
              "Then create a git commit with that commit message with `git commit -m`. "
-             "Then exit.' | kiro-cli chat --agent kiro_default --trust-tools shell --model claude-sonnet-4.6-1m")
+             "Then exit.' | kiro-cli chat --classic --agent kiro_default --trust-tools shell --model claude-sonnet-4.6-1m")
      "*kiro-commit*")
     (pop-to-buffer "*kiro-commit*")))
