@@ -29,6 +29,7 @@
 
 (after! magit
   (setq magit-save-repository-buffers nil
+        magit-diff-visit-prefer-worktree t
         git-commit-style-convention-checks nil
         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
