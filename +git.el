@@ -103,3 +103,18 @@
              "Then exit.' | kiro-cli chat --classic --agent kiro_default --trust-tools shell --model claude-sonnet-4.6-1m")
      "*kiro-commit*")
     (pop-to-buffer "*kiro-commit*")))
+
+(defun +git/claude-commit ()
+  "Use claude-code to generate a commit message from staged changes and commit."
+  (interactive)
+  (let ((default-directory (magit-toplevel)))
+    (unless default-directory
+      (user-error "Not in a git repository"))
+    (async-shell-command
+     (concat "claude -p 'Create a commit message based on git staged changes. "
+             "Do not put Assist by AI at the end. "
+             "DO NOT touch unstaged changes. "
+             "Then create a git commit with that commit message with `git commit -m`. "
+             "Then exit.' --allowedTools 'Bash(git diff:*)' 'Bash(git status:*)' 'Bash(git log:*)' 'Bash(git commit:*)'")
+     "*claude-commit*")
+    (pop-to-buffer "*claude-commit*")))
