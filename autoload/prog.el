@@ -212,21 +212,31 @@
         (write-file breakpoint-file)))))
 
 ;;;###autoload
-(defun +ai/copy-current-line ()
-  "Copy the context of current line."
-  (interactive)
-  (let ((cmd (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
-                     "` line " (number-to-string (line-number-at-pos)) " as context.\n")))
+(defun +ai/copy-current-line (&optional full-path)
+  "Copy the context of current line.
+With prefix argument FULL-PATH, use the full file path instead of
+the project-relative path."
+  (interactive "P")
+  (let* ((path (if full-path
+                   (buffer-file-name)
+                 (file-relative-name (buffer-file-name) (doom-project-root))))
+         (cmd (concat "Given `" path
+                      "` line " (number-to-string (line-number-at-pos)) " as context.\n")))
     (message cmd)
     (kill-new cmd)))
 
 ;;;###autoload
-(defun +ai/copy-current-function ()
-  "Copy the context of current function."
-  (interactive)
-  (let ((cmd (concat "Given `" (file-relative-name (buffer-file-name) (doom-project-root))
-                     "` line " (number-to-string
-                                (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
+(defun +ai/copy-current-function (&optional full-path)
+  "Copy the context of current function.
+With prefix argument FULL-PATH, use the full file path instead of
+the project-relative path."
+  (interactive "P")
+  (let* ((path (if full-path
+                   (buffer-file-name)
+                 (file-relative-name (buffer-file-name) (doom-project-root))))
+         (cmd (concat "Given `" path
+                      "` line " (number-to-string
+                                 (save-excursion (beginning-of-defun) (line-number-at-pos))) " as context.\n")))
     (message cmd)
     (kill-new cmd)))
 
