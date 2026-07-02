@@ -290,7 +290,7 @@
   "k" #'lsp-ui-peek--select-prev
   "l" #'lsp-ui-peek--select-next-file)
  :nv "gb" #'lsp-ui-peek-jump-backward
- (:after cc-mode
+ (:after java-ts-mode
          (:map java-ts-mode-map
           :localleader
           (:prefix ("c" . "Class")
