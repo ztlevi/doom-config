@@ -1,6 +1,16 @@
 ;;; autoload/misc.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
+(defun +my/yank-project-path ()
+  "Copy the current project's root path to the kill ring."
+  (interactive)
+  (if-let* ((root (doom-project-root)))
+      (let ((path (abbreviate-file-name root)))
+        (kill-new path)
+        (message "Copied project path: %s" path))
+    (user-error "Couldn't find project root for current buffer")))
+
+;;;###autoload
 (defun yank-with-delete-region ()
   (interactive)
   (when (evil-visual-state-p)
