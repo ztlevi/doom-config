@@ -48,9 +48,7 @@
 ;; AI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(set-evil-initial-state!
-  '(comint-mode)
-  'insert)
+(set-evil-initial-state! '(comint-mode string-edit-mode) 'insert)
 
 (add-hook! 'comint-mode-hook #'visual-line-mode)
 

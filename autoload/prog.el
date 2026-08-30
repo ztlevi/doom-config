@@ -241,6 +241,16 @@ the project-relative path."
     (kill-new cmd)))
 
 ;;;###autoload
+(defun +ai/start-claude-bg-session ()
+  "Pop up a buffer to edit an input, then run `claude --bg \"<input>\"'.
+Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k."
+  (interactive)
+  (let ((input (read-string-from-buffer "Claude prompt" "")))
+    (unless (string-empty-p (string-trim input))
+      (async-shell-command-no-window
+       (concat "claude --bg " (shell-quote-argument input))))))
+
+;;;###autoload
 (defun +java/copy-java-class-path ()
   "Copy the fully qualified Java class name to clipboard."
   (interactive)

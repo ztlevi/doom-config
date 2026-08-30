@@ -219,6 +219,7 @@
        :desc "Copy project path" "y" #'+my/yank-project-path
        "t" #'consult-todo-project
        :desc "Switch projects" "p" (λ! (update-projectile-known-projects) (projectile-switch-project))
+       :desc "Start Claude bg session" "c" #'+ai/start-claude-bg-session
        "*" (+my/prefix-M-x "projectile-")
        :desc "Update projectile list" "u" #'update-projectile-known-projects)
       (:prefix "e"                      ;error
