@@ -247,8 +247,10 @@ Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k
   (interactive)
   (let ((input (read-string-from-buffer "Claude prompt" "")))
     (unless (string-empty-p (string-trim input))
-      (async-shell-command-no-window
-       (concat "claude --bg " (shell-quote-argument input))))))
+      (let ((default-directory (or (vc-git-root default-directory)
+                                    default-directory)))
+        (async-shell-command-no-window
+         (concat "claude --bg " (shell-quote-argument input)))))))
 
 ;;;###autoload
 (defun +java/copy-java-class-path ()
