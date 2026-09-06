@@ -14,12 +14,6 @@
        ((executable-find "/opt/google/chrome/chrome") "/opt/google/chrome/chrome")
        ((executable-find "google-chrome") "google-chrome")))
 
-;; Set personal ispell dictionary file
-(when (and
-       (executable-find "aspell")
-       (file-exists-p (expand-file-name "~/.aspell.en.pws")))
-  (setq ispell-personal-dictionary (expand-file-name "~/.aspell.en.pws")))
-
 (use-package! screenshot
   :defer t)
 
