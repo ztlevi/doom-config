@@ -54,7 +54,7 @@
                     ("^\\*pytest\\*" :size 0.35)
                     ("^\\*Anaconda\\*$" :size 0.35)
                     ("^\\*aider.*$" :size 0.35)
-                    ("\\*Async Shell Command\\*$" :side bottom :size 0.30 :select t)
+                    ("\\*Async Shell Command\\*\\(<[0-9]+>\\)?$" :side bottom :size 0.30 :select t)
                     ("\\*.*server log\\*$" :side top :size 0.20 :select nil)
                     ((lambda (buf _) (with-current-buffer buf (eq major-mode 'forge-topic-mode))) :size 0.35)
                     ))
