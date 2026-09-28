@@ -240,14 +240,22 @@ the project-relative path."
 ;;;###autoload
 (defun +ai/start-claude-bg-session ()
   "Pop up a buffer to edit an input, then run `claude --bg \"<input>\"'.
+The command runs in a visible `shell-command-mode' (comint) buffer, so prompts it
+raises before backgrounding itself -- e.g. the y/n folder trust question
+-- can be answered by typing in the buffer and hitting RET.
 Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k."
   (interactive)
   (let ((input (read-string-from-buffer "Claude prompt" "")))
     (unless (string-empty-p (string-trim input))
-      (let ((default-directory (or (vc-git-root default-directory)
-                                    default-directory)))
-        (async-shell-command-no-window
-         (concat "claude --bg " (shell-quote-argument input)))))))
+      ;; A buffer per session, so concurrent runs never clobber each other nor
+      ;; ask us to kill a live process.
+      (let ((buffer (generate-new-buffer "*claude-bg*"))
+            (default-directory (or (vc-git-root default-directory)
+                                   default-directory)))
+        (async-shell-command
+         (concat "claude --bg " (shell-quote-argument input))
+         buffer)
+        (pop-to-buffer buffer)))))
 
 ;;;###autoload
 (defun +java/copy-java-class-path ()
