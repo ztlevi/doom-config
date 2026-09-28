@@ -116,4 +116,5 @@ repository root."
 (defun git-safe-pull ()
   "Safe pull git repo by stash and pop."
   (interactive)
-  (async-shell-command "git-safe-pull"))
+  (let ((async-shell-command-buffer 'new-buffer))
+    (async-shell-command "git-safe-pull")))
