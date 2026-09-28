@@ -100,6 +100,8 @@ This will break if run in terminal mode, so use conditional to only run for GUI.
 ;; custom-set-faces! doesn't work properly when you switch doom themes
 (custom-theme-set-faces! '(doom-acario-light doom-one-light doom-city-lights)
   `(hl-line :background ,(doom-color 'bg-alt)) ; sometimes ranger doesn't show hl-line color
+  ;; default inherits `highlight' (solid blue bg), which hides blue text like collapsed dirs/icons
+  `(dirvish-hl-line :background ,(doom-blend 'blue 'bg 0.3) :extend t)
   `(doom-modeline-debug-visual :background ,(doom-blend 'red 'bg 0.3))
   `(mode-line :background ,(doom-blend 'blue 'bg 0.3))
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
