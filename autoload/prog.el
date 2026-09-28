@@ -108,14 +108,11 @@
          (cons
           "\\*Async Shell Command\\*.*"
           (cons #'display-buffer-no-window nil)))))
-    (async-shell-command
-     command nil nil)))
-
-;;;###autoload
-(defadvice async-shell-command-no-window (around auto-confirm compile activate)
-  (cl-letf (((symbol-function 'yes-or-no-p) (lambda (&rest args) t))
-            ((symbol-function 'y-or-n-p) (lambda (&rest args) t)))
-    ad-do-it))
+    ;; Auto-confirm prompts (e.g. "A command is running... kill it?")
+    (cl-letf (((symbol-function 'yes-or-no-p) (lambda (&rest _) t))
+              ((symbol-function 'y-or-n-p) (lambda (&rest _) t)))
+      (async-shell-command
+       command nil nil))))
 
 ;;;###autoload
 (defun display-which-function ()
