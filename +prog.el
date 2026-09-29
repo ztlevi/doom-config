@@ -52,8 +52,8 @@
 
 (add-hook! 'comint-mode-hook #'visual-line-mode)
 
-;; `+ai/start-claude-bg-session' runs in a visible comint buffer so its y/n
-;; prompts can be answered; keep the buffer after the command exits (`:ttl nil').
+;; `+ai/start-claude-bg-session' runs in a real terminal so its prompts can be
+;; answered; keep the buffer around after the command exits (`:ttl nil').
 (set-popup-rule! "^\\*claude-bg\\*" :side 'bottom :size 0.3 :select t :quit t :ttl nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

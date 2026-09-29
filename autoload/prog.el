@@ -115,6 +115,38 @@
        command nil nil))))
 
 ;;;###autoload
+(defun +my/run-command-in-term (name command &optional directory)
+  "Run COMMAND in a new `term-mode' buffer named after NAME, return the buffer.
+DIRECTORY is the working directory, and defaults to `default-directory'.
+Unlike `async-shell-command', the buffer is a real terminal, so COMMAND
+can prompt for input (y/n questions, TUI menus, arrow keys, ...).  The
+buffer starts in `term-char-mode' and drops to `term-line-mode' once
+COMMAND exits, so its output stays readable and navigable."
+  (require 'term)
+  (let ((buffer (generate-new-buffer (format "*%s*" name))))
+    (with-current-buffer buffer
+      (term-mode)
+      (setq default-directory
+            (file-name-as-directory (expand-file-name (or directory default-directory))))
+      (term-exec buffer name shell-file-name nil (list shell-command-switch command))
+      (term-char-mode)
+      (let* ((proc (get-buffer-process buffer))
+             (sentinel (process-sentinel proc)))
+        ;; Keep `term-sentinel' (it reports the exit status), then hand the
+        ;; buffer back to normal editing commands.
+        (set-process-sentinel
+         proc
+         (lambda (proc msg)
+           (when sentinel (funcall sentinel proc msg))
+           (let ((buf (process-buffer proc)))
+             (when (buffer-live-p buf)
+               (with-current-buffer buf
+                 (term-line-mode)
+                 (when (bound-and-true-p evil-local-mode)
+                   (evil-normal-state)))))))))
+    buffer))
+
+;;;###autoload
 (defun display-which-function ()
   (interactive)
   (message (which-function)))
@@ -240,22 +272,20 @@ the project-relative path."
 ;;;###autoload
 (defun +ai/start-claude-bg-session ()
   "Pop up a buffer to edit an input, then run `claude --bg \"<input>\"'.
-The command runs in a visible `shell-command-mode' (comint) buffer, so prompts it
-raises before backgrounding itself -- e.g. the y/n folder trust question
--- can be answered by typing in the buffer and hitting RET.
+The command runs in an interactive terminal buffer, so prompts it raises
+before backgrounding itself (folder trust, permissions, login, ...) can be
+answered on the spot, including with arrow keys.
 Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k."
   (interactive)
   (let ((input (read-string-from-buffer "Claude prompt" "")))
     (unless (string-empty-p (string-trim input))
-      ;; A buffer per session, so concurrent runs never clobber each other nor
-      ;; ask us to kill a live process.
-      (let ((buffer (generate-new-buffer "*claude-bg*"))
-            (default-directory (or (vc-git-root default-directory)
-                                   default-directory)))
-        (async-shell-command
-         (concat "claude --bg " (shell-quote-argument input))
-         buffer)
-        (pop-to-buffer buffer)))))
+      (let ((buffer (+my/run-command-in-term
+                     "claude-bg"
+                     (concat "claude --bg " (shell-quote-argument input))
+                     (or (vc-git-root default-directory) default-directory))))
+        (pop-to-buffer buffer)
+        (when (bound-and-true-p evil-local-mode)
+          (evil-insert-state))))))
 
 ;;;###autoload
 (defun +java/copy-java-class-path ()
