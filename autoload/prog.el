@@ -270,18 +270,22 @@ the project-relative path."
     (kill-new cmd)))
 
 ;;;###autoload
-(defun +ai/start-claude-bg-session ()
+(defun +ai/start-claude-bg-session (&optional plan)
   "Pop up a buffer to edit an input, then run `claude --bg \"<input>\"'.
+With prefix argument PLAN, start claude in plan mode
+\(`--permission-mode plan').
 The command runs in an interactive terminal buffer, so prompts it raises
 before backgrounding itself (folder trust, permissions, login, ...) can be
 answered on the spot, including with arrow keys.
 Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k."
-  (interactive)
+  (interactive "P")
   (let ((input (read-string-from-buffer "Claude prompt" "")))
     (unless (string-empty-p (string-trim input))
       (let ((buffer (+my/run-command-in-term
                      "claude-bg"
-                     (concat "claude --bg " (shell-quote-argument input))
+                     (concat "claude --bg"
+                             (if plan " --permission-mode plan" "")
+                             " " (shell-quote-argument input))
                      (or (vc-git-root default-directory) default-directory))))
         (pop-to-buffer buffer)
         (when (bound-and-true-p evil-local-mode)
