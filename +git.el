@@ -44,6 +44,29 @@
   (magit-wip-mode t))
 
 
+(after! forge
+  ;; (push '("git.dummy.com" "git.dummy.com/api/v3" "git.dummy.com" forge-github-repository)
+  ;;       forge-alist)
+
+  ;; TEMP
+  ;; (setq ghub-use-workaround-for-emacs-bug 'force)
+
+  ;; Only show issues and pullreqs assigned to me. Toggle it off here.
+  ;; (+my/forge-toggle-all-issues-and-pullreqs)
+  )
+
+;; delta uses bat for output. Making magit clean by changing the BAT style to minimal
+(setenv "BAT_STYLE" "changes")
+(use-package! magit-delta
+  :after magit
+  :init
+  (when (executable-find "delta")
+    (add-hook! magit-mode #'magit-delta-mode))
+  :config
+  (setq magit-delta-default-light-theme "GitHub")
+  (setq magit-delta-default-dark-theme "OneHalfDark")
+  )
+
 (after! magit-todos
   (setq magit-todos-exclude-globs '("third-party/*" "third_party/*")))
 
