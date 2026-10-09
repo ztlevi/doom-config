@@ -33,7 +33,6 @@
 (package! evil-string-inflection)
 (package! all-the-icons-ibuffer)
 (package! git-link)
-(package! magit-delta)
 (package! imenu-list)
 (package! tmux-pane)
 (package! xclip)
