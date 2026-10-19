@@ -279,7 +279,8 @@ before backgrounding itself (folder trust, permissions, login, ...) can be
 answered on the spot, including with arrow keys.
 Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k."
   (interactive "P")
-  (let ((input (read-string-from-buffer "Claude prompt" "")))
+  (let ((input (read-string-from-buffer
+                (if plan "Claude prompt (Plan Mode)" "Claude prompt") "")))
     (unless (string-empty-p (string-trim input))
       (let ((buffer (+my/run-command-in-term
                      "claude-bg"
