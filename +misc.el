@@ -176,6 +176,13 @@
   (setq dirvish-hide-details '(dired dirvish dirvish-side)
         dirvish-hide-cursor '(dired dirvish dirvish-side))
 
+  ;; Navigate to the current file when open the dirvish buffer
+  (add-hook 'dirvish-setup-hook
+            (lambda ()
+              (when-let ((file (buffer-file-name
+                                (other-buffer))))
+                (dired-goto-file file))))
+
   (when (executable-find "lla")
     (dirvish-define-preview lla (file)
       "Use `lla' to generate directory preview."
