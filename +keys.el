@@ -6,9 +6,10 @@
 ;; `mac-command-modifier' only affects GUI frames. In terminal Emacs (e.g.
 ;; inside herdr) the Cmd key arrives as super via the kitty keyboard protocol,
 ;; so Cmd+<letter> shows up as `s-<letter>' and is undefined. Translate
-;; s-a..s-z to M-a..M-z to match the GUI behaviour above.
+;; s-a..s-z and s-0..s-9 to M-a..M-z and M-0..M-9 (e.g. workspace switching
+;; with Cmd+1..9) to match the GUI behaviour above.
 (unless (display-graphic-p)
-  (dolist (c (number-sequence ?a ?z))
+  (dolist (c (append (number-sequence ?a ?z) (number-sequence ?0 ?9)))
     (define-key key-translation-map (kbd (format "s-%c" c)) (kbd (format "M-%c" c)))))
 
 ;; Distinguish C-i from TAB
