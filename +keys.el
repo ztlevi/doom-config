@@ -3,6 +3,14 @@
 (when IS-MAC (setq mac-command-modifier 'meta
                    mac-option-modifier  'alt))
 
+;; `mac-command-modifier' only affects GUI frames. In terminal Emacs (e.g.
+;; inside herdr) the Cmd key arrives as super via the kitty keyboard protocol,
+;; so Cmd+<letter> shows up as `s-<letter>' and is undefined. Translate
+;; s-a..s-z to M-a..M-z to match the GUI behaviour above.
+(unless (display-graphic-p)
+  (dolist (c (number-sequence ?a ?z))
+    (define-key key-translation-map (kbd (format "s-%c" c)) (kbd (format "M-%c" c)))))
+
 ;; Distinguish C-i from TAB
 (when (display-graphic-p)
   (define-key input-decode-map "\C-i" [C-i])
