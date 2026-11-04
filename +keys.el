@@ -261,7 +261,6 @@
   :i "<backtab>" #'doom/dumb-dedent)
  (:after dirvish
          (:map dirvish-mode-map
-          :nm "<delete>" #'evil-scroll-down
           :n "f" #'find-file
           :n "F" #'dirvish-file-info-menu
           :n "TAB" #'dired-mark
