@@ -433,10 +433,10 @@
          (:map adoc-mode-map
           :localleader
           :desc "adoc preview" "p" (cmd! (browse-url buffer-file-name))))
- (:after vterm
-         (:map vterm-mode-map
+ (:after ghostel
+         ;; `ghostel-semi-char-mode-map' forwards every M-<key> to the terminal;
+         ;; keep these few for Emacs.
+         (:map ghostel-semi-char-mode-map
                "M-e" nil
-               "M-w" #'+workspace/close-window-or-workspace))
- (:after term
-         (:map term-raw-map
-          :i "M-v" #'term-paste)))
+               "M-w" #'+workspace/close-window-or-workspace
+               "M-v" #'ghostel-yank)))

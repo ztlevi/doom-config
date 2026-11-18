@@ -54,7 +54,7 @@ selected, then the current line."
   `(defun ,(intern (format "my-shell-%s" name)) ,arglist
      (interactive)
      (find-file ,(format "/sshx:%s:" ip))
-     (vterm-toggle-cd)))
+     (ghostel)))
 
 ;;;###autoload
 (defmacro make--ssh (name ip &rest arglist)

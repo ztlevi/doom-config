@@ -92,6 +92,7 @@
        ;;shell             ; simple shell REPL for Emacs
        ;; term              ; basic terminal emulator for Emacs
        ;;vterm             ; the best terminal emulation in Emacs
+       (ghostel +everywhere) ; libghostty-vt terminal; handles TUIs (claude) properly
 
        :checkers
        (syntax           ; tasing you for every semicolon you forget

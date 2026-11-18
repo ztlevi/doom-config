@@ -116,34 +116,31 @@
 
 ;;;###autoload
 (defun +my/run-command-in-term (name command &optional directory)
-  "Run COMMAND in a new `term-mode' buffer named after NAME, return the buffer.
+  "Run COMMAND in a new `ghostel-mode' buffer named after NAME, return the buffer.
 DIRECTORY is the working directory, and defaults to `default-directory'.
 Unlike `async-shell-command', the buffer is a real terminal, so COMMAND
 can prompt for input (y/n questions, TUI menus, arrow keys, ...).  The
-buffer starts in `term-char-mode' and drops to `term-line-mode' once
-COMMAND exits, so its output stays readable and navigable."
-  (require 'term)
+buffer is displayed before COMMAND starts, so the terminal is created at
+its final size (a resize right after launch makes TUIs repaint badly).
+The buffer is kept after COMMAND exits, so its output stays readable, and
+evil is switched to normal state."
+  (require 'ghostel)
   (let ((buffer (generate-new-buffer (format "*%s*" name))))
     (with-current-buffer buffer
-      (term-mode)
       (setq default-directory
-            (file-name-as-directory (expand-file-name (or directory default-directory))))
-      (term-exec buffer name shell-file-name nil (list shell-command-switch command))
-      (term-char-mode)
-      (let* ((proc (get-buffer-process buffer))
-             (sentinel (process-sentinel proc)))
-        ;; Keep `term-sentinel' (it reports the exit status), then hand the
-        ;; buffer back to normal editing commands.
-        (set-process-sentinel
-         proc
-         (lambda (proc msg)
-           (when sentinel (funcall sentinel proc msg))
-           (let ((buf (process-buffer proc)))
-             (when (buffer-live-p buf)
-               (with-current-buffer buf
-                 (term-line-mode)
-                 (when (bound-and-true-p evil-local-mode)
-                   (evil-normal-state)))))))))
+            (file-name-as-directory (expand-file-name (or directory default-directory)))))
+    (pop-to-buffer buffer)
+    (ghostel-exec buffer shell-file-name (list shell-command-switch command))
+    ;; `ghostel-exec' resets the buffer's local variables, so set these after.
+    (with-current-buffer buffer
+      (setq-local ghostel-kill-buffer-on-exit nil)
+      (add-hook 'ghostel-exit-functions
+                (lambda (buf _event)
+                  (when (buffer-live-p buf)
+                    (with-current-buffer buf
+                      (when (bound-and-true-p evil-local-mode)
+                        (evil-normal-state)))))
+                nil t))
     buffer))
 
 ;;;###autoload

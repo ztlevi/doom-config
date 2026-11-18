@@ -412,6 +412,6 @@ If MULTI-LINE, make every path occupy a new line."
   )
 
 
-(after! term
-  ;; term-mode imenu index
-  (add-hook! 'term-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
+(after! ghostel
+  ;; ghostel-mode imenu index
+  (add-hook! 'ghostel-mode-hook (setq-local imenu-generic-expression '(("Prompt" "➜\\(.*\\)" 1)))))
