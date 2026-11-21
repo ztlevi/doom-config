@@ -287,7 +287,13 @@ Confirm with \\[read-string-from-buffer-edit-done] (C-c C-c), abort with C-c C-k
                      (or (vc-git-root default-directory) default-directory))))
         (pop-to-buffer buffer)
         (when (bound-and-true-p evil-local-mode)
-          (evil-insert-state))))))
+          ;; The terminal has not rendered yet, so `ghostel--cursor-pos' is
+          ;; nil and `evil-ghostel--insert-state-entry' would signal
+          ;; (wrong-type-argument number-or-marker-p nil).  There is no
+          ;; shell prompt to sync point with, so skip that hook.
+          (with-current-buffer buffer
+            (let ((evil-insert-state-entry-hook nil))
+              (evil-insert-state))))))))
 
 ;;;###autoload
 (defun +java/copy-java-class-path ()
