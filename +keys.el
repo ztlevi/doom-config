@@ -267,6 +267,13 @@
           :n "m" #'dirvish-subtree-toggle
           :n "yr" #'dirvish-copy-file-relative-path
           :n "yy" #'dired-copy-filename-as-kill))
+ ;; In terminal Emacs, C-c C-c can arrive as `C-c ESC' (normally wdired's
+ ;; abort key), so make `C-c ESC' finish the edit instead.
+ (:after wdired
+  (:map wdired-mode-map
+   "C-c ESC"      #'wdired-finish-edit
+   ;; evil-esc turns a lone ESC in a TTY into <escape>
+   "C-c <escape>" #'wdired-finish-edit))
  (:after lispy
          (:map lispy-mode-map
           :i "_" #'special-lispy-different
